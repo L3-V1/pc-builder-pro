@@ -147,3 +147,67 @@ describe('App: persistência', () => {
     expect(within(screen.getByRole('main')).getByRole('status')).toHaveTextContent('Link copiado')
   })
 })
+
+async function adicionarPorNome(busca: string, nome: string) {
+  const buscar = screen.getByLabelText('Buscar')
+  await userEvent.clear(buscar)
+  await userEvent.type(buscar, busca)
+  const card = screen.getByRole('heading', { name: nome, level: 3 }).closest('article')
+  if (!card) throw new Error(`Card de "${nome}" não encontrado`)
+  await userEvent.click(within(card).getByRole('button', { name: /Adicionar à Build|Trocar/ }))
+}
+
+async function abrirDesafio(titulo: string) {
+  await userEvent.click(screen.getByRole('tab', { name: 'Desafios' }))
+  const card = screen.getByRole('article', { name: titulo })
+  await userEvent.click(within(card).getByRole('button', { name: /Iniciar|Continuar/ }))
+}
+
+describe('App: Desafios', () => {
+  it('a aba Desafios lista os Desafios e iniciar um mostra o painel, a Meta travada e nenhum Copiar link', async () => {
+    render(<App />)
+    expect(screen.getByRole('tab', { name: 'Montagem livre' })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    )
+    await userEvent.click(screen.getByRole('tab', { name: 'Desafios' }))
+    expect(screen.getByRole('tab', { name: 'Desafios' })).toHaveAttribute('aria-selected', 'true')
+    expect(screen.getByRole('article', { name: 'Primeiro PC' })).toBeInTheDocument()
+
+    await abrirDesafio('Primeiro PC')
+    expect(screen.getByRole('region', { name: 'Desafio: Primeiro PC' })).toBeInTheDocument()
+    expect(screen.getByRole('tab', { name: 'Desafios' })).toHaveAttribute('aria-selected', 'true')
+    const meta = screen.getByLabelText('Meta do Desafio (R$)')
+    expect(meta).toHaveValue('3.000')
+    expect(meta).toHaveAttribute('readonly')
+    expect(screen.queryByRole('button', { name: 'Copiar link' })).not.toBeInTheDocument()
+  })
+
+  it('montar a solução de Primeiro PC, ligar o PC e, ao reabrir o app, ver o Desafio concluído e a Build livre intacta', async () => {
+    const { unmount } = render(<App />)
+    await adicionar('b650m aorus')
+
+    await abrirDesafio('Primeiro PC')
+    await adicionar('b760m')
+    await adicionarPorNome('12400', 'Core i5-12400')
+    await adicionar('vengeance lpx')
+    await adicionar('a400')
+    await adicionar('mwe 450')
+    await adicionar('cube matx')
+    const painel = within(screen.getByRole('region', { name: 'Desafio: Primeiro PC' }))
+    expect(painel.getByText('2 de 2 critérios')).toBeInTheDocument()
+    await userEvent.click(painel.getByRole('button', { name: 'Ligar o PC' }))
+    const dialogo = screen.getByRole('dialog', { name: 'Desafio concluído' })
+    expect(within(dialogo).getByText('Primeiro PC')).toBeInTheDocument()
+    unmount()
+
+    render(<App />)
+    await userEvent.click(screen.getByRole('tab', { name: 'Desafios' }))
+    const card = within(screen.getByRole('article', { name: 'Primeiro PC' }))
+    expect(card.getByText('Concluído')).toBeInTheDocument()
+    await userEvent.click(screen.getByRole('tab', { name: 'Montagem livre' }))
+    const placa = within(screen.getByRole('group', { name: 'Placa-mãe' }))
+    expect(placa.getByText(/B650M Aorus Elite/)).toBeInTheDocument()
+    expect(screen.queryByRole('region', { name: /^Desafio:/ })).not.toBeInTheDocument()
+  })
+})

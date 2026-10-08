@@ -75,3 +75,18 @@ describe('PainelMeta', () => {
     expect(screen.getByLabelText('Meta de orçamento (R$)')).toHaveValue('12.000')
   })
 })
+
+describe('PainelMeta travada', () => {
+  it('mostra a Meta do Desafio somente leitura e não a altera', async () => {
+    const onDefinirMeta = vi.fn()
+    render(<PainelMeta build={build} meta={3000} travada onDefinirMeta={onDefinirMeta} />)
+    const campo = screen.getByLabelText('Meta do Desafio (R$)')
+    expect(campo).toHaveValue('3.000')
+    expect(campo).toHaveAttribute('readonly')
+    await userEvent.type(campo, '9{Enter}')
+    await userEvent.tab()
+    expect(campo).toHaveValue('3.000')
+    expect(onDefinirMeta).not.toHaveBeenCalled()
+    expect(screen.getByRole('meter')).toBeInTheDocument()
+  })
+})

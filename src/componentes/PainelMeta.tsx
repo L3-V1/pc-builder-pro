@@ -7,7 +7,13 @@ import { formatarReais } from './formatar'
 
 const milhar = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 })
 
-type Props = { build: Build; meta?: number; onDefinirMeta: (valor?: number) => void }
+type Props = {
+  build: Build
+  meta?: number
+  // No Desafio a Meta é o orçamento máximo dele e não pode ser editada.
+  travada?: boolean
+  onDefinirMeta: (valor?: number) => void
+}
 
 function textoDaMeta(meta?: number): string {
   return meta === undefined ? '' : milhar.format(meta)
@@ -19,7 +25,7 @@ function textoSituacao(situacao: SituacaoMeta): string {
   return `Faltam ${formatarReais(situacao.falta)} para a Meta`
 }
 
-export function PainelMeta({ build, meta, onDefinirMeta }: Props) {
+export function PainelMeta({ build, meta, travada = false, onDefinirMeta }: Props) {
   const [texto, setTexto] = useState(textoDaMeta(meta))
   const [invalido, setInvalido] = useState(false)
   const [metaAnterior, setMetaAnterior] = useState(meta)
@@ -33,6 +39,7 @@ export function PainelMeta({ build, meta, onDefinirMeta }: Props) {
   const situacao = meta === undefined ? undefined : situacaoMeta(orcamento, meta)
 
   const confirmar = () => {
+    if (travada) return
     const r = interpretarMeta(texto)
     setInvalido(!r.ok)
     if (r.ok && r.valor !== meta) onDefinirMeta(r.valor)
@@ -42,10 +49,11 @@ export function PainelMeta({ build, meta, onDefinirMeta }: Props) {
     <section className="painel" aria-labelledby="titulo-meta">
       <h2 id="titulo-meta">Meta</h2>
       <label className="meta__campo">
-        Meta de orçamento (R$)
+        {travada ? 'Meta do Desafio (R$)' : 'Meta de orçamento (R$)'}
         <input
           type="text"
           inputMode="numeric"
+          readOnly={travada}
           value={texto}
           aria-invalid={invalido}
           aria-describedby={invalido ? 'erro-meta' : undefined}

@@ -40,7 +40,7 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 4    | Bancada 2D com arrastar e soltar e Bandeja              | Concluída    |
 | 5    | Persistência, Meta de orçamento e link compartilhável   | Concluída    |
 | 6    | Pontuação de desempenho por Perfil                      | Concluída    |
-| 7    | Desafios                                                | Não iniciada |
+| 7    | Desafios                                                | Concluída    |
 | 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Não iniciada |
 
 ---
@@ -172,11 +172,11 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Entregáveis:**
 
-- [ ] Formato declarativo de Desafio (Orçamento máximo, Pontuação mínima por Perfil, Categorias exigidas) validado por Zod.
-- [ ] Cerca de 10 Desafios escritos à mão, cada um com pelo menos uma solução possível com o Catálogo (verificada em teste).
-- [ ] Tela de Desafios. Iniciar um Desafio abre uma Build própria com a Meta travada, sem mexer na Build livre.
-- [ ] Indicador de critérios cumpridos durante a montagem e tela de conclusão com a animação do PC ligando.
-- [ ] Desafios concluídos salvos no localStorage.
+- [x] Formato declarativo de Desafio (Orçamento máximo, Pontuação mínima por Perfil, Categorias exigidas) validado por Zod.
+- [x] Cerca de 10 Desafios escritos à mão, cada um com pelo menos uma solução possível com o Catálogo (verificada em teste).
+- [x] Tela de Desafios. Iniciar um Desafio abre uma Build própria com a Meta travada, sem mexer na Build livre.
+- [x] Indicador de critérios cumpridos durante a montagem e tela de conclusão com a animação do PC ligando.
+- [x] Desafios concluídos salvos no localStorage.
 
 **Critério de conclusão:** dá para concluir um Desafio de ponta a ponta, ele aparece como concluído depois de recarregar a página e a Build livre fica intacta.
 

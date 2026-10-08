@@ -1,0 +1,73 @@
+[
+  {
+    "id": "primeiro-pc",
+    "titulo": "Primeiro PC",
+    "descricao": "Monte um PC completo que liga, gastando pouco.",
+    "orcamentoMaximo": 3000
+  },
+  {
+    "id": "escritorio-video-integrado",
+    "titulo": "Escritório com vídeo integrado",
+    "descricao": "Um PC de trabalho sem placa de vídeo dedicada, com memória de sobra para muitas abas abertas.",
+    "orcamentoMaximo": 2800,
+    "pontuacaoMinima": { "produtividade": 20 }
+  },
+  {
+    "id": "gamer-de-entrada",
+    "titulo": "Gamer de entrada",
+    "descricao": "Jogos leves e populares em Full HD, com uma GPU dedicada.",
+    "orcamentoMaximo": 4000,
+    "pontuacaoMinima": { "jogos": 30 },
+    "categoriasExigidas": ["gpu"]
+  },
+  {
+    "id": "orcamento-apertado",
+    "titulo": "Orçamento apertado",
+    "descricao": "Extraia o máximo de desempenho em jogos de cada real.",
+    "orcamentoMaximo": 3500,
+    "pontuacaoMinima": { "jogos": 30 }
+  },
+  {
+    "id": "refrigeracao-de-verdade",
+    "titulo": "Refrigeração de verdade",
+    "descricao": "Nada de cooler box: escolha um cooler e uma GPU para jogar com a CPU fria.",
+    "orcamentoMaximo": 4500,
+    "pontuacaoMinima": { "jogos": 35 },
+    "categoriasExigidas": ["cooler", "gpu"]
+  },
+  {
+    "id": "custo-beneficio",
+    "titulo": "Custo-benefício",
+    "descricao": "Jogos atuais com boa fluidez sem estourar o orçamento.",
+    "orcamentoMaximo": 5500,
+    "pontuacaoMinima": { "jogos": 40 }
+  },
+  {
+    "id": "estacao-de-trabalho",
+    "titulo": "Estação de trabalho",
+    "descricao": "Renderização, compilação e edição de vídeo: muitos núcleos e bastante memória.",
+    "orcamentoMaximo": 7000,
+    "pontuacaoMinima": { "produtividade": 60 }
+  },
+  {
+    "id": "equilibrado",
+    "titulo": "Equilibrado",
+    "descricao": "Bom para jogar à noite e para trabalhar de dia.",
+    "orcamentoMaximo": 6500,
+    "pontuacaoMinima": { "jogos": 40, "produtividade": 40 }
+  },
+  {
+    "id": "streamer",
+    "titulo": "Streamer",
+    "descricao": "Jogar e transmitir ao mesmo tempo exige força na CPU e na GPU.",
+    "orcamentoMaximo": 9000,
+    "pontuacaoMinima": { "jogos": 50, "produtividade": 40 }
+  },
+  {
+    "id": "gamer-topo",
+    "titulo": "Gamer topo de linha",
+    "descricao": "O máximo de quadros por segundo que o Catálogo permite.",
+    "orcamentoMaximo": 10000,
+    "pontuacaoMinima": { "jogos": 55 }
+  }
+]

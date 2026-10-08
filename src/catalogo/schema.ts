@@ -34,7 +34,7 @@ const contagem = z.number().int().positive()
 
 const contagemOuZero = z.number().int().nonnegative()
 
-const indice = z.number().int().min(0).max(100)
+export const indice = z.number().int().min(0).max(100)
 
 const Indices = z.strictObject({ jogos: indice, produtividade: indice })
 export type Indices = z.infer<typeof Indices>

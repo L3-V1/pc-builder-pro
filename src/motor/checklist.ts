@@ -10,7 +10,7 @@ function exigida(categoria: Categoria, build: Build): boolean {
   return true
 }
 
-function presente(categoria: Categoria, build: Build): boolean {
+export function presente(categoria: Categoria, build: Build): boolean {
   if (categoria === 'ram') return build.ram.length > 0
   if (categoria === 'armazenamento') return build.armazenamento.length > 0
   return build[categoria] !== undefined

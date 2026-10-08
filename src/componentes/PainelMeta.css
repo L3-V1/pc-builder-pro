@@ -6,6 +6,12 @@
   font-size: 0.875rem;
 }
 
+.meta__campo input[readonly] {
+  background: var(--fundo-suave);
+  color: var(--texto);
+  cursor: default;
+}
+
 .meta__barra {
   height: 0.75rem;
   margin-top: 0.75rem;

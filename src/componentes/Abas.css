@@ -1,0 +1,30 @@
+.abas {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--borda);
+}
+
+.abas__aba {
+  margin-bottom: -1px;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: none;
+  color: var(--texto-suave);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.abas__aba[aria-selected='true'] {
+  border-color: var(--borda);
+  border-bottom-color: var(--fundo);
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.abas__aba:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: -2px;
+}

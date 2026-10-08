@@ -1,0 +1,128 @@
+.conclusao__fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 55%);
+}
+
+.conclusao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  width: min(100%, 26rem);
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding: 1.5rem;
+  border: 1px solid var(--borda);
+  border-radius: 0.75rem;
+  background: var(--superficie);
+  color: var(--texto);
+  text-align: center;
+}
+
+.conclusao:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
+}
+
+.conclusao h2 {
+  margin: 0;
+  color: var(--sucesso);
+}
+
+.conclusao__desafio {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.conclusao__resumo {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+}
+
+.conclusao__resumo div {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--fundo-suave);
+}
+
+.conclusao__resumo dt {
+  color: var(--texto-suave);
+  font-size: 0.8125rem;
+}
+
+.conclusao__resumo dd {
+  margin: 0.125rem 0 0;
+  font-weight: 700;
+}
+
+.conclusao__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.conclusao__principal {
+  border-color: var(--sucesso);
+  background: var(--sucesso);
+  color: var(--superficie);
+  font-weight: 600;
+}
+
+.pc-ligando {
+  width: 7.5rem;
+  height: auto;
+}
+
+.pc-ligando__brilho {
+  fill: none;
+  stroke: var(--sucesso);
+  stroke-width: 4;
+  filter: blur(3px);
+}
+
+.pc-ligando__gabinete {
+  fill: var(--texto);
+}
+
+.pc-ligando__vidro {
+  fill: var(--fundo-suave);
+  opacity: 0.9;
+}
+
+.pc-ligando__frente {
+  fill: var(--texto-suave);
+}
+
+.pc-ligando__aro {
+  fill: none;
+  stroke: var(--texto-suave);
+  stroke-width: 2;
+}
+
+.pc-ligando__pa {
+  fill: var(--foco);
+}
+
+.pc-ligando__eixo {
+  fill: var(--texto);
+}
+
+.pc-ligando__led {
+  fill: var(--sucesso);
+}
+
+@media (max-width: 24rem) {
+  .conclusao__resumo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

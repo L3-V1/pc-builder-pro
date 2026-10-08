@@ -1,0 +1,80 @@
+.tela-desafios h2 {
+  margin: 0 0 0.25rem;
+}
+
+.tela-desafios__intro {
+  margin: 0 0 1rem;
+  color: var(--texto-suave);
+}
+
+.tela-desafios__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tela-desafios__lista > li {
+  display: flex;
+}
+
+.card-desafio {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--borda);
+  border-radius: 0.5rem;
+  background: var(--superficie);
+}
+
+.card-desafio__topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.card-desafio h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.card-desafio__selo {
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--sucesso);
+  border-radius: 999px;
+  color: var(--sucesso);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.card-desafio__descricao {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.card-desafio__criterios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-desafio__criterios li {
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background: var(--fundo-suave);
+  font-size: 0.8125rem;
+}
+
+.card-desafio button {
+  align-self: flex-start;
+  margin-top: auto;
+}

@@ -1,4 +1,4 @@
-import type { Categoria, Indices, Peca } from '../catalogo'
+import type { Categoria, Indices, Peca, Perfil } from '../catalogo'
 
 export const ROTULOS_CATEGORIA: Record<Categoria, string> = {
   cpu: 'CPU',
@@ -9,6 +9,11 @@ export const ROTULOS_CATEGORIA: Record<Categoria, string> = {
   fonte: 'Fonte',
   gabinete: 'Gabinete',
   cooler: 'Cooler',
+}
+
+export const ROTULOS_PERFIL: Record<Perfil, string> = {
+  jogos: 'Jogos',
+  produtividade: 'Produtividade',
 }
 
 function desempenho({ jogos, produtividade }: Indices): string {

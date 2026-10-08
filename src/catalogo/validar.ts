@@ -4,7 +4,7 @@ export type ErroCatalogo = { caminho: string; mensagem: string }
 export type ResultadoValidacao =
   { ok: true; catalogo: Catalogo } | { ok: false; erros: ErroCatalogo[] }
 
-function formatarCaminho(caminho: PropertyKey[]): string {
+export function formatarCaminho(caminho: PropertyKey[]): string {
   return caminho.reduce<string>((acc, parte) => {
     if (typeof parte === 'number') return `${acc}[${parte}]`
     return acc ? `${acc}.${String(parte)}` : String(parte)

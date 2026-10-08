@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { carregarCatalogo } from '../catalogo'
+import type { Desafio } from '../desafios'
+import { ESTADO_APP_INICIAL } from '../estado/app'
 import { ESTADO_INICIAL } from '../estado/build'
 import { pecasDaBuild } from '../motor'
 import { peca } from '../motor/teste-pecas'
-import { iniciarEstado } from './iniciar'
+import { iniciarApp, iniciarEstado } from './iniciar'
 
 const catalogo = carregarCatalogo()
 const placaAm5 = peca('placa-mae-b650m-aorus-elite', 'placa-mae')
@@ -62,5 +64,82 @@ describe('iniciarEstado', () => {
     expect(r.aviso?.texto).toBe(
       'Build do link carregada. A Build anterior foi para a Bandeja. 1 Peça do link não existe mais no Catálogo.',
     )
+  })
+})
+
+const desafios: Desafio[] = [
+  {
+    id: 'desafio-a',
+    titulo: 'Desafio A',
+    descricao: 'Primeiro.',
+    orcamentoMaximo: 3000,
+    categoriasExigidas: [],
+  },
+]
+
+describe('iniciarApp', () => {
+  it('sem nada salvo começa na Montagem livre, sem progresso nem concluídos', () => {
+    expect(iniciarApp({ hash: '', catalogo, desafios })).toEqual(ESTADO_APP_INICIAL)
+  })
+
+  it('restaura o progresso com a Meta do Desafio e descarta Desafios que não existem mais', () => {
+    const r = iniciarApp({
+      desafiosSalvos: {
+        versao: 1,
+        tela: 'desafio',
+        desafioAtivo: 'desafio-a',
+        progresso: {
+          'desafio-a': { build: [placaAm5.id], bandeja: [cpuAm5.id] },
+          sumiu: { build: [placaAm5.id], bandeja: [] },
+        },
+        concluidos: ['sumiu', 'desafio-a'],
+      },
+      hash: '',
+      catalogo,
+      desafios,
+    })
+    expect(r.tela).toBe('desafio')
+    expect(r.desafioAtivo).toBe('desafio-a')
+    expect(Object.keys(r.progresso)).toEqual(['desafio-a'])
+    const a = r.progresso['desafio-a']
+    expect(ids(pecasDaBuild(a.build))).toEqual([placaAm5.id])
+    expect(a.bandeja.map((i) => i.peca)).toEqual([cpuAm5])
+    expect(a.meta).toBe(3000)
+    expect(r.concluidos).toEqual(['desafio-a'])
+  })
+
+  it('Desafio ativo que não existe mais leva para a lista de Desafios', () => {
+    const r = iniciarApp({
+      desafiosSalvos: {
+        versao: 1,
+        tela: 'desafio',
+        desafioAtivo: 'sumiu',
+        progresso: {},
+        concluidos: [],
+      },
+      hash: '',
+      catalogo,
+      desafios,
+    })
+    expect(r.tela).toBe('desafios')
+    expect(r.desafioAtivo).toBeUndefined()
+  })
+
+  it('com link no hash aplica o link na Build livre e força a tela livre', () => {
+    const r = iniciarApp({
+      desafiosSalvos: {
+        versao: 1,
+        tela: 'desafio',
+        desafioAtivo: 'desafio-a',
+        progresso: { 'desafio-a': { build: [], bandeja: [] } },
+        concluidos: [],
+      },
+      hash: `#b=${placaAm5.id}`,
+      catalogo,
+      desafios,
+    })
+    expect(r.tela).toBe('livre')
+    expect(ids(pecasDaBuild(r.livre.build))).toEqual([placaAm5.id])
+    expect(r.desafioAtivo).toBe('desafio-a')
   })
 })

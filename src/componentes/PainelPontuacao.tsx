@@ -1,3 +1,4 @@
+import { ROTULOS_PERFIL } from '../busca'
 import { PERFIS } from '../catalogo/schema'
 import type { Perfil } from '../catalogo'
 import type { Build, PontuacaoPerfil } from '../motor'
@@ -6,8 +7,6 @@ import './Painel.css'
 import './PainelPontuacao.css'
 
 type Calculada = Extract<PontuacaoPerfil, { tipo: 'calculada' }>
-
-const ROTULOS_PERFIL: Record<Perfil, string> = { jogos: 'Jogos', produtividade: 'Produtividade' }
 
 function PontuacaoDoPerfil({ perfil, pontuacao }: { perfil: Perfil; pontuacao: Calculada }) {
   const rotulo = ROTULOS_PERFIL[perfil]
