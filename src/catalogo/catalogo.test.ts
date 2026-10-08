@@ -51,6 +51,27 @@ describe('Catálogo real', () => {
     expect(pecas.some((p) => p.categoria === 'armazenamento' && p.interface === 'SATA')).toBe(true)
   })
 
+  it('tem índices de desempenho coerentes entre as Peças', () => {
+    const indices = (id: string) => {
+      const p = pecas.find((x) => x.id === id)
+      if (p?.categoria !== 'cpu' && p?.categoria !== 'gpu') throw new Error(id)
+      return p.indices
+    }
+    expect(indices('cpu-ryzen-7-7800x3d').jogos).toBeGreaterThan(indices('cpu-ryzen-5-5600').jogos)
+    expect(indices('gpu-rtx-4070-super').jogos).toBeGreaterThan(indices('gpu-rtx-3050-6gb').jogos)
+    expect(indices('cpu-core-i7-14700k').produtividade).toBeGreaterThan(
+      indices('cpu-ryzen-5-7600').produtividade,
+    )
+    const gpuMaisFraca = Math.min(
+      ...pecas.flatMap((p) => (p.categoria === 'gpu' ? [p.indices.jogos] : [])),
+    )
+    const integrados = pecas.flatMap((p) =>
+      p.categoria === 'cpu' && p.indiceVideoIntegrado ? [p.indiceVideoIntegrado.jogos] : [],
+    )
+    expect(integrados.length).toBeGreaterThan(0)
+    for (const jogos of integrados) expect(jogos).toBeLessThan(gpuMaisFraca)
+  })
+
   it('carregarCatalogo devolve a data de referência 2026-10 e as peças dos JSONs', () => {
     expect(dataReferencia).toBe('2026-10')
     expect(pecas.length).toBeGreaterThan(0)

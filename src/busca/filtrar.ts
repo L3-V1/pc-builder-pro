@@ -1,8 +1,15 @@
-import type { Categoria, Peca } from '../catalogo'
+import type { Categoria, Peca, Perfil } from '../catalogo'
 import type { Build } from '../motor'
+import { indiceDaPeca } from '../motor'
 import { avaliarPeca } from './avaliar'
 
-export type Ordenacao = 'relevancia' | 'preco-asc' | 'preco-desc'
+export type Ordenacao =
+  'relevancia' | 'preco-asc' | 'preco-desc' | 'desempenho-jogos' | 'desempenho-produtividade'
+
+const PERFIL_DA_ORDENACAO: Partial<Record<Ordenacao, Perfil>> = {
+  'desempenho-jogos': 'jogos',
+  'desempenho-produtividade': 'produtividade',
+}
 
 export type FiltrosBusca = {
   texto: string
@@ -46,6 +53,12 @@ export function filtrarPecas(pecas: Peca[], build: Build, filtros: FiltrosBusca)
       (!soCompativeis || avaliarPeca(build, p).tipo !== 'bloqueada'),
   )
   if (ordenacao === 'relevancia') return filtradas
+  const perfil = PERFIL_DA_ORDENACAO[ordenacao]
+  if (perfil) {
+    // Peças sem índice (fora CPU e GPU) vão para o fim; toSorted é estável.
+    const indice = (p: Peca) => indiceDaPeca(p, perfil) ?? -1
+    return filtradas.toSorted((a, b) => indice(b) - indice(a))
+  }
   const sinal = ordenacao === 'preco-asc' ? 1 : -1
   return filtradas.toSorted((a, b) => sinal * (a.faixaPreco.medio - b.faixaPreco.medio))
 }

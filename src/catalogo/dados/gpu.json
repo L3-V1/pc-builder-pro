@@ -11,7 +11,11 @@
     "categoria": "gpu",
     "consumoW": 70,
     "vramGB": 6,
-    "fonteRecomendadaW": 300
+    "fonteRecomendadaW": 300,
+    "indices": {
+      "jogos": 13,
+      "produtividade": 9
+    }
   },
   {
     "id": "gpu-rx-6600",
@@ -25,7 +29,11 @@
     "categoria": "gpu",
     "consumoW": 132,
     "vramGB": 8,
-    "fonteRecomendadaW": 450
+    "fonteRecomendadaW": 450,
+    "indices": {
+      "jogos": 22,
+      "produtividade": 12
+    }
   },
   {
     "id": "gpu-rtx-4060",
@@ -39,7 +47,11 @@
     "categoria": "gpu",
     "consumoW": 115,
     "vramGB": 8,
-    "fonteRecomendadaW": 550
+    "fonteRecomendadaW": 550,
+    "indices": {
+      "jogos": 26,
+      "produtividade": 20
+    }
   },
   {
     "id": "gpu-rx-7800-xt",
@@ -53,7 +65,11 @@
     "categoria": "gpu",
     "consumoW": 263,
     "vramGB": 16,
-    "fonteRecomendadaW": 700
+    "fonteRecomendadaW": 700,
+    "indices": {
+      "jogos": 42,
+      "produtividade": 28
+    }
   },
   {
     "id": "gpu-rtx-4070-super",
@@ -67,6 +83,10 @@
     "categoria": "gpu",
     "consumoW": 220,
     "vramGB": 12,
-    "fonteRecomendadaW": 650
+    "fonteRecomendadaW": 650,
+    "indices": {
+      "jogos": 46,
+      "produtividade": 40
+    }
   }
 ]

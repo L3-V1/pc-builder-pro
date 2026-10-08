@@ -29,6 +29,7 @@ import { PainelBusca } from './componentes/PainelBusca'
 import { PainelChecklist } from './componentes/PainelChecklist'
 import { PainelMeta } from './componentes/PainelMeta'
 import { PainelOrcamento } from './componentes/PainelOrcamento'
+import { PainelPontuacao } from './componentes/PainelPontuacao'
 import { reduzirBuild } from './estado/build'
 import {
   acaoDoLink,
@@ -156,6 +157,7 @@ export default function App() {
                 meta={meta}
                 onCopiado={() => despachar({ tipo: 'avisar', texto: 'Link copiado', tom: 'info' })}
               />
+              <PainelPontuacao build={build} />
               <PainelChecklist build={build} />
               <Bandeja
                 itens={bandeja}

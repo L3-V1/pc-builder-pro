@@ -48,4 +48,16 @@ describe('PainelBusca', () => {
     await userEvent.click(screen.getByRole('checkbox', { name: 'Só compatíveis' }))
     expect(onMudar).toHaveBeenLastCalledWith({ ...FILTROS_INICIAIS, soCompativeis: true })
   })
+
+  it.each([
+    ['Desempenho em Jogos', 'desempenho-jogos'],
+    ['Desempenho em Produtividade', 'desempenho-produtividade'],
+  ])('oferece a ordenação "%s"', async (rotulo, ordenacao) => {
+    const onMudar = montar()
+    await userEvent.selectOptions(
+      screen.getByLabelText('Ordenar por'),
+      screen.getByRole('option', { name: rotulo }),
+    )
+    expect(onMudar).toHaveBeenLastCalledWith({ ...FILTROS_INICIAIS, ordenacao })
+  })
 })

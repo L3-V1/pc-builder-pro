@@ -39,7 +39,7 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 3    | Busca e montagem por clique com painel de Orçamento     | Concluída    |
 | 4    | Bancada 2D com arrastar e soltar e Bandeja              | Concluída    |
 | 5    | Persistência, Meta de orçamento e link compartilhável   | Concluída    |
-| 6    | Pontuação de desempenho por Perfil                      | Não iniciada |
+| 6    | Pontuação de desempenho por Perfil                      | Concluída    |
 | 7    | Desafios                                                | Não iniciada |
 | 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Não iniciada |
 
@@ -152,11 +152,11 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Entregáveis:**
 
-- [ ] Índices de desempenho por Perfil adicionados ao schema e às CPUs e GPUs do Catálogo, com as fontes de benchmark documentadas.
-- [ ] Cálculo da Pontuação por Perfil com penalidade por Gargalo (CPU desproporcional à GPU, pouca RAM).
-- [ ] Painel de Pontuação com explicação dos Gargalos encontrados.
-- [ ] Ordenação da busca pelo Índice de desempenho.
-- [ ] Testes do cálculo com Builds de referência (equilibrada, com gargalo de CPU, com pouca RAM).
+- [x] Índices de desempenho por Perfil adicionados ao schema e às CPUs e GPUs do Catálogo, com as fontes de benchmark documentadas em `docs/pontuacao.md`.
+- [x] Cálculo da Pontuação por Perfil com penalidade por Gargalo (CPU desproporcional à GPU, pouca RAM).
+- [x] Painel de Pontuação com explicação dos Gargalos encontrados.
+- [x] Ordenação da busca pelo Índice de desempenho.
+- [x] Testes do cálculo com Builds de referência (equilibrada, com gargalo de CPU, com pouca RAM).
 
 **Critério de conclusão:** as Builds de referência geram Pontuações coerentes e testadas, e o painel explica cada penalidade.
 

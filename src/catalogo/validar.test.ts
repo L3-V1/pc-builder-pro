@@ -15,6 +15,8 @@ const cpu = {
   consumoW: 65,
   videoIntegrado: true,
   coolerBox: true,
+  indices: { jogos: 76, produtividade: 36 },
+  indiceVideoIntegrado: { jogos: 2, produtividade: 2 },
 }
 
 const gpu = {
@@ -26,6 +28,7 @@ const gpu = {
   consumoW: 115,
   vramGB: 8,
   fonteRecomendadaW: 550,
+  indices: { jogos: 26, produtividade: 20 },
 }
 
 const catalogo = (...pecas: unknown[]) => ({ dataReferencia: '2026-10', pecas })

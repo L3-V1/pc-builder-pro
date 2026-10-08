@@ -2,24 +2,38 @@ import { describe, expect, it } from 'vitest'
 import { peca } from '../motor/teste-pecas'
 import { ROTULOS_CATEGORIA, specsPrincipais } from './specs'
 
+const desempenho = (p: { indices: { jogos: number; produtividade: number } }) =>
+  `Jogos ${p.indices.jogos} · Produtividade ${p.indices.produtividade}`
+
 describe('specsPrincipais', () => {
-  it('CPU traz socket, núcleos/threads, vídeo integrado e cooler box quando houver', () => {
-    expect(specsPrincipais(peca('cpu-ryzen-5-7600', 'cpu'))).toEqual([
+  it('CPU traz socket, núcleos/threads, vídeo integrado, cooler box e índices', () => {
+    const r7600 = peca('cpu-ryzen-5-7600', 'cpu')
+    expect(specsPrincipais(r7600)).toEqual([
       'AM5',
       '6 núcleos / 12 threads',
       'Vídeo integrado',
       'Cooler box',
+      desempenho(r7600),
     ])
-    expect(specsPrincipais(peca('cpu-ryzen-5-5600', 'cpu'))).toEqual([
+    const r5600 = peca('cpu-ryzen-5-5600', 'cpu')
+    expect(specsPrincipais(r5600)).toEqual([
       'AM4',
       '6 núcleos / 12 threads',
       'Cooler box',
+      desempenho(r5600),
     ])
-    expect(specsPrincipais(peca('cpu-ryzen-7-7800x3d', 'cpu'))).toEqual([
+    const x3d = peca('cpu-ryzen-7-7800x3d', 'cpu')
+    expect(specsPrincipais(x3d)).toEqual([
       'AM5',
       '8 núcleos / 16 threads',
       'Vídeo integrado',
+      desempenho(x3d),
     ])
+  })
+
+  it('GPU traz VRAM, consumo e índices', () => {
+    const rtx4060 = peca('gpu-rtx-4060', 'gpu')
+    expect(specsPrincipais(rtx4060)).toEqual(['8 GB VRAM', '115 W', desempenho(rtx4060)])
   })
 
   it('demais Categorias trazem suas specs principais', () => {
@@ -34,7 +48,6 @@ describe('specsPrincipais', () => {
       '2 pentes',
       '6000 MHz',
     ])
-    expect(specsPrincipais(peca('gpu-rtx-4060', 'gpu'))).toEqual(['8 GB VRAM', '115 W'])
     expect(specsPrincipais(peca('fonte-cx650', 'fonte'))).toEqual(['650 W', 'Bronze'])
     expect(specsPrincipais(peca('gabinete-nzxt-h5-flow', 'gabinete'))).toEqual([
       'ATX',

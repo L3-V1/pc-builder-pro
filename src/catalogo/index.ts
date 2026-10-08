@@ -10,7 +10,7 @@ import ram from './dados/ram.json'
 import type { Catalogo } from './schema'
 import { validarCatalogo } from './validar'
 
-export type { Categoria, Catalogo, FaixaPreco, Peca, PecaDe } from './schema'
+export type { Categoria, Catalogo, FaixaPreco, Indices, Peca, PecaDe, Perfil } from './schema'
 
 let memoizado: Catalogo | undefined
 

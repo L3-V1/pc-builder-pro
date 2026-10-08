@@ -70,6 +70,52 @@ describe('filtrarPecas', () => {
     expect(ids(iguais)).toEqual(ids(pecas.filter((p) => p.faixaPreco.medio === 250)))
   })
 
+  it('desempenho em Jogos ordena CPUs e GPUs pelo índice, decrescente, e põe o resto no fim', () => {
+    const r = ids(buscar({ ordenacao: 'desempenho-jogos' }))
+    expect(r.slice(0, 11)).toEqual([
+      'cpu-ryzen-7-7800x3d',
+      'cpu-core-i7-14700k',
+      'cpu-ryzen-5-7600',
+      'cpu-core-i5-12400f',
+      'cpu-core-i5-12400',
+      'cpu-ryzen-5-5600',
+      'gpu-rtx-4070-super',
+      'gpu-rx-7800-xt',
+      'gpu-rtx-4060',
+      'gpu-rx-6600',
+      'gpu-rtx-3050-6gb',
+    ])
+    const semIndice = pecas.filter((p) => p.categoria !== 'cpu' && p.categoria !== 'gpu')
+    expect(r.slice(11)).toEqual(ids(semIndice))
+  })
+
+  it('desempenho em Produtividade usa o índice de Produtividade', () => {
+    const r = ids(buscar({ ordenacao: 'desempenho-produtividade' }))
+    expect(r.slice(0, 11)).toEqual([
+      'cpu-core-i7-14700k',
+      'cpu-ryzen-7-7800x3d',
+      'gpu-rtx-4070-super',
+      'cpu-ryzen-5-7600',
+      'cpu-core-i5-12400f',
+      'cpu-core-i5-12400',
+      'gpu-rx-7800-xt',
+      'cpu-ryzen-5-5600',
+      'gpu-rtx-4060',
+      'gpu-rx-6600',
+      'gpu-rtx-3050-6gb',
+    ])
+  })
+
+  it('ordenar por desempenho com o filtro de Categoria GPU devolve só GPUs, ordenadas', () => {
+    expect(ids(buscar({ ordenacao: 'desempenho-jogos', categoria: 'gpu' }))).toEqual([
+      'gpu-rtx-4070-super',
+      'gpu-rx-7800-xt',
+      'gpu-rtx-4060',
+      'gpu-rx-6600',
+      'gpu-rtx-3050-6gb',
+    ])
+  })
+
   it('só compatíveis esconde CPUs de outro socket e mantém todas as placas-mãe', () => {
     const build = montar(peca('placa-mae-b650m-aorus-elite', 'placa-mae'))
     const cpus = buscar({ soCompativeis: true, categoria: 'cpu' }, build)

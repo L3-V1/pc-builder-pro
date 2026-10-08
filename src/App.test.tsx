@@ -61,6 +61,25 @@ describe('App', () => {
   })
 })
 
+describe('App: Pontuação', () => {
+  it('depois de encaixar placa, CPU, RAM e GPU mostra a Pontuação dos dois Perfis', async () => {
+    render(<App />)
+    await adicionar('b650m aorus')
+    await adicionar('ryzen 7600')
+    await adicionar('vengeance 2x16')
+    await adicionar('rtx 4060')
+
+    const painel = screen.getByRole('region', { name: 'Pontuação' })
+    for (const rotulo of ['Jogos', 'Produtividade']) {
+      const grupo = within(within(painel).getByRole('group', { name: rotulo }))
+      expect(grupo.getByText(/^\d+\/100$/)).toBeInTheDocument()
+      expect(grupo.getByRole('meter', { name: `Pontuação em ${rotulo}` })).toHaveAttribute(
+        'aria-valuenow',
+      )
+    }
+  })
+})
+
 describe('App: persistência', () => {
   it('depois de adicionar placa e CPU o localStorage tem os IDs', async () => {
     render(<App />)

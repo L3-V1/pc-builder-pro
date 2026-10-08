@@ -32,6 +32,8 @@ const cpu = {
   consumoW: 65,
   videoIntegrado: true,
   coolerBox: true,
+  indices: { jogos: 76, produtividade: 36 },
+  indiceVideoIntegrado: { jogos: 2, produtividade: 2 },
 }
 
 describe('Peca: cpu', () => {
@@ -103,6 +105,7 @@ const gpu = {
   consumoW: 115,
   vramGB: 8,
   fonteRecomendadaW: 550,
+  indices: { jogos: 26, produtividade: 20 },
 }
 
 const armazenamento = {
@@ -144,6 +147,47 @@ const cooler = {
   tipo: 'ar',
   socketsSuportados: ['AM4', 'AM5', 'LGA1700'],
 }
+
+describe('Peca: índices de desempenho', () => {
+  it.each([
+    ['CPU', cpu],
+    ['GPU', gpu],
+  ])('rejeita %s sem indices', (_nome, peca) => {
+    const { indices: _indices, ...semIndices } = peca
+    expect(Peca.safeParse(semIndices).success).toBe(false)
+  })
+
+  it.each([
+    ['negativo', { jogos: -1, produtividade: 50 }],
+    ['acima de 100', { jogos: 50, produtividade: 101 }],
+    ['decimal', { jogos: 50.5, produtividade: 50 }],
+    ['sem um Perfil', { jogos: 50 }],
+    ['com Perfil desconhecido', { jogos: 50, produtividade: 50, render: 50 }],
+  ])('rejeita índice %s', (_nome, indices) => {
+    expect(Peca.safeParse({ ...cpu, indices }).success).toBe(false)
+    expect(Peca.safeParse({ ...gpu, indices }).success).toBe(false)
+  })
+
+  it('rejeita CPU com vídeo integrado sem indiceVideoIntegrado', () => {
+    const { indiceVideoIntegrado: _ivi, ...semIndice } = cpu
+    const resultado = Peca.safeParse(semIndice)
+    expect(resultado.success).toBe(false)
+    expect(resultado.error?.issues[0].path).toEqual(['indiceVideoIntegrado'])
+  })
+
+  it('rejeita CPU sem vídeo integrado que tem indiceVideoIntegrado', () => {
+    expect(Peca.safeParse({ ...cpu, videoIntegrado: false }).success).toBe(false)
+  })
+
+  it('aceita CPU sem vídeo integrado e sem indiceVideoIntegrado', () => {
+    const { indiceVideoIntegrado: _ivi, ...semIndice } = cpu
+    expect(Peca.safeParse({ ...semIndice, videoIntegrado: false }).success).toBe(true)
+  })
+
+  it('aceita índices nas bordas 0 e 100', () => {
+    expect(Peca.safeParse({ ...gpu, indices: { jogos: 0, produtividade: 100 } }).success).toBe(true)
+  })
+})
 
 describe('Peca: demais categorias', () => {
   it.each([

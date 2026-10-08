@@ -61,6 +61,8 @@ export function PainelBusca({ filtros, pecas, onMudarFiltros }: Props) {
             <option value="relevancia">Relevância</option>
             <option value="preco-asc">Menor preço</option>
             <option value="preco-desc">Maior preço</option>
+            <option value="desempenho-jogos">Desempenho em Jogos</option>
+            <option value="desempenho-produtividade">Desempenho em Produtividade</option>
           </select>
         </label>
       </div>

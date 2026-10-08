@@ -40,7 +40,7 @@ test('recarregar mantém Build, Bandeja, Meta e Orçamento', async ({ page }) =>
   await pesquisar(page, 'cx650')
   await page.getByRole('button', { name: 'Para a Bandeja' }).first().click()
   await definirMeta(page, '5.000')
-  await expect(page.getByRole('meter')).toBeVisible()
+  await expect(page.getByRole('meter', { name: 'Orçamento em relação à Meta' })).toBeVisible()
 
   const orcamento = await texto(page, 'orcamento-medio')
   const faixa = await texto(page, 'orcamento-faixa')

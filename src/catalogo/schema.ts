@@ -13,6 +13,8 @@ export const CATEGORIAS = [
 export const SOCKETS = ['AM4', 'AM5', 'LGA1700', 'LGA1851'] as const
 export const TIPOS_RAM = ['DDR4', 'DDR5'] as const
 export const FORM_FACTORS = ['ATX', 'Micro-ATX', 'Mini-ITX'] as const
+export const PERFIS = ['jogos', 'produtividade'] as const
+export type Perfil = (typeof PERFIS)[number]
 
 const reais = z.number().int().positive()
 
@@ -32,6 +34,11 @@ const contagem = z.number().int().positive()
 
 const contagemOuZero = z.number().int().nonnegative()
 
+const indice = z.number().int().min(0).max(100)
+
+const Indices = z.strictObject({ jogos: indice, produtividade: indice })
+export type Indices = z.infer<typeof Indices>
+
 const base = {
   id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'ID deve ser um slug kebab-case'),
   nome: z.string().min(1),
@@ -39,16 +46,26 @@ const base = {
   faixaPreco: FaixaPreco,
 }
 
-const Cpu = z.strictObject({
-  ...base,
-  categoria: z.literal('cpu'),
-  socket: z.enum(SOCKETS),
-  nucleos: contagem,
-  threads: contagem,
-  consumoW: contagem,
-  videoIntegrado: z.boolean(),
-  coolerBox: z.boolean(),
-})
+const Cpu = z
+  .strictObject({
+    ...base,
+    categoria: z.literal('cpu'),
+    socket: z.enum(SOCKETS),
+    nucleos: contagem,
+    threads: contagem,
+    consumoW: contagem,
+    videoIntegrado: z.boolean(),
+    coolerBox: z.boolean(),
+    indices: Indices,
+    indiceVideoIntegrado: Indices.optional(),
+  })
+  .refine((c) => c.videoIntegrado === (c.indiceVideoIntegrado !== undefined), {
+    error: (issue) =>
+      (issue.input as { videoIntegrado: boolean }).videoIntegrado
+        ? 'CPU com vídeo integrado precisa de indiceVideoIntegrado'
+        : 'CPU sem vídeo integrado não pode ter indiceVideoIntegrado',
+    path: ['indiceVideoIntegrado'],
+  })
 
 const PlacaMae = z.strictObject({
   ...base,
@@ -77,6 +94,7 @@ const Gpu = z.strictObject({
   consumoW: contagem,
   vramGB: contagem,
   fonteRecomendadaW: contagem,
+  indices: Indices,
 })
 
 const Armazenamento = z

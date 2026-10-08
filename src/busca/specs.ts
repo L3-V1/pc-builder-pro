@@ -1,4 +1,4 @@
-import type { Categoria, Peca } from '../catalogo'
+import type { Categoria, Indices, Peca } from '../catalogo'
 
 export const ROTULOS_CATEGORIA: Record<Categoria, string> = {
   cpu: 'CPU',
@@ -11,6 +11,10 @@ export const ROTULOS_CATEGORIA: Record<Categoria, string> = {
   cooler: 'Cooler',
 }
 
+function desempenho({ jogos, produtividade }: Indices): string {
+  return `Jogos ${jogos} · Produtividade ${produtividade}`
+}
+
 export function specsPrincipais(peca: Peca): string[] {
   switch (peca.categoria) {
     case 'cpu':
@@ -19,6 +23,7 @@ export function specsPrincipais(peca: Peca): string[] {
         `${peca.nucleos} núcleos / ${peca.threads} threads`,
         ...(peca.videoIntegrado ? ['Vídeo integrado'] : []),
         ...(peca.coolerBox ? ['Cooler box'] : []),
+        desempenho(peca.indices),
       ]
     case 'placa-mae':
       return [peca.socket, peca.tipoRam, peca.formFactor]
@@ -30,7 +35,7 @@ export function specsPrincipais(peca: Peca): string[] {
         `${peca.frequenciaMHz} MHz`,
       ]
     case 'gpu':
-      return [`${peca.vramGB} GB VRAM`, `${peca.consumoW} W`]
+      return [`${peca.vramGB} GB VRAM`, `${peca.consumoW} W`, desempenho(peca.indices)]
     case 'armazenamento':
       return [`${peca.capacidadeGB} GB`, peca.formato, peca.interface]
     case 'fonte':

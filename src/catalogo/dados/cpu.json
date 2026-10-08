@@ -14,7 +14,11 @@
     "threads": 12,
     "consumoW": 65,
     "videoIntegrado": false,
-    "coolerBox": true
+    "coolerBox": true,
+    "indices": {
+      "jogos": 62,
+      "produtividade": 26
+    }
   },
   {
     "id": "cpu-ryzen-5-7600",
@@ -31,7 +35,15 @@
     "threads": 12,
     "consumoW": 65,
     "videoIntegrado": true,
-    "coolerBox": true
+    "coolerBox": true,
+    "indices": {
+      "jogos": 76,
+      "produtividade": 36
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
   },
   {
     "id": "cpu-ryzen-7-7800x3d",
@@ -48,7 +60,15 @@
     "threads": 16,
     "consumoW": 120,
     "videoIntegrado": true,
-    "coolerBox": false
+    "coolerBox": false,
+    "indices": {
+      "jogos": 89,
+      "produtividade": 43
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
   },
   {
     "id": "cpu-core-i5-12400f",
@@ -65,7 +85,11 @@
     "threads": 12,
     "consumoW": 65,
     "videoIntegrado": false,
-    "coolerBox": true
+    "coolerBox": true,
+    "indices": {
+      "jogos": 66,
+      "produtividade": 29
+    }
   },
   {
     "id": "cpu-core-i5-12400",
@@ -82,7 +106,15 @@
     "threads": 12,
     "consumoW": 65,
     "videoIntegrado": true,
-    "coolerBox": true
+    "coolerBox": true,
+    "indices": {
+      "jogos": 66,
+      "produtividade": 29
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
   },
   {
     "id": "cpu-core-i7-14700k",
@@ -99,6 +131,14 @@
     "threads": 28,
     "consumoW": 125,
     "videoIntegrado": true,
-    "coolerBox": false
+    "coolerBox": false,
+    "indices": {
+      "jogos": 82,
+      "produtividade": 83
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 3,
+      "produtividade": 3
+    }
   }
 ]

@@ -64,6 +64,13 @@ test('monta uma Build completa por busca e clique e confere o Orçamento', async
   expect(await orcamentoMedio(page)).toBe(normalizar(brl(soma('medio'))))
   const texto = normalizar((await page.getByTestId('orcamento-faixa').textContent()) ?? '')
   expect(texto).toBe(normalizar(`${brl(soma('min'))} – ${brl(soma('max'))}`))
+
+  const pontuacao = page.getByRole('region', { name: 'Pontuação' })
+  for (const perfil of ['Jogos', 'Produtividade']) {
+    const grupo = pontuacao.getByRole('group', { name: perfil })
+    await expect(grupo.getByText(/^\d+\/100$/)).toBeVisible()
+    await expect(grupo.getByRole('meter', { name: `Pontuação em ${perfil}` })).toBeVisible()
+  }
 })
 
 test('só compatíveis esconde CPU de outro socket; desligado mostra o bloqueio', async ({
