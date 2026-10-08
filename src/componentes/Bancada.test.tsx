@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { criarBuild } from '../motor'
@@ -33,5 +33,53 @@ describe('Bancada', () => {
     render(<Bancada build={montar(placaAm5, cpu)} onDesencaixar={onDesencaixar} />)
     await userEvent.click(screen.getByRole('button', { name: `Remover ${cpu.nome}` }))
     expect(onDesencaixar).toHaveBeenCalledWith(cpu.id)
+  })
+
+  it('Slot vazio e o Slot SATA mostram "Escolher"; Slot ocupado de uma Peça só não mostra', () => {
+    render(<Bancada build={montar(placaAm5, cpu)} onDesencaixar={() => {}} onEscolher={() => {}} />)
+    const escolher = (rotulo: string) =>
+      within(screen.getByRole('group', { name: rotulo })).queryByRole('button', {
+        name: `Escolher Peça para ${rotulo}`,
+      })
+    expect(escolher('Slot DIMM 1')).toBeInTheDocument()
+    expect(escolher('Discos SATA')).toBeInTheDocument()
+    expect(escolher('Socket da CPU')).not.toBeInTheDocument()
+    expect(escolher('Placa-mãe')).not.toBeInTheDocument()
+  })
+
+  it('clicar em "Escolher" chama onEscolher com o Slot; durante um arraste fica desabilitado', async () => {
+    const onEscolher = vi.fn()
+    const build = montar(placaAm5)
+    const { rerender } = render(
+      <Bancada build={build} onDesencaixar={() => {}} onEscolher={onEscolher} />,
+    )
+    await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Socket da CPU' }))
+    expect(onEscolher).toHaveBeenCalledWith(
+      expect.objectContaining({ id: 'cpu', categoria: 'cpu' }),
+    )
+
+    const ativa = { peca: cpu, origem: { tipo: 'busca' as const } }
+    rerender(
+      <Bancada build={build} ativa={ativa} onDesencaixar={() => {}} onEscolher={onEscolher} />,
+    )
+    expect(screen.getByRole('button', { name: 'Escolher Peça para Socket da CPU' })).toBeDisabled()
+  })
+
+  it('o Slot que recusou a Peça ganha a classe da tremida e avisa quando ela termina', () => {
+    const onFimRecusa = vi.fn()
+    render(
+      <Bancada
+        build={montar(placaAm5)}
+        recusado="cpu"
+        onFimRecusa={onFimRecusa}
+        onDesencaixar={() => {}}
+      />,
+    )
+    const socket = screen.getByRole('group', { name: 'Socket da CPU' })
+    expect(socket).toHaveClass('slot--recusado')
+    expect(screen.getByRole('group', { name: 'Slot DIMM 1' })).not.toHaveClass('slot--recusado')
+    // Sem AnimationEvent no jsdom, o React escuta o nome com prefixo.
+    fireEvent(socket, new Event('webkitAnimationEnd', { bubbles: true }))
+    expect(onFimRecusa).toHaveBeenCalled()
   })
 })

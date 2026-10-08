@@ -76,8 +76,9 @@ function encaixarPeca(estado: EstadoBuild, peca: Peca, daBandeja?: string): Esta
   const base = daBandeja ? descartar(estado, daBandeja) : estado
   const { removidas } = resultado
   const novo = guardar({ ...base, build: resultado.build }, removidas)
-  if (removidas.length === 0) return novo
-  return avisar(novo, textoParaBandeja(removidas.length), 'info')
+  const encaixada = `${peca.nome} encaixada na Build`
+  if (removidas.length === 0) return avisar(novo, encaixada, 'info')
+  return avisar(novo, `${encaixada}. ${textoParaBandeja(removidas.length)}.`, 'info')
 }
 
 function descartar(estado: EstadoBuild, chave: string): EstadoBuild {

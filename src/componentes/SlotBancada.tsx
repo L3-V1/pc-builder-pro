@@ -8,21 +8,37 @@ type Props = {
   slot: Slot
   estado?: EstadoSlot
   desabilitado?: boolean
+  arrastando?: boolean
   onDesencaixar: (pecaId: string) => void
+  onEscolher?: (slot: Slot) => void
+  recusado?: boolean
+  onFimRecusa?: () => void
 }
 
-export function SlotBancada({ slot, estado, desabilitado = false, onDesencaixar }: Props) {
+export function SlotBancada({
+  slot,
+  estado,
+  desabilitado = false,
+  arrastando = false,
+  onDesencaixar,
+  onEscolher,
+  recusado = false,
+  onFimRecusa,
+}: Props) {
   const { setNodeRef, isOver } = useDroppable({
     id: `slot:${slot.id}`,
-    data: { slot, rotulo: slot.rotulo },
+    data: { slot, rotulo: slot.rotulo, estado },
     disabled: desabilitado,
   })
+  // O SATA aceita vários discos, então continua oferecendo mais um.
+  const aceitaMais = slot.ocupantes.length === 0 || slot.id === 'sata'
   const classes = [
     'slot',
     `slot--${slot.categoria}`,
     estado && `slot--${estado}`,
     isOver && 'slot--sobre',
     slot.ocupantes.length > 0 && 'slot--ocupado',
+    recusado && 'slot--recusado',
   ]
   return (
     <div
@@ -32,6 +48,9 @@ export function SlotBancada({ slot, estado, desabilitado = false, onDesencaixar 
       className={classes.filter(Boolean).join(' ')}
       data-slot={slot.id}
       data-estado={estado}
+      onAnimationEnd={(e) => {
+        if (recusado && e.target === e.currentTarget) onFimRecusa?.()
+      }}
     >
       <span className="slot__rotulo">{slot.rotulo}</span>
       <AnimatePresence initial={false}>
@@ -62,6 +81,17 @@ export function SlotBancada({ slot, estado, desabilitado = false, onDesencaixar 
           </motion.div>
         ))}
       </AnimatePresence>
+      {onEscolher && aceitaMais && (
+        <button
+          type="button"
+          className="slot__escolher"
+          aria-label={`Escolher Peça para ${slot.rotulo}`}
+          disabled={arrastando}
+          onClick={() => onEscolher(slot)}
+        >
+          Escolher
+        </button>
+      )}
     </div>
   )
 }

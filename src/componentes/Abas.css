@@ -25,6 +25,5 @@
 }
 
 .abas__aba:focus-visible {
-  outline: 2px solid var(--foco);
   outline-offset: -2px;
 }

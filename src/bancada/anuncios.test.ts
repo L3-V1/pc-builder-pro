@@ -27,3 +27,22 @@ describe('anúncios do arraste', () => {
     expect(anuncios.onDragCancel({ active, over: null })).toBe('Arraste de Ryzen 5 7600 cancelado.')
   })
 })
+
+describe('anúncios sobre destino bloqueado', () => {
+  const bloqueado = {
+    id: 'slot:cpu',
+    data: { current: { rotulo: 'Socket da CPU', estado: 'bloqueado' } },
+  } as unknown as Over
+
+  it('onDragEnd diz que a Peça não pode ser encaixada no Slot', () => {
+    expect(anuncios.onDragEnd({ active, over: bloqueado })).toBe(
+      'Ryzen 5 7600 não pode ser encaixada em Socket da CPU.',
+    )
+  })
+
+  it('onDragOver avisa que o Slot é incompatível', () => {
+    expect(anuncios.onDragOver({ active, over: bloqueado })).toBe(
+      'Ryzen 5 7600 sobre Socket da CPU, incompatível.',
+    )
+  })
+})

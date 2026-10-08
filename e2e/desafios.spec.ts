@@ -1,14 +1,6 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
-
-async function adicionar(page: Page, termo: string, nome?: string) {
-  await page.getByLabel('Buscar', { exact: true }).fill(termo)
-  const cards = page.getByRole('article')
-  const card = nome
-    ? cards.filter({ has: page.getByRole('heading', { name: nome, exact: true }) })
-    : cards.first()
-  await card.getByRole('button', { name: /Adicionar à Build|Trocar/ }).click()
-}
+import { adicionar } from './ajudantes.ts'
 
 async function abrirDesafio(page: Page, titulo: string) {
   await page.getByRole('tab', { name: 'Desafios' }).click()

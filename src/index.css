@@ -10,6 +10,7 @@
   --perigo: #b42318;
   --sucesso: #1a7f37;
   --foco: #0969da;
+  --altura-barra-inferior: 3.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,4 +31,9 @@ body {
   margin: 0;
   background: var(--fundo);
   color: var(--texto);
+}
+
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
 }

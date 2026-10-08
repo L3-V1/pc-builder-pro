@@ -90,7 +90,10 @@
   background: var(--fundo-suave);
   color: var(--texto-suave);
   cursor: grab;
-  touch-action: none;
+  /* Com o TouchSensor por toque longo, deslizar sobre a alça ainda rola a página. */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 .alca-arraste svg {
@@ -98,11 +101,18 @@
   fill: currentColor;
 }
 
-.alca-arraste:focus-visible {
-  outline: 2px solid var(--foco);
-  outline-offset: 2px;
-}
-
 .alca-arraste--arrastando {
   opacity: 0.4;
+}
+
+/* Alvos de toque de pelo menos 44 px. */
+@media (pointer: coarse) {
+  .alca-arraste {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .card-peca__acoes button {
+    min-height: 2.75rem;
+  }
 }

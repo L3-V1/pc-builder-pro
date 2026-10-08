@@ -1,11 +1,18 @@
-import type { Slot } from '../bancada'
+import type { Slot, SlotId } from '../bancada'
 import { estadoDoSlot, slotsDaBancada } from '../bancada'
 import type { Build } from '../motor'
 import type { DadosArraste } from './AlcaArraste'
 import './Bancada.css'
 import { SlotBancada } from './SlotBancada'
 
-type Props = { build: Build; ativa?: DadosArraste; onDesencaixar: (pecaId: string) => void }
+type Props = {
+  build: Build
+  ativa?: DadosArraste
+  onDesencaixar: (pecaId: string) => void
+  onEscolher?: (slot: Slot) => void
+  recusado?: SlotId
+  onFimRecusa?: () => void
+}
 
 const GRUPOS: { area: string; pertence: (s: Slot) => boolean }[] = [
   { area: 'gabinete', pertence: (s) => s.id === 'gabinete' },
@@ -17,7 +24,7 @@ const GRUPOS: { area: string; pertence: (s: Slot) => boolean }[] = [
   { area: 'sata', pertence: (s) => s.id === 'sata' },
 ]
 
-export function Bancada({ build, ativa, onDesencaixar }: Props) {
+export function Bancada({ build, ativa, onDesencaixar, onEscolher, recusado, onFimRecusa }: Props) {
   const slots = slotsDaBancada(build)
   const renderizar = (slot: Slot) => {
     const estado = ativa ? estadoDoSlot(build, slot, ativa.peca) : undefined
@@ -29,7 +36,11 @@ export function Bancada({ build, ativa, onDesencaixar }: Props) {
         slot={slot}
         estado={estado}
         desabilitado={desabilitado}
+        arrastando={ativa !== undefined}
         onDesencaixar={onDesencaixar}
+        onEscolher={onEscolher}
+        recusado={slot.id === recusado}
+        onFimRecusa={onFimRecusa}
       />
     )
   }
@@ -49,6 +60,10 @@ export function Bancada({ build, ativa, onDesencaixar }: Props) {
         >
           <rect x="1" y="1" width="98" height="98" rx="3" />
           <rect className="bancada__placa-desenho" x="6" y="14" width="88" height="58" rx="2" />
+          <rect className="bancada__fonte-desenho" x="4" y="80" width="92" height="16" rx="1.5" />
+          {[20, 32, 44].map((y) => (
+            <line key={y} className="bancada__baia" x1="96" y1={y} x2="98" y2={y} />
+          ))}
         </svg>
         {GRUPOS.map(({ area, pertence }) => {
           const doGrupo = slots.filter(pertence)

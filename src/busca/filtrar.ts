@@ -1,4 +1,5 @@
 import type { Categoria, Peca, Perfil } from '../catalogo'
+import type { Slot } from '../bancada/slots'
 import type { Build } from '../motor'
 import { indiceDaPeca } from '../motor'
 import { avaliarPeca } from './avaliar'
@@ -68,4 +69,8 @@ export function marcasDisponiveis(pecas: Peca[], categoria?: Categoria): string[
     .filter((p) => categoria === undefined || p.categoria === categoria)
     .map((p) => p.marca)
   return [...new Set(marcas)].sort((a, b) => a.localeCompare(b, 'pt-BR'))
+}
+
+export function filtrosDoSlot(slot: Slot): FiltrosBusca {
+  return { ...FILTROS_INICIAIS, categoria: slot.categoria, soCompativeis: true }
 }

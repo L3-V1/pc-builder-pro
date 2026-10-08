@@ -1,33 +1,9 @@
 import { expect, test } from '@playwright/test'
 import type { Locator, Page } from '@playwright/test'
-import armazenamento from '../src/catalogo/dados/armazenamento.json' with { type: 'json' }
-import cpu from '../src/catalogo/dados/cpu.json' with { type: 'json' }
-import fonte from '../src/catalogo/dados/fonte.json' with { type: 'json' }
-import gabinete from '../src/catalogo/dados/gabinete.json' with { type: 'json' }
-import gpu from '../src/catalogo/dados/gpu.json' with { type: 'json' }
-import placaMae from '../src/catalogo/dados/placa-mae.json' with { type: 'json' }
-import ram from '../src/catalogo/dados/ram.json' with { type: 'json' }
+import { brl, medio, pesquisar, slot, soma, texto } from './ajudantes.ts'
 
-const todas = [...cpu, ...placaMae, ...ram, ...gpu, ...armazenamento, ...fonte, ...gabinete]
-const medio = (id: string) => {
-  const p = todas.find((x) => x.id === id)
-  if (!p) throw new Error(`Peça ${id} não existe`)
-  return p.faixaPreco.medio
-}
-const soma = (...ids: string[]) => ids.reduce((t, id) => t + medio(id), 0)
-const normalizar = (s: string) => s.replace(/\s/g, ' ')
-const brl = (v: number) =>
-  normalizar(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v))
-
-const slot = (page: Page, id: string) => page.locator(`[data-slot="${id}"]`)
-
-async function texto(locator: Locator) {
-  return normalizar((await locator.textContent()) ?? '')
-}
-
-async function pesquisar(page: Page, termo: string) {
-  await page.getByLabel('Buscar', { exact: true }).fill(termo)
-}
+// Arraste com mouse e teclado na Bancada; o arraste por toque fica em celular.spec.ts.
+test.skip(({ isMobile }) => isMobile, 'só no desktop')
 
 function alcaNaBusca(page: Page) {
   return page
@@ -36,7 +12,7 @@ function alcaNaBusca(page: Page) {
     .first()
 }
 
-// O PointerSensor só ativa depois de 5 px, então o movimento é feito em passos.
+// O MouseSensor só ativa depois de 5 px, então o movimento é feito em passos.
 async function pegar(page: Page, origem: Locator) {
   await origem.hover()
   const caixa = await origem.boundingBox()
@@ -103,6 +79,7 @@ test('arrastar CPU de outro socket deixa o socket vermelho, e soltar não encaix
   await expect(slot(page, 'cpu')).toHaveAttribute('data-estado', 'bloqueado')
   await expect(slot(page, 'dimm-1')).toHaveAttribute('data-estado', 'neutro')
   await page.mouse.up()
+  await expect(slot(page, 'cpu')).toHaveClass(/slot--recusado/)
 
   await expect(slot(page, 'cpu')).not.toContainText('Core i5-12400')
   await expect(page.getByRole('main').getByRole('status')).toContainText(/socket/)

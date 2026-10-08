@@ -3,8 +3,9 @@ import {
   DndContext,
   DragOverlay,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
   pointerWithin,
+  TouchSensor,
   useSensor,
   useSensors,
 } from '@dnd-kit/core'
@@ -12,10 +13,10 @@ import type { CollisionDetection, DragEndEvent, DragStartEvent, Over } from '@dn
 import { useState } from 'react'
 import type { Dispatch } from 'react'
 import { acaoDoArraste } from '../bancada'
-import type { DestinoArraste, Slot } from '../bancada'
+import type { DestinoArraste, Slot, SlotId } from '../bancada'
 import { anuncios, instrucoes } from '../bancada/anuncios'
 import { coordenadasPorDestino } from '../bancada/teclado'
-import { avaliarPeca, FILTROS_INICIAIS, filtrarPecas } from '../busca'
+import { avaliarPeca, FILTROS_INICIAIS, filtrarPecas, filtrosDoSlot } from '../busca'
 import type { FiltrosBusca } from '../busca'
 import type { Catalogo } from '../catalogo'
 import type { Desafio } from '../desafios'
@@ -30,9 +31,11 @@ import { IlustracaoPeca } from './IlustracaoPeca'
 import { PainelBusca } from './PainelBusca'
 import { PainelChecklist } from './PainelChecklist'
 import { PainelDesafio } from './PainelDesafio'
+import { PainelInferior } from './PainelInferior'
 import { PainelMeta } from './PainelMeta'
 import { PainelOrcamento } from './PainelOrcamento'
 import { PainelPontuacao } from './PainelPontuacao'
+import { useTelaPequena } from './useTelaPequena'
 
 // Ponteiro: o destino sob o cursor. Teclado (sem ponteiro): o destino mais perto do centro.
 const colisao: CollisionDetection = (args) => {
@@ -71,21 +74,40 @@ export function Montagem({
   const { build, bandeja, meta, aviso } = estado
   const [filtros, setFiltros] = useState<FiltrosBusca>(FILTROS_INICIAIS)
   const [ativa, setAtiva] = useState<DadosArraste>()
+  const [recusado, setRecusado] = useState<SlotId>()
+  const telaPequena = useTelaPequena()
+  // Aberto por um Slot, o painel se recolhe sozinho depois de "Adicionar à Build".
+  const [painel, setPainel] = useState<'recolhido' | 'aberto' | 'aberto-pelo-slot'>('recolhido')
   const resultados = filtrarPecas(catalogo.pecas, build, filtros)
   const sensores = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
+    // Toque longo: deslizar rápido continua rolando a página.
+    useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 5 } }),
     useSensor(KeyboardSensor, { coordinateGetter: coordenadasPorDestino }),
   )
 
+  const escolher = (slot: Slot) => {
+    setFiltros(filtrosDoSlot(slot))
+    if (telaPequena) setPainel('aberto-pelo-slot')
+    else document.getElementById('titulo-busca')?.focus()
+  }
+
   const aoComecar = ({ active }: DragStartEvent) => {
-    setAtiva(active.data.current as DadosArraste | undefined)
+    const dados = active.data.current as DadosArraste | undefined
+    setAtiva(dados)
+    // Libera a Bancada; o painel só se desloca, então a alça segue montada.
+    if (dados?.origem.tipo === 'busca') setPainel('recolhido')
   }
 
   const aoSoltar = ({ active, over }: DragEndEvent) => {
     setAtiva(undefined)
     const dados = active.data.current as DadosArraste | undefined
     if (!dados) return
-    const acao = acaoDoArraste(dados.peca, dados.origem, destinoDe(over))
+    const destino = destinoDe(over)
+    if (destino?.tipo === 'slot' && over?.data.current?.estado === 'bloqueado') {
+      setRecusado(destino.slot.id)
+    }
+    const acao = acaoDoArraste(dados.peca, dados.origem, destino)
     if (acao) despachar(acao)
   }
 
@@ -108,32 +130,46 @@ export function Montagem({
       </p>
       <div className="app__colunas">
         <div className="app__busca">
-          <PainelBusca filtros={filtros} pecas={catalogo.pecas} onMudarFiltros={setFiltros} />
-          <p aria-live="polite">
-            {resultados.length} {resultados.length === 1 ? 'Peça encontrada' : 'Peças encontradas'}
-          </p>
-          {resultados.length === 0 ? (
-            <p className="app__vazio">Nenhuma Peça encontrada</p>
-          ) : (
-            <ul className="app__resultados">
-              {resultados.map((peca) => (
-                <li key={peca.id}>
-                  <CardPeca
-                    peca={peca}
-                    avaliacao={avaliarPeca(build, peca)}
-                    onAdicionar={(p) => despachar({ tipo: 'encaixar', peca: p })}
-                    onGuardar={(p) => despachar({ tipo: 'guardar', peca: p })}
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
+          <PainelInferior
+            compacto={telaPequena}
+            aberto={painel !== 'recolhido'}
+            rotulo="Buscar Peças"
+            onMudarAberto={(aberto) => setPainel(aberto ? 'aberto' : 'recolhido')}
+          >
+            <PainelBusca filtros={filtros} pecas={catalogo.pecas} onMudarFiltros={setFiltros} />
+            <p aria-live="polite">
+              {resultados.length}{' '}
+              {resultados.length === 1 ? 'Peça encontrada' : 'Peças encontradas'}
+            </p>
+            {resultados.length === 0 ? (
+              <p className="app__vazio">Nenhuma Peça encontrada</p>
+            ) : (
+              <ul className="app__resultados">
+                {resultados.map((peca) => (
+                  <li key={peca.id}>
+                    <CardPeca
+                      peca={peca}
+                      avaliacao={avaliarPeca(build, peca)}
+                      onAdicionar={(p) => {
+                        despachar({ tipo: 'encaixar', peca: p })
+                        if (painel === 'aberto-pelo-slot') setPainel('recolhido')
+                      }}
+                      onGuardar={(p) => despachar({ tipo: 'guardar', peca: p })}
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </PainelInferior>
         </div>
         <div className="app__bancada">
           <Bancada
             build={build}
             ativa={ativa}
             onDesencaixar={(pecaId) => despachar({ tipo: 'desencaixar', pecaId })}
+            onEscolher={escolher}
+            recusado={recusado}
+            onFimRecusa={() => setRecusado(undefined)}
           />
         </div>
         <aside className="app__lateral">

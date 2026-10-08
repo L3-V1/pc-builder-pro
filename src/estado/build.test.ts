@@ -52,7 +52,10 @@ describe('reduzirBuild', () => {
     })
     expect(ids(r)).toEqual([placaDdr4.id])
     expect(r.bandeja.map((i) => i.peca)).toEqual([placaAm5, cpuAm5, ramDdr5])
-    expect(r.aviso).toMatchObject({ tom: 'info', texto: '3 Peças foram para a Bandeja' })
+    expect(r.aviso).toMatchObject({
+      tom: 'info',
+      texto: `${placaDdr4.nome} encaixada na Build. 3 Peças foram para a Bandeja.`,
+    })
   })
 
   it('substituir a CPU manda a CPU antiga para a Bandeja', () => {
@@ -91,6 +94,11 @@ describe('reduzirBuild', () => {
     expect(ids(r)).toEqual([])
     expect(r.bandeja.map((i) => i.peca)).toEqual([cpuAm5])
     expect(r.aviso).toMatchObject({ texto: 'Encaixe uma placa-mãe primeiro', tom: 'info' })
+  })
+
+  it('encaixar com sucesso avisa que a Peça foi encaixada na Build', () => {
+    const r = reduzirBuild(estadoCom(placaAm5), { tipo: 'encaixar', peca: cpuAm5 })
+    expect(r.aviso).toMatchObject({ tom: 'info', texto: 'Ryzen 5 7600 encaixada na Build' })
   })
 
   it('encaixar Peça livre a coloca na Build sem mexer na Bandeja', () => {

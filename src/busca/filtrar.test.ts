@@ -2,7 +2,14 @@ import { describe, expect, it } from 'vitest'
 import { carregarCatalogo } from '../catalogo'
 import { criarBuild } from '../motor'
 import { montar, peca } from '../motor/teste-pecas'
-import { FILTROS_INICIAIS, filtrarPecas, marcasDisponiveis, normalizarTexto } from './filtrar'
+import { slotsDaBancada } from '../bancada/slots'
+import {
+  FILTROS_INICIAIS,
+  filtrarPecas,
+  filtrosDoSlot,
+  marcasDisponiveis,
+  normalizarTexto,
+} from './filtrar'
 import type { FiltrosBusca } from './filtrar'
 
 const { pecas } = carregarCatalogo()
@@ -147,5 +154,23 @@ describe('marcasDisponiveis', () => {
     expect(todas).toEqual([...new Set(todas)].sort((a, b) => a.localeCompare(b, 'pt-BR')))
     expect(todas).toContain('Corsair')
     expect(todas).toContain('AMD')
+  })
+})
+
+describe('filtrosDoSlot', () => {
+  const slots = slotsDaBancada(montar(peca('placa-mae-b650m-aorus-elite', 'placa-mae')))
+  const doSlot = (id: string) => {
+    const s = slots.find((x) => x.id === id)
+    if (!s) throw new Error(`sem Slot ${id}`)
+    return filtrosDoSlot(s)
+  }
+
+  it('de um Slot DIMM filtra RAM compatível e mantém o resto dos filtros iniciais', () => {
+    expect(doSlot('dimm-2')).toEqual({ ...FILTROS_INICIAIS, categoria: 'ram', soCompativeis: true })
+  })
+
+  it('dos Slots M.2 e SATA filtra armazenamento', () => {
+    expect(doSlot('m2-1').categoria).toBe('armazenamento')
+    expect(doSlot('sata').categoria).toBe('armazenamento')
   })
 })

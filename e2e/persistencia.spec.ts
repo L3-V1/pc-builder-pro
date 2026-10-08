@@ -1,25 +1,13 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
-
-const normalizar = (s: string) => s.replace(/\s/g, ' ')
+import { adicionar, aviso, fecharBusca, normalizar, pesquisar } from './ajudantes.ts'
 
 async function texto(page: Page, testId: string) {
   return normalizar((await page.getByTestId(testId).textContent()) ?? '')
 }
 
-async function pesquisar(page: Page, termo: string) {
-  await page.getByLabel('Buscar', { exact: true }).fill(termo)
-}
-
-async function adicionar(page: Page, termo: string) {
-  await pesquisar(page, termo)
-  await page
-    .getByRole('button', { name: /Adicionar à Build|Trocar/ })
-    .first()
-    .click()
-}
-
 async function definirMeta(page: Page, valor: string) {
+  await fecharBusca(page)
   const campo = page.getByLabel('Meta de orçamento (R$)')
   await campo.fill(valor)
   await campo.press('Enter')
@@ -31,8 +19,6 @@ async function montarBuild(page: Page) {
   await adicionar(page, 'vengeance 2x16')
   await adicionar(page, 'rtx 4060')
 }
-
-const aviso = (page: Page) => page.getByRole('main').getByRole('status')
 
 test('recarregar mantém Build, Bandeja, Meta e Orçamento', async ({ page }) => {
   await page.goto('/')

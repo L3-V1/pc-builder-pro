@@ -1,5 +1,11 @@
 export { avaliarPeca } from './avaliar'
 export type { AvaliacaoPeca } from './avaliar'
-export { FILTROS_INICIAIS, filtrarPecas, marcasDisponiveis, normalizarTexto } from './filtrar'
+export {
+  FILTROS_INICIAIS,
+  filtrarPecas,
+  filtrosDoSlot,
+  marcasDisponiveis,
+  normalizarTexto,
+} from './filtrar'
 export type { FiltrosBusca, Ordenacao } from './filtrar'
 export { ROTULOS_CATEGORIA, ROTULOS_PERFIL, specsPrincipais } from './specs'

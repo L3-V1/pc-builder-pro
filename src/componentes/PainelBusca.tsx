@@ -22,7 +22,9 @@ export function PainelBusca({ filtros, pecas, onMudarFiltros }: Props) {
 
   return (
     <section className="busca" aria-labelledby="titulo-busca">
-      <h2 id="titulo-busca">Buscar Peças</h2>
+      <h2 id="titulo-busca" tabIndex={-1}>
+        Buscar Peças
+      </h2>
       <label>
         Buscar
         <input

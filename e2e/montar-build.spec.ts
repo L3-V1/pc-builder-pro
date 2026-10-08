@@ -1,39 +1,9 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import armazenamento from '../src/catalogo/dados/armazenamento.json' with { type: 'json' }
-import cpu from '../src/catalogo/dados/cpu.json' with { type: 'json' }
-import fonte from '../src/catalogo/dados/fonte.json' with { type: 'json' }
-import gabinete from '../src/catalogo/dados/gabinete.json' with { type: 'json' }
-import gpu from '../src/catalogo/dados/gpu.json' with { type: 'json' }
-import placaMae from '../src/catalogo/dados/placa-mae.json' with { type: 'json' }
-import ram from '../src/catalogo/dados/ram.json' with { type: 'json' }
+import { adicionar, brl, faixaPreco, normalizar, pesquisar, texto } from './ajudantes.ts'
 
-const todas = [...cpu, ...placaMae, ...ram, ...gpu, ...armazenamento, ...fonte, ...gabinete]
-const porId = (id: string) => {
-  const p = todas.find((x) => x.id === id)
-  if (!p) throw new Error(`Peça ${id} não existe`)
-  return p.faixaPreco
-}
-
-const brl = (v: number) =>
-  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v)
-const normalizar = (s: string) => s.replace(/\s/g, ' ')
-
-async function orcamentoMedio(page: Page) {
-  return normalizar((await page.getByTestId('orcamento-medio').textContent()) ?? '')
-}
-
-async function pesquisar(page: Page, texto: string) {
-  await page.getByLabel('Buscar', { exact: true }).fill(texto)
-}
-
-async function adicionar(page: Page, texto: string) {
-  await pesquisar(page, texto)
-  await page
-    .getByRole('button', { name: /Adicionar à Build|Trocar/ })
-    .first()
-    .click()
-}
+const porId = faixaPreco
+const orcamentoMedio = (page: Page) => texto(page.getByTestId('orcamento-medio'))
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/')

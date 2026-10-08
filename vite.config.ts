@@ -3,6 +3,8 @@ import { configDefaults, defineConfig } from 'vitest/config'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Relativo: o mesmo build serve no subcaminho do GitHub Pages e no preview local.
+  base: './',
   plugins: [react()],
   test: {
     environment: 'node',

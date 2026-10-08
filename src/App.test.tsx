@@ -211,3 +211,82 @@ describe('App: Desafios', () => {
     expect(screen.queryByRole('region', { name: /^Desafio:/ })).not.toBeInTheDocument()
   })
 })
+
+function simularTelaPequena(pequena: boolean) {
+  vi.stubGlobal('matchMedia', () => ({
+    matches: pequena,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  }))
+}
+
+describe('App: Escolher pelo Slot', () => {
+  it('no desktop, "Escolher" num Slot filtra a busca pela Categoria e Só compatíveis', async () => {
+    render(<App />)
+    await adicionar('b650m aorus')
+    await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Slot DIMM 1' }))
+    expect(screen.getByLabelText('Categoria')).toHaveDisplayValue('Memória RAM')
+    expect(screen.getByLabelText('Só compatíveis')).toBeChecked()
+    expect(screen.getByRole('heading', { name: 'Buscar Peças' })).toHaveFocus()
+  })
+
+  it('no celular, "Escolher" abre o painel inferior da busca já filtrado', async () => {
+    simularTelaPequena(true)
+    try {
+      render(<App />)
+      const barra = screen.getByRole('button', { name: 'Buscar Peças' })
+      expect(barra).toHaveAttribute('aria-expanded', 'false')
+      await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Placa-mãe' }))
+      expect(barra).toHaveAttribute('aria-expanded', 'true')
+      expect(screen.getByLabelText('Categoria')).toHaveDisplayValue('Placa-mãe')
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it('no celular, "Adicionar à Build" com o painel aberto por um Slot recolhe o painel', async () => {
+    simularTelaPequena(true)
+    try {
+      render(<App />)
+      const barra = screen.getByRole('button', { name: 'Buscar Peças' })
+      await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Placa-mãe' }))
+      await userEvent.type(screen.getByLabelText('Buscar'), 'b650m aorus')
+      await userEvent.click(screen.getByRole('button', { name: 'Adicionar à Build' }))
+      expect(barra).toHaveAttribute('aria-expanded', 'false')
+      expect(screen.getByRole('group', { name: 'Placa-mãe' })).toHaveTextContent(
+        'B650M Aorus Elite',
+      )
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it('no celular, "Adicionar à Build" com o painel aberto pela barra mantém o painel aberto', async () => {
+    simularTelaPequena(true)
+    try {
+      render(<App />)
+      const barra = screen.getByRole('button', { name: 'Buscar Peças' })
+      await userEvent.click(barra)
+      await userEvent.type(screen.getByLabelText('Buscar'), 'b650m aorus')
+      await userEvent.click(screen.getByRole('button', { name: 'Adicionar à Build' }))
+      expect(barra).toHaveAttribute('aria-expanded', 'true')
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it('no celular, começar a arrastar uma Peça da busca recolhe o painel', async () => {
+    simularTelaPequena(true)
+    try {
+      render(<App />)
+      const barra = screen.getByRole('button', { name: 'Buscar Peças' })
+      await userEvent.click(barra)
+      await userEvent.type(screen.getByLabelText('Buscar'), 'b650m aorus')
+      screen.getByRole('button', { name: 'Arrastar B650M Aorus Elite' }).focus()
+      await userEvent.keyboard(' ')
+      expect(barra).toHaveAttribute('aria-expanded', 'false')
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+})
