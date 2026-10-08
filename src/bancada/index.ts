@@ -1,0 +1,8 @@
+export { acaoDoArraste } from './arraste'
+export type { DestinoArraste, OrigemArraste } from './arraste'
+export { estadoDoSlot } from './estadoSlot'
+export type { EstadoSlot } from './estadoSlot'
+export { CATEGORIAS_DA_PLACA, precisaDePlaca, slotsDaBancada } from './slots'
+export type { Slot, SlotId } from './slots'
+export { PALETA, variacaoVisual } from './visual'
+export type { VariacaoVisual } from './visual'

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "cpu-ryzen-5-5600",
+    "nome": "Ryzen 5 5600",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 585,
+      "medio": 650,
+      "max": 728
+    },
+    "categoria": "cpu",
+    "socket": "AM4",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": false,
+    "coolerBox": true
+  },
+  {
+    "id": "cpu-ryzen-5-7600",
+    "nome": "Ryzen 5 7600",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 990,
+      "medio": 1100,
+      "max": 1232
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": true
+  },
+  {
+    "id": "cpu-ryzen-7-7800x3d",
+    "nome": "Ryzen 7 7800X3D",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 2070,
+      "medio": 2300,
+      "max": 2576
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 8,
+    "threads": 16,
+    "consumoW": 120,
+    "videoIntegrado": true,
+    "coolerBox": false
+  },
+  {
+    "id": "cpu-core-i5-12400f",
+    "nome": "Core i5-12400F",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 675,
+      "medio": 750,
+      "max": 840
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": false,
+    "coolerBox": true
+  },
+  {
+    "id": "cpu-core-i5-12400",
+    "nome": "Core i5-12400",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 855,
+      "medio": 950,
+      "max": 1064
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": true
+  },
+  {
+    "id": "cpu-core-i7-14700k",
+    "nome": "Core i7-14700K",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 2250,
+      "medio": 2500,
+      "max": 2800
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 20,
+    "threads": 28,
+    "consumoW": 125,
+    "videoIntegrado": true,
+    "coolerBox": false
+  }
+]

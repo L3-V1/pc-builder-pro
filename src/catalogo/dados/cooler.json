@@ -1,0 +1,67 @@
+[
+  {
+    "id": "cooler-deepcool-ak400",
+    "nome": "AK400",
+    "marca": "Deepcool",
+    "faixaPreco": {
+      "min": 135,
+      "medio": 150,
+      "max": 168
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700"]
+  },
+  {
+    "id": "cooler-deepcool-ak620",
+    "nome": "AK620",
+    "marca": "Deepcool",
+    "faixaPreco": {
+      "min": 252,
+      "medio": 280,
+      "max": 314
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-cooler-master-hyper-212-am4",
+    "nome": "Hyper 212 Black",
+    "marca": "Cooler Master",
+    "faixaPreco": {
+      "min": 144,
+      "medio": 160,
+      "max": 179
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "LGA1700"]
+  },
+  {
+    "id": "cooler-corsair-h100i-elite",
+    "nome": "iCUE H100i Elite 240 mm",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 630,
+      "medio": 700,
+      "max": 784
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-arctic-lf3-360",
+    "nome": "Liquid Freezer III 360",
+    "marca": "Arctic",
+    "faixaPreco": {
+      "min": 810,
+      "medio": 900,
+      "max": 1008
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM5", "LGA1700", "LGA1851"]
+  }
+]

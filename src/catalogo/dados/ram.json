@@ -1,0 +1,77 @@
+[
+  {
+    "id": "ram-corsair-16gb-ddr4-3200",
+    "nome": "Vengeance LPX 2x8 GB",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 225,
+      "medio": 250,
+      "max": 280
+    },
+    "categoria": "ram",
+    "tipoRam": "DDR4",
+    "capacidadeTotalGB": 16,
+    "modulos": 2,
+    "frequenciaMHz": 3200
+  },
+  {
+    "id": "ram-kingston-32gb-ddr4-3200",
+    "nome": "Fury Beast 2x16 GB",
+    "marca": "Kingston",
+    "faixaPreco": {
+      "min": 405,
+      "medio": 450,
+      "max": 504
+    },
+    "categoria": "ram",
+    "tipoRam": "DDR4",
+    "capacidadeTotalGB": 32,
+    "modulos": 2,
+    "frequenciaMHz": 3200
+  },
+  {
+    "id": "ram-kingston-16gb-ddr5-5200",
+    "nome": "Fury Beast 2x8 GB",
+    "marca": "Kingston",
+    "faixaPreco": {
+      "min": 315,
+      "medio": 350,
+      "max": 392
+    },
+    "categoria": "ram",
+    "tipoRam": "DDR5",
+    "capacidadeTotalGB": 16,
+    "modulos": 2,
+    "frequenciaMHz": 5200
+  },
+  {
+    "id": "ram-corsair-32gb-ddr5-6000",
+    "nome": "Vengeance 2x16 GB",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 585,
+      "medio": 650,
+      "max": 728
+    },
+    "categoria": "ram",
+    "tipoRam": "DDR5",
+    "capacidadeTotalGB": 32,
+    "modulos": 2,
+    "frequenciaMHz": 6000
+  },
+  {
+    "id": "ram-gskill-64gb-ddr5-6000",
+    "nome": "Trident Z5 2x32 GB",
+    "marca": "G.Skill",
+    "faixaPreco": {
+      "min": 1260,
+      "medio": 1400,
+      "max": 1568
+    },
+    "categoria": "ram",
+    "tipoRam": "DDR5",
+    "capacidadeTotalGB": 64,
+    "modulos": 2,
+    "frequenciaMHz": 6000
+  }
+]

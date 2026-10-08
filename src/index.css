@@ -1,0 +1,33 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color-scheme: light dark;
+  --fundo: #fff;
+  --fundo-suave: #eef0f3;
+  --superficie: #fff;
+  --texto: #1b1f24;
+  --texto-suave: #57606a;
+  --borda: #d0d7de;
+  --perigo: #b42318;
+  --sucesso: #1a7f37;
+  --foco: #0969da;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #0d1117;
+    --fundo-suave: #21262d;
+    --superficie: #161b22;
+    --texto: #e6edf3;
+    --texto-suave: #9da7b3;
+    --borda: #30363d;
+    --perigo: #ff7b72;
+    --sucesso: #3fb950;
+    --foco: #58a6ff;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+}

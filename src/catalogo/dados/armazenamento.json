@@ -1,0 +1,72 @@
+[
+  {
+    "id": "armazenamento-nvme-500gb",
+    "nome": "SN580 500 GB",
+    "marca": "WD",
+    "faixaPreco": {
+      "min": 225,
+      "medio": 250,
+      "max": 280
+    },
+    "categoria": "armazenamento",
+    "formato": "M.2",
+    "interface": "NVMe",
+    "capacidadeGB": 500
+  },
+  {
+    "id": "armazenamento-nvme-1tb",
+    "nome": "SN850X 1 TB",
+    "marca": "WD",
+    "faixaPreco": {
+      "min": 405,
+      "medio": 450,
+      "max": 504
+    },
+    "categoria": "armazenamento",
+    "formato": "M.2",
+    "interface": "NVMe",
+    "capacidadeGB": 1000
+  },
+  {
+    "id": "armazenamento-nvme-2tb",
+    "nome": "980 Pro 2 TB",
+    "marca": "Samsung",
+    "faixaPreco": {
+      "min": 855,
+      "medio": 950,
+      "max": 1064
+    },
+    "categoria": "armazenamento",
+    "formato": "M.2",
+    "interface": "NVMe",
+    "capacidadeGB": 2000
+  },
+  {
+    "id": "armazenamento-sata-480gb",
+    "nome": "A400 480 GB",
+    "marca": "Kingston",
+    "faixaPreco": {
+      "min": 198,
+      "medio": 220,
+      "max": 246
+    },
+    "categoria": "armazenamento",
+    "formato": "2.5",
+    "interface": "SATA",
+    "capacidadeGB": 480
+  },
+  {
+    "id": "armazenamento-sata-1tb",
+    "nome": "870 Evo 1 TB",
+    "marca": "Samsung",
+    "faixaPreco": {
+      "min": 450,
+      "medio": 500,
+      "max": 560
+    },
+    "categoria": "armazenamento",
+    "formato": "2.5",
+    "interface": "SATA",
+    "capacidadeGB": 1000
+  }
+]

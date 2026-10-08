@@ -1,0 +1,62 @@
+[
+  {
+    "id": "gabinete-kmex-matx",
+    "nome": "Cube mATX",
+    "marca": "KMEX",
+    "faixaPreco": {
+      "min": 180,
+      "medio": 200,
+      "max": 224
+    },
+    "categoria": "gabinete",
+    "formFactorsSuportados": ["Micro-ATX", "Mini-ITX"]
+  },
+  {
+    "id": "gabinete-nzxt-h5-flow",
+    "nome": "H5 Flow",
+    "marca": "NZXT",
+    "faixaPreco": {
+      "min": 540,
+      "medio": 600,
+      "max": 672
+    },
+    "categoria": "gabinete",
+    "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
+  },
+  {
+    "id": "gabinete-corsair-4000d",
+    "nome": "4000D Airflow",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 630,
+      "medio": 700,
+      "max": 784
+    },
+    "categoria": "gabinete",
+    "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
+  },
+  {
+    "id": "gabinete-lian-li-a4-h2o",
+    "nome": "A4-H2O",
+    "marca": "Lian Li",
+    "faixaPreco": {
+      "min": 810,
+      "medio": 900,
+      "max": 1008
+    },
+    "categoria": "gabinete",
+    "formFactorsSuportados": ["Mini-ITX"]
+  },
+  {
+    "id": "gabinete-pichau-ventus",
+    "nome": "Ventus Compacto",
+    "marca": "Pichau",
+    "faixaPreco": {
+      "min": 225,
+      "medio": 250,
+      "max": 280
+    },
+    "categoria": "gabinete",
+    "formFactorsSuportados": ["Micro-ATX", "Mini-ITX"]
+  }
+]

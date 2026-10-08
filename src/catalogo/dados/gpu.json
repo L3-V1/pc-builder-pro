@@ -1,0 +1,72 @@
+[
+  {
+    "id": "gpu-rtx-3050-6gb",
+    "nome": "GeForce RTX 3050 6 GB",
+    "marca": "Nvidia",
+    "faixaPreco": {
+      "min": 1080,
+      "medio": 1200,
+      "max": 1344
+    },
+    "categoria": "gpu",
+    "consumoW": 70,
+    "vramGB": 6,
+    "fonteRecomendadaW": 300
+  },
+  {
+    "id": "gpu-rx-6600",
+    "nome": "Radeon RX 6600",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1260,
+      "medio": 1400,
+      "max": 1568
+    },
+    "categoria": "gpu",
+    "consumoW": 132,
+    "vramGB": 8,
+    "fonteRecomendadaW": 450
+  },
+  {
+    "id": "gpu-rtx-4060",
+    "nome": "GeForce RTX 4060",
+    "marca": "Nvidia",
+    "faixaPreco": {
+      "min": 1665,
+      "medio": 1850,
+      "max": 2072
+    },
+    "categoria": "gpu",
+    "consumoW": 115,
+    "vramGB": 8,
+    "fonteRecomendadaW": 550
+  },
+  {
+    "id": "gpu-rx-7800-xt",
+    "nome": "Radeon RX 7800 XT",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 2970,
+      "medio": 3300,
+      "max": 3696
+    },
+    "categoria": "gpu",
+    "consumoW": 263,
+    "vramGB": 16,
+    "fonteRecomendadaW": 700
+  },
+  {
+    "id": "gpu-rtx-4070-super",
+    "nome": "GeForce RTX 4070 Super",
+    "marca": "Nvidia",
+    "faixaPreco": {
+      "min": 3870,
+      "medio": 4300,
+      "max": 4816
+    },
+    "categoria": "gpu",
+    "consumoW": 220,
+    "vramGB": 12,
+    "fonteRecomendadaW": 650
+  }
+]

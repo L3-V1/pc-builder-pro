@@ -1,0 +1,38 @@
+.bandeja__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.bandeja__lista li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.bandeja__lista li > span {
+  flex: 1;
+  min-width: 0;
+}
+
+.bandeja__subtotal {
+  margin: 0.5rem 0 0;
+}
+
+.bandeja {
+  border-style: dashed;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s;
+}
+
+.bandeja--aceita {
+  border-color: var(--sucesso);
+}
+
+.bandeja--sobre {
+  background: color-mix(in srgb, var(--sucesso) 12%, var(--superficie));
+}

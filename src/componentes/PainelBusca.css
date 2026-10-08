@@ -1,0 +1,40 @@
+.busca {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.busca h2 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.busca label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.busca__linha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+}
+
+.busca__marcas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.busca label.busca__check {
+  flex-direction: row;
+  align-items: center;
+}
+
+.busca fieldset {
+  margin: 0;
+  border: 1px solid var(--borda);
+  border-radius: 0.5rem;
+}

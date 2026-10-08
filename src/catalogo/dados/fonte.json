@@ -1,0 +1,67 @@
+[
+  {
+    "id": "fonte-mwe-450",
+    "nome": "MWE 450 V2",
+    "marca": "Cooler Master",
+    "faixaPreco": {
+      "min": 207,
+      "medio": 230,
+      "max": 258
+    },
+    "categoria": "fonte",
+    "potenciaW": 450,
+    "certificacao": "80 Plus"
+  },
+  {
+    "id": "fonte-cx550",
+    "nome": "CX550",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 297,
+      "medio": 330,
+      "max": 370
+    },
+    "categoria": "fonte",
+    "potenciaW": 550,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-cx650",
+    "nome": "CX650",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 360,
+      "medio": 400,
+      "max": 448
+    },
+    "categoria": "fonte",
+    "potenciaW": 650,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-rm750e",
+    "nome": "RM750e",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 675,
+      "medio": 750,
+      "max": 840
+    },
+    "categoria": "fonte",
+    "potenciaW": 750,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-rm850x",
+    "nome": "RM850x",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 900,
+      "medio": 1000,
+      "max": 1120
+    },
+    "categoria": "fonte",
+    "potenciaW": 850,
+    "certificacao": "Gold"
+  }
+]

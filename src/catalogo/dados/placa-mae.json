@@ -1,0 +1,110 @@
+[
+  {
+    "id": "placa-mae-a520m-k",
+    "nome": "A520M-K",
+    "marca": "ASUS",
+    "faixaPreco": {
+      "min": 405,
+      "medio": 450,
+      "max": 504
+    },
+    "categoria": "placa-mae",
+    "socket": "AM4",
+    "tipoRam": "DDR4",
+    "formFactor": "Micro-ATX",
+    "slotsDimm": 2,
+    "slotsM2": 1,
+    "slotsPcieX16": 1,
+    "portasSata": 4
+  },
+  {
+    "id": "placa-mae-b650m-aorus-elite",
+    "nome": "B650M Aorus Elite",
+    "marca": "Gigabyte",
+    "faixaPreco": {
+      "min": 945,
+      "medio": 1050,
+      "max": 1176
+    },
+    "categoria": "placa-mae",
+    "socket": "AM5",
+    "tipoRam": "DDR5",
+    "formFactor": "Micro-ATX",
+    "slotsDimm": 4,
+    "slotsM2": 2,
+    "slotsPcieX16": 1,
+    "portasSata": 4
+  },
+  {
+    "id": "placa-mae-b650-tomahawk-wifi",
+    "nome": "MAG B650 Tomahawk WiFi",
+    "marca": "MSI",
+    "faixaPreco": {
+      "min": 1530,
+      "medio": 1700,
+      "max": 1904
+    },
+    "categoria": "placa-mae",
+    "socket": "AM5",
+    "tipoRam": "DDR5",
+    "formFactor": "ATX",
+    "slotsDimm": 4,
+    "slotsM2": 3,
+    "slotsPcieX16": 2,
+    "portasSata": 6
+  },
+  {
+    "id": "placa-mae-b650i-aorus-ultra",
+    "nome": "B650I Aorus Ultra",
+    "marca": "Gigabyte",
+    "faixaPreco": {
+      "min": 1890,
+      "medio": 2100,
+      "max": 2352
+    },
+    "categoria": "placa-mae",
+    "socket": "AM5",
+    "tipoRam": "DDR5",
+    "formFactor": "Mini-ITX",
+    "slotsDimm": 2,
+    "slotsM2": 2,
+    "slotsPcieX16": 1,
+    "portasSata": 4
+  },
+  {
+    "id": "placa-mae-b760m-ds3h-ddr4",
+    "nome": "B760M DS3H DDR4",
+    "marca": "Gigabyte",
+    "faixaPreco": {
+      "min": 675,
+      "medio": 750,
+      "max": 840
+    },
+    "categoria": "placa-mae",
+    "socket": "LGA1700",
+    "tipoRam": "DDR4",
+    "formFactor": "Micro-ATX",
+    "slotsDimm": 2,
+    "slotsM2": 2,
+    "slotsPcieX16": 1,
+    "portasSata": 4
+  },
+  {
+    "id": "placa-mae-z790-pro-atx-ddr4",
+    "nome": "PRO Z790-P DDR4",
+    "marca": "MSI",
+    "faixaPreco": {
+      "min": 1170,
+      "medio": 1300,
+      "max": 1456
+    },
+    "categoria": "placa-mae",
+    "socket": "LGA1700",
+    "tipoRam": "DDR4",
+    "formFactor": "ATX",
+    "slotsDimm": 4,
+    "slotsM2": 3,
+    "slotsPcieX16": 2,
+    "portasSata": 6
+  }
+]

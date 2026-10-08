@@ -1,0 +1,10 @@
+node_modules
+dist
+package-lock.json
+.plans
+.claude
+docs
+GLOSSARY.md
+coverage
+playwright-report
+test-results

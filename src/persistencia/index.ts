@@ -1,0 +1,7 @@
+export { CHAVE_ESTADO, lerEstadoSalvo, salvarEstado, serializarEstado } from './armazenamento'
+export type { EstadoSalvo } from './armazenamento'
+export { acaoDoLink, iniciarEstado } from './iniciar'
+export { codificarLink, decodificarLink } from './link'
+export type { DadosLink } from './link'
+export { remontarBuild, resolverIds } from './remontar'
+export type { Remontagem } from './remontar'

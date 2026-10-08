@@ -1,0 +1,163 @@
+.bancada {
+  min-width: 0;
+}
+
+.bancada h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+}
+
+.bancada__gabinete {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'gabinete gabinete'
+    'placa placa'
+    'dimm m2'
+    'gpu gpu'
+    'fonte sata';
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 0.5rem;
+  padding: 0.75rem;
+  isolation: isolate;
+}
+
+.bancada__fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.bancada__fundo rect {
+  fill: var(--fundo-suave);
+  stroke: var(--borda);
+  stroke-width: 0.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.bancada__fundo .bancada__placa-desenho {
+  fill: var(--superficie);
+  stroke-dasharray: 4 3;
+}
+
+.bancada__area {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.bancada__area--gabinete {
+  grid-area: gabinete;
+}
+
+.bancada__area--placa {
+  grid-area: placa;
+}
+
+.bancada__area--dimm {
+  grid-area: dimm;
+}
+
+.bancada__area--m2 {
+  grid-area: m2;
+  grid-auto-flow: row;
+}
+
+.bancada__area--gpu {
+  grid-area: gpu;
+}
+
+.bancada__area--fonte {
+  grid-area: fonte;
+}
+
+.bancada__area--sata {
+  grid-area: sata;
+}
+
+.slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  min-height: 4.5rem;
+  padding: 0.375rem;
+  border: 2px dashed var(--borda);
+  border-radius: 0.5rem;
+  background: var(--superficie);
+  transition:
+    border-color 0.15s,
+    background-color 0.15s,
+    opacity 0.15s;
+}
+
+.slot__rotulo {
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.slot--ocupado {
+  border-style: solid;
+}
+
+.bancada--arrastando .slot--neutro {
+  opacity: 0.4;
+}
+
+.slot--compativel {
+  border-color: var(--sucesso);
+  background: color-mix(in srgb, var(--sucesso) 10%, var(--superficie));
+}
+
+.slot--bloqueado {
+  border-color: var(--perigo);
+  background: color-mix(in srgb, var(--perigo) 10%, var(--superficie));
+}
+
+.slot--sobre.slot--compativel {
+  background: color-mix(in srgb, var(--sucesso) 25%, var(--superficie));
+}
+
+.slot--sobre.slot--bloqueado {
+  background: color-mix(in srgb, var(--perigo) 25%, var(--superficie));
+}
+
+.slot__ocupante {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.slot__nome {
+  flex: 1 1 4rem;
+  min-width: 0;
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+
+.slot__remover {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.ilustracao-peca {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.ilustracao-peca--overlay {
+  width: 4rem;
+  height: 4rem;
+  filter: drop-shadow(0 4px 8px rgb(0 0 0 / 0.3));
+  cursor: grabbing;
+}

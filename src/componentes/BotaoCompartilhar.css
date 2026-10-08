@@ -1,0 +1,21 @@
+.compartilhar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.compartilhar button {
+  align-self: flex-start;
+}
+
+.compartilhar__manual {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.compartilhar__manual input {
+  width: 100%;
+  min-width: 0;
+}
