@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import type { ItemBandeja } from '../estado/build'
 import { subtotalBandeja } from '../estado/build'
 import { AlcaArraste } from './AlcaArraste'
+import { EstadoVazio } from './EstadoVazio'
 import type { DadosArraste } from './AlcaArraste'
 import './Bandeja.css'
 import { IlustracaoPeca } from './IlustracaoPeca'
@@ -33,7 +34,9 @@ export function Bandeja({ itens, ativa, onDescartar }: Props) {
     >
       <h2 id="titulo-bandeja">Bandeja</h2>
       {itens.length === 0 ? (
-        <p className="painel__suave">A Bandeja está vazia</p>
+        <EstadoVazio icone="bandeja" titulo="A Bandeja está vazia" compacto>
+          Peças guardadas ou removidas da Build esperam aqui.
+        </EstadoVazio>
       ) : (
         <ul className="bandeja__lista">
           <AnimatePresence initial={false}>

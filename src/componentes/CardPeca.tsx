@@ -33,13 +33,16 @@ export function CardPeca({ peca, avaliacao, onAdicionar, onGuardar }: Props) {
         <div>
           <h3>{peca.nome}</h3>
           <p className="card-peca__meta">
-            {peca.marca} · {ROTULOS_CATEGORIA[peca.categoria]}
+            <span>{peca.marca}</span>
+            <span>{ROTULOS_CATEGORIA[peca.categoria]}</span>
           </p>
         </div>
       </header>
       <ul className="card-peca__specs">
         {specsPrincipais(peca).map((spec) => (
-          <li key={spec}>{spec}</li>
+          <li key={spec} className="chip" title={spec}>
+            {spec}
+          </li>
         ))}
       </ul>
       <p className="card-peca__preco">
@@ -50,7 +53,7 @@ export function CardPeca({ peca, avaliacao, onAdicionar, onGuardar }: Props) {
       </p>
       {bloqueada && (
         <div className="card-peca__bloqueios">
-          <span className="card-peca__selo">Incompatível</span>
+          <span className="card-peca__selo chip">Incompatível</span>
           {avaliacao.bloqueios.map((b, i) => (
             <p key={idsBloqueios[i]} id={idsBloqueios[i]}>
               {b.mensagem}
@@ -66,6 +69,7 @@ export function CardPeca({ peca, avaliacao, onAdicionar, onGuardar }: Props) {
       <div className="card-peca__acoes">
         <button
           type="button"
+          className="botao--primario"
           disabled={avaliacao.tipo === 'bloqueada' || avaliacao.tipo === 'na-build'}
           aria-describedby={idsBloqueios.length > 0 ? idsBloqueios.join(' ') : undefined}
           onClick={() => onAdicionar(peca)}

@@ -1,39 +1,282 @@
+@import '@fontsource-variable/lexend';
+
+/*
+ * Tokens do PC Builder Pro: cor, raio, sombra, vidro, respiro e tipo são definidos só aqui,
+ * e os componentes nunca usam valores soltos dessas categorias.
+ */
 :root {
-  font-family: system-ui, sans-serif;
   color-scheme: light dark;
-  --fundo: #fff;
-  --fundo-suave: #eef0f3;
+  font-family: 'Lexend Variable', system-ui, sans-serif;
+  font-size: 100%;
+  line-height: 1.55;
+
+  /* Cor */
+  --fundo: #eceff5;
+  --fundo-brilho-frio: rgb(58 79 208 / 0.14);
+  --fundo-brilho-quente: rgb(232 146 42 / 0.1);
+  --fundo-grade: rgb(26 34 51 / 0.07);
+  --fundo-suave: #e3e7f0;
   --superficie: #fff;
-  --texto: #1b1f24;
-  --texto-suave: #57606a;
-  --borda: #d0d7de;
-  --perigo: #b42318;
-  --sucesso: #1a7f37;
-  --foco: #0969da;
-  --altura-barra-inferior: 3.5rem;
+  --superficie-card: rgb(255 255 255 / 0.86);
+  --vidro: rgb(255 255 255 / 0.62);
+  --vidro-forte: rgb(255 255 255 / 0.82);
+  --vidro-borda: rgb(255 255 255 / 0.8);
+  --texto: #1a2233;
+  --texto-suave: #536079;
+  --borda: #d3d9e5;
+  --primario: #3a4fd0;
+  --primario-hover: #2f42b8;
+  --primario-texto: #fff;
+  --primario-suave: rgb(58 79 208 / 0.1);
+  --led: #e8922a;
+  --led-texto: #8f5207;
+  --led-suave: rgb(232 146 42 / 0.16);
+  --sucesso: #13774a;
+  --sucesso-suave: rgb(19 119 74 / 0.1);
+  --perigo: #bf3128;
+  --perigo-suave: rgb(191 49 40 / 0.09);
+  --foco: #3a4fd0;
+  --veu: rgb(14 19 32 / 0.42);
+
+  /* Forma: o raio cresce com o tamanho do contêiner */
+  --raio-pequeno: 0.5rem;
+  --raio-medio: 0.75rem;
+  --raio-grande: 1.125rem;
+  --raio-enorme: 1.5rem;
+  --raio-pilula: 999px;
+
+  /* Profundidade: sombras tingidas de tinta, nunca cinza neutro */
+  --sombra-baixa: 0 1px 2px rgb(26 34 51 / 0.06), 0 1px 1px rgb(26 34 51 / 0.03);
+  --sombra-media: 0 1px 2px rgb(26 34 51 / 0.05), 0 8px 24px -8px rgb(26 34 51 / 0.12);
+  --sombra-alta: 0 24px 60px -16px rgb(26 34 51 / 0.32);
+  --sombra-soquete: inset 0 1px 3px rgb(26 34 51 / 0.1);
+  --vidro-desfoque: blur(18px) saturate(160%);
+
+  /* Respiro interno por tipo de contêiner */
+  --respiro-painel: 1.125rem;
+  --respiro-card: 1rem 1.125rem;
+  --respiro-modal: 1.75rem;
+  --respiro-item: 0.5rem 0.75rem;
+  --respiro-celula: 0.625rem 0.875rem;
+  --respiro-slot: 0.5rem 0.625rem;
+
+  /* Tipo */
+  --texto-xs: 0.75rem;
+  --texto-sm: 0.8125rem;
+  --texto-base: 0.9375rem;
+  --texto-md: 1.0625rem;
+  --texto-lg: 1.375rem;
+  --texto-xl: 2rem;
+
+  --altura-barra-inferior: 3.75rem;
+  --transicao: 160ms cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fundo: #0d1117;
-    --fundo-suave: #21262d;
-    --superficie: #161b22;
-    --texto: #e6edf3;
-    --texto-suave: #9da7b3;
-    --borda: #30363d;
-    --perigo: #ff7b72;
-    --sucesso: #3fb950;
-    --foco: #58a6ff;
+    --fundo: #0e1320;
+    --fundo-brilho-frio: rgb(110 128 255 / 0.16);
+    --fundo-brilho-quente: rgb(242 173 78 / 0.07);
+    --fundo-grade: rgb(231 235 244 / 0.05);
+    --fundo-suave: #222b3f;
+    --superficie: #171e2e;
+    --superficie-card: rgb(26 33 50 / 0.86);
+    --vidro: rgb(23 30 46 / 0.6);
+    --vidro-forte: rgb(23 30 46 / 0.86);
+    --vidro-borda: rgb(255 255 255 / 0.08);
+    --texto: #e7ebf4;
+    --texto-suave: #a3adc3;
+    --borda: #2e3852;
+    --primario: #8d9cff;
+    --primario-hover: #a7b3ff;
+    --primario-texto: #0e1320;
+    --primario-suave: rgb(141 156 255 / 0.14);
+    --led: #f2ad4e;
+    --led-texto: #f5bd6e;
+    --led-suave: rgb(242 173 78 / 0.14);
+    --sucesso: #4cc38a;
+    --sucesso-suave: rgb(76 195 138 / 0.12);
+    --perigo: #ff8278;
+    --perigo-suave: rgb(255 130 120 / 0.12);
+    --foco: #a7b3ff;
+    --veu: rgb(5 8 15 / 0.6);
+
+    --sombra-baixa: 0 1px 2px rgb(0 0 0 / 0.3);
+    --sombra-media: 0 1px 2px rgb(0 0 0 / 0.25), 0 10px 28px -10px rgb(0 0 0 / 0.5);
+    --sombra-alta: 0 28px 70px -16px rgb(0 0 0 / 0.65);
+    --sombra-soquete: inset 0 1px 3px rgb(0 0 0 / 0.35);
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: var(--fundo);
+  min-height: 100dvh;
+  background-color: var(--fundo);
+  /* Grade de pontos de placa de circuito e dois brilhos difusos para o vidro ter o que refratar. */
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--fundo-grade) 1px, transparent 0),
+    radial-gradient(60rem 42rem at -10% -15%, var(--fundo-brilho-frio), transparent 65%),
+    radial-gradient(48rem 40rem at 110% 115%, var(--fundo-brilho-quente), transparent 65%);
+  background-size:
+    22px 22px,
+    auto,
+    auto;
+  background-attachment: fixed;
   color: var(--texto);
+  font-size: var(--texto-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
 :focus-visible {
   outline: 2px solid var(--foco);
   outline-offset: 2px;
+}
+
+/* Base de botões e campos com especificidade zero: qualquer classe de componente prevalece. */
+:where(button) {
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.375rem;
+  padding: 0.4375rem 0.875rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-medio);
+  background: var(--superficie);
+  box-shadow: var(--sombra-baixa);
+  color: var(--texto);
+  font: inherit;
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--transicao),
+    border-color var(--transicao),
+    color var(--transicao),
+    transform var(--transicao);
+}
+
+:where(button):hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--primario) 45%, var(--borda));
+}
+
+:where(button):active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+:where(button):disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.botao--primario {
+  border-color: transparent;
+  background: var(--primario);
+  color: var(--primario-texto);
+  font-weight: 600;
+}
+
+.botao--primario:hover:not(:disabled) {
+  border-color: transparent;
+  background: var(--primario-hover);
+}
+
+.botao--sucesso:not(:disabled) {
+  border-color: transparent;
+  background: var(--sucesso);
+  color: var(--superficie);
+  font-weight: 600;
+}
+
+.botao--sucesso:hover:not(:disabled) {
+  border-color: transparent;
+  background: color-mix(in srgb, var(--sucesso) 88%, var(--texto));
+}
+
+:where(input:not([type='checkbox'], [type='radio']), select) {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-medio);
+  background: var(--superficie);
+  box-shadow: var(--sombra-soquete);
+  color: var(--texto);
+  font: inherit;
+  font-size: var(--texto-base);
+  transition:
+    border-color var(--transicao),
+    box-shadow var(--transicao);
+}
+
+:where(input:not([type='checkbox'], [type='radio']), select):hover {
+  border-color: color-mix(in srgb, var(--primario) 35%, var(--borda));
+}
+
+:where(input:not([type='checkbox'], [type='radio']), select):focus-visible {
+  border-color: var(--primario);
+}
+
+:where(input)::placeholder {
+  color: var(--texto-suave);
+}
+
+:where(input[aria-invalid='true']) {
+  border-color: var(--perigo);
+}
+
+:where(input[type='checkbox']) {
+  width: 1.0625rem;
+  height: 1.0625rem;
+  margin: 0;
+  accent-color: var(--primario);
+}
+
+/* Painéis respiram mais quando há espaço; o token muda para todos de uma vez. */
+@media (min-width: 60rem) {
+  :root {
+    --respiro-painel: 1.5rem;
+  }
+}
+
+/* Chips e selos: uma linha só, cortando com reticências em vez de vazar. */
+.chip {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Alvos de toque de pelo menos 44 px. */
+@media (pointer: coarse) {
+  :where(button) {
+    min-height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

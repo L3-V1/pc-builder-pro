@@ -34,8 +34,11 @@ export function reduzirBuild(estado: EstadoBuild, acao: AcaoBuild): EstadoBuild 
       return guardar(estado, [acao.peca])
     case 'desencaixar':
       return desencaixar(estado, acao.pecaId)
-    case 'descartar':
-      return descartar(estado, acao.chave)
+    case 'descartar': {
+      const item = estado.bandeja.find((i) => i.chave === acao.chave)
+      const novo = descartar(estado, acao.chave)
+      return item ? avisar(novo, `${item.peca.nome} descartada`, 'info') : novo
+    }
     case 'definir-meta':
       return { ...estado, meta: acao.valor }
     case 'substituir':
@@ -91,7 +94,11 @@ function desencaixar(estado: EstadoBuild, pecaId: string): EstadoBuild {
   if (!peca) return estado
   const saem = peca.categoria === 'placa-mae' ? [peca, ...pecas.filter(precisaDePlaca)] : [peca]
   const build = saem.reduce((b, p) => remover(b, p.id), estado.build)
-  return guardar({ ...estado, build }, saem)
+  const texto =
+    saem.length === 1
+      ? `${peca.nome} saiu da Build e foi para a Bandeja`
+      : `${peca.nome} saiu da Build. ${textoParaBandeja(saem.length)}`
+  return avisar(guardar({ ...estado, build }, saem), texto, 'info')
 }
 
 function mesmasPecas(a: Build, b: Build): boolean {

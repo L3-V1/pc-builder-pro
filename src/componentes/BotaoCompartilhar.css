@@ -11,11 +11,8 @@
 .compartilhar__manual {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.875rem;
-}
-
-.compartilhar__manual input {
-  width: 100%;
-  min-width: 0;
+  gap: 0.3125rem;
+  color: var(--texto-suave);
+  font-size: var(--texto-sm);
+  font-weight: 500;
 }

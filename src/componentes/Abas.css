@@ -1,29 +1,53 @@
+.abas__barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border: 1px solid var(--vidro-borda);
+  border-radius: var(--raio-enorme);
+  background: var(--vidro);
+  box-shadow: var(--sombra-media);
+  backdrop-filter: var(--vidro-desfoque);
+}
+
+/* Controle segmentado: a aba ativa é uma peça encaixada no trilho. */
 .abas {
   display: flex;
   gap: 0.25rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--borda);
+  padding: 0.25rem;
+  border-radius: var(--raio-pilula);
+  background: var(--fundo-suave);
+  box-shadow: var(--sombra-soquete);
 }
 
 .abas__aba {
-  margin-bottom: -1px;
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.5rem 0.5rem 0 0;
-  background: none;
+  min-height: 2.25rem;
+  padding: 0.375rem 1.125rem;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  background: transparent;
+  box-shadow: none;
   color: var(--texto-suave);
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
+  font-weight: 500;
 }
 
-.abas__aba[aria-selected='true'] {
-  border-color: var(--borda);
-  border-bottom-color: var(--fundo);
-  background: var(--fundo);
+.abas__aba:hover:not([aria-selected='true']) {
   color: var(--texto);
 }
 
-.abas__aba:focus-visible {
-  outline-offset: -2px;
+.abas__aba[aria-selected='true'] {
+  background: var(--superficie);
+  box-shadow: var(--sombra-media);
+  color: var(--texto);
+  font-weight: 600;
+}
+
+@media (max-width: 29.99rem) {
+  .abas,
+  .abas__aba {
+    flex: 1;
+  }
 }

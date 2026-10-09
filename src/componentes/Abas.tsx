@@ -12,9 +12,15 @@ const ABAS: { id: Aba; rotulo: string }[] = [
 const ID_PAINEL = 'painel-abas'
 const idAba = (aba: Aba) => `aba-${aba}`
 
-type Props = { ativa: Aba; onSelecionar: (aba: Aba) => void; children: ReactNode }
+type Props = {
+  ativa: Aba
+  onSelecionar: (aba: Aba) => void
+  // Identidade do app, exibida na mesma barra que as abas.
+  marca?: ReactNode
+  children: ReactNode
+}
 
-export function Abas({ ativa, onSelecionar, children }: Props) {
+export function Abas({ ativa, onSelecionar, marca, children }: Props) {
   const lista = useRef<HTMLDivElement>(null)
 
   // Setas alternam entre as abas, como no padrão de abas do WAI-ARIA.
@@ -28,23 +34,26 @@ export function Abas({ ativa, onSelecionar, children }: Props) {
 
   return (
     <>
-      <div ref={lista} role="tablist" aria-label="Telas" className="abas" onKeyDown={aoTeclar}>
-        {ABAS.map(({ id, rotulo }) => (
-          <button
-            key={id}
-            id={idAba(id)}
-            type="button"
-            role="tab"
-            aria-selected={id === ativa}
-            aria-controls={ID_PAINEL}
-            tabIndex={id === ativa ? 0 : -1}
-            className="abas__aba"
-            onClick={() => onSelecionar(id)}
-          >
-            {rotulo}
-          </button>
-        ))}
-      </div>
+      <header className="abas__barra">
+        {marca}
+        <div ref={lista} role="tablist" aria-label="Telas" className="abas" onKeyDown={aoTeclar}>
+          {ABAS.map(({ id, rotulo }) => (
+            <button
+              key={id}
+              id={idAba(id)}
+              type="button"
+              role="tab"
+              aria-selected={id === ativa}
+              aria-controls={ID_PAINEL}
+              tabIndex={id === ativa ? 0 : -1}
+              className="abas__aba"
+              onClick={() => onSelecionar(id)}
+            >
+              {rotulo}
+            </button>
+          ))}
+        </div>
+      </header>
       <div role="tabpanel" id={ID_PAINEL} aria-labelledby={idAba(ativa)}>
         {children}
       </div>

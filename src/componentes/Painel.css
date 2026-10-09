@@ -1,44 +1,58 @@
-.painel {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--borda);
-  border-radius: 0.5rem;
-  background: var(--superficie);
-}
-
+/* Seções da coluna lateral; o contêiner de vidro e o respiro vêm de .app__lateral. */
 .painel h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.125rem;
+  margin: 0 0 0.625rem;
+  font-size: var(--texto-md);
 }
 
 .painel h3 {
-  margin: 0.75rem 0 0.25rem;
-  font-size: 0.9375rem;
+  margin: 0.875rem 0 0.375rem;
+  font-size: var(--texto-base);
 }
 
 .painel ul {
   margin: 0;
   padding-left: 1.25rem;
+  font-size: var(--texto-sm);
+}
+
+.painel li + li {
+  margin-top: 0.25rem;
 }
 
 .painel__suave {
   margin: 0;
   color: var(--texto-suave);
+  font-size: var(--texto-sm);
 }
 
 .painel__ok {
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
   margin: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--raio-pilula);
+  background: var(--sucesso-suave);
   color: var(--sucesso);
+  font-size: var(--texto-sm);
   font-weight: 600;
 }
 
+.painel__ok::before {
+  content: '✓' / '';
+}
+
 .orcamento__medio {
-  margin: 0;
-  font-size: 1.75rem;
-  font-weight: 700;
+  margin: 0 0 0.125rem;
+  font-size: var(--texto-xl);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .painel__erro {
-  margin: 0.25rem 0 0;
+  margin: 0.375rem 0 0;
   color: var(--perigo);
-  font-size: 0.875rem;
+  font-size: var(--texto-sm);
 }

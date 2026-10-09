@@ -1,6 +1,7 @@
 import type { Slot, SlotId } from '../bancada'
 import { estadoDoSlot, slotsDaBancada } from '../bancada'
 import type { Build } from '../motor'
+import { calcularChecklist } from '../motor'
 import type { DadosArraste } from './AlcaArraste'
 import './Bancada.css'
 import { SlotBancada } from './SlotBancada'
@@ -26,6 +27,8 @@ const GRUPOS: { area: string; pertence: (s: Slot) => boolean }[] = [
 
 export function Bancada({ build, ativa, onDesencaixar, onEscolher, recusado, onFimRecusa }: Props) {
   const slots = slotsDaBancada(build)
+  // O LED de energia do gabinete acende quando não falta nenhuma categoria.
+  const completa = calcularChecklist(build).completa
   const renderizar = (slot: Slot) => {
     const estado = ativa ? estadoDoSlot(build, slot, ativa.peca) : undefined
     const desabilitado =
@@ -51,7 +54,7 @@ export function Bancada({ build, ativa, onDesencaixar, onEscolher, recusado, onF
       aria-labelledby="titulo-bancada"
     >
       <h2 id="titulo-bancada">Bancada</h2>
-      <div className="bancada__gabinete">
+      <div className={`bancada__gabinete${completa ? ' bancada__gabinete--completa' : ''}`}>
         <svg
           className="bancada__fundo"
           viewBox="0 0 100 100"

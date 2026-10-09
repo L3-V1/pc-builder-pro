@@ -63,5 +63,5 @@ test('o foco pelo teclado fica visível com a cor de foco do tema', async ({ pag
   const focado = page.locator(':focus')
   await expect(focado).toHaveCSS('outline-style', 'solid')
   await expect(focado).toHaveCSS('outline-width', '2px')
-  await expect(focado).toHaveCSS('outline-color', 'rgb(9, 105, 218)')
+  await expect(focado).toHaveCSS('outline-color', 'rgb(58, 79, 208)')
 })

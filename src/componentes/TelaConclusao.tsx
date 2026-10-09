@@ -113,7 +113,7 @@ export function TelaConclusao({ desafio, build, onVerDesafios, onFechar }: Props
           })}
         </dl>
         <div className="conclusao__acoes">
-          <button type="button" className="conclusao__principal" onClick={onVerDesafios}>
+          <button type="button" className="botao--primario" onClick={onVerDesafios}>
             Ver Desafios
           </button>
           <button type="button" onClick={onFechar}>

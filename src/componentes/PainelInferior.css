@@ -5,12 +5,14 @@
   display: flex;
   flex-direction: column;
   max-height: 85dvh;
-  border-top: 1px solid var(--borda);
-  border-radius: 0.75rem 0.75rem 0 0;
-  background: var(--superficie);
-  box-shadow: 0 -4px 16px rgb(0 0 0 / 0.15);
+  border: 1px solid var(--vidro-borda);
+  border-bottom: 0;
+  border-radius: var(--raio-enorme) var(--raio-enorme) 0 0;
+  background: var(--vidro-forte);
+  box-shadow: var(--sombra-alta);
+  backdrop-filter: var(--vidro-desfoque);
   transform: translateY(calc(100% - var(--altura-barra-inferior)));
-  transition: transform 0.25s ease;
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .painel-inferior--aberto {
@@ -19,14 +21,16 @@
 
 .painel-inferior__barra {
   flex: none;
+  flex-direction: column;
+  gap: 0;
   min-height: var(--altura-barra-inferior);
   border: 0;
   border-radius: inherit;
   background: transparent;
+  box-shadow: none;
   color: var(--texto);
-  font: inherit;
+  font-size: var(--texto-base);
   font-weight: 600;
-  cursor: pointer;
 }
 
 .painel-inferior__barra::before {
@@ -34,8 +38,8 @@
   display: block;
   width: 2.5rem;
   height: 0.25rem;
-  margin: 0 auto 0.375rem;
-  border-radius: 1rem;
+  margin: 0 auto 0.5rem;
+  border-radius: var(--raio-pilula);
   background: var(--borda);
 }
 
@@ -46,7 +50,7 @@
   gap: 0.75rem;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0 1rem 1rem;
+  padding: 0 var(--respiro-painel) var(--respiro-painel);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,6 +1,7 @@
 import { ROTULOS_CATEGORIA } from '../busca'
 import type { Build } from '../motor'
 import { calcularChecklist, verificarBuild } from '../motor'
+import { EstadoVazio } from './EstadoVazio'
 import './Painel.css'
 
 export function PainelChecklist({ build }: { build: Build }) {
@@ -23,7 +24,7 @@ export function PainelChecklist({ build }: { build: Build }) {
       )}
       <h3>Alertas</h3>
       {alertas.length === 0 ? (
-        <p className="painel__suave">Nenhum alerta</p>
+        <EstadoVazio icone="alerta" titulo="Nenhum alerta" compacto />
       ) : (
         <ul aria-label="Alertas">
           {alertas.map((alerta) => (

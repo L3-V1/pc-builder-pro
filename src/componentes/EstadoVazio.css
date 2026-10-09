@@ -1,0 +1,46 @@
+.estado-vazio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  padding: 2rem var(--respiro-painel);
+  border: 1px dashed var(--borda);
+  border-radius: var(--raio-grande);
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.estado-vazio--compacto {
+  padding: 1rem var(--respiro-painel);
+  border-radius: var(--raio-medio);
+}
+
+.estado-vazio__icone {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.25rem;
+  fill: none;
+  stroke: var(--primario);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.estado-vazio--compacto .estado-vazio__icone {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.estado-vazio p {
+  margin: 0;
+}
+
+.estado-vazio__titulo {
+  color: var(--texto);
+  font-size: var(--texto-sm);
+  font-weight: 600;
+}
+
+.estado-vazio__dica {
+  font-size: var(--texto-sm);
+}

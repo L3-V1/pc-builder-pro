@@ -27,6 +27,8 @@ import { Bancada } from './Bancada'
 import { Bandeja } from './Bandeja'
 import { BotaoCompartilhar } from './BotaoCompartilhar'
 import { CardPeca } from './CardPeca'
+import { EstadoVazio } from './EstadoVazio'
+import { formatarReaisSemCentavos } from './formatar'
 import { IlustracaoPeca } from './IlustracaoPeca'
 import { PainelBusca } from './PainelBusca'
 import { PainelChecklist } from './PainelChecklist'
@@ -108,7 +110,11 @@ export function Montagem({
       setRecusado(destino.slot.id)
     }
     const acao = acaoDoArraste(dados.peca, dados.origem, destino)
-    if (acao) despachar(acao)
+    if (!acao) return
+    despachar(acao)
+    if (acao.tipo === 'guardar') {
+      despachar({ tipo: 'avisar', texto: `${acao.peca.nome} foi para a Bandeja`, tom: 'info' })
+    }
   }
 
   return (
@@ -137,12 +143,14 @@ export function Montagem({
             onMudarAberto={(aberto) => setPainel(aberto ? 'aberto' : 'recolhido')}
           >
             <PainelBusca filtros={filtros} pecas={catalogo.pecas} onMudarFiltros={setFiltros} />
-            <p aria-live="polite">
+            <p aria-live="polite" className="app__contagem">
               {resultados.length}{' '}
               {resultados.length === 1 ? 'Peça encontrada' : 'Peças encontradas'}
             </p>
             {resultados.length === 0 ? (
-              <p className="app__vazio">Nenhuma Peça encontrada</p>
+              <EstadoVazio icone="busca" titulo="Nenhuma Peça encontrada">
+                Tente outro termo ou afrouxe os filtros.
+              </EstadoVazio>
             ) : (
               <ul className="app__resultados">
                 {resultados.map((peca) => (
@@ -154,7 +162,15 @@ export function Montagem({
                         despachar({ tipo: 'encaixar', peca: p })
                         if (painel === 'aberto-pelo-slot') setPainel('recolhido')
                       }}
-                      onGuardar={(p) => despachar({ tipo: 'guardar', peca: p })}
+                      onGuardar={(p) => {
+                        // A restauração também guarda Peças; só o clique do usuário avisa.
+                        despachar({ tipo: 'guardar', peca: p })
+                        despachar({
+                          tipo: 'avisar',
+                          texto: `${p.nome} foi para a Bandeja`,
+                          tom: 'info',
+                        })
+                      }}
                     />
                   </li>
                 ))}
@@ -186,7 +202,17 @@ export function Montagem({
             build={build}
             meta={meta}
             travada={modo.tipo === 'desafio'}
-            onDefinirMeta={(valor) => despachar({ tipo: 'definir-meta', valor })}
+            onDefinirMeta={(valor) => {
+              despachar({ tipo: 'definir-meta', valor })
+              despachar({
+                tipo: 'avisar',
+                texto:
+                  valor === undefined
+                    ? 'Meta removida'
+                    : `Meta definida em ${formatarReaisSemCentavos(valor)}`,
+                tom: 'info',
+              })
+            }}
           />
           {modo.tipo === 'livre' && (
             <BotaoCompartilhar

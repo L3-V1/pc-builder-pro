@@ -77,6 +77,8 @@ test('toque longo na alça e arraste até o Slot encaixa a Peça', async ({ page
   await abrirPainel(page)
   await page.getByLabel('Buscar', { exact: true }).fill('b650m aorus')
   const alca = page.getByRole('button', { name: 'Arrastar B650M Aorus Elite' })
+  // Os filtros ocupam a primeira dobra do painel; a alça precisa estar à vista para o toque.
+  await alca.scrollIntoViewIfNeeded()
   const de = await centro(alca)
   const para = await centro(slot(page, 'placa-mae'))
 

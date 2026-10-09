@@ -39,15 +39,17 @@ export function TelaDesafios({ desafios, concluidos, emAndamento, onAbrir }: Pro
               <article className="card-desafio" aria-labelledby={idTitulo}>
                 <div className="card-desafio__topo">
                   <h3 id={idTitulo}>{desafio.titulo}</h3>
-                  {concluido && <span className="card-desafio__selo">Concluído</span>}
+                  {concluido && <span className="card-desafio__selo chip">Concluído</span>}
                 </div>
                 <p className="card-desafio__descricao">{desafio.descricao}</p>
                 <ul className="card-desafio__criterios" aria-label="Critérios">
                   {resumo(desafio).map((texto) => (
-                    <li key={texto}>{texto}</li>
+                    <li key={texto} className="chip">
+                      {texto}
+                    </li>
                   ))}
                 </ul>
-                <button type="button" onClick={() => onAbrir(desafio)}>
+                <button type="button" className="botao--primario" onClick={() => onAbrir(desafio)}>
                   {emAndamento.includes(desafio.id) ? 'Continuar' : 'Iniciar'}
                 </button>
               </article>
