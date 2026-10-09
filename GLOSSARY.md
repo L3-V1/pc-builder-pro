@@ -13,15 +13,23 @@ O tipo funcional de uma Peça (CPU, placa-mãe, memória RAM, GPU, armazenamento
 _Avoid_: Tipo, classe
 
 **Catálogo**:
-O conjunto curado de Peças oferecidas pelo app, com especificações e Faixa de preço.
+O conjunto de Peças oferecidas pelo app: somente Peças à venda no Brasil na Data de referência, com especificações, Faixa de preço e, para CPU e GPU, Índice de desempenho.
 _Avoid_: Banco de peças, inventário
 
+**Anúncio**:
+Uma oferta de uma Peça, nova e avulsa, em uma loja brasileira, usada como amostra para calcular a Faixa de preço.
+_Avoid_: Oferta, listagem, produto da loja
+
+**Peça fora de venda**:
+Uma Peça que já esteve no Catálogo e deixou de ter Anúncios. Não aparece na busca, mas continua remontando Builds com a última Faixa de preço conhecida (com alerta) e não serve para cumprir Desafios.
+_Avoid_: Peça descontinuada, indisponível, removida
+
 **Faixa de preço**:
-Os preços mínimo, médio e máximo observados para uma Peça em lojas brasileiras de referência.
+Os preços mínimo, médio (mediana) e máximo (percentil 90) dos Anúncios válidos de uma Peça na Data de referência.
 _Avoid_: Preço (sozinho), cotação
 
 **Data de referência**:
-O mês em que as Faixas de preço do Catálogo foram levantadas.
+O dia em que os Anúncios que formam as Faixas de preço do Catálogo foram coletados.
 _Avoid_: Data de atualização, última cotação
 
 ## Montagem

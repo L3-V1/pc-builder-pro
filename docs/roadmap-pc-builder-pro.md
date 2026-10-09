@@ -1,6 +1,6 @@
 # Roadmap: PC Builder Pro
 
-> Criado em 2026-10-06 · Última atualização 2026-10-08
+> Criado em 2026-10-06 · Última atualização 2026-10-09
 
 ## Visão geral
 
@@ -8,14 +8,17 @@ O PC Builder Pro é uma aplicação web em que o usuário monta um PC como num j
 
 ## Objetivo final
 
-Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celular, com Catálogo curado de cerca de 150 Peças, Bancada 2D com arrastar e soltar, Orçamento com faixa de preço, Pontuação por Perfil, Desafios e Builds compartilháveis por link.
+Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celular, com um Catálogo de 500 a 3.000 Peças gerado diariamente a partir de fontes externas (specs do OpenDB, preços do Mercado Livre) e carregado por fetch, Bancada 2D com arrastar e soltar, Orçamento com faixa de preço, Pontuação por Perfil, Desafios, Builds compartilháveis por link, busca assíncrona e funcionamento offline.
 
 ## Premissas e restrições
 
-- Vocabulário do domínio definido em `GLOSSARY.md`. Decisões de arquitetura em `docs/adr/` (0001: Catálogo estático sem backend; 0002: Bancada em SVG/DOM).
+- Vocabulário do domínio definido em `GLOSSARY.md`. Decisões de arquitetura em `docs/adr/` (0001: Catálogo estático sem backend, substituído pelo 0003; 0002: Bancada em SVG/DOM; 0003: Catálogo gerado por pipeline a partir de fontes externas).
 - Stack: React, TypeScript e Vite. Arrastar e soltar com dnd-kit, animações com Framer Motion, schema do Catálogo com Zod.
-- Não há backend. A Build fica salva no localStorage e é compartilhada por URL com os IDs das Peças e a Meta.
-- Catálogo em JSON versionado no repositório. Cada Peça tem uma Faixa de preço (mín, médio e máx) em R$ e o Catálogo tem uma Data de referência global. Os preços são atualizados à mão.
+- Não há backend nem servidor em runtime: o app é 100% frontend no GitHub Pages. A Build fica salva no localStorage e é compartilhada por URL com os IDs das Peças e a Meta.
+- Fases 1 a 8: Catálogo em JSON versionado no repositório, com preços atualizados à mão.
+- A partir da Fase 9 (ADR 0003): um pipeline diário no GitHub Actions gera o Catálogo e publica `/dados/*.json` só no artefato do Pages, sem commit. Specs vêm do BuildCores OpenDB (CC BY-NC-SA, com atribuição; o projeto não é comercial). Faixas de preço vêm de Anúncios do Mercado Livre (mín = menor Anúncio válido, médio = mediana, máx = percentil 90). A Data de referência é o dia da coleta. Só os Índices de desempenho, a tabela de aliases de IDs e os Desafios continuam curados no repositório.
+- O app carrega o Catálogo inteiro atrás de uma tela de carregamento. Depois disso, motor, persistência e Desafios continuam síncronos. Só a busca passa por uma porta assíncrona.
+- Chaves de API nunca vão para o bundle. O token do Mercado Livre fica nos secrets do Actions.
 - Categorias: CPU, placa-mãe, RAM, GPU, armazenamento, fonte, gabinete e cooler. RAM e armazenamento aceitam várias Peças; as demais, uma.
 - Incompatibilidades físicas são Bloqueantes; as de margem geram Alerta.
 - Premissa assumida: testes de unidade com Vitest, testes de ponta a ponta com Playwright, e deploy em hospedagem estática (Vercel, Netlify ou GitHub Pages). A escolha do provedor fica para a Fase 8.
@@ -24,7 +27,10 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 ## Fora do escopo
 
 - Contas de usuário, login e Builds salvas na nuvem.
-- Preços ao vivo, scraping de lojas ou APIs de terceiros.
+- Preço consultado na hora da busca, proxy serverless ou qualquer servidor em runtime.
+- Scraping de lojas. Lomadee, Awin e SerpApi (chave secreta, sem CORS).
+- Uso comercial (vetado pela licença do OpenDB).
+- Histórico de preços.
 - Multi-GPU, ventoinhas avulsas e regras completas (comprimento de GPU, altura de cooler, versão de BIOS).
 - FPS estimado por jogo.
 - Fotos reais de produtos na Bancada.
@@ -42,6 +48,13 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 6    | Pontuação de desempenho por Perfil                      | Concluída    |
 | 7    | Desafios                                                | Concluída    |
 | 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Em andamento |
+| 9    | Catálogo fora do bundle, carregado por fetch            | Não iniciada |
+| 10   | Busca assíncrona com debounce e cancelamento            | Não iniciada |
+| 11   | Pipeline de specs a partir do OpenDB                    | Não iniciada |
+| 12   | Coleta de preços no Mercado Livre                       | Não iniciada |
+| 13   | Publicação diária automática com validação              | Não iniciada |
+| 14   | Peças fora de venda no app                              | Não iniciada |
+| 15   | Offline e documentação do novo Catálogo                 | Não iniciada |
 
 ---
 
@@ -201,8 +214,143 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Riscos / pontos de atenção:** curar 150 Peças com specs e preços dá trabalho manual. Pode ser feito em paralelo às fases anteriores.
 
+---
+
+## Fase 9: Catálogo fora do bundle
+
+**Objetivo:** o app passa a buscar o Catálogo por fetch em vez de importá-lo no bundle, sem mudar nada do que o usuário vê depois de carregar.
+
+**Depende de:** Fase 8
+
+**Entregáveis:**
+
+- [ ] Os JSON atuais do Catálogo saem de `src/catalogo/dados/` e passam a ser servidos em `/dados/` (provisoriamente versionados em `public/dados/` até a Fase 13).
+- [ ] `carregarCatalogo` assíncrono: faz fetch, valida pelo schema Zod e devolve o Catálogo ou um erro tipado.
+- [ ] Tela de carregamento enquanto o Catálogo não chega, e tela de erro com "Tentar de novo" se o fetch ou a validação falhar.
+- [ ] O bundle de produção não contém mais nenhuma Peça (verificável por busca no `dist/`).
+- [ ] Testes de unidade e de componente usam fixtures próprias (`src/teste/`) em vez do Catálogo real. Os e2e interceptam `/dados/` com uma fixture fixa.
+
+**Critério de conclusão:** o app abre, mostra a tela de carregamento e funciona como antes. Com `/dados/` fora do ar, aparece a tela de erro. Testes, e2e e Lighthouse passam.
+
+**Riscos / pontos de atenção:** os testes que hoje dependem de valores reais em R$ e de termos de busca (ver `docs/atualizar-catalogo.md`, passo 7) precisam migrar para fixtures. É o maior volume de trabalho da fase.
+
+---
+
+## Fase 10: Busca assíncrona
+
+**Objetivo:** a pesquisa de Peças passa por uma porta assíncrona com debounce e cancelamento, pronta para trocar de implementação sem mudar a interface.
+
+**Depende de:** Fase 9
+
+**Entregáveis:**
+
+- [ ] Porta `buscarPecas(filtros, signal): Promise<Peca[]>` com implementação sobre o Catálogo em memória (reaproveitando `filtrarPecas`).
+- [ ] Hook de busca com debounce de ~250 ms no texto, `AbortController` que cancela a busca anterior e descarte de respostas fora de ordem.
+- [ ] Indicador de "buscando" e estado vazio que distingue "nenhum resultado" de "ainda buscando".
+- [ ] Testes com timers falsos: digitação rápida dispara uma busca só, e uma busca cancelada não sobrescreve a mais recente.
+
+**Critério de conclusão:** digitar "rtx 4060" dispara uma única busca após a pausa, os testes de corrida passam e o e2e de montar uma Build continua verde.
+
+---
+
+## Fase 11: Pipeline de specs a partir do OpenDB
+
+**Objetivo:** gerar o Catálogo a partir do OpenDB em vez de JSON escrito à mão, mantendo os mesmos IDs e Índices.
+
+**Depende de:** Fase 9
+
+**Entregáveis:**
+
+- [ ] Script Node (`pipeline/`) que baixa o OpenDB numa tag ou commit fixado e normaliza cada Categoria para o schema do app (socket, tipoRam, formFactor, consumo etc.), descartando Peças com specs incompletas.
+- [ ] Arquivo curado de Índices de desempenho de CPU e GPU. CPU ou GPU sem Índice fica de fora.
+- [ ] Slug determinístico `categoria-marca-modelo` e tabela fixa de aliases dos 152 IDs antigos, com teste garantindo que todos resolvem.
+- [ ] Enquanto não há coleta de preços, as Faixas de preço vêm do Catálogo antigo, e só entram Peças que têm preço.
+- [ ] Atribuição ao BuildCores OpenDB (CC BY-NC-SA 4.0) no app e no README.
+- [ ] Testes do normalizador com amostras do OpenDB, incluindo Peças com specs faltando.
+
+**Critério de conclusão:** `npm run pipeline` gera `/dados/` válido pelo schema, os 152 IDs antigos resolvem, os Desafios continuam com solução e o app funciona com os dados gerados.
+
+**Riscos / pontos de atenção:** os enums do OpenDB podem não bater com os do app (nomes de socket, form factors exóticos). O normalizador precisa registrar o que descartou, para que não se perca Peça em silêncio.
+
+---
+
+## Fase 12: Coleta de preços no Mercado Livre
+
+**Objetivo:** cada Peça ganha uma Faixa de preço calculada a partir de Anúncios reais do dia, e o Catálogo cresce para além das 152 Peças.
+
+**Depende de:** Fase 11
+
+**Entregáveis:**
+
+- [ ] App OAuth no Mercado Livre e cliente que obtém o token no pipeline a partir de variáveis de ambiente (sem segredo no repositório).
+- [ ] Busca de Anúncios pelo modelo da Peça, descartando usados, kits e outliers, e exigindo um número mínimo de Anúncios válidos.
+- [ ] Faixa de preço: mín = menor Anúncio válido, médio = mediana, máx = percentil 90. A Data de referência passa a ser o dia da coleta (`AAAA-MM-DD`).
+- [ ] Peças sem Anúncios válidos ficam fora do Catálogo.
+- [ ] Relatório da coleta (Peças com preço, sem Anúncio e descartadas por filtro).
+- [ ] Testes do filtro e da estatística com respostas gravadas da API.
+
+**Critério de conclusão:** uma execução local gera um Catálogo de 500 a 3.000 Peças com Faixas de preço do dia, e uma amostragem manual de 20 Peças confere com o Mercado Livre.
+
+**Riscos / pontos de atenção:** casar Anúncio com Peça pelo modelo gera falsos positivos (variações, kits, modelos parecidos). Os limites de requisição da API precisam caber na execução diária.
+
+---
+
+## Fase 13: Publicação diária automática
+
+**Objetivo:** o Catálogo se atualiza sozinho todo dia, sem dados no Git e sem publicar nada que quebre Desafios.
+
+**Depende de:** Fase 12 e o deploy da Fase 8
+
+**Entregáveis:**
+
+- [ ] Workflow agendado (cron diário) que roda o pipeline com o token nos secrets e publica `/dados/` no artefato do Pages junto com o app.
+- [ ] Antes de publicar, o pipeline valida o schema e as soluções dos Desafios usando só Peças à venda. Se algo falhar, não publica (os dados anteriores continuam no ar) e o workflow falha com aviso.
+- [ ] O pipeline lê os dados publicados anteriormente para manter as Peças que saíram de venda, marcadas como fora de venda e com a última Faixa de preço.
+- [ ] `public/dados/` sai do repositório. O deploy por push também passa a rodar o pipeline (ou a reaproveitar os últimos dados publicados).
+
+**Critério de conclusão:** duas execuções agendadas seguidas publicam sem intervenção, a Data de referência no app muda de um dia para o outro e uma falha simulada de Desafio impede a publicação.
+
+**Riscos / pontos de atenção:** o GitHub desativa workflows agendados em repositórios sem atividade por 60 dias. Uma mudança de preços pode deixar um Desafio sem solução e travar a publicação até um ajuste manual.
+
+---
+
+## Fase 14: Peças fora de venda no app
+
+**Objetivo:** Builds e links antigos continuam remontando quando uma Peça sai de venda, sem que ela pareça disponível.
+
+**Depende de:** Fase 13
+
+**Entregáveis:**
+
+- [ ] Schema da Peça com a marca de fora de venda e a data do último preço.
+- [ ] A busca não mostra Peças fora de venda, mas a remontagem por localStorage e por link as encontra.
+- [ ] O Orçamento soma a última Faixa de preço e mostra o alerta "preço de <data>, fora de venda".
+- [ ] Desafios não aceitam Build com Peça fora de venda, e o painel do Desafio explica o motivo.
+- [ ] Testes de unidade e e2e: abrir um link com Peça fora de venda reproduz a Build com o alerta.
+
+**Critério de conclusão:** um link com uma Peça marcada como fora de venda abre a mesma Build, o Orçamento mostra o alerta e o Desafio não é concluído.
+
+---
+
+## Fase 15: Offline e documentação do novo Catálogo
+
+**Objetivo:** o app abre mesmo sem rede com os últimos dados baixados, e a documentação reflete o Catálogo gerado.
+
+**Depende de:** Fase 13
+
+**Entregáveis:**
+
+- [ ] Service Worker que guarda em cache o app e a última versão de `/dados/`, mostrando a Data de referência dos dados em cache. Sem cache, aparece a tela de erro da Fase 9.
+- [ ] Teste e2e offline: depois de uma visita, o app abre com a rede desligada.
+- [ ] `docs/atualizar-catalogo.md` reescrito: como funciona o pipeline, como curar Índices e aliases, como reagir a uma publicação bloqueada.
+- [ ] `docs/pontuacao.md` atualizado para os Índices curados fora do Catálogo.
+
+**Critério de conclusão:** o app abre offline após uma visita, o Lighthouse continua com acessibilidade ≥ 90 e os guias descrevem o processo atual.
+
 ## Riscos gerais e questões em aberto
 
-- Os preços envelhecem, porque não há atualização automática (ver ADR 0001). A Data de referência deixa isso visível ao usuário.
+- Até a Fase 13, os preços envelhecem porque não há atualização automática (ADR 0001). Depois dela, o risco passa a ser a coleta falhar ou casar Anúncios errados.
+- A tabela de aliases e os Índices curados viram o ponto de manutenção manual: CPUs e GPUs novas só aparecem quando ganham Índice.
+- Dependências externas: a licença CC BY-NC-SA do OpenDB impede uso comercial, e mudanças nos termos ou no acesso da API do Mercado Livre afetam a coleta.
 - Provedor de deploy escolhido na Fase 8: GitHub Pages via GitHub Actions. Falta criar o repositório remoto e ativar o Pages.
 - A calibração dos Índices de desempenho e das penalidades por Gargalo pode precisar de vários ajustes.
