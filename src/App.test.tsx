@@ -45,8 +45,8 @@ describe('App', () => {
     render(<App />)
     await adicionar('b650m aorus')
     await adicionar('ryzen 7600')
-    await adicionar('vengeance 2x16')
-    await adicionar('b760m')
+    await adicionarPorNome('vengeance 2x16', 'Vengeance 2x16 GB')
+    await adicionar('b760m ds3h')
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     const bandeja = screen.getByRole('region', { name: 'Bandeja' })
@@ -66,8 +66,8 @@ describe('App: Pontuação', () => {
     render(<App />)
     await adicionar('b650m aorus')
     await adicionar('ryzen 7600')
-    await adicionar('vengeance 2x16')
-    await adicionar('rtx 4060')
+    await adicionarPorNome('vengeance 2x16', 'Vengeance 2x16 GB')
+    await adicionarPorNome('rtx 4060', 'GeForce RTX 4060')
 
     const painel = screen.getByRole('region', { name: 'Pontuação' })
     for (const rotulo of ['Jogos', 'Produtividade']) {
@@ -188,10 +188,10 @@ describe('App: Desafios', () => {
     await adicionar('b650m aorus')
 
     await abrirDesafio('Primeiro PC')
-    await adicionar('b760m')
+    await adicionar('h610m')
     await adicionarPorNome('12400', 'Core i5-12400')
-    await adicionar('vengeance lpx')
-    await adicionar('a400')
+    await adicionar('1x8')
+    await adicionar('a400 240')
     await adicionar('mwe 450')
     await adicionar('cube matx')
     const painel = within(screen.getByRole('region', { name: 'Desafio: Primeiro PC' }))

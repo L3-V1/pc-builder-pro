@@ -49,7 +49,7 @@ test('monta uma Build completa só arrastando da busca para os Slots', async ({ 
   await expect(slot(page, 'cpu')).toBeVisible()
   await arrastarDaBusca(page, 'ryzen 7600', slot(page, 'cpu'))
   await arrastarDaBusca(page, 'vengeance 2x16', slot(page, 'dimm-1'))
-  await arrastarDaBusca(page, 'sn850x', slot(page, 'm2-1'))
+  await arrastarDaBusca(page, 'sn850x 1 tb', slot(page, 'm2-1'))
   await arrastarDaBusca(page, 'rtx 4060', slot(page, 'gpu'))
   await arrastarDaBusca(page, 'cx650', slot(page, 'fonte'))
   await arrastarDaBusca(page, 'h5 flow', slot(page, 'gabinete'))
@@ -110,7 +110,7 @@ test('trocar a placa-mãe por arraste manda as incompatíveis para a Bandeja', a
   await arrastarDaBusca(page, 'b650m aorus', slot(page, 'placa-mae'))
   await arrastarDaBusca(page, 'ryzen 7600', slot(page, 'cpu'))
   await arrastarDaBusca(page, 'vengeance 2x16', slot(page, 'dimm-1'))
-  await arrastarDaBusca(page, 'b760m', slot(page, 'placa-mae'))
+  await arrastarDaBusca(page, 'b760m ds3h', slot(page, 'placa-mae'))
 
   await expect(slot(page, 'placa-mae')).toContainText('B760M DS3H')
   await expect(slot(page, 'cpu')).not.toContainText('Ryzen 5 7600')

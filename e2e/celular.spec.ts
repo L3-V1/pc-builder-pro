@@ -55,7 +55,7 @@ test('monta uma Build completa só tocando nos Slots e em "Adicionar à Build"',
   await escolherPeloSlot(page, 'Placa-mãe', 'b650m aorus')
   await escolherPeloSlot(page, 'Socket da CPU', 'ryzen 7600')
   await escolherPeloSlot(page, 'Slot DIMM 1', 'vengeance 2x16')
-  await escolherPeloSlot(page, 'Slot M.2 1', 'sn850x')
+  await escolherPeloSlot(page, 'Slot M.2 1', 'sn850x 1 tb')
   await escolherPeloSlot(page, 'Slot PCIe x16', 'rtx 4060')
   await escolherPeloSlot(page, 'Fonte', 'cx650')
   await escolherPeloSlot(page, 'Gabinete', 'h5 flow')

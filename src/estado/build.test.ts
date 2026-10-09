@@ -131,7 +131,7 @@ describe('subtotalBandeja', () => {
   it('soma os preços médios e é 0 para Bandeja vazia', () => {
     expect(subtotalBandeja([])).toBe(0)
     const bandeja = comBandeja(ESTADO_INICIAL, ramDdr5, ramDdr5, cpuAm5).bandeja
-    expect(subtotalBandeja(bandeja)).toBe(650 + 650 + 1100)
+    expect(subtotalBandeja(bandeja)).toBe(2 * ramDdr5.faixaPreco.medio + cpuAm5.faixaPreco.medio)
   })
 })
 

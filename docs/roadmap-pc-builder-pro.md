@@ -1,6 +1,6 @@
 # Roadmap: PC Builder Pro
 
-> Criado em 2026-10-06 · Última atualização 2026-10-07
+> Criado em 2026-10-06 · Última atualização 2026-10-08
 
 ## Visão geral
 
@@ -41,7 +41,7 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 5    | Persistência, Meta de orçamento e link compartilhável   | Concluída    |
 | 6    | Pontuação de desempenho por Perfil                      | Concluída    |
 | 7    | Desafios                                                | Concluída    |
-| 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Não iniciada |
+| 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Em andamento |
 
 ---
 
@@ -190,11 +190,11 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Entregáveis:**
 
-- [ ] Layout para celular: busca num painel inferior, arraste por toque e alternativa de tocar no Slot para abrir uma lista filtrada.
-- [ ] Revisão de acessibilidade: contraste, foco visível, rótulos para leitores de tela e anúncios ao encaixar ou bloquear uma Peça.
-- [ ] Catálogo ampliado para cerca de 150 Peças populares no Brasil, com a Data de referência atualizada.
-- [ ] Guia curto (`docs/atualizar-catalogo.md`) explicando como atualizar preços e adicionar Peças.
-- [ ] Polimento visual das ilustrações e animações.
+- [x] Layout para celular: busca num painel inferior, arraste por toque e alternativa de tocar no Slot para abrir uma lista filtrada.
+- [x] Revisão de acessibilidade: contraste, foco visível, rótulos para leitores de tela e anúncios ao encaixar ou bloquear uma Peça.
+- [x] Catálogo ampliado para cerca de 150 Peças populares no Brasil, com a Data de referência atualizada.
+- [x] Guia curto (`docs/atualizar-catalogo.md`) explicando como atualizar preços e adicionar Peças.
+- [x] Polimento visual das ilustrações e animações.
 - [ ] Deploy em hospedagem estática, com publicação automática a partir da branch principal.
 
 **Critério de conclusão:** o app está publicado, passa nos testes de ponta a ponta em viewport de celular e de desktop, e o Lighthouse dá nota de acessibilidade de pelo menos 90.
@@ -204,5 +204,5 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 ## Riscos gerais e questões em aberto
 
 - Os preços envelhecem, porque não há atualização automática (ver ADR 0001). A Data de referência deixa isso visível ao usuário.
-- O provedor de deploy ainda não foi escolhido.
+- Provedor de deploy escolhido na Fase 8: GitHub Pages via GitHub Actions. Falta criar o repositório remoto e ativar o Pages.
 - A calibração dos Índices de desempenho e das penalidades por Gargalo pode precisar de vários ajustes.

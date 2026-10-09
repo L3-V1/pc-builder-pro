@@ -23,10 +23,10 @@ test('conclui Primeiro PC de ponta a ponta sem mexer na Build livre', async ({ p
   await expect(painel).toContainText('1 de 2 critérios')
   await expect(painel.getByRole('button', { name: 'Ligar o PC' })).toBeDisabled()
 
-  await adicionar(page, 'b760m')
+  await adicionar(page, 'h610m')
   await adicionar(page, '12400', 'Core i5-12400')
-  await adicionar(page, 'vengeance lpx')
-  await adicionar(page, 'a400')
+  await adicionar(page, '1x8')
+  await adicionar(page, 'a400 240')
   await adicionar(page, 'mwe 450')
   await adicionar(page, 'cube matx')
 
@@ -51,14 +51,14 @@ test('conclui Primeiro PC de ponta a ponta sem mexer na Build livre', async ({ p
 test('o progresso de um Desafio não concluído sobrevive ao recarregamento', async ({ page }) => {
   await page.goto('/')
   await abrirDesafio(page, 'Gamer de entrada')
-  await adicionar(page, 'b760m')
+  await adicionar(page, 'b760m ds3h')
   await adicionar(page, 'rx 6600')
 
   await page.reload()
   await expect(painelDesafio(page, 'Gamer de entrada')).toBeVisible()
   await expect(page.getByRole('group', { name: 'Placa-mãe' })).toContainText('B760M DS3H')
   await expect(page.getByRole('group', { name: 'Slot PCIe x16' })).toContainText('RX 6600')
-  await expect(page.getByLabel('Meta do Desafio (R$)')).toHaveValue('4.000')
+  await expect(page.getByLabel('Meta do Desafio (R$)')).toHaveValue('5.000')
 
   await page.getByRole('tab', { name: 'Desafios' }).click()
   const card = page.getByRole('article', { name: 'Gamer de entrada' })

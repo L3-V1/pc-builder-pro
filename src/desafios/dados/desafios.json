@@ -9,14 +9,14 @@
     "id": "escritorio-video-integrado",
     "titulo": "Escritório com vídeo integrado",
     "descricao": "Um PC de trabalho sem placa de vídeo dedicada, com memória de sobra para muitas abas abertas.",
-    "orcamentoMaximo": 2800,
+    "orcamentoMaximo": 4200,
     "pontuacaoMinima": { "produtividade": 20 }
   },
   {
     "id": "gamer-de-entrada",
     "titulo": "Gamer de entrada",
     "descricao": "Jogos leves e populares em Full HD, com uma GPU dedicada.",
-    "orcamentoMaximo": 4000,
+    "orcamentoMaximo": 5000,
     "pontuacaoMinima": { "jogos": 30 },
     "categoriasExigidas": ["gpu"]
   },
@@ -24,14 +24,14 @@
     "id": "orcamento-apertado",
     "titulo": "Orçamento apertado",
     "descricao": "Extraia o máximo de desempenho em jogos de cada real.",
-    "orcamentoMaximo": 3500,
+    "orcamentoMaximo": 4500,
     "pontuacaoMinima": { "jogos": 30 }
   },
   {
     "id": "refrigeracao-de-verdade",
     "titulo": "Refrigeração de verdade",
     "descricao": "Nada de cooler box: escolha um cooler e uma GPU para jogar com a CPU fria.",
-    "orcamentoMaximo": 4500,
+    "orcamentoMaximo": 5000,
     "pontuacaoMinima": { "jogos": 35 },
     "categoriasExigidas": ["cooler", "gpu"]
   },

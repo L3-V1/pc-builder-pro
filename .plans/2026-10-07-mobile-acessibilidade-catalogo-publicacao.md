@@ -8,12 +8,14 @@ status: em andamento
 
 **Origem:** `docs/roadmap-pc-builder-pro.md`, Fase 8: Mobile, acessibilidade, Catálogo completo e publicação
 
-> **Andamento (2026-10-08): execução pausada no bloco D (Catálogo).**
-> - Concluídos com testes: **A** (anúncios, foco visível, axe nos e2e claro/escuro, Lighthouse a11y 1,0), **B** (`filtrosDoSlot`, botão "Escolher", `useTelaPequena`, `PainelInferior`, sensores Mouse+Touch, projeto Playwright `celular`, `e2e/ajudantes.ts`, `e2e/celular.spec.ts`), **C** (ilustrações, fundo do gabinete, transições e tremida em destino bloqueado) e **E1** (`base: './'`, `lighthouserc.json`, jobs `e2e`/`lighthouse`/`publicar` no `ci.yml`).
-> - Suíte no momento da pausa: 383 testes unitários e 47 e2e verdes; lint e typecheck verdes.
-> - **Próximo passo:** D1, começando pelos testes novos em `src/catalogo/catalogo.test.ts` (140 a 160 Peças, ≥ 12 por Categoria, cobertura de socket/RAM/form factor, IDs antigos fixos, ordem dos Índices) e depois a pesquisa de Peças por Categoria. Ainda não foi feita nenhuma mudança no bloco D.
-> - Pendentes depois do D: D2, D3, E2 (repositório no GitHub e Pages, só com confirmação) e atualização do roadmap.
-> - Desvios do plano: `e2e` e `lighthouse` rodam em paralelo depois de `verificar` (e `publicar` espera os dois). O teste de "deslizar rápido rola" verifica que o gesto não inicia arraste, que a alça tem `touch-action: manipulation` e que a lista rola, porque o Chromium headless não rola com toques sintéticos.
+> **Andamento (2026-10-08): blocos A, B, C, D e E1 concluídos. Falta só o E2 (repositório no GitHub e Pages, só com confirmação do usuário).**
+> - **D1:** Catálogo de 42 para 152 Peças (CPU 24, GPU 24, placa-mãe 22, RAM 18, armazenamento 18, fonte 16, gabinete 16, cooler 14), com novos testes em `catalogo.test.ts`: faixa de 140 a 160, mínimo de 12 por Categoria, cobertura de socket/RAM/form factor, IDs anteriores fixos, Índice 100 nas Peças de referência e ordem dos pares.
+> - **D2:** `docs/pontuacao.md` com a tabela completa de Índices. Desafios recalibrados e soluções de referência refeitas.
+> - **D3:** `docs/atualizar-catalogo.md`.
+> - **Decisão do usuário (2026-10-08):** atualizar tudo para os preços de 2026-10. RAM e SSD subiram de 3 a 5 vezes, então os preços de RAM/SSD das Peças antigas foram corrigidos (sem mudar IDs) e quatro Orçamentos de Desafio subiram: Escritório 2.800 → 4.200, Gamer de entrada 4.000 → 5.000, Orçamento apertado 3.500 → 4.500, Refrigeração 4.500 → 5.000.
+> - **Testes que liam o Catálogo real foram corrigidos de forma explícita:** `filtrar.test.ts` passou a verificar propriedades (ordem não crescente, limites de preço, empate na ordem do Catálogo) em vez de listas fixas; os subtotais de `build.test.ts` e `Bandeja.test.tsx` foram atualizados; os termos de busca ambíguos (`b760m`, `vengeance lpx`, `a400`, `sn850x`) ficaram mais específicos, e `vengeance 2x16` e `rtx 4060` usam o nome exato onde há um helper para isso. O Primeiro PC do App test e do e2e usa a nova solução de referência.
+> - Suíte: 405 testes unitários e 47 e2e verdes (9 pulados por projeto); lint e typecheck verdes.
+> - Desvios do plano: `e2e` e `lighthouse` rodam em paralelo depois de `verificar` (e `publicar` espera os dois). O teste de "deslizar rápido rola" verifica que o gesto não inicia arraste, que a alça tem `touch-action: manipulation` e que a lista rola, porque o Chromium headless não rola com toques sintéticos. Os Índices das Peças novas são estimativas por proporção, não medições.
 
 ## Objetivo
 
@@ -146,13 +148,13 @@ Deixar o PC Builder Pro pronto para usuários reais: usável no celular (busca e
 - [ ] Os e2e de arraste e encaixe continuam passando depois das animações novas
 
 **D. Catálogo**
-- [ ] Catálogo real passa em `validarCatalogo` (regressão)
-- [ ] Total entre 140 e 160 Peças e pelo menos 12 por Categoria
-- [ ] Cada socket do schema tem pelo menos uma placa-mãe, uma CPU e um cooler compatíveis
-- [ ] Cada tipo de RAM tem placa-mãe e RAM; cada form factor tem placa-mãe e gabinete que o aceita
-- [ ] Toda CPU e GPU tem Índices, e os Índices respeitam a ordem esperada em pares de referência (ex.: 9800X3D > 7800X3D em Jogos; RTX 5090 > RTX 4060)
-- [ ] Os IDs que existiam antes da Fase 8 continuam no Catálogo (lista fixa no teste)
-- [ ] Cada Desafio continua com solução válida (`solucoes.test.ts`)
+- [x] Catálogo real passa em `validarCatalogo` (regressão)
+- [x] Total entre 140 e 160 Peças e pelo menos 12 por Categoria
+- [x] Cada socket do schema tem pelo menos uma placa-mãe, uma CPU e um cooler compatíveis
+- [x] Cada tipo de RAM tem placa-mãe e RAM; cada form factor tem placa-mãe e gabinete que o aceita
+- [x] Toda CPU e GPU tem Índices, e os Índices respeitam a ordem esperada em pares de referência (ex.: 9800X3D > 7800X3D em Jogos; RTX 5090 > RTX 4060)
+- [x] Os IDs que existiam antes da Fase 8 continuam no Catálogo (lista fixa no teste)
+- [x] Cada Desafio continua com solução válida (`solucoes.test.ts`)
 
 **E. Publicação**
 - [ ] `npm run build` gera `dist/index.html` com caminhos de assets relativos (`./assets/...`)

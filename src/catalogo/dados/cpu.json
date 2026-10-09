@@ -140,5 +140,431 @@
       "jogos": 3,
       "produtividade": 3
     }
+  },
+  {
+    "id": "cpu-ryzen-5-5500",
+    "nome": "Ryzen 5 5500",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 504,
+      "medio": 560,
+      "max": 627
+    },
+    "categoria": "cpu",
+    "socket": "AM4",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": false,
+    "coolerBox": true,
+    "indices": {
+      "jogos": 57,
+      "produtividade": 24
+    }
+  },
+  {
+    "id": "cpu-ryzen-5-5600g",
+    "nome": "Ryzen 5 5600G",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 990,
+      "medio": 1100,
+      "max": 1232
+    },
+    "categoria": "cpu",
+    "socket": "AM4",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": true,
+    "indices": {
+      "jogos": 55,
+      "produtividade": 25
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 5,
+      "produtividade": 5
+    }
+  },
+  {
+    "id": "cpu-ryzen-7-5700x",
+    "nome": "Ryzen 7 5700X",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1080,
+      "medio": 1200,
+      "max": 1344
+    },
+    "categoria": "cpu",
+    "socket": "AM4",
+    "nucleos": 8,
+    "threads": 16,
+    "consumoW": 65,
+    "videoIntegrado": false,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 66,
+      "produtividade": 33
+    }
+  },
+  {
+    "id": "cpu-ryzen-7-5700x3d",
+    "nome": "Ryzen 7 5700X3D",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1530,
+      "medio": 1700,
+      "max": 1904
+    },
+    "categoria": "cpu",
+    "socket": "AM4",
+    "nucleos": 8,
+    "threads": 16,
+    "consumoW": 105,
+    "videoIntegrado": false,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 74,
+      "produtividade": 31
+    }
+  },
+  {
+    "id": "cpu-ryzen-5-8600g",
+    "nome": "Ryzen 5 8600G",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 873,
+      "medio": 970,
+      "max": 1086
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": true,
+    "indices": {
+      "jogos": 68,
+      "produtividade": 35
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 8,
+      "produtividade": 8
+    }
+  },
+  {
+    "id": "cpu-ryzen-5-9600x",
+    "nome": "Ryzen 5 9600X",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1170,
+      "medio": 1300,
+      "max": 1456
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 6,
+    "threads": 12,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 79,
+      "produtividade": 40
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  {
+    "id": "cpu-ryzen-7-7700",
+    "nome": "Ryzen 7 7700",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1260,
+      "medio": 1400,
+      "max": 1568
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 8,
+    "threads": 16,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": true,
+    "indices": {
+      "jogos": 77,
+      "produtividade": 46
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  {
+    "id": "cpu-ryzen-7-9700x",
+    "nome": "Ryzen 7 9700X",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1440,
+      "medio": 1600,
+      "max": 1792
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 8,
+    "threads": 16,
+    "consumoW": 65,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 80,
+      "produtividade": 48
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  {
+    "id": "cpu-ryzen-7-9800x3d",
+    "nome": "Ryzen 7 9800X3D",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 2205,
+      "medio": 2450,
+      "max": 2744
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 8,
+    "threads": 16,
+    "consumoW": 120,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 100,
+      "produtividade": 55
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  {
+    "id": "cpu-ryzen-9-9900x",
+    "nome": "Ryzen 9 9900X",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 1980,
+      "medio": 2200,
+      "max": 2464
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 12,
+    "threads": 24,
+    "consumoW": 120,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 81,
+      "produtividade": 77
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  {
+    "id": "cpu-ryzen-9-9950x",
+    "nome": "Ryzen 9 9950X",
+    "marca": "AMD",
+    "faixaPreco": {
+      "min": 2970,
+      "medio": 3300,
+      "max": 3696
+    },
+    "categoria": "cpu",
+    "socket": "AM5",
+    "nucleos": 16,
+    "threads": 32,
+    "consumoW": 170,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 83,
+      "produtividade": 100
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  {
+    "id": "cpu-core-i3-12100f",
+    "nome": "Core i3-12100F",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 621,
+      "medio": 690,
+      "max": 773
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 4,
+    "threads": 8,
+    "consumoW": 58,
+    "videoIntegrado": false,
+    "coolerBox": true,
+    "indices": {
+      "jogos": 55,
+      "produtividade": 20
+    }
+  },
+  {
+    "id": "cpu-core-i5-14400f",
+    "nome": "Core i5-14400F",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 882,
+      "medio": 980,
+      "max": 1098
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 10,
+    "threads": 16,
+    "consumoW": 65,
+    "videoIntegrado": false,
+    "coolerBox": true,
+    "indices": {
+      "jogos": 70,
+      "produtividade": 43
+    }
+  },
+  {
+    "id": "cpu-core-i5-14600kf",
+    "nome": "Core i5-14600KF",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 1440,
+      "medio": 1600,
+      "max": 1792
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 14,
+    "threads": 20,
+    "consumoW": 125,
+    "videoIntegrado": false,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 79,
+      "produtividade": 58
+    }
+  },
+  {
+    "id": "cpu-core-i9-14900k",
+    "nome": "Core i9-14900K",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 2610,
+      "medio": 2900,
+      "max": 3248
+    },
+    "categoria": "cpu",
+    "socket": "LGA1700",
+    "nucleos": 24,
+    "threads": 32,
+    "consumoW": 125,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 85,
+      "produtividade": 91
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 3,
+      "produtividade": 3
+    }
+  },
+  {
+    "id": "cpu-core-ultra-5-245k",
+    "nome": "Core Ultra 5 245K",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 1080,
+      "medio": 1200,
+      "max": 1344
+    },
+    "categoria": "cpu",
+    "socket": "LGA1851",
+    "nucleos": 14,
+    "threads": 14,
+    "consumoW": 125,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 74,
+      "produtividade": 61
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 4,
+      "produtividade": 4
+    }
+  },
+  {
+    "id": "cpu-core-ultra-7-265k",
+    "nome": "Core Ultra 7 265K",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 1665,
+      "medio": 1850,
+      "max": 2072
+    },
+    "categoria": "cpu",
+    "socket": "LGA1851",
+    "nucleos": 20,
+    "threads": 20,
+    "consumoW": 125,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 79,
+      "produtividade": 86
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 4,
+      "produtividade": 4
+    }
+  },
+  {
+    "id": "cpu-core-ultra-9-285k",
+    "nome": "Core Ultra 9 285K",
+    "marca": "Intel",
+    "faixaPreco": {
+      "min": 2835,
+      "medio": 3150,
+      "max": 3528
+    },
+    "categoria": "cpu",
+    "socket": "LGA1851",
+    "nucleos": 24,
+    "threads": 24,
+    "consumoW": 125,
+    "videoIntegrado": true,
+    "coolerBox": false,
+    "indices": {
+      "jogos": 81,
+      "produtividade": 97
+    },
+    "indiceVideoIntegrado": {
+      "jogos": 4,
+      "produtividade": 4
+    }
   }
 ]

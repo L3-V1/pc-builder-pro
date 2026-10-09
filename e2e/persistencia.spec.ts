@@ -16,8 +16,8 @@ async function definirMeta(page: Page, valor: string) {
 async function montarBuild(page: Page) {
   await adicionar(page, 'b650m aorus')
   await adicionar(page, 'ryzen 7600')
-  await adicionar(page, 'vengeance 2x16')
-  await adicionar(page, 'rtx 4060')
+  await adicionar(page, 'vengeance 2x16', 'Vengeance 2x16 GB')
+  await adicionar(page, 'rtx 4060', 'GeForce RTX 4060')
 }
 
 test('recarregar mantém Build, Bandeja, Meta e Orçamento', async ({ page }) => {

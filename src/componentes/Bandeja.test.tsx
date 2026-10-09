@@ -26,7 +26,7 @@ describe('Bandeja', () => {
     render(<Bandeja itens={itens} onDescartar={() => {}} />)
     expect(screen.getAllByText(ram.nome)).toHaveLength(2)
     expect(screen.getByText(cpu.nome)).toBeInTheDocument()
-    expect(screen.getByTestId('bandeja-subtotal')).toHaveTextContent(/R\$\s2\.400,00/)
+    expect(screen.getByTestId('bandeja-subtotal')).toHaveTextContent(/R\$\s8\.300,00/)
     expect(screen.getByText(/fora do Orçamento/)).toBeInTheDocument()
   })
 

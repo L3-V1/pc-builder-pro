@@ -21,9 +21,9 @@ test('monta uma Build completa por busca e clique e confere o Orçamento', async
   ]
   await adicionar(page, 'b650m aorus')
   await adicionar(page, 'ryzen 7600')
-  await adicionar(page, 'vengeance 2x16')
-  await adicionar(page, 'sn850x')
-  await adicionar(page, 'rtx 4060')
+  await adicionar(page, 'vengeance 2x16', 'Vengeance 2x16 GB')
+  await adicionar(page, 'sn850x 1 tb')
+  await adicionar(page, 'rtx 4060', 'GeForce RTX 4060')
   await adicionar(page, 'cx650')
   await adicionar(page, 'h5 flow')
 
@@ -64,9 +64,9 @@ test('trocar para placa DDR4 aplica na hora e manda CPU, RAM e a placa antiga pa
 }) => {
   await adicionar(page, 'b650m aorus')
   await adicionar(page, 'ryzen 7600')
-  await adicionar(page, 'vengeance 2x16')
+  await adicionar(page, 'vengeance 2x16', 'Vengeance 2x16 GB')
 
-  await adicionar(page, 'b760m')
+  await adicionar(page, 'b760m ds3h')
   await expect(page.getByRole('dialog')).toHaveCount(0)
   const bandeja = page.getByTestId('bandeja')
   await expect(bandeja.getByText('Ryzen 5 7600')).toBeVisible()

@@ -27,7 +27,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
     test('Build com Peças e Peça bloqueada visível na busca', async ({ page }) => {
       await adicionar(page, 'b650m aorus')
       await adicionar(page, 'ryzen 7600')
-      await adicionar(page, 'vengeance 2x16')
+      await adicionar(page, 'vengeance 2x16', 'Vengeance 2x16 GB')
       await pesquisar(page, '12400')
       await expect(page.getByText('Incompatível').first()).toBeVisible()
       await semViolacoes(page)
@@ -44,9 +44,9 @@ for (const colorScheme of ['light', 'dark'] as const) {
         .getByRole('article', { name: 'Primeiro PC' })
         .getByRole('button', { name: /Iniciar|Continuar/ })
         .click()
-      await adicionar(page, 'b760m')
+      await adicionar(page, 'h610m')
       await adicionar(page, '12400', 'Core i5-12400')
-      for (const termo of ['vengeance lpx', 'a400', 'mwe 450', 'cube matx']) {
+      for (const termo of ['1x8', 'a400 240', 'mwe 450', 'cube matx']) {
         await adicionar(page, termo)
       }
       await page.getByRole('button', { name: 'Ligar o PC' }).click()

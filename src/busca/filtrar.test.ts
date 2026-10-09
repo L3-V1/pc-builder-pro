@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { carregarCatalogo } from '../catalogo'
-import { criarBuild } from '../motor'
+import { criarBuild, indiceDaPeca } from '../motor'
 import { montar, peca } from '../motor/teste-pecas'
 import { slotsDaBancada } from '../bancada/slots'
 import {
@@ -17,6 +17,7 @@ const vazia = criarBuild()
 const buscar = (filtros: Partial<FiltrosBusca>, build = vazia) =>
   filtrarPecas(pecas, build, { ...FILTROS_INICIAIS, ...filtros })
 const ids = (lista: { id: string }[]) => lista.map((p) => p.id)
+const naoCrescente = (valores: number[]) => valores.every((v, i) => i === 0 || v <= valores[i - 1])
 
 describe('normalizarTexto', () => {
   it('passa para minúsculas e remove acentos', () => {
@@ -34,7 +35,7 @@ describe('filtrarPecas', () => {
     expect(ids(buscar({ texto: 'RYZEN' })).length).toBeGreaterThan(1)
     const corsair = buscar({ texto: 'corsair' }).map((p) => p.categoria)
     expect(new Set(corsair)).toEqual(new Set(['ram', 'fonte', 'gabinete', 'cooler']))
-    expect(ids(buscar({ texto: 'tomahawk' }))).toEqual(['placa-mae-b650-tomahawk-wifi'])
+    expect(ids(buscar({ texto: 'b650 tomahawk' }))).toEqual(['placa-mae-b650-tomahawk-wifi'])
   })
 
   it('texto sem resultado devolve lista vazia', () => {
@@ -49,7 +50,7 @@ describe('filtrarPecas', () => {
 
   it('filtro de marcas aceita várias; vazio não filtra', () => {
     const r = buscar({ marcas: ['AMD', 'Intel'], categoria: 'cpu' })
-    expect(r.length).toBe(6)
+    expect(r.length).toBe(pecas.filter((p) => p.categoria === 'cpu').length)
     expect(buscar({ marcas: ['Intel'], categoria: 'cpu' }).every((p) => p.marca === 'Intel')).toBe(
       true,
     )
@@ -58,78 +59,65 @@ describe('filtrarPecas', () => {
 
   it('precoMin e precoMax filtram pelo médio, inclusive nas bordas; ausentes não limitam', () => {
     const r = buscar({ precoMin: 1100, precoMax: 2300, categoria: 'cpu' })
-    expect(ids(r)).toEqual(['cpu-ryzen-5-7600', 'cpu-ryzen-7-7800x3d'])
+    expect(ids(r)).toEqual(
+      ids(
+        pecas.filter(
+          (p) => p.categoria === 'cpu' && p.faixaPreco.medio >= 1100 && p.faixaPreco.medio <= 2300,
+        ),
+      ),
+    )
+    expect(ids(r)).toContain('cpu-ryzen-5-7600')
+    expect(ids(r)).toContain('cpu-ryzen-7-7800x3d')
     expect(buscar({ precoMax: 250 }).every((p) => p.faixaPreco.medio <= 250)).toBe(true)
-    expect(buscar({ precoMin: 4300 }).map((p) => p.id)).toEqual(['gpu-rtx-4070-super'])
+    expect(buscar({ precoMin: 22000 }).map((p) => p.id)).toEqual(['gpu-rtx-5090'])
   })
 
   it('ordena por menor e maior preço médio; empate mantém a ordem do Catálogo', () => {
     const asc = buscar({ ordenacao: 'preco-asc', categoria: 'fonte' })
-    expect(asc.map((p) => p.faixaPreco.medio)).toEqual([230, 330, 400, 750, 1000])
+    const precos = asc.map((p) => p.faixaPreco.medio)
+    expect(precos).toEqual(precos.toSorted((a, b) => a - b))
     const desc = buscar({ ordenacao: 'preco-desc' })
-    expect(desc[0].id).toBe('gpu-rtx-4070-super')
-    const empatados = buscar({ ordenacao: 'preco-asc', categoria: 'armazenamento' })
-    expect(ids(empatados).slice(0, 2)).toEqual([
-      'armazenamento-sata-480gb',
-      'armazenamento-nvme-500gb',
-    ])
+    expect(desc[0].id).toBe('gpu-rtx-5090')
+    // CX550 e GP650 custam o mesmo; a CX550 vem antes no Catálogo.
+    const empatados = ids(asc.filter((p) => p.faixaPreco.medio === 330))
+    expect(empatados).toEqual(['fonte-cx550', 'fonte-gamemax-gp650'])
     const iguais = buscar({ ordenacao: 'preco-asc', precoMin: 250, precoMax: 250 })
     expect(ids(iguais)).toEqual(ids(pecas.filter((p) => p.faixaPreco.medio === 250)))
   })
 
   it('desempenho em Jogos ordena CPUs e GPUs pelo índice, decrescente, e põe o resto no fim', () => {
-    const r = ids(buscar({ ordenacao: 'desempenho-jogos' }))
-    expect(r.slice(0, 11)).toEqual([
-      'cpu-ryzen-7-7800x3d',
-      'cpu-core-i7-14700k',
-      'cpu-ryzen-5-7600',
-      'cpu-core-i5-12400f',
-      'cpu-core-i5-12400',
-      'cpu-ryzen-5-5600',
-      'gpu-rtx-4070-super',
-      'gpu-rx-7800-xt',
-      'gpu-rtx-4060',
-      'gpu-rx-6600',
-      'gpu-rtx-3050-6gb',
-    ])
+    const r = buscar({ ordenacao: 'desempenho-jogos' })
+    const comIndice = pecas.filter((p) => p.categoria === 'cpu' || p.categoria === 'gpu')
+    const topo = r.slice(0, comIndice.length)
+    expect(topo[0].id).toBe('cpu-ryzen-7-9800x3d')
+    expect(naoCrescente(topo.map((p) => indiceDaPeca(p, 'jogos') ?? -1))).toBe(true)
     const semIndice = pecas.filter((p) => p.categoria !== 'cpu' && p.categoria !== 'gpu')
-    expect(r.slice(11)).toEqual(ids(semIndice))
+    expect(ids(r.slice(comIndice.length))).toEqual(ids(semIndice))
   })
 
   it('desempenho em Produtividade usa o índice de Produtividade', () => {
-    const r = ids(buscar({ ordenacao: 'desempenho-produtividade' }))
-    expect(r.slice(0, 11)).toEqual([
-      'cpu-core-i7-14700k',
-      'cpu-ryzen-7-7800x3d',
-      'gpu-rtx-4070-super',
-      'cpu-ryzen-5-7600',
-      'cpu-core-i5-12400f',
-      'cpu-core-i5-12400',
-      'gpu-rx-7800-xt',
-      'cpu-ryzen-5-5600',
-      'gpu-rtx-4060',
-      'gpu-rx-6600',
-      'gpu-rtx-3050-6gb',
-    ])
+    const r = buscar({ ordenacao: 'desempenho-produtividade', categoria: 'cpu' })
+    expect(r[0].id).toBe('cpu-ryzen-9-9950x')
+    expect(naoCrescente(r.map((p) => indiceDaPeca(p, 'produtividade') ?? -1))).toBe(true)
   })
 
   it('ordenar por desempenho com o filtro de Categoria GPU devolve só GPUs, ordenadas', () => {
-    expect(ids(buscar({ ordenacao: 'desempenho-jogos', categoria: 'gpu' }))).toEqual([
-      'gpu-rtx-4070-super',
-      'gpu-rx-7800-xt',
-      'gpu-rtx-4060',
-      'gpu-rx-6600',
-      'gpu-rtx-3050-6gb',
-    ])
+    const r = buscar({ ordenacao: 'desempenho-jogos', categoria: 'gpu' })
+    expect(r.every((p) => p.categoria === 'gpu')).toBe(true)
+    expect(r.length).toBe(pecas.filter((p) => p.categoria === 'gpu').length)
+    expect(r[0].id).toBe('gpu-rtx-5090')
+    expect(naoCrescente(r.map((p) => indiceDaPeca(p, 'jogos') ?? -1))).toBe(true)
   })
 
   it('só compatíveis esconde CPUs de outro socket e mantém todas as placas-mãe', () => {
     const build = montar(peca('placa-mae-b650m-aorus-elite', 'placa-mae'))
     const cpus = buscar({ soCompativeis: true, categoria: 'cpu' }, build)
     expect(cpus.every((p) => p.categoria === 'cpu' && p.socket === 'AM5')).toBe(true)
-    expect(cpus.length).toBe(2)
+    expect(cpus.length).toBe(
+      pecas.filter((p) => p.categoria === 'cpu' && p.socket === 'AM5').length,
+    )
     const placas = buscar({ soCompativeis: true, categoria: 'placa-mae' }, build)
-    expect(placas.length).toBe(6)
+    expect(placas.length).toBe(pecas.filter((p) => p.categoria === 'placa-mae').length)
   })
 
   it('só compatíveis sem placa não esconde nada', () => {
@@ -143,7 +131,13 @@ describe('filtrarPecas', () => {
       precoMin: 400,
       ordenacao: 'preco-desc',
     })
-    expect(ids(r)).toEqual(['fonte-rm850x', 'fonte-rm750e', 'fonte-cx650'])
+    expect(ids(r)).toEqual([
+      'fonte-corsair-hx1200i',
+      'fonte-corsair-rm1000e',
+      'fonte-rm850x',
+      'fonte-rm750e',
+      'fonte-cx650',
+    ])
   })
 })
 
