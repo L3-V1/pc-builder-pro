@@ -27,12 +27,11 @@
   flex: 1;
   flex-direction: column;
   gap: 0.75rem;
-  padding: var(--respiro-painel);
-  border: 1px solid var(--vidro-borda);
-  border-radius: var(--raio-enorme);
-  background: var(--vidro);
-  box-shadow: var(--sombra-media);
-  backdrop-filter: var(--vidro-desfoque);
+  padding: var(--respiro-card);
+  border: var(--traco);
+  border-radius: var(--raio);
+  background: var(--superficie-card);
+  box-shadow: var(--relevo-baixo);
 }
 
 .card-desafio__topo {
@@ -52,12 +51,13 @@
   display: inline-flex;
   gap: 0.3125rem;
   align-items: center;
-  padding: 0.0625rem 0.625rem;
-  border-radius: var(--raio-pilula);
+  padding: 0.0625rem 0.4375rem;
+  border: 1.5px solid var(--sucesso);
+  border-radius: var(--raio-miudo);
   background: var(--sucesso-suave);
   color: var(--sucesso);
   font-size: var(--texto-xs);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card-desafio__selo::before {
@@ -80,7 +80,8 @@
 
 .card-desafio__criterios li {
   padding: 0.125rem 0.5rem;
-  border-radius: var(--raio-pequeno);
+  border: var(--traco-fino);
+  border-radius: var(--raio-miudo);
   background: var(--fundo-suave);
   font-size: var(--texto-xs);
 }

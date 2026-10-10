@@ -7,11 +7,10 @@
 @media (min-width: 60rem) {
   .busca {
     padding: var(--respiro-painel);
-    border: 1px solid var(--vidro-borda);
-    border-radius: var(--raio-enorme);
-    background: var(--vidro);
-    box-shadow: var(--sombra-media);
-    backdrop-filter: var(--vidro-desfoque);
+    border: var(--traco);
+    border-radius: var(--raio);
+    background: var(--superficie);
+    box-shadow: var(--relevo-medio);
   }
 }
 
@@ -63,18 +62,19 @@
   cursor: pointer;
 }
 
-/* Marcas como pílulas que se acendem quando marcadas. */
+/* Marcas como interruptores que afundam e se acendem quando marcados. */
 .busca__marcas label.busca__check {
   padding: 0.3125rem 0.75rem 0.3125rem 0.5rem;
-  border: 1px solid var(--borda);
-  border-radius: var(--raio-pilula);
-  background: var(--superficie);
+  border: 1.5px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--superficie-card);
+  box-shadow: var(--relevo-baixo);
   transition:
     background-color var(--transicao),
     border-color var(--transicao);
 }
 
 .busca__marcas label.busca__check:has(:checked) {
-  border-color: color-mix(in srgb, var(--primario) 50%, var(--borda));
   background: var(--primario-suave);
+  box-shadow: var(--relevo-soquete);
 }

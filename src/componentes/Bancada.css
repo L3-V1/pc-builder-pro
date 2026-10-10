@@ -1,20 +1,29 @@
 .bancada {
   min-width: 0;
   padding: var(--respiro-painel);
-  border: 1px solid var(--vidro-borda);
-  border-radius: var(--raio-enorme);
-  background: var(--vidro);
-  box-shadow: var(--sombra-media);
-  backdrop-filter: var(--vidro-desfoque);
+  border: var(--traco);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  box-shadow: var(--relevo-medio);
 }
 
 .bancada h2 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.875rem;
   font-size: var(--texto-md);
 }
 
-/* O gabinete: um vidro lateral sobre a placa-mãe, com o LED de energia no canto. */
+/*
+ * O gabinete aberto sobre o tapete: chassi em traço de tinta, um parafuso em cada canto
+ * e o LED de energia no topo.
+ */
 .bancada__gabinete {
+  --parafuso: radial-gradient(
+    circle,
+    var(--fundo-suave) 0 2px,
+    var(--borda) 2.5px 3.5px,
+    transparent 4px
+  );
+
   position: relative;
   display: grid;
   grid-template-areas:
@@ -26,19 +35,33 @@
     'fonte sata';
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   gap: 0.5rem;
-  padding: 1rem 0.875rem 0.875rem;
+  padding: var(--respiro-gabinete);
   isolation: isolate;
+}
+
+.bancada__gabinete::before {
+  content: '';
+  position: absolute;
+  inset: 0.25rem;
+  z-index: 0;
+  background:
+    var(--parafuso) left top / 0.625rem 0.625rem no-repeat,
+    var(--parafuso) right top / 0.625rem 0.625rem no-repeat,
+    var(--parafuso) left bottom / 0.625rem 0.625rem no-repeat,
+    var(--parafuso) right bottom / 0.625rem 0.625rem no-repeat;
+  pointer-events: none;
 }
 
 .bancada__gabinete::after {
   content: '';
   position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  width: 0.4375rem;
-  height: 0.4375rem;
+  top: 0.4375rem;
+  right: 1.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--led) 30%, var(--fundo-suave));
+  background: color-mix(in srgb, var(--led) 25%, var(--fundo-suave));
+  box-shadow: 0 0 0 1.5px var(--tinta);
   transition:
     background-color 400ms ease,
     box-shadow 400ms ease;
@@ -47,8 +70,9 @@
 .bancada__gabinete--completa::after {
   background: var(--led);
   box-shadow:
-    0 0 0 3px var(--led-suave),
-    0 0 12px 2px var(--led);
+    0 0 0 1.5px var(--tinta),
+    0 0 0 5px var(--led-suave),
+    0 0 14px 2px var(--led);
 }
 
 .bancada__fundo {
@@ -60,15 +84,16 @@
 }
 
 .bancada__fundo rect {
-  fill: color-mix(in srgb, var(--fundo-suave) 70%, transparent);
+  fill: var(--fundo-suave);
   stroke: var(--borda);
-  stroke-width: 1;
+  stroke-width: 2;
   vector-effect: non-scaling-stroke;
 }
 
 .bancada__fundo .bancada__fonte-desenho {
-  fill: color-mix(in srgb, var(--borda) 45%, var(--fundo-suave));
-  stroke: none;
+  fill: color-mix(in srgb, var(--tinta) 10%, var(--fundo-suave));
+  stroke: var(--borda-fina);
+  stroke-width: 1;
 }
 
 .bancada__fundo .bancada__baia {
@@ -78,8 +103,9 @@
 }
 
 .bancada__fundo .bancada__placa-desenho {
-  fill: color-mix(in srgb, var(--primario) 6%, var(--superficie));
-  stroke: color-mix(in srgb, var(--primario) 22%, var(--borda));
+  fill: color-mix(in srgb, var(--primario) 9%, var(--superficie));
+  stroke: color-mix(in srgb, var(--primario) 55%, var(--borda));
+  stroke-width: 1.5;
 }
 
 .bancada__area {
@@ -118,18 +144,20 @@
   grid-area: sata;
 }
 
+/* Vazio, o Slot é um soquete rebaixado, hachurado como num desenho técnico. */
 .slot {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.375rem;
   min-width: 0;
   min-height: 4.5rem;
   padding: var(--respiro-slot);
-  border: 1.5px dashed color-mix(in srgb, var(--texto-suave) 35%, var(--borda));
-  border-radius: var(--raio-medio);
-  background: color-mix(in srgb, var(--fundo-suave) 75%, transparent);
-  box-shadow: var(--sombra-soquete);
+  border: 2px dashed color-mix(in srgb, var(--borda) 55%, transparent);
+  border-radius: var(--raio);
+  background:
+    repeating-linear-gradient(-45deg, var(--hachura) 0 1px, transparent 1px 7px), var(--superficie);
+  box-shadow: var(--relevo-soquete);
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease,
@@ -139,7 +167,7 @@
 }
 
 .slot--sobre {
-  transform: scale(1.02);
+  transform: translate(-2px, -2px);
 }
 
 .slot--recusado {
@@ -173,17 +201,11 @@
   }
 }
 
-.slot__rotulo {
-  color: var(--texto-suave);
-  font-size: var(--texto-xs);
-  font-weight: 500;
-}
-
-/* Encaixada, a Peça sai do soquete rebaixado e vira uma superfície em relevo. */
+/* Encaixada, a Peça sai do soquete e vira uma placa em relevo. */
 .slot--ocupado {
-  border: 1px solid var(--borda);
+  border: var(--traco);
   background: var(--superficie-card);
-  box-shadow: var(--sombra-baixa);
+  box-shadow: var(--relevo-baixo);
 }
 
 .bancada--arrastando .slot--neutro {
@@ -191,23 +213,21 @@
 }
 
 .slot--compativel {
-  border: 1.5px solid var(--sucesso);
-  background: color-mix(in srgb, var(--sucesso) 10%, var(--superficie));
+  border: 2px solid var(--sucesso);
+  background: var(--sucesso-suave);
 }
 
 .slot--bloqueado {
-  border: 1.5px solid var(--perigo);
-  background: color-mix(in srgb, var(--perigo) 9%, var(--superficie));
+  border: 2px solid var(--perigo);
+  background: var(--perigo-suave);
 }
 
 .slot--sobre.slot--compativel {
-  background: color-mix(in srgb, var(--sucesso) 22%, var(--superficie));
-  box-shadow: 0 0 0 4px var(--sucesso-suave);
+  box-shadow: 4px 4px 0 var(--sucesso);
 }
 
 .slot--sobre.slot--bloqueado {
-  background: color-mix(in srgb, var(--perigo) 20%, var(--superficie));
-  box-shadow: 0 0 0 4px var(--perigo-suave);
+  box-shadow: 4px 4px 0 var(--perigo);
 }
 
 .slot__ocupante {
@@ -221,7 +241,7 @@
   flex: 1 1 4rem;
   min-width: 0;
   font-size: var(--texto-sm);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
@@ -232,7 +252,6 @@
   height: 1.75rem;
   padding: 0;
   border-color: transparent;
-  border-radius: 50%;
   background: transparent;
   box-shadow: none;
   color: var(--texto-suave);
@@ -241,9 +260,14 @@
 }
 
 .slot__remover:hover:not(:disabled) {
-  border-color: transparent;
+  border-color: var(--perigo);
   background: var(--perigo-suave);
   color: var(--perigo);
+}
+
+.slot__remover:active:not(:disabled) {
+  box-shadow: none;
+  transform: none;
 }
 
 .slot__escolher {
@@ -251,8 +275,6 @@
   min-height: 1.75rem;
   margin-top: auto;
   padding: 0.125rem 0.75rem;
-  border-radius: var(--raio-pilula);
-  background: var(--superficie);
   font-size: var(--texto-xs);
 }
 
@@ -277,7 +299,7 @@
 .ilustracao-peca--overlay {
   width: 4rem;
   height: 4rem;
-  filter: drop-shadow(0 10px 16px rgb(26 34 51 / 0.3));
+  filter: var(--sombra-arraste);
   cursor: grabbing;
 }
 
@@ -286,7 +308,6 @@
   .bancada__gabinete {
     grid-template-areas: 'gabinete' 'placa' 'dimm' 'm2' 'gpu' 'fonte' 'sata';
     grid-template-columns: minmax(0, 1fr);
-    padding: 0.875rem 0.5rem 0.5rem;
   }
 
   .bancada__area--placa,

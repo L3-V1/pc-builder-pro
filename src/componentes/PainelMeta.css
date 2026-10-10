@@ -18,17 +18,16 @@
 }
 
 .meta__barra {
-  height: 0.625rem;
+  height: 0.875rem;
   margin-top: 0.875rem;
   overflow: hidden;
-  border-radius: var(--raio-pilula);
+  border: var(--traco);
   background: var(--fundo-suave);
-  box-shadow: var(--sombra-soquete);
+  box-shadow: var(--relevo-soquete);
 }
 
 .meta__preenchimento {
   height: 100%;
-  border-radius: inherit;
   background: var(--sucesso);
   transition: width 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
 }

@@ -5,12 +5,9 @@
   display: flex;
   flex-direction: column;
   max-height: 85dvh;
-  border: 1px solid var(--vidro-borda);
-  border-bottom: 0;
-  border-radius: var(--raio-enorme) var(--raio-enorme) 0 0;
-  background: var(--vidro-forte);
-  box-shadow: var(--sombra-alta);
-  backdrop-filter: var(--vidro-desfoque);
+  border-top: var(--traco);
+  background: var(--superficie);
+  box-shadow: 0 -4px 0 var(--tinta);
   transform: translateY(calc(100% - var(--altura-barra-inferior)));
   transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
@@ -25,22 +22,26 @@
   gap: 0;
   min-height: var(--altura-barra-inferior);
   border: 0;
-  border-radius: inherit;
   background: transparent;
   box-shadow: none;
   color: var(--texto);
   font-size: var(--texto-base);
-  font-weight: 600;
+  font-stretch: var(--largura-etiqueta);
+  font-weight: 800;
+}
+
+.painel-inferior__barra:active:not(:disabled) {
+  box-shadow: none;
+  transform: none;
 }
 
 .painel-inferior__barra::before {
   content: '';
   display: block;
   width: 2.5rem;
-  height: 0.25rem;
+  height: 0.3125rem;
   margin: 0 auto 0.5rem;
-  border-radius: var(--raio-pilula);
-  background: var(--borda);
+  border-block: 1.5px solid var(--borda);
 }
 
 .painel-inferior__conteudo {

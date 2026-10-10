@@ -48,17 +48,16 @@ function PcLigando() {
         y="4"
         width="112"
         height="142"
-        rx="10"
         className="pc-ligando__brilho"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0, 0.9, 0.5] }}
         transition={{ duration: 1.2, delay: LIGA.delay }}
       />
-      <rect x="12" y="10" width="96" height="130" rx="6" className="pc-ligando__gabinete" />
-      <rect x="22" y="22" width="56" height="106" rx="3" className="pc-ligando__vidro" />
+      <rect x="12" y="10" width="96" height="130" className="pc-ligando__gabinete" />
+      <rect x="22" y="22" width="56" height="106" className="pc-ligando__vidro" />
       <Ventoinha cx={50} cy={52} />
       <Ventoinha cx={50} cy={98} />
-      <rect x="86" y="22" width="12" height="106" rx="2" className="pc-ligando__frente" />
+      <rect x="86" y="22" width="12" height="106" className="pc-ligando__frente" />
       <motion.circle
         cx="92"
         cy="32"

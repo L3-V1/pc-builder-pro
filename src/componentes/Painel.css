@@ -1,4 +1,4 @@
-/* Seções da coluna lateral; o contêiner de vidro e o respiro vêm de .app__lateral. */
+/* Divisórias do gaveteiro lateral; o contêiner e o respiro vêm de .app__lateral. */
 .painel h2 {
   margin: 0 0 0.625rem;
   font-size: var(--texto-md);
@@ -31,11 +31,13 @@
   align-items: center;
   margin: 0;
   padding: 0.25rem 0.75rem;
-  border-radius: var(--raio-pilula);
+  border: 2px solid var(--sucesso);
+  border-radius: var(--raio);
   background: var(--sucesso-suave);
   color: var(--sucesso);
   font-size: var(--texto-sm);
-  font-weight: 600;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .painel__ok::before {
@@ -45,7 +47,8 @@
 .orcamento__medio {
   margin: 0 0 0.125rem;
   font-size: var(--texto-xl);
-  font-weight: 600;
+  font-stretch: var(--largura-etiqueta);
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.03em;
   line-height: 1.1;

@@ -15,7 +15,7 @@ export function PainelDesafio({ desafio, avaliacao, onLigar, onVoltar }: Props) 
   const cumpridos = criterios.filter((c) => c.cumprido).length
   return (
     <section className="painel painel-desafio" aria-label={`Desafio: ${desafio.titulo}`}>
-      <p className="painel-desafio__rotulo chip">Desafio</p>
+      <p className="painel-desafio__rotulo fita chip">Desafio</p>
       <h2>{desafio.titulo}</h2>
       <p className="painel__suave">{desafio.descricao}</p>
       <p className="painel-desafio__contador">

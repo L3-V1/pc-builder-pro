@@ -1,20 +1,9 @@
 .painel-desafio {
-  background: linear-gradient(var(--primario-suave), transparent);
-}
-
-.app__lateral > .painel-desafio:first-child {
-  border-radius: var(--raio-enorme) var(--raio-enorme) 0 0;
+  background: var(--primario-suave);
 }
 
 .painel-desafio__rotulo {
-  display: inline-block;
   margin: 0 0 0.5rem;
-  padding: 0.0625rem 0.625rem;
-  border-radius: var(--raio-pilula);
-  background: var(--led-suave);
-  color: var(--led-texto);
-  font-size: var(--texto-xs);
-  font-weight: 600;
 }
 
 .painel-desafio__contador {
@@ -45,7 +34,8 @@
   place-items: center;
   width: 1.125rem;
   height: 1.125rem;
-  border-radius: 50%;
+  border: 2px solid var(--borda);
+  border-radius: var(--raio);
   font-size: 0.6875rem;
   font-weight: 700;
   transform: translateY(0.1875rem);
@@ -59,11 +49,8 @@
 
 .painel-desafio__criterio--pendente::before {
   content: '' / '';
-  border: 1.5px dashed var(--texto-suave);
-}
-
-.painel-desafio__criterio--ok strong {
-  color: var(--sucesso);
+  border-color: var(--texto-suave);
+  background: var(--superficie-card);
 }
 
 .painel-desafio__acoes {

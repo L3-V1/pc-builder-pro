@@ -6,7 +6,6 @@
   place-items: center;
   padding: 1rem;
   background: var(--veu);
-  backdrop-filter: blur(6px);
 }
 
 .conclusao {
@@ -18,11 +17,10 @@
   max-height: calc(100dvh - 2rem);
   overflow-y: auto;
   padding: var(--respiro-modal);
-  border: 1px solid var(--vidro-borda);
-  border-radius: var(--raio-enorme);
-  background: var(--vidro-forte);
-  box-shadow: var(--sombra-alta);
-  backdrop-filter: var(--vidro-desfoque);
+  border: var(--traco);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  box-shadow: var(--relevo-alto);
   color: var(--texto);
   text-align: center;
 }
@@ -47,7 +45,7 @@
 
 .conclusao__resumo div {
   padding: var(--respiro-celula);
-  border-radius: var(--raio-medio);
+  border: var(--traco-fino);
   background: var(--fundo-suave);
 }
 
@@ -58,7 +56,8 @@
 
 .conclusao__resumo dd {
   margin: 0.125rem 0 0;
-  font-weight: 600;
+  font-stretch: var(--largura-etiqueta);
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 
@@ -77,9 +76,8 @@
 
 .pc-ligando__brilho {
   fill: none;
-  stroke: var(--primario);
+  stroke: var(--led);
   stroke-width: 4;
-  filter: blur(3px);
 }
 
 .pc-ligando__gabinete {

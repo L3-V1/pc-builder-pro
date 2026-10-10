@@ -5,9 +5,10 @@
 }
 
 .pontuacao__perfil {
-  padding: var(--respiro-card);
-  border-radius: var(--raio-grande);
-  background: color-mix(in srgb, var(--fundo-suave) 65%, transparent);
+  padding: var(--respiro-celula);
+  border: var(--traco-fino);
+  border-radius: var(--raio);
+  background: var(--fundo-suave);
 }
 
 .painel .pontuacao__perfil h3 {
@@ -20,23 +21,22 @@
 .pontuacao__valor {
   margin: 0.125rem 0 0;
   font-size: var(--texto-lg);
-  font-weight: 600;
+  font-stretch: var(--largura-etiqueta);
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
 
 .pontuacao__barra {
-  height: 0.375rem;
+  height: 0.625rem;
   margin: 0.375rem 0 0.625rem;
   overflow: hidden;
-  border-radius: var(--raio-pilula);
-  background: var(--fundo-suave);
-  box-shadow: var(--sombra-soquete);
+  border: 1.5px solid var(--borda);
+  background: var(--superficie);
 }
 
 .pontuacao__preenchimento {
   height: 100%;
-  border-radius: inherit;
   background: var(--primario);
   transition: width 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
 }

@@ -29,13 +29,14 @@ function Marca() {
   return (
     <div className="marca">
       <svg className="marca__simbolo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <rect width="32" height="32" rx="9" className="marca__fundo" />
-        <rect x="9" y="9" width="14" height="14" rx="3" className="marca__chip" />
+        <rect x="4" y="4" width="27" height="27" className="marca__sombra" />
+        <rect x="1" y="1" width="27" height="27" className="marca__fundo" />
+        <rect x="8" y="8" width="13" height="13" className="marca__chip" />
         <path
-          d="M12.5 9V6M16 9V6M19.5 9V6M12.5 26v-3M16 26v-3M19.5 26v-3M9 12.5H6M9 16H6M9 19.5H6M26 12.5h-3M26 16h-3M26 19.5h-3"
+          d="M11.5 8V5M14.5 8V5M17.5 8V5M11.5 24v-3M14.5 24v-3M17.5 24v-3M8 11.5H5M8 14.5H5M8 17.5H5M24 11.5h-3M24 14.5h-3M24 17.5h-3"
           className="marca__pinos"
         />
-        <circle cx="16" cy="16" r="2.5" className="marca__led" />
+        <rect x="12.5" y="12.5" width="4" height="4" className="marca__led" />
       </svg>
       <div>
         <h1>PC Builder Pro</h1>

@@ -4,15 +4,15 @@
   gap: 0.25rem;
   align-items: center;
   padding: 2rem var(--respiro-painel);
-  border: 1px dashed var(--borda);
-  border-radius: var(--raio-grande);
+  border: 2px dashed color-mix(in srgb, var(--borda) 55%, transparent);
+  border-radius: var(--raio);
+  background: var(--superficie);
   color: var(--texto-suave);
   text-align: center;
 }
 
 .estado-vazio--compacto {
   padding: 1rem var(--respiro-painel);
-  border-radius: var(--raio-medio);
 }
 
 .estado-vazio__icone {
@@ -21,9 +21,9 @@
   margin-bottom: 0.25rem;
   fill: none;
   stroke: var(--primario);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  stroke-width: 2;
 }
 
 .estado-vazio--compacto .estado-vazio__icone {
@@ -38,7 +38,7 @@
 .estado-vazio__titulo {
   color: var(--texto);
   font-size: var(--texto-sm);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .estado-vazio__dica {

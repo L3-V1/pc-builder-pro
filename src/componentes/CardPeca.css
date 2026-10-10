@@ -4,14 +4,15 @@
   gap: 0.625rem;
   height: 100%;
   padding: var(--respiro-card);
-  border: 1px solid var(--vidro-borda);
-  border-radius: var(--raio-grande);
+  border: var(--traco);
+  border-radius: var(--raio);
   background: var(--superficie-card);
-  box-shadow: var(--sombra-baixa);
+  box-shadow: var(--relevo-baixo);
 }
 
 .card-peca--bloqueada {
-  border-color: color-mix(in srgb, var(--perigo) 40%, var(--borda));
+  background: var(--superficie);
+  box-shadow: none;
 }
 
 .card-peca h3 {
@@ -30,7 +31,7 @@
 
 .card-peca__meta span + span {
   padding-left: 0.5rem;
-  border-left: 1px solid var(--borda);
+  border-left: var(--traco-fino);
 }
 
 .card-peca__preco span {
@@ -49,7 +50,8 @@
 
 .card-peca__specs li {
   padding: 0.125rem 0.5rem;
-  border-radius: var(--raio-pequeno);
+  border: var(--traco-fino);
+  border-radius: var(--raio-miudo);
   background: var(--fundo-suave);
   font-size: var(--texto-xs);
 }
@@ -65,12 +67,13 @@
 
 .card-peca__preco strong {
   font-size: var(--texto-md);
-  font-weight: 600;
+  font-stretch: var(--largura-etiqueta);
+  font-weight: 800;
 }
 
 .card-peca__bloqueios {
-  padding: 0.5rem 0.625rem;
-  border-radius: var(--raio-medio);
+  padding: var(--respiro-item);
+  border-left: 3px solid var(--perigo);
   background: var(--perigo-suave);
 }
 
@@ -84,12 +87,12 @@
 .card-peca__selo {
   display: inline-block;
   margin-bottom: 0.25rem;
-  padding: 0.0625rem 0.5rem;
-  border-radius: var(--raio-pilula);
+  padding: 0.0625rem 0.4375rem;
+  border-radius: var(--raio-miudo);
   background: var(--perigo);
   color: var(--superficie);
   font-size: var(--texto-xs);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card-peca__topo {
@@ -113,8 +116,8 @@
   min-height: 2.25rem;
   height: 2.25rem;
   padding: 0;
-  border: 1px solid var(--borda);
-  border-radius: var(--raio-pequeno);
+  border: 1.5px solid var(--borda);
+  border-radius: var(--raio);
   background: var(--fundo-suave);
   box-shadow: none;
   color: var(--texto-suave);
@@ -127,6 +130,10 @@
 
 .alca-arraste:hover {
   color: var(--primario);
+}
+
+.alca-arraste:active:not(:disabled) {
+  transform: none;
 }
 
 .alca-arraste svg {

@@ -52,7 +52,7 @@ export function SlotBancada({
         if (recusado && e.target === e.currentTarget) onFimRecusa?.()
       }}
     >
-      <span className="slot__rotulo">{slot.rotulo}</span>
+      <span className="slot__rotulo fita">{slot.rotulo}</span>
       <AnimatePresence initial={false}>
         {slot.ocupantes.map((peca, i) => (
           <motion.div

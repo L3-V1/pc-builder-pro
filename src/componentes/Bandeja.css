@@ -13,8 +13,9 @@
   align-items: center;
   margin: 0;
   padding: var(--respiro-item);
-  border-radius: var(--raio-medio);
-  background: color-mix(in srgb, var(--fundo-suave) 70%, transparent);
+  border: var(--traco-fino);
+  border-radius: var(--raio);
+  background: var(--fundo-suave);
 }
 
 .bandeja__lista li > span {
@@ -38,7 +39,7 @@
 }
 
 .bandeja {
-  outline: 1.5px dashed transparent;
+  outline: 2px dashed transparent;
   outline-offset: -0.5rem;
   transition:
     outline-color 0.15s,
@@ -51,8 +52,4 @@
 
 .bandeja--sobre {
   background: var(--sucesso-suave);
-}
-
-.app__lateral > .bandeja:last-child {
-  border-radius: 0 0 var(--raio-enorme) var(--raio-enorme);
 }
