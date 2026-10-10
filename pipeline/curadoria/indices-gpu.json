@@ -1,0 +1,122 @@
+{
+  "GeForce RTX 3050 6 GB": {
+    "jogos": 13,
+    "produtividade": 9,
+    "fonteRecomendadaW": 300
+  },
+  "Radeon RX 6600": {
+    "jogos": 22,
+    "produtividade": 12,
+    "fonteRecomendadaW": 450
+  },
+  "GeForce RTX 4060": {
+    "jogos": 26,
+    "produtividade": 20,
+    "fonteRecomendadaW": 550
+  },
+  "Radeon RX 7800 XT": {
+    "jogos": 42,
+    "produtividade": 28,
+    "fonteRecomendadaW": 700
+  },
+  "GeForce RTX 4070 SUPER": {
+    "jogos": 46,
+    "produtividade": 40,
+    "fonteRecomendadaW": 650
+  },
+  "Radeon RX 7600": {
+    "jogos": 25,
+    "produtividade": 10,
+    "fonteRecomendadaW": 550
+  },
+  "GeForce RTX 3060 12 GB": {
+    "jogos": 23,
+    "produtividade": 17,
+    "fonteRecomendadaW": 550
+  },
+  "GeForce RTX 5050": {
+    "jogos": 24,
+    "produtividade": 17,
+    "fonteRecomendadaW": 550
+  },
+  "Arc B580": {
+    "jogos": 28,
+    "produtividade": 14,
+    "fonteRecomendadaW": 600
+  },
+  "GeForce RTX 4060 Ti 8 GB": {
+    "jogos": 32,
+    "produtividade": 25,
+    "fonteRecomendadaW": 550
+  },
+  "GeForce RTX 5060": {
+    "jogos": 31,
+    "produtividade": 24,
+    "fonteRecomendadaW": 550
+  },
+  "GeForce RTX 5060 Ti 16 GB": {
+    "jogos": 36,
+    "produtividade": 30,
+    "fonteRecomendadaW": 600
+  },
+  "Radeon RX 9060 XT 8 GB": {
+    "jogos": 34,
+    "produtividade": 16,
+    "fonteRecomendadaW": 450
+  },
+  "Radeon RX 9060 XT 16 GB": {
+    "jogos": 35,
+    "produtividade": 17,
+    "fonteRecomendadaW": 450
+  },
+  "Radeon RX 7700 XT": {
+    "jogos": 37,
+    "produtividade": 23,
+    "fonteRecomendadaW": 700
+  },
+  "GeForce RTX 4070": {
+    "jogos": 40,
+    "produtividade": 34,
+    "fonteRecomendadaW": 650
+  },
+  "Radeon RX 7900 GRE": {
+    "jogos": 45,
+    "produtividade": 31,
+    "fonteRecomendadaW": 700
+  },
+  "GeForce RTX 5070": {
+    "jogos": 48,
+    "produtividade": 44,
+    "fonteRecomendadaW": 650
+  },
+  "Radeon RX 9070": {
+    "jogos": 52,
+    "produtividade": 33,
+    "fonteRecomendadaW": 650
+  },
+  "Radeon RX 9070 XT": {
+    "jogos": 56,
+    "produtividade": 37,
+    "fonteRecomendadaW": 750
+  },
+  "GeForce RTX 5070 Ti": {
+    "jogos": 58,
+    "produtividade": 55,
+    "fonteRecomendadaW": 750
+  },
+  "Radeon RX 7900 XTX": {
+    "jogos": 58,
+    "produtividade": 38,
+    "fonteRecomendadaW": 800
+  },
+  "GeForce RTX 5080": {
+    "jogos": 66,
+    "produtividade": 64,
+    "fonteRecomendadaW": 850
+  },
+  "GeForce RTX 5090": {
+    "jogos": 100,
+    "produtividade": 100,
+    "fonteRecomendadaW": 1000
+  }
+}

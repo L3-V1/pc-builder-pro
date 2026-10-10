@@ -1,0 +1,162 @@
+{
+  "ryzen-5-5600": {
+    "jogos": 62,
+    "produtividade": 26
+  },
+  "ryzen-5-7600": {
+    "jogos": 76,
+    "produtividade": 36,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "ryzen-7-7800x3d": {
+    "jogos": 89,
+    "produtividade": 43,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "core-i5-12400f": {
+    "jogos": 66,
+    "produtividade": 29
+  },
+  "core-i5-12400": {
+    "jogos": 66,
+    "produtividade": 29,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "core-i7-14700k": {
+    "jogos": 82,
+    "produtividade": 83,
+    "indiceVideoIntegrado": {
+      "jogos": 3,
+      "produtividade": 3
+    }
+  },
+  "ryzen-5-5500": {
+    "jogos": 57,
+    "produtividade": 24
+  },
+  "ryzen-5-5600g": {
+    "jogos": 55,
+    "produtividade": 25,
+    "indiceVideoIntegrado": {
+      "jogos": 5,
+      "produtividade": 5
+    }
+  },
+  "ryzen-7-5700x": {
+    "jogos": 66,
+    "produtividade": 33
+  },
+  "ryzen-7-5700x3d": {
+    "jogos": 74,
+    "produtividade": 31
+  },
+  "ryzen-5-8600g": {
+    "jogos": 68,
+    "produtividade": 35,
+    "indiceVideoIntegrado": {
+      "jogos": 8,
+      "produtividade": 8
+    }
+  },
+  "ryzen-5-9600x": {
+    "jogos": 79,
+    "produtividade": 40,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "ryzen-7-7700": {
+    "jogos": 77,
+    "produtividade": 46,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "ryzen-7-9700x": {
+    "jogos": 80,
+    "produtividade": 48,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "ryzen-7-9800x3d": {
+    "jogos": 100,
+    "produtividade": 55,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "ryzen-9-9900x": {
+    "jogos": 81,
+    "produtividade": 77,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "ryzen-9-9950x": {
+    "jogos": 83,
+    "produtividade": 100,
+    "indiceVideoIntegrado": {
+      "jogos": 2,
+      "produtividade": 2
+    }
+  },
+  "core-i3-12100f": {
+    "jogos": 55,
+    "produtividade": 20
+  },
+  "core-i5-14400f": {
+    "jogos": 70,
+    "produtividade": 43
+  },
+  "core-i5-14600kf": {
+    "jogos": 79,
+    "produtividade": 58
+  },
+  "core-i9-14900k": {
+    "jogos": 85,
+    "produtividade": 91,
+    "indiceVideoIntegrado": {
+      "jogos": 3,
+      "produtividade": 3
+    }
+  },
+  "core-ultra-5-245k": {
+    "jogos": 74,
+    "produtividade": 61,
+    "indiceVideoIntegrado": {
+      "jogos": 4,
+      "produtividade": 4
+    }
+  },
+  "core-ultra-7-265k": {
+    "jogos": 79,
+    "produtividade": 86,
+    "indiceVideoIntegrado": {
+      "jogos": 4,
+      "produtividade": 4
+    }
+  },
+  "core-ultra-9-285k": {
+    "jogos": 81,
+    "produtividade": 97,
+    "indiceVideoIntegrado": {
+      "jogos": 4,
+      "produtividade": 4
+    }
+  }
+}

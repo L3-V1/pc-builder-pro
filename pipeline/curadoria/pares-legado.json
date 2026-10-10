@@ -1,0 +1,610 @@
+[
+  {
+    "idAntigo": "cpu-ryzen-5-5600",
+    "opendbId": "04984638-674b-4384-8866-a7b20d55f8b4"
+  },
+  {
+    "idAntigo": "cpu-ryzen-5-7600",
+    "opendbId": "6b03b443-7b22-491c-b301-7e2a285359df"
+  },
+  {
+    "idAntigo": "cpu-ryzen-7-7800x3d",
+    "opendbId": "4dcfffec-423b-4052-8aca-db6c0f84bb43"
+  },
+  {
+    "idAntigo": "cpu-core-i5-12400f",
+    "opendbId": "19fbd8f2-a226-4b83-9e5d-683db638d337"
+  },
+  {
+    "idAntigo": "cpu-core-i5-12400",
+    "opendbId": "ff4b4766-4f58-4c17-915e-9881c50ed032"
+  },
+  {
+    "idAntigo": "cpu-core-i7-14700k",
+    "opendbId": "622e7110-ebf4-4040-93f6-5b37e82ff02e"
+  },
+  {
+    "idAntigo": "cpu-ryzen-5-5500",
+    "opendbId": "bf36a706-491a-45e8-ba4a-8529d3ef91e9"
+  },
+  {
+    "idAntigo": "cpu-ryzen-5-5600g",
+    "opendbId": "7564da71-725e-4a56-9d79-d80377b7a92f"
+  },
+  {
+    "idAntigo": "cpu-ryzen-7-5700x",
+    "opendbId": "e88d12fe-6384-4d97-befc-3a0ec16a9e5b"
+  },
+  {
+    "idAntigo": "cpu-ryzen-7-5700x3d",
+    "opendbId": "e11970e8-4f2c-426d-872c-92c0f4160ec4"
+  },
+  {
+    "idAntigo": "cpu-ryzen-5-8600g",
+    "opendbId": "ac833b07-53eb-4d59-8be5-bcd20ad26e79"
+  },
+  {
+    "idAntigo": "cpu-ryzen-5-9600x",
+    "opendbId": "cc0a0e08-bc25-4539-af92-952cced58623"
+  },
+  {
+    "idAntigo": "cpu-ryzen-7-7700",
+    "opendbId": "ab2ec942-57d3-436a-b041-30103c882842"
+  },
+  {
+    "idAntigo": "cpu-ryzen-7-9700x",
+    "opendbId": "09086e21-4979-41ba-a451-3f8bb1c9cc55"
+  },
+  {
+    "idAntigo": "cpu-ryzen-7-9800x3d",
+    "opendbId": "7ab840c3-8c52-4ced-a65c-7b0922ca479e"
+  },
+  {
+    "idAntigo": "cpu-ryzen-9-9900x",
+    "opendbId": "b6f5b046-0856-4ef3-9689-5d75ddc92608"
+  },
+  {
+    "idAntigo": "cpu-ryzen-9-9950x",
+    "opendbId": "ee2ac384-a2d9-4324-88af-d4765e604bcf"
+  },
+  {
+    "idAntigo": "cpu-core-i3-12100f",
+    "opendbId": "11c8a8b2-048a-4492-ba06-f2b5c8c1de60"
+  },
+  {
+    "idAntigo": "cpu-core-i5-14400f",
+    "opendbId": "0240f7db-68e5-4aac-9438-41d2f12ec15a"
+  },
+  {
+    "idAntigo": "cpu-core-i5-14600kf",
+    "opendbId": "54157058-0ff5-4208-9466-5ce1e985ca7a"
+  },
+  {
+    "idAntigo": "cpu-core-i9-14900k",
+    "opendbId": "e80823a0-6dd5-47d0-b69b-852e92acf964"
+  },
+  {
+    "idAntigo": "cpu-core-ultra-5-245k",
+    "opendbId": "7cbf59b4-fe0b-4941-8d69-51bb87d8fe51"
+  },
+  {
+    "idAntigo": "cpu-core-ultra-7-265k",
+    "opendbId": "4d8d9d6b-723c-40ee-b1e9-e6665c58ae75"
+  },
+  {
+    "idAntigo": "cpu-core-ultra-9-285k",
+    "opendbId": "e2cf2532-8c57-4ec2-96fb-4aaa846c8ca6"
+  },
+  {
+    "idAntigo": "placa-mae-a520m-k",
+    "opendbId": "dc9a038e-50b1-4786-8897-779d81880bc7"
+  },
+  {
+    "idAntigo": "placa-mae-b650m-aorus-elite",
+    "opendbId": "7f7be474-a523-4d11-8216-52df0f7dff4f"
+  },
+  {
+    "idAntigo": "placa-mae-b650-tomahawk-wifi",
+    "opendbId": "e8a66e2e-c53b-49d3-a31c-49a9ee8fe389"
+  },
+  {
+    "idAntigo": "placa-mae-b650i-aorus-ultra",
+    "opendbId": "b4e0aad9-1b52-4f41-829a-178ce89a40dd"
+  },
+  {
+    "idAntigo": "placa-mae-b760m-ds3h-ddr4",
+    "opendbId": "4c76a2b8-7b81-4809-98c9-efd7b7abce5d"
+  },
+  {
+    "idAntigo": "placa-mae-z790-pro-atx-ddr4",
+    "opendbId": "45c7b84e-3c38-4b1f-a423-7e70246d035e"
+  },
+  {
+    "idAntigo": "placa-mae-b450m-ds3h-v2",
+    "opendbId": "5346fa47-52a4-4cee-870d-2d5f73ce6b9a"
+  },
+  {
+    "idAntigo": "placa-mae-b550m-aorus-elite",
+    "opendbId": "53041278-b67f-4b54-a06e-d8a5b637b19f"
+  },
+  {
+    "idAntigo": "placa-mae-b550-tomahawk",
+    "opendbId": "9e91addb-96f5-4d11-88d4-339ea4a4adc8"
+  },
+  {
+    "idAntigo": "placa-mae-b550i-aorus-pro-ax",
+    "opendbId": "ff1a2e23-c482-4cd0-821e-9cf7892577ab"
+  },
+  {
+    "idAntigo": "placa-mae-a620m-hdv-m2",
+    "opendbId": "f05945cd-b2d1-4f0f-b218-4252666bd208"
+  },
+  {
+    "idAntigo": "placa-mae-b850m-gaming-x-wifi6e",
+    "opendbId": "6e4b2f24-aea8-43e1-916c-e95b3d66f986"
+  },
+  {
+    "idAntigo": "placa-mae-x870-aorus-elite-wifi7",
+    "opendbId": "4908ca77-5a92-4784-8632-249ef7302173"
+  },
+  {
+    "idAntigo": "placa-mae-x870e-tomahawk-wifi",
+    "opendbId": "c31899c8-303d-488c-941a-a38c57d4ed18"
+  },
+  {
+    "idAntigo": "placa-mae-h610m-k-ddr4",
+    "opendbId": "765c7b1a-13ea-4f5a-a0c1-efa4e25799d2"
+  },
+  {
+    "idAntigo": "placa-mae-b760m-gaming-plus-wifi",
+    "opendbId": "2c845d7b-a59d-4261-974a-d15887c1bc84"
+  },
+  {
+    "idAntigo": "placa-mae-b760i-aorus-pro",
+    "opendbId": "898b240a-4fe1-42b3-8597-39a3c933882f"
+  },
+  {
+    "idAntigo": "placa-mae-z790-aorus-elite-ax",
+    "opendbId": "3f542394-55eb-4bcb-9b7f-ea1d362c67fc"
+  },
+  {
+    "idAntigo": "placa-mae-b860m-ds3h",
+    "opendbId": "6969573e-a077-4c85-b8b7-725a5412a151"
+  },
+  {
+    "idAntigo": "placa-mae-b860m-gaming-plus-wifi",
+    "opendbId": "4ce77400-c210-476e-960e-a944ab12dc47"
+  },
+  {
+    "idAntigo": "placa-mae-b860i-aorus-pro-ice",
+    "opendbId": "b39d9164-8806-4783-96b2-234e8b54caff"
+  },
+  {
+    "idAntigo": "placa-mae-z890-aorus-elite-wifi7",
+    "opendbId": "7f0af0d4-462e-4b3d-9edd-587d1d974523"
+  },
+  {
+    "idAntigo": "ram-corsair-16gb-ddr4-3200",
+    "opendbId": "e757213d-4364-40f7-aa89-28e3402d1625"
+  },
+  {
+    "idAntigo": "ram-kingston-32gb-ddr4-3200",
+    "opendbId": "4adaab03-d5f5-40dc-a649-562c725250d6"
+  },
+  {
+    "idAntigo": "ram-kingston-16gb-ddr5-5200",
+    "opendbId": "216b9ffd-bb6c-46c9-ba2c-8e34a09d0493"
+  },
+  {
+    "idAntigo": "ram-corsair-32gb-ddr5-6000",
+    "opendbId": "693db7cd-a751-4f63-907e-b3917242b71f"
+  },
+  {
+    "idAntigo": "ram-gskill-64gb-ddr5-6000",
+    "opendbId": "1d9ee9e2-9021-4b1c-9ad9-c05974c7118b"
+  },
+  {
+    "idAntigo": "ram-kingston-8gb-ddr4-3200",
+    "opendbId": "4067c61b-7153-41a5-ade0-8097c961e9a3"
+  },
+  {
+    "idAntigo": "ram-kingston-16gb-ddr4-3200-1x16",
+    "opendbId": "23b50e24-532f-431d-939f-c374a9598bed"
+  },
+  {
+    "idAntigo": "ram-tforce-16gb-ddr4-3200",
+    "opendbId": "074bb2e2-01bb-4e2a-b77d-4871a292343c"
+  },
+  {
+    "idAntigo": "ram-xpg-16gb-ddr4-3600",
+    "opendbId": "7772ddf5-94c6-473f-946c-2662a03a1903"
+  },
+  {
+    "idAntigo": "ram-corsair-32gb-ddr4-3600",
+    "opendbId": "9d72c301-9b8a-490d-8b8d-94946795b857"
+  },
+  {
+    "idAntigo": "ram-kingston-64gb-ddr4-3200",
+    "opendbId": "c1960c58-531b-4c79-a70f-0b09ce9c610c"
+  },
+  {
+    "idAntigo": "ram-kingston-16gb-ddr5-5600-1x16",
+    "opendbId": "ab825268-d09e-429c-8982-8bcbd9b3fe42"
+  },
+  {
+    "idAntigo": "ram-xpg-32gb-ddr5-6000",
+    "opendbId": "d6cc91b4-91cd-493d-9d3b-cc447fedf5ec"
+  },
+  {
+    "idAntigo": "ram-kingston-32gb-ddr5-6000",
+    "opendbId": "2a0dea2c-2b14-48e0-a4b7-caeabcfd2882"
+  },
+  {
+    "idAntigo": "ram-gskill-32gb-ddr5-6400",
+    "opendbId": "2bfdfcb9-4dd8-4dc2-81d6-0311f1f4769e"
+  },
+  {
+    "idAntigo": "ram-corsair-48gb-ddr5-6000",
+    "opendbId": "3e95257d-38ca-4080-84f2-53178e44b6fe"
+  },
+  {
+    "idAntigo": "ram-kingston-64gb-ddr5-5600",
+    "opendbId": "36eb0449-c7c7-4bfb-8b8f-5c3a3c0eb066"
+  },
+  {
+    "idAntigo": "ram-corsair-96gb-ddr5-6000",
+    "opendbId": "1bbd4b83-20f2-4899-aa73-efc2f68eccf8"
+  },
+  {
+    "idAntigo": "gpu-rtx-3050-6gb",
+    "opendbId": "8551f753-32f1-43ab-bf8c-883780754637"
+  },
+  {
+    "idAntigo": "gpu-rx-6600",
+    "opendbId": "b4c2363b-c797-4db1-935f-b212decee3c2"
+  },
+  {
+    "idAntigo": "gpu-rtx-4060",
+    "opendbId": "c52fca1d-a5a6-4fe3-82f7-1ee25bab24f9"
+  },
+  {
+    "idAntigo": "gpu-rx-7800-xt",
+    "opendbId": "6656520d-37e0-4b03-9bd2-a9be8f0d041e"
+  },
+  {
+    "idAntigo": "gpu-rtx-4070-super",
+    "opendbId": "b81b5813-7344-4945-b08f-ab043b683feb"
+  },
+  {
+    "idAntigo": "gpu-rx-7600",
+    "opendbId": "f9810520-c808-42ec-9088-d7c617f96bfe"
+  },
+  {
+    "idAntigo": "gpu-rtx-3060-12gb",
+    "opendbId": "d339d248-6ff4-4877-a5c2-6559ed02891b"
+  },
+  {
+    "idAntigo": "gpu-rtx-5050",
+    "opendbId": "9fdabb5f-5e72-4573-b0b3-54c5cc647251"
+  },
+  {
+    "idAntigo": "gpu-arc-b580",
+    "opendbId": "9726f67b-c89a-44e4-98a8-71ad10e56636"
+  },
+  {
+    "idAntigo": "gpu-rtx-4060-ti-8gb",
+    "opendbId": "0d8afe46-5bd1-49ce-b335-5a70921c9cd2"
+  },
+  {
+    "idAntigo": "gpu-rtx-5060",
+    "opendbId": "38a5e8f1-2ec8-45e6-a10c-7d5b3f396864"
+  },
+  {
+    "idAntigo": "gpu-rtx-5060-ti-16gb",
+    "opendbId": "8d381036-f095-4801-9488-4bf892de7502"
+  },
+  {
+    "idAntigo": "gpu-rx-9060-xt-8gb",
+    "opendbId": "b238fe2f-6b2c-4dba-b0ef-358eba561f79"
+  },
+  {
+    "idAntigo": "gpu-rx-9060-xt-16gb",
+    "opendbId": "c455db13-cfcf-4131-bd37-77394f20084e"
+  },
+  {
+    "idAntigo": "gpu-rx-7700-xt",
+    "opendbId": "d63e110c-c952-4ff6-b391-a3152f5cf101"
+  },
+  {
+    "idAntigo": "gpu-rtx-4070",
+    "opendbId": "8f5377ab-c934-4d36-90b7-02630184e60a"
+  },
+  {
+    "idAntigo": "gpu-rx-7900-gre",
+    "opendbId": "adf3e83a-1e96-4d56-a4b1-c326e9a3db3b"
+  },
+  {
+    "idAntigo": "gpu-rtx-5070",
+    "opendbId": "4bdc437a-3d5d-48d6-ad25-a7d152147057"
+  },
+  {
+    "idAntigo": "gpu-rx-9070",
+    "opendbId": "a01cd62d-86e3-42d0-bd28-5b1f6abb486c"
+  },
+  {
+    "idAntigo": "gpu-rx-9070-xt",
+    "opendbId": "cf1d6e8d-5dcb-4def-8619-0c896519700a"
+  },
+  {
+    "idAntigo": "gpu-rtx-5070-ti",
+    "opendbId": "1d98afc3-0383-4516-9215-559c2639624f"
+  },
+  {
+    "idAntigo": "gpu-rx-7900-xtx",
+    "opendbId": "156b2295-5351-4953-af58-fd5f258699f4"
+  },
+  {
+    "idAntigo": "gpu-rtx-5080",
+    "opendbId": "7af2ad3e-af7c-4e2e-92a4-1f0826ff66bc"
+  },
+  {
+    "idAntigo": "gpu-rtx-5090",
+    "opendbId": "3abe46e1-090c-4998-947f-6bd607f1cfe8"
+  },
+  {
+    "idAntigo": "armazenamento-nvme-500gb",
+    "opendbId": "55f4c581-d519-4126-b190-3e2c910c3786"
+  },
+  {
+    "idAntigo": "armazenamento-nvme-1tb",
+    "opendbId": "748b426b-9bf2-4173-9045-50df084150ec"
+  },
+  {
+    "idAntigo": "armazenamento-nvme-2tb",
+    "opendbId": "1ff1b67b-9ebe-4c8f-8b32-74458509e529"
+  },
+  {
+    "idAntigo": "armazenamento-sata-480gb",
+    "opendbId": "5f20fef5-4dee-423f-83f1-b5faa7a785e1"
+  },
+  {
+    "idAntigo": "armazenamento-sata-1tb",
+    "opendbId": "5bed7f34-c7f3-406e-a58e-e767626a5d60"
+  },
+  {
+    "idAntigo": "armazenamento-kingston-nv3-500gb",
+    "opendbId": "45397f72-1dd9-4e8f-8cba-04cd607c503b"
+  },
+  {
+    "idAntigo": "armazenamento-kingston-nv3-1tb",
+    "opendbId": "ec230d28-7bdb-49b0-a690-0ed4c372b0a1"
+  },
+  {
+    "idAntigo": "armazenamento-kingston-nv3-2tb",
+    "opendbId": "19174a92-15a0-4561-9d13-375e36c1edca"
+  },
+  {
+    "idAntigo": "armazenamento-crucial-p310-1tb",
+    "opendbId": "00b812fe-7098-4716-8ce9-855ea3674b76"
+  },
+  {
+    "idAntigo": "armazenamento-kingston-kc3000-1tb",
+    "opendbId": "b6e946a5-c5dc-43e1-a85c-1937d8840fa1"
+  },
+  {
+    "idAntigo": "armazenamento-samsung-990-pro-1tb",
+    "opendbId": "96a56703-3f5b-4115-b3f9-b72525fb9c9a"
+  },
+  {
+    "idAntigo": "armazenamento-samsung-990-evo-plus-2tb",
+    "opendbId": "5affddfa-ce8e-4221-a106-20fc98590a4d"
+  },
+  {
+    "idAntigo": "armazenamento-wd-sn850x-4tb",
+    "opendbId": "8c158a8f-7bb6-4f1c-806d-c0aebcccf4fd"
+  },
+  {
+    "idAntigo": "armazenamento-kingston-a400-240gb",
+    "opendbId": "a0ae597c-72d1-4241-83be-2205be763281"
+  },
+  {
+    "idAntigo": "armazenamento-kingston-a400-960gb",
+    "opendbId": "4ff3903c-7387-48c0-8427-494c1f358930"
+  },
+  {
+    "idAntigo": "armazenamento-crucial-bx500-1tb",
+    "opendbId": "ef453a0e-0e50-4b11-a38c-f0e5ec82f280"
+  },
+  {
+    "idAntigo": "armazenamento-samsung-870-evo-500gb",
+    "opendbId": "e8b7e94c-468f-44e4-a98e-ba5dc78d5dde"
+  },
+  {
+    "idAntigo": "armazenamento-wd-sa510-m2-500gb",
+    "opendbId": "87b8d60e-74aa-4c9a-9b48-a20a77d35b76"
+  },
+  {
+    "idAntigo": "fonte-mwe-450",
+    "opendbId": "8e50ffed-6140-4384-bd5b-c5eba7ee447e"
+  },
+  {
+    "idAntigo": "fonte-cx550",
+    "opendbId": "fed29ff1-a26d-4172-869c-5e73eb6f39ad"
+  },
+  {
+    "idAntigo": "fonte-cx650",
+    "opendbId": "37cafcad-23ec-4dc2-945a-15ebfaf516b0"
+  },
+  {
+    "idAntigo": "fonte-rm750e",
+    "opendbId": "0ecaed55-dba6-49ce-91ea-4ab0115dab9e"
+  },
+  {
+    "idAntigo": "fonte-rm850x",
+    "opendbId": "c292ea59-42df-4e06-94bc-d0c04c4ad8ce"
+  },
+  {
+    "idAntigo": "fonte-xpg-pylon-550",
+    "opendbId": "540b3b7c-93b0-4df0-813e-3b5eae99d27e"
+  },
+  {
+    "idAntigo": "fonte-mwe-650-bronze-v3",
+    "opendbId": "f7f9a5e1-8261-4634-a849-744228aaa2cf"
+  },
+  {
+    "idAntigo": "fonte-msi-mag-a650bn",
+    "opendbId": "c3fd0787-a223-467c-abc4-e6327e928738"
+  },
+  {
+    "idAntigo": "fonte-gamemax-gp650",
+    "opendbId": "cd420eb5-ba70-4272-bc71-b737d080e922"
+  },
+  {
+    "idAntigo": "fonte-msi-mag-a750gl",
+    "opendbId": "59ab914c-4404-453f-b30d-0038be8f4c55"
+  },
+  {
+    "idAntigo": "fonte-xpg-core-reactor-ii-750",
+    "opendbId": "5617c4bc-6cb9-4284-b39f-82ae6e47825d"
+  },
+  {
+    "idAntigo": "fonte-seasonic-focus-gx-850",
+    "opendbId": "875dea1d-7996-42c1-a95d-9b28ea634309"
+  },
+  {
+    "idAntigo": "fonte-msi-mag-a850gl",
+    "opendbId": "08e59cd7-a286-4d1f-917c-aa2b1816067e"
+  },
+  {
+    "idAntigo": "fonte-corsair-rm1000e",
+    "opendbId": "96154827-9e13-4b49-bb78-e9cd8e0eaa01"
+  },
+  {
+    "idAntigo": "fonte-corsair-hx1200i",
+    "opendbId": "656ab78c-42e0-456a-8a09-76eda7711297"
+  },
+  {
+    "idAntigo": "fonte-seasonic-prime-tx-1000",
+    "opendbId": "7c20c4cf-1046-4a2d-a507-4ac5dd3b2b78"
+  },
+  {
+    "idAntigo": "gabinete-kmex-matx",
+    "opendbId": "05666e34-c785-476e-93e3-403b70448d3c"
+  },
+  {
+    "idAntigo": "gabinete-nzxt-h5-flow",
+    "opendbId": "15228416-2ac1-4ff8-9039-d006728ae451"
+  },
+  {
+    "idAntigo": "gabinete-corsair-4000d",
+    "opendbId": "d9f40ae5-b61c-40e4-8de2-e259d68bf4ff"
+  },
+  {
+    "idAntigo": "gabinete-lian-li-a4-h2o",
+    "opendbId": "2caa6d20-79b7-4649-b15d-16f0fd7ed3cf"
+  },
+  {
+    "idAntigo": "gabinete-pichau-ventus",
+    "opendbId": "9c2259e4-2162-48c6-ae4f-fe574ad520fb"
+  },
+  {
+    "idAntigo": "gabinete-lian-li-lancool-216",
+    "opendbId": "c039163b-f5f6-4802-91f7-a01aed59d7de"
+  },
+  {
+    "idAntigo": "gabinete-lian-li-o11-dynamic-evo",
+    "opendbId": "c0bde235-2d8a-4238-aa54-b4bec84ff0d7"
+  },
+  {
+    "idAntigo": "gabinete-montech-xr",
+    "opendbId": "406d60d8-bc33-4efd-adc3-16f5e767ff37"
+  },
+  {
+    "idAntigo": "gabinete-rise-mode-galaxy-glass",
+    "opendbId": "21045b9f-b20f-44f9-b09a-58b125804b02"
+  },
+  {
+    "idAntigo": "gabinete-deepcool-ch560",
+    "opendbId": "eb071567-8673-4157-b321-d8da71be8604"
+  },
+  {
+    "idAntigo": "gabinete-corsair-3000d-airflow",
+    "opendbId": "50fef1c4-86d2-4c81-979f-83f2c04daedd"
+  },
+  {
+    "idAntigo": "gabinete-nzxt-h9-flow",
+    "opendbId": "15b80641-01d5-4412-928f-c6d327f2bb77"
+  },
+  {
+    "idAntigo": "gabinete-fractal-north",
+    "opendbId": "e19f2f10-a072-4360-b592-14c1edf6c49f"
+  },
+  {
+    "idAntigo": "gabinete-cooler-master-q300l",
+    "opendbId": "14790124-e637-43a5-b47d-4551dd07d040"
+  },
+  {
+    "idAntigo": "gabinete-montech-air-100",
+    "opendbId": "be55ee4c-bb04-4013-a83f-7d2fcadada7e"
+  },
+  {
+    "idAntigo": "gabinete-cooler-master-nr200p",
+    "opendbId": "e15a77d4-985e-46f4-92d9-940304fa3c8b"
+  },
+  {
+    "idAntigo": "cooler-deepcool-ak400",
+    "opendbId": "33a453d9-3238-4fb6-959f-513808b48ab3"
+  },
+  {
+    "idAntigo": "cooler-deepcool-ak620",
+    "opendbId": "f27cfb9c-3550-4afe-95a2-8925dc6aa9c1"
+  },
+  {
+    "idAntigo": "cooler-cooler-master-hyper-212-am4",
+    "opendbId": "e6654154-2082-4a02-8a84-d9fe71d7be1c"
+  },
+  {
+    "idAntigo": "cooler-corsair-h100i-elite",
+    "opendbId": "16a33464-9adf-4d8c-ab33-e916534d990a"
+  },
+  {
+    "idAntigo": "cooler-arctic-lf3-360",
+    "opendbId": "e659af0a-6894-4348-ac74-500368adfa38"
+  },
+  {
+    "idAntigo": "cooler-deepcool-ag400",
+    "opendbId": "fb655074-42f7-4940-bac9-ce9fb00c804f"
+  },
+  {
+    "idAntigo": "cooler-thermalright-peerless-assassin-120-se",
+    "opendbId": "e6567fa6-7b4a-411a-9f50-9189d4e067ce"
+  },
+  {
+    "idAntigo": "cooler-thermalright-phantom-spirit-120-se",
+    "opendbId": "27cc18ba-4130-4f93-bac2-a9aac3cd3adf"
+  },
+  {
+    "idAntigo": "cooler-noctua-nh-d15-g2",
+    "opendbId": "95f33860-0a64-4d74-82e0-5bfabefea62a"
+  },
+  {
+    "idAntigo": "cooler-be-quiet-dark-rock-pro-5",
+    "opendbId": "2ffd26af-de14-45e3-afa4-61fd0825ea94"
+  },
+  {
+    "idAntigo": "cooler-arctic-lf3-240",
+    "opendbId": "1604941f-5494-4d48-a652-757ce3af9ce9"
+  },
+  {
+    "idAntigo": "cooler-nzxt-kraken-240",
+    "opendbId": "4cbb8aec-663d-43ff-9b78-05e92da9fef4"
+  },
+  {
+    "idAntigo": "cooler-cooler-master-masterliquid-240l-core",
+    "opendbId": "7a569268-232c-47aa-a664-b4f161d8d042"
+  },
+  {
+    "idAntigo": "cooler-deepcool-ls720",
+    "opendbId": "cf546ab9-e0ba-40d4-b09b-572d3c5817e5"
+  }
+]

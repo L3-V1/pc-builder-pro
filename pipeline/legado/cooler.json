@@ -1,0 +1,184 @@
+[
+  {
+    "id": "cooler-deepcool-ak400",
+    "nome": "AK400",
+    "marca": "Deepcool",
+    "faixaPreco": {
+      "min": 135,
+      "medio": 150,
+      "max": 168
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700"]
+  },
+  {
+    "id": "cooler-deepcool-ak620",
+    "nome": "AK620",
+    "marca": "Deepcool",
+    "faixaPreco": {
+      "min": 252,
+      "medio": 280,
+      "max": 314
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-cooler-master-hyper-212-am4",
+    "nome": "Hyper 212 Black",
+    "marca": "Cooler Master",
+    "faixaPreco": {
+      "min": 144,
+      "medio": 160,
+      "max": 179
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "LGA1700"]
+  },
+  {
+    "id": "cooler-corsair-h100i-elite",
+    "nome": "iCUE H100i Elite 240 mm",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 630,
+      "medio": 700,
+      "max": 784
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-arctic-lf3-360",
+    "nome": "Liquid Freezer III 360",
+    "marca": "Arctic",
+    "faixaPreco": {
+      "min": 810,
+      "medio": 900,
+      "max": 1008
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-deepcool-ag400",
+    "nome": "AG400",
+    "marca": "Deepcool",
+    "faixaPreco": {
+      "min": 162,
+      "medio": 180,
+      "max": 202
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-thermalright-peerless-assassin-120-se",
+    "nome": "Peerless Assassin 120 SE",
+    "marca": "Thermalright",
+    "faixaPreco": {
+      "min": 261,
+      "medio": 290,
+      "max": 325
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-thermalright-phantom-spirit-120-se",
+    "nome": "Phantom Spirit 120 SE",
+    "marca": "Thermalright",
+    "faixaPreco": {
+      "min": 279,
+      "medio": 310,
+      "max": 347
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-noctua-nh-d15-g2",
+    "nome": "NH-D15 G2",
+    "marca": "Noctua",
+    "faixaPreco": {
+      "min": 1440,
+      "medio": 1600,
+      "max": 1792
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-be-quiet-dark-rock-pro-5",
+    "nome": "Dark Rock Pro 5",
+    "marca": "be quiet!",
+    "faixaPreco": {
+      "min": 531,
+      "medio": 590,
+      "max": 661
+    },
+    "categoria": "cooler",
+    "tipo": "ar",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-arctic-lf3-240",
+    "nome": "Liquid Freezer III 240",
+    "marca": "Arctic",
+    "faixaPreco": {
+      "min": 558,
+      "medio": 620,
+      "max": 694
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-nzxt-kraken-240",
+    "nome": "Kraken 240",
+    "marca": "NZXT",
+    "faixaPreco": {
+      "min": 504,
+      "medio": 560,
+      "max": 627
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-cooler-master-masterliquid-240l-core",
+    "nome": "MasterLiquid 240L Core",
+    "marca": "Cooler Master",
+    "faixaPreco": {
+      "min": 405,
+      "medio": 450,
+      "max": 504
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  },
+  {
+    "id": "cooler-deepcool-ls720",
+    "nome": "LS720",
+    "marca": "Deepcool",
+    "faixaPreco": {
+      "min": 855,
+      "medio": 950,
+      "max": 1064
+    },
+    "categoria": "cooler",
+    "tipo": "water",
+    "socketsSuportados": ["AM4", "AM5", "LGA1700", "LGA1851"]
+  }
+]

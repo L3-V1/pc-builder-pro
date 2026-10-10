@@ -1,0 +1,210 @@
+[
+  {
+    "id": "fonte-mwe-450",
+    "nome": "MWE 450 V2",
+    "marca": "Cooler Master",
+    "faixaPreco": {
+      "min": 207,
+      "medio": 230,
+      "max": 258
+    },
+    "categoria": "fonte",
+    "potenciaW": 450,
+    "certificacao": "80 Plus"
+  },
+  {
+    "id": "fonte-cx550",
+    "nome": "CX550",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 297,
+      "medio": 330,
+      "max": 370
+    },
+    "categoria": "fonte",
+    "potenciaW": 550,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-cx650",
+    "nome": "CX650",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 360,
+      "medio": 400,
+      "max": 448
+    },
+    "categoria": "fonte",
+    "potenciaW": 650,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-rm750e",
+    "nome": "RM750e",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 675,
+      "medio": 750,
+      "max": 840
+    },
+    "categoria": "fonte",
+    "potenciaW": 750,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-rm850x",
+    "nome": "RM850x",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 900,
+      "medio": 1000,
+      "max": 1120
+    },
+    "categoria": "fonte",
+    "potenciaW": 850,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-xpg-pylon-550",
+    "nome": "Pylon 550",
+    "marca": "XPG",
+    "faixaPreco": {
+      "min": 315,
+      "medio": 350,
+      "max": 392
+    },
+    "categoria": "fonte",
+    "potenciaW": 550,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-mwe-650-bronze-v3",
+    "nome": "MWE 650 Bronze V3",
+    "marca": "Cooler Master",
+    "faixaPreco": {
+      "min": 405,
+      "medio": 450,
+      "max": 504
+    },
+    "categoria": "fonte",
+    "potenciaW": 650,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-msi-mag-a650bn",
+    "nome": "MAG A650BN",
+    "marca": "MSI",
+    "faixaPreco": {
+      "min": 261,
+      "medio": 290,
+      "max": 325
+    },
+    "categoria": "fonte",
+    "potenciaW": 650,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-gamemax-gp650",
+    "nome": "GP650",
+    "marca": "Gamemax",
+    "faixaPreco": {
+      "min": 297,
+      "medio": 330,
+      "max": 370
+    },
+    "categoria": "fonte",
+    "potenciaW": 650,
+    "certificacao": "Bronze"
+  },
+  {
+    "id": "fonte-msi-mag-a750gl",
+    "nome": "MAG A750GL",
+    "marca": "MSI",
+    "faixaPreco": {
+      "min": 585,
+      "medio": 650,
+      "max": 728
+    },
+    "categoria": "fonte",
+    "potenciaW": 750,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-xpg-core-reactor-ii-750",
+    "nome": "Core Reactor II 750",
+    "marca": "XPG",
+    "faixaPreco": {
+      "min": 747,
+      "medio": 830,
+      "max": 930
+    },
+    "categoria": "fonte",
+    "potenciaW": 750,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-seasonic-focus-gx-850",
+    "nome": "Focus GX-850",
+    "marca": "Seasonic",
+    "faixaPreco": {
+      "min": 1215,
+      "medio": 1350,
+      "max": 1512
+    },
+    "categoria": "fonte",
+    "potenciaW": 850,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-msi-mag-a850gl",
+    "nome": "MAG A850GL",
+    "marca": "MSI",
+    "faixaPreco": {
+      "min": 765,
+      "medio": 850,
+      "max": 952
+    },
+    "categoria": "fonte",
+    "potenciaW": 850,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-corsair-rm1000e",
+    "nome": "RM1000e",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 1260,
+      "medio": 1400,
+      "max": 1568
+    },
+    "categoria": "fonte",
+    "potenciaW": 1000,
+    "certificacao": "Gold"
+  },
+  {
+    "id": "fonte-corsair-hx1200i",
+    "nome": "HX1200i",
+    "marca": "Corsair",
+    "faixaPreco": {
+      "min": 1755,
+      "medio": 1950,
+      "max": 2184
+    },
+    "categoria": "fonte",
+    "potenciaW": 1200,
+    "certificacao": "Platinum"
+  },
+  {
+    "id": "fonte-seasonic-prime-tx-1000",
+    "nome": "Prime TX-1000",
+    "marca": "Seasonic",
+    "faixaPreco": {
+      "min": 2430,
+      "medio": 2700,
+      "max": 3024
+    },
+    "categoria": "fonte",
+    "potenciaW": 1000,
+    "certificacao": "Titanium"
+  }
+]
