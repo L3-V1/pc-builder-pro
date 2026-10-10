@@ -1,6 +1,6 @@
 # Roadmap: PC Builder Pro
 
-> Criado em 2026-10-06 · Última atualização 2026-10-09
+> Criado em 2026-10-06 · Última atualização 2026-10-10
 
 ## Visão geral
 
@@ -50,7 +50,7 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Em andamento |
 | 9    | Catálogo fora do bundle, carregado por fetch            | Concluída    |
 | 10   | Busca assíncrona com debounce e cancelamento            | Concluída    |
-| 11   | Pipeline de specs a partir do OpenDB                    | Não iniciada |
+| 11   | Pipeline de specs a partir do OpenDB                    | Concluída    |
 | 12   | Coleta de preços no Mercado Livre                       | Não iniciada |
 | 13   | Publicação diária automática com validação              | Não iniciada |
 | 14   | Peças fora de venda no app                              | Não iniciada |
@@ -261,12 +261,12 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Entregáveis:**
 
-- [ ] Script Node (`pipeline/`) que baixa o OpenDB numa tag ou commit fixado e normaliza cada Categoria para o schema do app (socket, tipoRam, formFactor, consumo etc.), descartando Peças com specs incompletas.
-- [ ] Arquivo curado de Índices de desempenho de CPU e GPU. CPU ou GPU sem Índice fica de fora.
-- [ ] Slug determinístico `categoria-marca-modelo` e tabela fixa de aliases dos 152 IDs antigos, com teste garantindo que todos resolvem.
-- [ ] Enquanto não há coleta de preços, as Faixas de preço vêm do Catálogo antigo, e só entram Peças que têm preço.
-- [ ] Atribuição ao BuildCores OpenDB (CC BY-NC-SA 4.0) no app e no README.
-- [ ] Testes do normalizador com amostras do OpenDB, incluindo Peças com specs faltando.
+- [x] Script Node (`pipeline/`) que baixa o OpenDB numa tag ou commit fixado e normaliza cada Categoria para o schema do app (socket, tipoRam, formFactor, consumo etc.), descartando Peças com specs incompletas.
+- [x] Arquivo curado de Índices de desempenho de CPU e GPU. CPU ou GPU sem Índice fica de fora.
+- [x] Slug determinístico `categoria-marca-modelo` e tabela fixa de aliases dos 152 IDs antigos, com teste garantindo que todos resolvem.
+- [x] Enquanto não há coleta de preços, as Faixas de preço vêm do Catálogo antigo, e só entram Peças que têm preço.
+- [x] Atribuição ao BuildCores OpenDB (CC BY-NC-SA 4.0) no app e no README.
+- [x] Testes do normalizador com amostras do OpenDB, incluindo Peças com specs faltando.
 
 **Critério de conclusão:** `npm run pipeline` gera `/dados/` válido pelo schema, os 152 IDs antigos resolvem, os Desafios continuam com solução e o app funciona com os dados gerados.
 

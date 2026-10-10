@@ -1,5 +1,10 @@
 # Como atualizar o Catálogo
 
+> **Desde a Fase 11 os dados vêm de `npm run pipeline`.** `public/dados/` é gerado a partir do
+> BuildCores OpenDB e da curadoria em `pipeline/curadoria/`; os preços e a Data de referência vêm
+> de `pipeline/legado/` (o Catálogo de 2026-10 descrito abaixo). Não edite `public/dados/` à mão:
+> veja a seção "Pipeline de specs" do README. Este guia será reescrito na Fase 15.
+
 > Última atualização: Data de referência 2026-10, 152 Peças.
 
 O Catálogo fica em `public/dados/`, um JSON por Categoria, mais `meta.json` com a Data de referência. O app busca esses arquivos por `fetch` (eles não entram no bundle) e os valida pelo schema (`src/catalogo/schema.ts`) ao carregar; os testes dos dados também os validam. Uma Peça inválida derruba o carregamento e o `npm test`.
