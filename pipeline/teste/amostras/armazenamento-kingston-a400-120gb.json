@@ -1,0 +1,16 @@
+{
+  "opendb_id": "1acd9fb8-1058-464f-aff0-92a6cc6b4ebf",
+  "capacity": 120,
+  "storage_type": "SSD",
+  "form_factor": "2.5\"",
+  "interface": "SATA 6.0 Gb/s",
+  "nvme": false,
+  "lighting": [],
+  "metadata": {
+    "name": "Kingston A400 120GB SSD 2.5\" SATA",
+    "manufacturer": "Kingston",
+    "part_numbers": ["SA400S37", "120G", "SA400S37/120G"],
+    "series": "A400",
+    "variant": "120GB"
+  }
+}

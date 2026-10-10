@@ -1,0 +1,56 @@
+{
+  "opendb_id": "ff4b4766-4f58-4c17-915e-9881c50ed032",
+  "series": "Core i5 12000",
+  "microarchitecture": "Alder Lake",
+  "coreFamily": "Golden Cove",
+  "socket": "LGA 1700",
+  "cores": {
+    "total": 6,
+    "performance": 0,
+    "efficiency": 0,
+    "threads": 12
+  },
+  "clocks": {
+    "performance": {
+      "base": 2.5,
+      "boost": 4.4
+    },
+    "efficiency": {
+      "base": 0,
+      "boost": 0
+    }
+  },
+  "cache": {
+    "l1": "80KB per core",
+    "l2": 7.5,
+    "l3": 18
+  },
+  "specifications": {
+    "tdp": 65,
+    "ppt": 117,
+    "integratedGraphics": {
+      "model": "Intel UHD Graphics 730",
+      "baseClock": 300,
+      "boostClock": 1.45,
+      "shaderCount": 192
+    },
+    "eccSupport": false,
+    "includesCooler": true,
+    "packaging": "Boxed",
+    "lithography": "Intel 7",
+    "simultaneousMultithreading": true,
+    "memory": {
+      "maxSupport": 128,
+      "types": ["DDR5", "DDR4"],
+      "channels": 2
+    }
+  },
+  "metadata": {
+    "name": "Intel Core i5 12400",
+    "manufacturer": "Intel",
+    "part_numbers": ["BX8071512400"],
+    "series": "Core i5 12000",
+    "variant": "12400",
+    "releaseYear": 2022
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "opendb_id": "04984638-674b-4384-8866-a7b20d55f8b4",
+  "series": "Ryzen 5 5000",
+  "microarchitecture": "Zen 3",
+  "coreFamily": "Vermeer",
+  "socket": "AM4",
+  "cores": {
+    "total": 6,
+    "performance": 0,
+    "efficiency": 0,
+    "threads": 12
+  },
+  "clocks": {
+    "performance": {
+      "base": 3.5,
+      "boost": 4.4
+    },
+    "efficiency": {
+      "base": 0,
+      "boost": 0
+    }
+  },
+  "cache": {
+    "l1": "64KB per core (32KB Instruction + 48KB Data)",
+    "l2": 3,
+    "l3": 32
+  },
+  "specifications": {
+    "tdp": 65,
+    "ppt": 88,
+    "integratedGraphics": {
+      "model": "None",
+      "baseClock": 0,
+      "boostClock": 0,
+      "shaderCount": 0
+    },
+    "eccSupport": true,
+    "includesCooler": true,
+    "packaging": "Boxed",
+    "lithography": "TSMC 7nm FinFET, 12nm (Globalfoundries)",
+    "simultaneousMultithreading": true,
+    "memory": {
+      "maxSupport": 128,
+      "types": ["DDR4"],
+      "channels": 2
+    }
+  },
+  "metadata": {
+    "name": "AMD Ryzen 5 5600",
+    "manufacturer": "AMD",
+    "part_numbers": ["100-100000927BOX", "AMD Ryzen 5 5600", "100100000927BOX"],
+    "series": "Ryzen 5 5000",
+    "variant": "5600",
+    "releaseYear": 2022
+  }
+}
