@@ -1,11 +1,25 @@
+/// <reference types="node" />
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { lerCatalogoPublicado } from '../teste/dadosPublicados'
+import { ARQUIVOS_DADOS } from './carregar'
 import { CATEGORIAS, FORM_FACTORS, SOCKETS, TIPOS_RAM } from './schema'
 import { validarCatalogo } from './validar'
 
-const { dataReferencia, pecas } = lerCatalogoPublicado()
+const { dataReferencia, aliases, pecas } = lerCatalogoPublicado()
 
-// Links compartilhados e soluções dos Desafios dependem destes IDs.
+// IDs do Catálogo anterior ao pipeline do OpenDB: links, Builds salvas e Desafios dependem deles.
+const legado = new URL('../../pipeline/legado/', import.meta.url)
+const IDS_ANTIGOS = ARQUIVOS_DADOS.flatMap((arquivo) =>
+  (JSON.parse(readFileSync(new URL(`${arquivo}.json`, legado), 'utf8')) as { id: string }[]).map(
+    (p) => p.id,
+  ),
+)
+
+const porId = new Map(pecas.map((p) => [p.id, p]))
+const resolver = (id: string) => porId.get(aliases[id] ?? id)
+
+// Recorte dos IDs antigos mais citados, conferidos um a um além da varredura completa.
 const IDS_ANTERIORES_A_FASE_8 = [
   'cpu-ryzen-5-5600',
   'cpu-ryzen-5-7600',
@@ -53,8 +67,8 @@ const IDS_ANTERIORES_A_FASE_8 = [
 
 describe('Catálogo real', () => {
   it('passa em validarCatalogo sem erros', () => {
-    const resultado = validarCatalogo({ dataReferencia, pecas })
-    expect(resultado).toEqual({ ok: true, catalogo: { dataReferencia, pecas } })
+    const resultado = validarCatalogo({ dataReferencia, aliases, pecas })
+    expect(resultado).toEqual({ ok: true, catalogo: { dataReferencia, aliases, pecas } })
   })
 
   it('tem de 140 a 160 Peças e pelo menos 12 por categoria', () => {
@@ -86,9 +100,19 @@ describe('Catálogo real', () => {
     ).toBe(true)
   })
 
-  it('mantém os IDs das Peças anteriores à Fase 8', () => {
-    const ids = new Set(pecas.map((p) => p.id))
-    for (const id of IDS_ANTERIORES_A_FASE_8) expect(ids.has(id), id).toBe(true)
+  it('os 152 IDs antigos resolvem por aliases para uma Peça da mesma Categoria', () => {
+    expect(IDS_ANTIGOS).toHaveLength(152)
+    for (const id of IDS_ANTIGOS) {
+      expect(resolver(id)?.categoria, id).toBe(
+        id.startsWith('placa-mae-') ? 'placa-mae' : id.split('-')[0],
+      )
+    }
+    for (const id of IDS_ANTERIORES_A_FASE_8) expect(resolver(id), id).toBeDefined()
+  })
+
+  it('todo ID atual é um slug categoria-marca-modelo', () => {
+    for (const p of pecas)
+      expect(p.id, p.nome).toMatch(new RegExp(`^${p.categoria}-[a-z0-9]+(-[a-z0-9]+)*$`))
   })
 
   it('cobre os casos de borda da Fase 2', () => {
@@ -102,7 +126,7 @@ describe('Catálogo real', () => {
 
   it('tem índices de desempenho coerentes entre as Peças', () => {
     const indices = (id: string) => {
-      const p = pecas.find((x) => x.id === id)
+      const p = resolver(id)
       if (p?.categoria !== 'cpu' && p?.categoria !== 'gpu') throw new Error(id)
       return p.indices
     }
@@ -123,7 +147,7 @@ describe('Catálogo real', () => {
 
   describe('ordem dos Índices em pares de referência', () => {
     const indices = (id: string) => {
-      const p = pecas.find((x) => x.id === id)
+      const p = resolver(id)
       expect(p?.categoria === 'cpu' || p?.categoria === 'gpu', id).toBe(true)
       return p?.categoria === 'cpu' || p?.categoria === 'gpu' ? p.indices : undefined
     }

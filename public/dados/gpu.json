@@ -1,434 +1,266 @@
 [
   {
-    "id": "gpu-rtx-3050-6gb",
-    "nome": "GeForce RTX 3050 6 GB",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 1080,
-      "medio": 1200,
-      "max": 1344
-    },
+    "id": "gpu-asus-dual-geforce-rtx-3050-6gb-gddr6-black",
+    "nome": "DUAL GeForce RTX 3050 6GB GDDR6 Black",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 1080, "medio": 1200, "max": 1344 },
     "categoria": "gpu",
     "consumoW": 70,
     "vramGB": 6,
     "fonteRecomendadaW": 300,
-    "indices": {
-      "jogos": 13,
-      "produtividade": 9
-    }
+    "indices": { "jogos": 13, "produtividade": 9 }
   },
   {
-    "id": "gpu-rx-6600",
-    "nome": "Radeon RX 6600",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 1260,
-      "medio": 1400,
-      "max": 1568
-    },
+    "id": "gpu-asrock-amd-radeon-rx-6600-challenger-8gb-gddr6",
+    "nome": "AMD Radeon RX 6600 Challenger 8GB GDDR6",
+    "marca": "ASRock",
+    "faixaPreco": { "min": 1260, "medio": 1400, "max": 1568 },
     "categoria": "gpu",
     "consumoW": 132,
     "vramGB": 8,
     "fonteRecomendadaW": 450,
-    "indices": {
-      "jogos": 22,
-      "produtividade": 12
-    }
+    "indices": { "jogos": 22, "produtividade": 12 }
   },
   {
-    "id": "gpu-rtx-4060",
-    "nome": "GeForce RTX 4060",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 1665,
-      "medio": 1850,
-      "max": 2072
-    },
+    "id": "gpu-asus-dual-geforce-rtx-4060-8gb-gddr6-black",
+    "nome": "DUAL GeForce RTX 4060 8GB GDDR6 Black",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 1665, "medio": 1850, "max": 2072 },
     "categoria": "gpu",
     "consumoW": 115,
     "vramGB": 8,
     "fonteRecomendadaW": 550,
-    "indices": {
-      "jogos": 26,
-      "produtividade": 20
-    }
+    "indices": { "jogos": 26, "produtividade": 20 }
   },
   {
-    "id": "gpu-rx-7800-xt",
-    "nome": "Radeon RX 7800 XT",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 2970,
-      "medio": 3300,
-      "max": 3696
-    },
+    "id": "gpu-powercolor-amd-radeon-rx-7800-xt-16gb-gddr6",
+    "nome": "AMD Radeon RX 7800 XT 16GB GDDR6",
+    "marca": "PowerColor",
+    "faixaPreco": { "min": 2970, "medio": 3300, "max": 3696 },
     "categoria": "gpu",
     "consumoW": 263,
     "vramGB": 16,
     "fonteRecomendadaW": 700,
-    "indices": {
-      "jogos": 42,
-      "produtividade": 28
-    }
+    "indices": { "jogos": 42, "produtividade": 28 }
   },
   {
-    "id": "gpu-rtx-4070-super",
-    "nome": "GeForce RTX 4070 Super",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 3870,
-      "medio": 4300,
-      "max": 4816
-    },
+    "id": "gpu-nvidia-geforce-rtx-4070-super-12gb-gddr6x-founders-edition",
+    "nome": "GeForce RTX 4070 SUPER 12GB GDDR6X Founders Edition",
+    "marca": "NVIDIA",
+    "faixaPreco": { "min": 3870, "medio": 4300, "max": 4816 },
     "categoria": "gpu",
     "consumoW": 220,
     "vramGB": 12,
     "fonteRecomendadaW": 650,
-    "indices": {
-      "jogos": 46,
-      "produtividade": 40
-    }
+    "indices": { "jogos": 46, "produtividade": 40 }
   },
   {
-    "id": "gpu-rx-7600",
-    "nome": "Radeon RX 7600",
+    "id": "gpu-amd-radeon-rx-7600-8gb-gddr6-black",
+    "nome": "Radeon RX 7600 8GB GDDR6 Black",
     "marca": "AMD",
-    "faixaPreco": {
-      "min": 1440,
-      "medio": 1600,
-      "max": 1792
-    },
+    "faixaPreco": { "min": 1440, "medio": 1600, "max": 1792 },
     "categoria": "gpu",
     "consumoW": 165,
     "vramGB": 8,
     "fonteRecomendadaW": 550,
-    "indices": {
-      "jogos": 25,
-      "produtividade": 10
-    }
+    "indices": { "jogos": 25, "produtividade": 10 }
   },
   {
-    "id": "gpu-rtx-3060-12gb",
-    "nome": "GeForce RTX 3060 12 GB",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 1890,
-      "medio": 2100,
-      "max": 2352
-    },
+    "id": "gpu-asus-dual-geforce-rtx-3060-12gb-12-gb",
+    "nome": "DUAL GeForce RTX 3060 12GB 12 GB",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 1890, "medio": 2100, "max": 2352 },
     "categoria": "gpu",
     "consumoW": 170,
     "vramGB": 12,
     "fonteRecomendadaW": 550,
-    "indices": {
-      "jogos": 23,
-      "produtividade": 17
-    }
+    "indices": { "jogos": 23, "produtividade": 17 }
   },
   {
-    "id": "gpu-rtx-5050",
-    "nome": "GeForce RTX 5050",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 1710,
-      "medio": 1900,
-      "max": 2128
-    },
+    "id": "gpu-asus-dual-geforce-rtx-5050-8gb-gddr6",
+    "nome": "Dual GeForce RTX 5050 8GB GDDR6",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 1710, "medio": 1900, "max": 2128 },
     "categoria": "gpu",
     "consumoW": 130,
     "vramGB": 8,
     "fonteRecomendadaW": 550,
-    "indices": {
-      "jogos": 24,
-      "produtividade": 17
-    }
+    "indices": { "jogos": 24, "produtividade": 17 }
   },
   {
-    "id": "gpu-arc-b580",
-    "nome": "Arc B580",
-    "marca": "Intel",
-    "faixaPreco": {
-      "min": 1710,
-      "medio": 1900,
-      "max": 2128
-    },
+    "id": "gpu-gunnir-intel-arc-b580-index-12g",
+    "nome": "Intel Arc B580 Index 12G",
+    "marca": "GUNNIR",
+    "faixaPreco": { "min": 1710, "medio": 1900, "max": 2128 },
     "categoria": "gpu",
     "consumoW": 190,
     "vramGB": 12,
     "fonteRecomendadaW": 600,
-    "indices": {
-      "jogos": 28,
-      "produtividade": 14
-    }
+    "indices": { "jogos": 28, "produtividade": 14 }
   },
   {
-    "id": "gpu-rtx-4060-ti-8gb",
-    "nome": "GeForce RTX 4060 Ti 8 GB",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 2745,
-      "medio": 3050,
-      "max": 3416
-    },
+    "id": "gpu-nvidia-founders-edition-geforce-rtx-4060-ti-8gb-gddr6",
+    "nome": "Founders Edition GeForce RTX 4060 Ti 8GB GDDR6",
+    "marca": "NVIDIA",
+    "faixaPreco": { "min": 2745, "medio": 3050, "max": 3416 },
     "categoria": "gpu",
-    "consumoW": 160,
+    "consumoW": 165,
     "vramGB": 8,
     "fonteRecomendadaW": 550,
-    "indices": {
-      "jogos": 32,
-      "produtividade": 25
-    }
+    "indices": { "jogos": 32, "produtividade": 25 }
   },
   {
-    "id": "gpu-rtx-5060",
-    "nome": "GeForce RTX 5060",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 1890,
-      "medio": 2100,
-      "max": 2352
-    },
+    "id": "gpu-asus-dual-geforce-rtx-5060-evo-edition-8gb-gddr7",
+    "nome": "Dual GeForce RTX 5060 EVO Edition 8GB GDDR7",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 1890, "medio": 2100, "max": 2352 },
     "categoria": "gpu",
-    "consumoW": 145,
+    "consumoW": 150,
     "vramGB": 8,
     "fonteRecomendadaW": 550,
-    "indices": {
-      "jogos": 31,
-      "produtividade": 24
-    }
+    "indices": { "jogos": 31, "produtividade": 24 }
   },
   {
-    "id": "gpu-rtx-5060-ti-16gb",
-    "nome": "GeForce RTX 5060 Ti 16 GB",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 3240,
-      "medio": 3600,
-      "max": 4032
-    },
+    "id": "gpu-asus-dual-geforce-rtx-5060-ti-16gb-gddr7",
+    "nome": "Dual GeForce RTX 5060 Ti 16GB GDDR7",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 3240, "medio": 3600, "max": 4032 },
     "categoria": "gpu",
     "consumoW": 180,
     "vramGB": 16,
     "fonteRecomendadaW": 600,
-    "indices": {
-      "jogos": 36,
-      "produtividade": 30
-    }
+    "indices": { "jogos": 36, "produtividade": 30 }
   },
   {
-    "id": "gpu-rx-9060-xt-8gb",
-    "nome": "Radeon RX 9060 XT 8 GB",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 1890,
-      "medio": 2100,
-      "max": 2352
-    },
+    "id": "gpu-asrock-amd-radeon-rx-9060-xt-challenger-8gb-gddr6-oc",
+    "nome": "AMD Radeon RX 9060 XT Challenger 8GB GDDR6 OC",
+    "marca": "ASRock",
+    "faixaPreco": { "min": 1890, "medio": 2100, "max": 2352 },
     "categoria": "gpu",
     "consumoW": 150,
     "vramGB": 8,
     "fonteRecomendadaW": 450,
-    "indices": {
-      "jogos": 34,
-      "produtividade": 16
-    }
+    "indices": { "jogos": 34, "produtividade": 16 }
   },
   {
-    "id": "gpu-rx-9060-xt-16gb",
-    "nome": "Radeon RX 9060 XT 16 GB",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 2655,
-      "medio": 2950,
-      "max": 3304
-    },
+    "id": "gpu-asrock-amd-radeon-rx-9060-xt-challenger-16gb-oc",
+    "nome": "AMD Radeon RX 9060 XT Challenger 16GB OC",
+    "marca": "ASRock",
+    "faixaPreco": { "min": 2655, "medio": 2950, "max": 3304 },
     "categoria": "gpu",
     "consumoW": 160,
     "vramGB": 16,
     "fonteRecomendadaW": 450,
-    "indices": {
-      "jogos": 35,
-      "produtividade": 17
-    }
+    "indices": { "jogos": 35, "produtividade": 17 }
   },
   {
-    "id": "gpu-rx-7700-xt",
-    "nome": "Radeon RX 7700 XT",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 3060,
-      "medio": 3400,
-      "max": 3808
-    },
+    "id": "gpu-asrock-amd-radeon-rx-7700-xt-challenger-12gb-oc",
+    "nome": "AMD Radeon RX 7700 XT Challenger 12GB OC",
+    "marca": "ASRock",
+    "faixaPreco": { "min": 3060, "medio": 3400, "max": 3808 },
     "categoria": "gpu",
     "consumoW": 245,
     "vramGB": 12,
     "fonteRecomendadaW": 700,
-    "indices": {
-      "jogos": 37,
-      "produtividade": 23
-    }
+    "indices": { "jogos": 37, "produtividade": 23 }
   },
   {
-    "id": "gpu-rtx-4070",
-    "nome": "GeForce RTX 4070",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 3870,
-      "medio": 4300,
-      "max": 4816
-    },
+    "id": "gpu-nvidia-founders-edition-geforce-rtx-4070-12gb-gddr6x",
+    "nome": "Founders Edition GeForce RTX 4070 12GB GDDR6X",
+    "marca": "NVIDIA",
+    "faixaPreco": { "min": 3870, "medio": 4300, "max": 4816 },
     "categoria": "gpu",
     "consumoW": 200,
     "vramGB": 12,
     "fonteRecomendadaW": 650,
-    "indices": {
-      "jogos": 40,
-      "produtividade": 34
-    }
+    "indices": { "jogos": 40, "produtividade": 34 }
   },
   {
-    "id": "gpu-rx-7900-gre",
-    "nome": "Radeon RX 7900 GRE",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 4050,
-      "medio": 4500,
-      "max": 5040
-    },
+    "id": "gpu-powercolor-amd-radeon-rx-7900-gre-fighter-oc-16gb-gddr6",
+    "nome": "AMD Radeon RX 7900 GRE Fighter OC 16GB GDDR6",
+    "marca": "PowerColor",
+    "faixaPreco": { "min": 4050, "medio": 4500, "max": 5040 },
     "categoria": "gpu",
     "consumoW": 260,
     "vramGB": 16,
     "fonteRecomendadaW": 700,
-    "indices": {
-      "jogos": 45,
-      "produtividade": 31
-    }
+    "indices": { "jogos": 45, "produtividade": 31 }
   },
   {
-    "id": "gpu-rtx-5070",
-    "nome": "GeForce RTX 5070",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 4095,
-      "medio": 4550,
-      "max": 5096
-    },
+    "id": "gpu-nvidia-geforce-rtx-5070-founders-edition-12gb-gddr7",
+    "nome": "GeForce RTX 5070 Founders Edition 12GB GDDR7",
+    "marca": "NVIDIA",
+    "faixaPreco": { "min": 4095, "medio": 4550, "max": 5096 },
     "categoria": "gpu",
     "consumoW": 250,
     "vramGB": 12,
     "fonteRecomendadaW": 650,
-    "indices": {
-      "jogos": 48,
-      "produtividade": 44
-    }
+    "indices": { "jogos": 48, "produtividade": 44 }
   },
   {
-    "id": "gpu-rx-9070",
-    "nome": "Radeon RX 9070",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 3420,
-      "medio": 3800,
-      "max": 4256
-    },
+    "id": "gpu-sapphire-pulse-amd-radeon-rx-9070-16gb-gddr6",
+    "nome": "PULSE AMD Radeon RX 9070 16GB GDDR6",
+    "marca": "Sapphire",
+    "faixaPreco": { "min": 3420, "medio": 3800, "max": 4256 },
     "categoria": "gpu",
     "consumoW": 220,
     "vramGB": 16,
     "fonteRecomendadaW": 650,
-    "indices": {
-      "jogos": 52,
-      "produtividade": 33
-    }
+    "indices": { "jogos": 52, "produtividade": 33 }
   },
   {
-    "id": "gpu-rx-9070-xt",
-    "nome": "Radeon RX 9070 XT",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 3780,
-      "medio": 4200,
-      "max": 4704
-    },
+    "id": "gpu-asrock-amd-radeon-rx-9070-xt-challenger-16gb",
+    "nome": "AMD Radeon RX 9070 XT Challenger 16GB",
+    "marca": "ASRock",
+    "faixaPreco": { "min": 3780, "medio": 4200, "max": 4704 },
     "categoria": "gpu",
     "consumoW": 304,
     "vramGB": 16,
     "fonteRecomendadaW": 750,
-    "indices": {
-      "jogos": 56,
-      "produtividade": 37
-    }
+    "indices": { "jogos": 56, "produtividade": 37 }
   },
   {
-    "id": "gpu-rtx-5070-ti",
-    "nome": "GeForce RTX 5070 Ti",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 5850,
-      "medio": 6500,
-      "max": 7280
-    },
+    "id": "gpu-gigabyte-geforce-rtx-5070-ti-gaming-16g",
+    "nome": "GeForce RTX 5070 Ti GAMING 16G",
+    "marca": "Gigabyte",
+    "faixaPreco": { "min": 5850, "medio": 6500, "max": 7280 },
     "categoria": "gpu",
     "consumoW": 300,
     "vramGB": 16,
     "fonteRecomendadaW": 750,
-    "indices": {
-      "jogos": 58,
-      "produtividade": 55
-    }
+    "indices": { "jogos": 58, "produtividade": 55 }
   },
   {
-    "id": "gpu-rx-7900-xtx",
-    "nome": "Radeon RX 7900 XTX",
-    "marca": "AMD",
-    "faixaPreco": {
-      "min": 4950,
-      "medio": 5500,
-      "max": 6160
-    },
+    "id": "gpu-powercolor-red-devil-amd-radeon-rx-7900-xtx-24gb-gddr6",
+    "nome": "Red Devil AMD Radeon RX 7900 XTX 24GB GDDR6",
+    "marca": "PowerColor",
+    "faixaPreco": { "min": 4950, "medio": 5500, "max": 6160 },
     "categoria": "gpu",
     "consumoW": 355,
     "vramGB": 24,
     "fonteRecomendadaW": 800,
-    "indices": {
-      "jogos": 58,
-      "produtividade": 38
-    }
+    "indices": { "jogos": 58, "produtividade": 38 }
   },
   {
-    "id": "gpu-rtx-5080",
-    "nome": "GeForce RTX 5080",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 8100,
-      "medio": 9000,
-      "max": 10080
-    },
+    "id": "gpu-nvidia-founders-edition-geforce-rtx-5080-16gb-gddr7",
+    "nome": "Founders Edition GeForce RTX 5080 16GB GDDR7",
+    "marca": "NVIDIA",
+    "faixaPreco": { "min": 8100, "medio": 9000, "max": 10080 },
     "categoria": "gpu",
     "consumoW": 360,
     "vramGB": 16,
     "fonteRecomendadaW": 850,
-    "indices": {
-      "jogos": 66,
-      "produtividade": 64
-    }
+    "indices": { "jogos": 66, "produtividade": 64 }
   },
   {
-    "id": "gpu-rtx-5090",
-    "nome": "GeForce RTX 5090",
-    "marca": "Nvidia",
-    "faixaPreco": {
-      "min": 19800,
-      "medio": 22000,
-      "max": 24640
-    },
+    "id": "gpu-nvidia-geforce-rtx-5090-founders-edition-32-gddr7",
+    "nome": "GeForce RTX 5090 Founders Edition 32 GDDR7",
+    "marca": "NVIDIA",
+    "faixaPreco": { "min": 19800, "medio": 22000, "max": 24640 },
     "categoria": "gpu",
     "consumoW": 575,
     "vramGB": 32,
     "fonteRecomendadaW": 1000,
-    "indices": {
-      "jogos": 100,
-      "produtividade": 100
-    }
+    "indices": { "jogos": 100, "produtividade": 100 }
   }
 ]

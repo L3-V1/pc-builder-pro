@@ -1,193 +1,129 @@
 [
   {
-    "id": "gabinete-kmex-matx",
-    "nome": "Cube mATX",
-    "marca": "KMEX",
-    "faixaPreco": {
-      "min": 180,
-      "medio": 200,
-      "max": 224
-    },
+    "id": "gabinete-thermaltake-versa-h17-micro-atx-mini-tower-black",
+    "nome": "Versa H17 Micro ATX Mini Tower Black",
+    "marca": "Thermaltake",
+    "faixaPreco": { "min": 180, "medio": 200, "max": 224 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-nzxt-h5-flow",
-    "nome": "H5 Flow",
+    "id": "gabinete-nzxt-h5-flow-rgb-2023-atx-mid-tower-black-tempered-glass",
+    "nome": "H5 Flow RGB (2023) ATX Mid Tower Black Tempered Glass",
     "marca": "NZXT",
-    "faixaPreco": {
-      "min": 540,
-      "medio": 600,
-      "max": 672
-    },
+    "faixaPreco": { "min": 540, "medio": 600, "max": 672 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-corsair-4000d",
-    "nome": "4000D Airflow",
+    "id": "gabinete-corsair-icue-4000d-rgb-airflow-mid-tower-atx-case-black",
+    "nome": "iCUE 4000D RGB AIRFLOW Mid-Tower ATX Case - Black",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 630,
-      "medio": 700,
-      "max": 784
-    },
+    "faixaPreco": { "min": 630, "medio": 700, "max": 784 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-lian-li-a4-h2o",
-    "nome": "A4-H2O",
+    "id": "gabinete-lian-li-a4-h20-mini-itx-desktop-silver-mesh-side-panel",
+    "nome": "A4-H20 Mini-ITX Desktop Silver Mesh Side Panel",
     "marca": "Lian Li",
-    "faixaPreco": {
-      "min": 810,
-      "medio": 900,
-      "max": 1008
-    },
+    "faixaPreco": { "min": 810, "medio": 900, "max": 1008 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["Mini-ITX"]
   },
   {
-    "id": "gabinete-pichau-ventus",
-    "nome": "Ventus Compacto",
-    "marca": "Pichau",
-    "faixaPreco": {
-      "min": 225,
-      "medio": 250,
-      "max": 280
-    },
+    "id": "gabinete-deepcool-matrexx-30-microatx-mini-tower-case",
+    "nome": "MATREXX 30 MicroATX Mini Tower Case",
+    "marca": "DeepCool",
+    "faixaPreco": { "min": 225, "medio": 250, "max": 280 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-lian-li-lancool-216",
-    "nome": "Lancool 216",
+    "id": "gabinete-lian-li-lancool-216-rgb-eatx-mid-tower-white-tempered-glass",
+    "nome": "LANCOOL 216 RGB EATX Mid Tower White Tempered Glass",
     "marca": "Lian Li",
-    "faixaPreco": {
-      "min": 675,
-      "medio": 750,
-      "max": 840
-    },
+    "faixaPreco": { "min": 675, "medio": 750, "max": 840 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-lian-li-o11-dynamic-evo",
-    "nome": "O11 Dynamic EVO",
+    "id": "gabinete-lian-li-o11-dynamic-evo-xl-eatx-full-tower-white-tempered-glass",
+    "nome": "O11 Dynamic EVO XL EATX Full Tower White Tempered Glass",
     "marca": "Lian Li",
-    "faixaPreco": {
-      "min": 1305,
-      "medio": 1450,
-      "max": 1624
-    },
+    "faixaPreco": { "min": 1305, "medio": 1450, "max": 1624 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-montech-xr",
-    "nome": "XR",
-    "marca": "Montech",
-    "faixaPreco": {
-      "min": 405,
-      "medio": 450,
-      "max": 504
-    },
+    "id": "gabinete-montech-xr-panoramic-high-airflow-atx-pc-case-3-argb-pwm-fans-black",
+    "nome": "XR Panoramic High Airflow ATX PC Case, 3 ARGB PWM Fans, Black",
+    "marca": "MONTECH",
+    "faixaPreco": { "min": 405, "medio": 450, "max": 504 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-rise-mode-galaxy-glass",
-    "nome": "Galaxy Glass",
-    "marca": "Rise Mode",
-    "faixaPreco": {
-      "min": 252,
-      "medio": 280,
-      "max": 314
-    },
+    "id": "gabinete-deepcool-matrexx-55-atx-mid-tower-black-with-tempered-glass-side-panel-and-front-panel-usb-3-2-gen-1-type-a-usb-2-0-type-a",
+    "nome": "MATREXX 55 ATX Mid Tower Black with Tempered Glass Side Panel and Front Panel USB 3.2 Gen 1 Type-A, USB 2.0 Type-A",
+    "marca": "DeepCool",
+    "faixaPreco": { "min": 252, "medio": 280, "max": 314 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-deepcool-ch560",
-    "nome": "CH560",
-    "marca": "Deepcool",
-    "faixaPreco": {
-      "min": 630,
-      "medio": 700,
-      "max": 784
-    },
+    "id": "gabinete-deepcool-ch560-digital-atx-mid-tower-white-tempered-glass",
+    "nome": "CH560 DIGITAL ATX Mid Tower White Tempered Glass",
+    "marca": "DeepCool",
+    "faixaPreco": { "min": 630, "medio": 700, "max": 784 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-corsair-3000d-airflow",
-    "nome": "3000D Airflow",
+    "id": "gabinete-corsair-3000d-atx-mid-tower-black-rgb-airflow-tempered-glass",
+    "nome": "3000D ATX Mid Tower Black RGB AIRFLOW Tempered Glass",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 387,
-      "medio": 430,
-      "max": 482
-    },
+    "faixaPreco": { "min": 387, "medio": 430, "max": 482 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-nzxt-h9-flow",
-    "nome": "H9 Flow",
+    "id": "gabinete-nzxt-h9-flow-atx-mid-tower-black-tempered-glass-side-panel",
+    "nome": "H9 Flow ATX Mid Tower Black Tempered Glass Side Panel",
     "marca": "NZXT",
-    "faixaPreco": {
-      "min": 1215,
-      "medio": 1350,
-      "max": 1512
-    },
+    "faixaPreco": { "min": 1215, "medio": 1350, "max": 1512 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-fractal-north",
-    "nome": "North",
+    "id": "gabinete-fractal-design-north-mid-tower-case-chalk-white-clear-window",
+    "nome": "North Mid-Tower Case (Chalk White, Clear Window)",
     "marca": "Fractal Design",
-    "faixaPreco": {
-      "min": 1170,
-      "medio": 1300,
-      "max": 1456
-    },
+    "faixaPreco": { "min": 1170, "medio": 1300, "max": 1456 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["ATX", "Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-cooler-master-q300l",
-    "nome": "MasterBox Q300L",
+    "id": "gabinete-cooler-master-masterbox-q300l-black-micro-atx-tower-acrylic-side-panel",
+    "nome": "MasterBox Q300L Black Micro ATX Tower Acrylic Side Panel",
     "marca": "Cooler Master",
-    "faixaPreco": {
-      "min": 279,
-      "medio": 310,
-      "max": 347
-    },
+    "faixaPreco": { "min": 279, "medio": 310, "max": 347 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-montech-air-100",
-    "nome": "Air 100 ARGB",
-    "marca": "Montech",
-    "faixaPreco": {
-      "min": 378,
-      "medio": 420,
-      "max": 470
-    },
+    "id": "gabinete-montech-air-100-argb-microatx-mid-tower-black-tempered-glass-side-panel",
+    "nome": "AIR 100 ARGB MicroATX Mid Tower Black Tempered Glass Side Panel",
+    "marca": "MONTECH",
+    "faixaPreco": { "min": 378, "medio": 420, "max": 470 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["Micro-ATX", "Mini-ITX"]
   },
   {
-    "id": "gabinete-cooler-master-nr200p",
-    "nome": "MasterBox NR200P",
+    "id": "gabinete-cooler-master-masterbox-nr200p-mini-itx-desktop-orange-steel-side-panel",
+    "nome": "MasterBox NR200P Mini-ITX Desktop Orange Steel Side Panel",
     "marca": "Cooler Master",
-    "faixaPreco": {
-      "min": 585,
-      "medio": 650,
-      "max": 728
-    },
+    "faixaPreco": { "min": 585, "medio": 650, "max": 728 },
     "categoria": "gabinete",
     "formFactorsSuportados": ["Mini-ITX"]
   }

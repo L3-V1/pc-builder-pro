@@ -14,6 +14,7 @@ export function lerCatalogoPublicado(): Catalogo {
   const meta = ler('meta') as { dataReferencia: unknown }
   const resultado = validarCatalogo({
     dataReferencia: meta.dataReferencia,
+    aliases: ler('aliases'),
     pecas: ARQUIVOS_DADOS.flatMap((arquivo) => ler(arquivo) as unknown[]),
   })
   if (!resultado.ok) {

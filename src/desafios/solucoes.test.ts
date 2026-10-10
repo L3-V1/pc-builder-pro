@@ -4,7 +4,8 @@ import { lerCatalogoPublicado } from '../teste/dadosPublicados'
 import { avaliarDesafio } from '../motor'
 import { remontarBuild, resolverIds } from '../persistencia/remontar'
 
-// Soluções de referência: ficam no teste para não irem ao bundle como "resposta".
+// Soluções de referência: ficam no teste para não irem ao bundle como "resposta". Usam os IDs
+// anteriores ao pipeline do OpenDB, resolvidos pelos aliases publicados.
 const SOLUCOES: Record<string, string[]> = {
   'primeiro-pc': [
     'placa-mae-h610m-k-ddr4',
@@ -100,7 +101,7 @@ const SOLUCOES: Record<string, string[]> = {
 }
 
 const desafios = carregarDesafios()
-const { pecas } = lerCatalogoPublicado()
+const { pecas, aliases } = lerCatalogoPublicado()
 
 describe('soluções de referência', () => {
   it('todo Desafio tem uma solução de referência', () => {
@@ -108,7 +109,7 @@ describe('soluções de referência', () => {
   })
 
   it.each(desafios.map((d) => [d.id, d] as const))('%s é possível', (id, desafio) => {
-    const { pecas: solucao, desconhecidos } = resolverIds(SOLUCOES[id] ?? [], pecas)
+    const { pecas: solucao, desconhecidos } = resolverIds(SOLUCOES[id] ?? [], pecas, aliases)
     expect(desconhecidos).toEqual([])
     const { build, recusadas } = remontarBuild(solucao)
     expect(recusadas).toEqual([])

@@ -13,7 +13,7 @@ test('o build referencia os assets por caminho relativo', () => {
 // O Catálogo é buscado em dados/*.json; nenhuma Peça pode vir embutida no JavaScript.
 test('o bundle não contém nenhum ID de Peça de public/dados/', () => {
   const ids = readdirSync('public/dados')
-    .filter((f) => f !== 'meta.json')
+    .filter((f) => f !== 'meta.json' && f !== 'aliases.json')
     .flatMap((f) => JSON.parse(readFileSync(`public/dados/${f}`, 'utf-8')) as { id: string }[])
     .map((p) => p.id)
   expect(ids.length).toBeGreaterThan(0)

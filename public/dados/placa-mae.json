@@ -1,13 +1,9 @@
 [
   {
-    "id": "placa-mae-a520m-k",
-    "nome": "A520M-K",
-    "marca": "ASUS",
-    "faixaPreco": {
-      "min": 405,
-      "medio": 450,
-      "max": 504
-    },
+    "id": "placa-mae-msi-a520m-a-pro-ddr4-micro-atx",
+    "nome": "A520M-A PRO DDR4 Micro ATX",
+    "marca": "MSI",
+    "faixaPreco": { "min": 405, "medio": 450, "max": 504 },
     "categoria": "placa-mae",
     "socket": "AM4",
     "tipoRam": "DDR4",
@@ -18,68 +14,52 @@
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b650m-aorus-elite",
-    "nome": "B650M Aorus Elite",
+    "id": "placa-mae-gigabyte-b650m-aorus-elite-am5-ddr5-micro-atx",
+    "nome": "B650M AORUS ELITE AM5 DDR5 Micro ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 945,
-      "medio": 1050,
-      "max": 1176
-    },
+    "faixaPreco": { "min": 945, "medio": 1050, "max": 1176 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
     "formFactor": "Micro-ATX",
     "slotsDimm": 4,
-    "slotsM2": 2,
-    "slotsPcieX16": 1,
+    "slotsM2": 4,
+    "slotsPcieX16": 2,
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b650-tomahawk-wifi",
-    "nome": "MAG B650 Tomahawk WiFi",
+    "id": "placa-mae-msi-mag-b650-tomahawk-wifi-am5-ddr5-atx",
+    "nome": "MAG B650 TOMAHAWK WIFI AM5 DDR5 ATX",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 1530,
-      "medio": 1700,
-      "max": 1904
-    },
+    "faixaPreco": { "min": 1530, "medio": 1700, "max": 1904 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
     "formFactor": "ATX",
     "slotsDimm": 4,
     "slotsM2": 3,
-    "slotsPcieX16": 2,
+    "slotsPcieX16": 1,
     "portasSata": 6
   },
   {
-    "id": "placa-mae-b650i-aorus-ultra",
-    "nome": "B650I Aorus Ultra",
+    "id": "placa-mae-gigabyte-b650i-aorus-ultra-1-0-ddr5-mini-itx",
+    "nome": "B650I AORUS ULTRA 1.0 DDR5 Mini ITX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 1890,
-      "medio": 2100,
-      "max": 2352
-    },
+    "faixaPreco": { "min": 1890, "medio": 2100, "max": 2352 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
     "formFactor": "Mini-ITX",
     "slotsDimm": 2,
-    "slotsM2": 2,
+    "slotsM2": 3,
     "slotsPcieX16": 1,
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b760m-ds3h-ddr4",
-    "nome": "B760M DS3H DDR4",
+    "id": "placa-mae-gigabyte-b760m-d2h-ddr4-micro-atx",
+    "nome": "B760M D2H DDR4 Micro ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 675,
-      "medio": 750,
-      "max": 840
-    },
+    "faixaPreco": { "min": 675, "medio": 750, "max": 840 },
     "categoria": "placa-mae",
     "socket": "LGA1700",
     "tipoRam": "DDR4",
@@ -90,50 +70,24 @@
     "portasSata": 4
   },
   {
-    "id": "placa-mae-z790-pro-atx-ddr4",
-    "nome": "PRO Z790-P DDR4",
+    "id": "placa-mae-msi-pro-z790-p-ddr4-atx",
+    "nome": "PRO Z790-P DDR4 ATX",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 1170,
-      "medio": 1300,
-      "max": 1456
-    },
+    "faixaPreco": { "min": 1170, "medio": 1300, "max": 1456 },
     "categoria": "placa-mae",
     "socket": "LGA1700",
     "tipoRam": "DDR4",
     "formFactor": "ATX",
     "slotsDimm": 4,
-    "slotsM2": 3,
-    "slotsPcieX16": 2,
+    "slotsM2": 4,
+    "slotsPcieX16": 3,
     "portasSata": 6
   },
   {
-    "id": "placa-mae-b450m-ds3h-v2",
-    "nome": "B450M DS3H V2",
-    "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 684,
-      "medio": 760,
-      "max": 851
-    },
-    "categoria": "placa-mae",
-    "socket": "AM4",
-    "tipoRam": "DDR4",
-    "formFactor": "Micro-ATX",
-    "slotsDimm": 4,
-    "slotsM2": 1,
-    "slotsPcieX16": 2,
-    "portasSata": 4
-  },
-  {
-    "id": "placa-mae-b550m-aorus-elite",
-    "nome": "B550M Aorus Elite",
-    "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 630,
-      "medio": 700,
-      "max": 784
-    },
+    "id": "placa-mae-msi-b450m-pro-m2-max",
+    "nome": "B450M PRO-M2 MAX",
+    "marca": "MSI",
+    "faixaPreco": { "min": 684, "medio": 760, "max": 851 },
     "categoria": "placa-mae",
     "socket": "AM4",
     "tipoRam": "DDR4",
@@ -144,32 +98,38 @@
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b550-tomahawk",
-    "nome": "MAG B550 Tomahawk",
+    "id": "placa-mae-gigabyte-b550m-aorus-elite-rev-1-3",
+    "nome": "B550M AORUS ELITE (rev.1.3)",
+    "marca": "Gigabyte",
+    "faixaPreco": { "min": 630, "medio": 700, "max": 784 },
+    "categoria": "placa-mae",
+    "socket": "AM4",
+    "tipoRam": "DDR4",
+    "formFactor": "Micro-ATX",
+    "slotsDimm": 4,
+    "slotsM2": 2,
+    "slotsPcieX16": 1,
+    "portasSata": 4
+  },
+  {
+    "id": "placa-mae-msi-mag-b550-tomahawk",
+    "nome": "MAG B550 TOMAHAWK",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 1170,
-      "medio": 1300,
-      "max": 1456
-    },
+    "faixaPreco": { "min": 1170, "medio": 1300, "max": 1456 },
     "categoria": "placa-mae",
     "socket": "AM4",
     "tipoRam": "DDR4",
     "formFactor": "ATX",
     "slotsDimm": 4,
     "slotsM2": 2,
-    "slotsPcieX16": 2,
+    "slotsPcieX16": 1,
     "portasSata": 6
   },
   {
-    "id": "placa-mae-b550i-aorus-pro-ax",
-    "nome": "B550I Aorus Pro AX",
+    "id": "placa-mae-gigabyte-aorus-b550i-pro-ax-am4-ddr4-mini-itx",
+    "nome": "AORUS B550I PRO AX AM4 DDR4 MINI-ITX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 1530,
-      "medio": 1700,
-      "max": 1904
-    },
+    "faixaPreco": { "min": 1530, "medio": 1700, "max": 1904 },
     "categoria": "placa-mae",
     "socket": "AM4",
     "tipoRam": "DDR4",
@@ -180,14 +140,10 @@
     "portasSata": 4
   },
   {
-    "id": "placa-mae-a620m-hdv-m2",
-    "nome": "A620M-HDV/M.2",
+    "id": "placa-mae-asrock-a620-m-hdvp-am5-ddr5-micro-atx",
+    "nome": "A620 M-HDVP AM5 DDR5 Micro ATX",
     "marca": "ASRock",
-    "faixaPreco": {
-      "min": 621,
-      "medio": 690,
-      "max": 773
-    },
+    "faixaPreco": { "min": 621, "medio": 690, "max": 773 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
@@ -195,107 +151,83 @@
     "slotsDimm": 2,
     "slotsM2": 2,
     "slotsPcieX16": 1,
-    "portasSata": 2
+    "portasSata": 4
   },
   {
-    "id": "placa-mae-b850m-gaming-x-wifi6e",
-    "nome": "B850M Gaming X WiFi6E",
+    "id": "placa-mae-gigabyte-b850m-gaming-x-wifi6e-ddr5-micro-atx",
+    "nome": "B850M GAMING X WIFI6E DDR5 Micro ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 1125,
-      "medio": 1250,
-      "max": 1400
-    },
+    "faixaPreco": { "min": 1125, "medio": 1250, "max": 1400 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
     "formFactor": "Micro-ATX",
     "slotsDimm": 4,
     "slotsM2": 2,
-    "slotsPcieX16": 2,
+    "slotsPcieX16": 1,
     "portasSata": 4
   },
   {
-    "id": "placa-mae-x870-aorus-elite-wifi7",
-    "nome": "X870 Aorus Elite WiFi7",
+    "id": "placa-mae-gigabyte-x870-aorus-elite-wifi7-am5-ddr5-atx",
+    "nome": "X870 AORUS ELITE WIFI7 AM5 DDR5 ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 2565,
-      "medio": 2850,
-      "max": 3192
-    },
+    "faixaPreco": { "min": 2565, "medio": 2850, "max": 3192 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
     "formFactor": "ATX",
     "slotsDimm": 4,
     "slotsM2": 4,
-    "slotsPcieX16": 3,
+    "slotsPcieX16": 1,
     "portasSata": 4
   },
   {
-    "id": "placa-mae-x870e-tomahawk-wifi",
-    "nome": "MAG X870E Tomahawk WiFi",
+    "id": "placa-mae-msi-x870e-mag-tomahawk-wifi-am5-ddr5-atx",
+    "nome": "X870E MAG TOMAHAWK WIFI AM5 DDR5 ATX",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 2160,
-      "medio": 2400,
-      "max": 2688
-    },
+    "faixaPreco": { "min": 2160, "medio": 2400, "max": 2688 },
     "categoria": "placa-mae",
     "socket": "AM5",
     "tipoRam": "DDR5",
     "formFactor": "ATX",
     "slotsDimm": 4,
     "slotsM2": 4,
-    "slotsPcieX16": 3,
+    "slotsPcieX16": 1,
     "portasSata": 4
   },
   {
-    "id": "placa-mae-h610m-k-ddr4",
-    "nome": "H610M K DDR4",
+    "id": "placa-mae-gigabyte-h610m-s2h-ddr4-micro-atx",
+    "nome": "H610M S2H DDR4 Micro ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 459,
-      "medio": 510,
-      "max": 571
-    },
+    "faixaPreco": { "min": 459, "medio": 510, "max": 571 },
     "categoria": "placa-mae",
     "socket": "LGA1700",
     "tipoRam": "DDR4",
     "formFactor": "Micro-ATX",
     "slotsDimm": 2,
-    "slotsM2": 1,
+    "slotsM2": 2,
     "slotsPcieX16": 1,
-    "portasSata": 2
+    "portasSata": 4
   },
   {
-    "id": "placa-mae-b760m-gaming-plus-wifi",
-    "nome": "B760M Gaming Plus WiFi",
-    "marca": "MSI",
-    "faixaPreco": {
-      "min": 855,
-      "medio": 950,
-      "max": 1064
-    },
+    "id": "placa-mae-gigabyte-b760m-d3h",
+    "nome": "B760M D3H",
+    "marca": "Gigabyte",
+    "faixaPreco": { "min": 855, "medio": 950, "max": 1064 },
     "categoria": "placa-mae",
     "socket": "LGA1700",
     "tipoRam": "DDR5",
     "formFactor": "Micro-ATX",
     "slotsDimm": 4,
     "slotsM2": 2,
-    "slotsPcieX16": 2,
+    "slotsPcieX16": 1,
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b760i-aorus-pro",
-    "nome": "B760I Aorus Pro",
-    "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 1035,
-      "medio": 1150,
-      "max": 1288
-    },
+    "id": "placa-mae-asus-rog-strix-b760-i-gaming-wifi-lga1700-ddr5-mini-itx",
+    "nome": "ROG STRIX B760-I GAMING WIFI LGA1700 DDR5 Mini-ITX",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 1035, "medio": 1150, "max": 1288 },
     "categoria": "placa-mae",
     "socket": "LGA1700",
     "tipoRam": "DDR5",
@@ -303,35 +235,27 @@
     "slotsDimm": 2,
     "slotsM2": 2,
     "slotsPcieX16": 1,
-    "portasSata": 2
+    "portasSata": 4
   },
   {
-    "id": "placa-mae-z790-aorus-elite-ax",
-    "nome": "Z790 Aorus Elite AX",
+    "id": "placa-mae-gigabyte-z790-aorus-elite-ax-ddr5-atx-lga1700",
+    "nome": "Z790 AORUS ELITE AX DDR5 ATX LGA1700",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 1980,
-      "medio": 2200,
-      "max": 2464
-    },
+    "faixaPreco": { "min": 1980, "medio": 2200, "max": 2464 },
     "categoria": "placa-mae",
     "socket": "LGA1700",
     "tipoRam": "DDR5",
     "formFactor": "ATX",
     "slotsDimm": 4,
     "slotsM2": 4,
-    "slotsPcieX16": 3,
+    "slotsPcieX16": 1,
     "portasSata": 6
   },
   {
-    "id": "placa-mae-b860m-ds3h",
-    "nome": "B860M DS3H",
+    "id": "placa-mae-gigabyte-b860m-ds3h-lga1851-ddr5-micro-atx",
+    "nome": "B860M DS3H LGA1851 DDR5 Micro ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 945,
-      "medio": 1050,
-      "max": 1176
-    },
+    "faixaPreco": { "min": 945, "medio": 1050, "max": 1176 },
     "categoria": "placa-mae",
     "socket": "LGA1851",
     "tipoRam": "DDR5",
@@ -342,14 +266,10 @@
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b860m-gaming-plus-wifi",
-    "nome": "B860M Gaming Plus WiFi",
-    "marca": "MSI",
-    "faixaPreco": {
-      "min": 1350,
-      "medio": 1500,
-      "max": 1680
-    },
+    "id": "placa-mae-gigabyte-b860m-gaming-x-ddr5-micro-atx",
+    "nome": "B860M GAMING X DDR5 Micro ATX",
+    "marca": "Gigabyte",
+    "faixaPreco": { "min": 1350, "medio": 1500, "max": 1680 },
     "categoria": "placa-mae",
     "socket": "LGA1851",
     "tipoRam": "DDR5",
@@ -360,14 +280,10 @@
     "portasSata": 4
   },
   {
-    "id": "placa-mae-b860i-aorus-pro-ice",
-    "nome": "B860I Aorus Pro Ice",
-    "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 2160,
-      "medio": 2400,
-      "max": 2688
-    },
+    "id": "placa-mae-asus-rog-strix-b860-i-gaming-wifi-ddr5-mini-itx",
+    "nome": "ROG STRIX B860-I GAMING WIFI DDR5 Mini ITX",
+    "marca": "ASUS",
+    "faixaPreco": { "min": 2160, "medio": 2400, "max": 2688 },
     "categoria": "placa-mae",
     "socket": "LGA1851",
     "tipoRam": "DDR5",
@@ -375,23 +291,19 @@
     "slotsDimm": 2,
     "slotsM2": 2,
     "slotsPcieX16": 1,
-    "portasSata": 2
+    "portasSata": 4
   },
   {
-    "id": "placa-mae-z890-aorus-elite-wifi7",
-    "nome": "Z890 Aorus Elite WiFi7",
+    "id": "placa-mae-gigabyte-z890-eagle-ddr5-atx",
+    "nome": "Z890 EAGLE DDR5 ATX",
     "marca": "Gigabyte",
-    "faixaPreco": {
-      "min": 1980,
-      "medio": 2200,
-      "max": 2464
-    },
+    "faixaPreco": { "min": 1980, "medio": 2200, "max": 2464 },
     "categoria": "placa-mae",
     "socket": "LGA1851",
     "tipoRam": "DDR5",
     "formFactor": "ATX",
     "slotsDimm": 4,
-    "slotsM2": 4,
+    "slotsM2": 8,
     "slotsPcieX16": 3,
     "portasSata": 4
   }

@@ -1,13 +1,9 @@
 [
   {
-    "id": "ram-corsair-16gb-ddr4-3200",
-    "nome": "Vengeance LPX 2x8 GB",
+    "id": "ram-corsair-vengeance-lpx-ddr4-3200-cl16-16gb-2x8gb",
+    "nome": "Vengeance LPX DDR4-3200 CL16 16GB (2x8GB)",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 1125,
-      "medio": 1250,
-      "max": 1400
-    },
+    "faixaPreco": { "min": 1125, "medio": 1250, "max": 1400 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 16,
@@ -15,14 +11,10 @@
     "frequenciaMHz": 3200
   },
   {
-    "id": "ram-kingston-32gb-ddr4-3200",
-    "nome": "Fury Beast 2x16 GB",
+    "id": "ram-kingston-fury-beast-rgb-ddr4-3200-cl16-32gb-2x16gb",
+    "nome": "FURY Beast RGB DDR4-3200 CL16 32GB (2x16GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 2340,
-      "medio": 2600,
-      "max": 2912
-    },
+    "faixaPreco": { "min": 2340, "medio": 2600, "max": 2912 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 32,
@@ -30,14 +22,10 @@
     "frequenciaMHz": 3200
   },
   {
-    "id": "ram-kingston-16gb-ddr5-5200",
-    "nome": "Fury Beast 2x8 GB",
+    "id": "ram-kingston-fury-beast-black-ddr5-5200-cl40-16gb-2x8gb",
+    "nome": "FURY Beast Black DDR5-5200 CL40 16GB (2x8GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 1530,
-      "medio": 1700,
-      "max": 1904
-    },
+    "faixaPreco": { "min": 1530, "medio": 1700, "max": 1904 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 16,
@@ -45,14 +33,10 @@
     "frequenciaMHz": 5200
   },
   {
-    "id": "ram-corsair-32gb-ddr5-6000",
-    "nome": "Vengeance 2x16 GB",
+    "id": "ram-corsair-vengeance-rgb-ddr5-6000-cl30-32gb-2x16gb",
+    "nome": "Vengeance RGB DDR5-6000 CL30 32GB (2x16GB)",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 3240,
-      "medio": 3600,
-      "max": 4032
-    },
+    "faixaPreco": { "min": 3240, "medio": 3600, "max": 4032 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 32,
@@ -60,14 +44,10 @@
     "frequenciaMHz": 6000
   },
   {
-    "id": "ram-gskill-64gb-ddr5-6000",
-    "nome": "Trident Z5 2x32 GB",
-    "marca": "G.Skill",
-    "faixaPreco": {
-      "min": 6750,
-      "medio": 7500,
-      "max": 8400
-    },
+    "id": "ram-g-skill-trident-z5-black-ddr5-6000-cl30-64gb-2x32gb",
+    "nome": "Trident Z5 Black DDR5-6000 CL30 64GB (2x32GB)",
+    "marca": "G.SKILL",
+    "faixaPreco": { "min": 6750, "medio": 7500, "max": 8400 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 64,
@@ -75,14 +55,10 @@
     "frequenciaMHz": 6000
   },
   {
-    "id": "ram-kingston-8gb-ddr4-3200",
-    "nome": "Fury Beast 1x8 GB",
+    "id": "ram-kingston-fury-beast-black-ddr4-3200-cl16-8gb-1x8gb",
+    "nome": "FURY Beast Black DDR4-3200 CL16 8GB (1x8GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 567,
-      "medio": 630,
-      "max": 706
-    },
+    "faixaPreco": { "min": 567, "medio": 630, "max": 706 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 8,
@@ -90,14 +66,10 @@
     "frequenciaMHz": 3200
   },
   {
-    "id": "ram-kingston-16gb-ddr4-3200-1x16",
-    "nome": "Fury Beast 1x16 GB",
+    "id": "ram-kingston-fury-beast-rgb-ddr4-3200-cl16-16gb-1x16gb",
+    "nome": "FURY Beast RGB DDR4-3200 CL16 16GB (1x16GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 1260,
-      "medio": 1400,
-      "max": 1568
-    },
+    "faixaPreco": { "min": 1260, "medio": 1400, "max": 1568 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 16,
@@ -105,14 +77,10 @@
     "frequenciaMHz": 3200
   },
   {
-    "id": "ram-tforce-16gb-ddr4-3200",
-    "nome": "Vulcan Z 2x8 GB",
-    "marca": "TeamGroup",
-    "faixaPreco": {
-      "min": 1125,
-      "medio": 1250,
-      "max": 1400
-    },
+    "id": "ram-teamgroup-t-force-vulcan-z-red-ddr4-3200-cl16-16gb-2x8gb",
+    "nome": "T-Force Vulcan Z Red DDR4-3200 CL16 16GB (2x8GB)",
+    "marca": "TEAMGROUP",
+    "faixaPreco": { "min": 1125, "medio": 1250, "max": 1400 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 16,
@@ -120,14 +88,10 @@
     "frequenciaMHz": 3200
   },
   {
-    "id": "ram-xpg-16gb-ddr4-3600",
-    "nome": "Spectrix D35G 2x8 GB",
-    "marca": "XPG",
-    "faixaPreco": {
-      "min": 1215,
-      "medio": 1350,
-      "max": 1512
-    },
+    "id": "ram-adata-xpg-spectrix-d35g-rgb-black-ddr4-3600-cl18-16gb-2x8gb",
+    "nome": "XPG SPECTRIX D35G RGB Black DDR4-3600 CL18 16GB (2x8GB)",
+    "marca": "ADATA",
+    "faixaPreco": { "min": 1215, "medio": 1350, "max": 1512 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 16,
@@ -135,14 +99,10 @@
     "frequenciaMHz": 3600
   },
   {
-    "id": "ram-corsair-32gb-ddr4-3600",
-    "nome": "Vengeance LPX 2x16 GB",
+    "id": "ram-corsair-vengeance-lpx-black-ddr4-3600-cl18-32gb-2x16gb",
+    "nome": "Vengeance LPX Black DDR4-3600 CL18 32GB (2x16GB)",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 2520,
-      "medio": 2800,
-      "max": 3136
-    },
+    "faixaPreco": { "min": 2520, "medio": 2800, "max": 3136 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 32,
@@ -150,14 +110,10 @@
     "frequenciaMHz": 3600
   },
   {
-    "id": "ram-kingston-64gb-ddr4-3200",
-    "nome": "Fury Beast 2x32 GB",
+    "id": "ram-kingston-fury-beast-rgb-ddr4-3200-cl16-64gb-2x32gb",
+    "nome": "FURY Beast RGB DDR4-3200 CL16 64GB (2x32GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 4950,
-      "medio": 5500,
-      "max": 6160
-    },
+    "faixaPreco": { "min": 4950, "medio": 5500, "max": 6160 },
     "categoria": "ram",
     "tipoRam": "DDR4",
     "capacidadeTotalGB": 64,
@@ -165,14 +121,10 @@
     "frequenciaMHz": 3200
   },
   {
-    "id": "ram-kingston-16gb-ddr5-5600-1x16",
-    "nome": "Fury Beast 1x16 GB",
+    "id": "ram-kingston-fury-beast-rgb-ddr5-5600-cl40-16gb-1x16gb",
+    "nome": "FURY Beast RGB DDR5-5600 CL40 16GB (1x16GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 1530,
-      "medio": 1700,
-      "max": 1904
-    },
+    "faixaPreco": { "min": 1530, "medio": 1700, "max": 1904 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 16,
@@ -180,14 +132,10 @@
     "frequenciaMHz": 5600
   },
   {
-    "id": "ram-xpg-32gb-ddr5-6000",
-    "nome": "Lancer 2x16 GB",
-    "marca": "XPG",
-    "faixaPreco": {
-      "min": 3150,
-      "medio": 3500,
-      "max": 3920
-    },
+    "id": "ram-adata-xpg-lancer-rgb-ddr5-6000-32-2x16gb-cl30-white",
+    "nome": "XPG LANCER RGB DDR5-6000 32 (2x16GB) CL30 White",
+    "marca": "ADATA",
+    "faixaPreco": { "min": 3150, "medio": 3500, "max": 3920 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 32,
@@ -195,14 +143,10 @@
     "frequenciaMHz": 6000
   },
   {
-    "id": "ram-kingston-32gb-ddr5-6000",
-    "nome": "Fury Beast 2x16 GB",
+    "id": "ram-kingston-fury-beast-white-ddr5-6000-cl30-32gb-2x16gb",
+    "nome": "FURY Beast White DDR5-6000 CL30 32GB (2x16GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 3420,
-      "medio": 3800,
-      "max": 4256
-    },
+    "faixaPreco": { "min": 3420, "medio": 3800, "max": 4256 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 32,
@@ -210,14 +154,10 @@
     "frequenciaMHz": 6000
   },
   {
-    "id": "ram-gskill-32gb-ddr5-6400",
-    "nome": "Trident Z5 RGB 2x16 GB",
-    "marca": "G.Skill",
-    "faixaPreco": {
-      "min": 3870,
-      "medio": 4300,
-      "max": 4816
-    },
+    "id": "ram-g-skill-trident-z5-neo-rgb-ddr5-6400-cl32-32gb-2x16gb",
+    "nome": "Trident Z5 Neo RGB DDR5-6400 CL32 32GB (2x16GB)",
+    "marca": "G.SKILL",
+    "faixaPreco": { "min": 3870, "medio": 4300, "max": 4816 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 32,
@@ -225,14 +165,10 @@
     "frequenciaMHz": 6400
   },
   {
-    "id": "ram-corsair-48gb-ddr5-6000",
-    "nome": "Vengeance 2x24 GB",
+    "id": "ram-corsair-vengeance-rgb-grey-ddr5-6000-cl36-48gb-2x24gb",
+    "nome": "Vengeance RGB Grey DDR5-6000 CL36 48GB (2x24GB)",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 4770,
-      "medio": 5300,
-      "max": 5936
-    },
+    "faixaPreco": { "min": 4770, "medio": 5300, "max": 5936 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 48,
@@ -240,14 +176,10 @@
     "frequenciaMHz": 6000
   },
   {
-    "id": "ram-kingston-64gb-ddr5-5600",
-    "nome": "Fury Beast 2x32 GB",
+    "id": "ram-kingston-fury-beast-black-ddr5-5600-cl36-64gb-2x32gb",
+    "nome": "FURY Beast Black DDR5-5600 CL36 64GB (2x32GB)",
     "marca": "Kingston",
-    "faixaPreco": {
-      "min": 6300,
-      "medio": 7000,
-      "max": 7840
-    },
+    "faixaPreco": { "min": 6300, "medio": 7000, "max": 7840 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 64,
@@ -255,14 +187,10 @@
     "frequenciaMHz": 5600
   },
   {
-    "id": "ram-corsair-96gb-ddr5-6000",
-    "nome": "Vengeance 2x48 GB",
+    "id": "ram-corsair-vengeance-96gb-2x48gb-ddr5-6000-cl36-grey",
+    "nome": "Vengeance 96GB (2x48GB) DDR5-6000 CL36 Grey",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 9360,
-      "medio": 10400,
-      "max": 11648
-    },
+    "faixaPreco": { "min": 9360, "medio": 10400, "max": 11648 },
     "categoria": "ram",
     "tipoRam": "DDR5",
     "capacidadeTotalGB": 96,

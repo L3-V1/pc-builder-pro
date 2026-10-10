@@ -1,208 +1,144 @@
 [
   {
-    "id": "fonte-mwe-450",
-    "nome": "MWE 450 V2",
+    "id": "fonte-cooler-master-mwe-black-v2-230v-450w-non-modular-80-certified",
+    "nome": "MWE Black V2 230V 450W Non-Modular 80+ Certified",
     "marca": "Cooler Master",
-    "faixaPreco": {
-      "min": 207,
-      "medio": 230,
-      "max": 258
-    },
+    "faixaPreco": { "min": 207, "medio": 230, "max": 258 },
     "categoria": "fonte",
     "potenciaW": 450,
     "certificacao": "80 Plus"
   },
   {
-    "id": "fonte-cx550",
-    "nome": "CX550",
+    "id": "fonte-corsair-cx550-2017-atx-550w-non-modular-80-bronze-certified",
+    "nome": "CX550 (2017) ATX 550W Non-Modular 80+ Bronze Certified",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 297,
-      "medio": 330,
-      "max": 370
-    },
+    "faixaPreco": { "min": 297, "medio": 330, "max": 370 },
     "categoria": "fonte",
     "potenciaW": 550,
     "certificacao": "Bronze"
   },
   {
-    "id": "fonte-cx650",
-    "nome": "CX650",
+    "id": "fonte-corsair-cx650-2017-atx-650w-non-modular-80-bronze-certified",
+    "nome": "CX650 (2017) ATX 650W Non-Modular 80+ Bronze Certified",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 360,
-      "medio": 400,
-      "max": 448
-    },
+    "faixaPreco": { "min": 360, "medio": 400, "max": 448 },
     "categoria": "fonte",
     "potenciaW": 650,
     "certificacao": "Bronze"
   },
   {
-    "id": "fonte-rm750e",
-    "nome": "RM750e",
+    "id": "fonte-corsair-rm750e-2025-white-750w-fully-modular",
+    "nome": "RM750e (2025) White 750W Fully Modular",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 675,
-      "medio": 750,
-      "max": 840
-    },
+    "faixaPreco": { "min": 675, "medio": 750, "max": 840 },
     "categoria": "fonte",
     "potenciaW": 750,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-rm850x",
-    "nome": "RM850x",
+    "id": "fonte-corsair-rm850x-black-850w-fully-modular-80-gold",
+    "nome": "RM850x Black 850W Fully Modular 80+ Gold",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 900,
-      "medio": 1000,
-      "max": 1120
-    },
+    "faixaPreco": { "min": 900, "medio": 1000, "max": 1120 },
     "categoria": "fonte",
     "potenciaW": 850,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-xpg-pylon-550",
-    "nome": "Pylon 550",
-    "marca": "XPG",
-    "faixaPreco": {
-      "min": 315,
-      "medio": 350,
-      "max": 392
-    },
+    "id": "fonte-adata-xpg-pylon-atx-550w-non-modular-80-bronze-certified",
+    "nome": "XPG PYLON ATX 550W Non-Modular 80+ Bronze Certified",
+    "marca": "ADATA",
+    "faixaPreco": { "min": 315, "medio": 350, "max": 392 },
     "categoria": "fonte",
     "potenciaW": 550,
     "certificacao": "Bronze"
   },
   {
-    "id": "fonte-mwe-650-bronze-v3",
-    "nome": "MWE 650 Bronze V3",
+    "id": "fonte-cooler-master-mwe-bronze-650-v3-650w-non-modular-80-bronze-atx",
+    "nome": "MWE BRONZE 650 V3 650W Non-Modular 80+ Bronze ATX",
     "marca": "Cooler Master",
-    "faixaPreco": {
-      "min": 405,
-      "medio": 450,
-      "max": 504
-    },
+    "faixaPreco": { "min": 405, "medio": 450, "max": 504 },
     "categoria": "fonte",
     "potenciaW": 650,
     "certificacao": "Bronze"
   },
   {
-    "id": "fonte-msi-mag-a650bn",
-    "nome": "MAG A650BN",
+    "id": "fonte-msi-mag-a650bn-pcie5-iii",
+    "nome": "MAG A650BN PCIE5 III",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 261,
-      "medio": 290,
-      "max": 325
-    },
+    "faixaPreco": { "min": 261, "medio": 290, "max": 325 },
     "categoria": "fonte",
     "potenciaW": 650,
     "certificacao": "Bronze"
   },
   {
-    "id": "fonte-gamemax-gp650",
-    "nome": "GP650",
-    "marca": "Gamemax",
-    "faixaPreco": {
-      "min": 297,
-      "medio": 330,
-      "max": 370
-    },
+    "id": "fonte-gamemax-gp-atx-650w-non-modular-80-bronze-certified",
+    "nome": "GP ATX 650W Non-Modular 80+ Bronze Certified",
+    "marca": "GameMax",
+    "faixaPreco": { "min": 297, "medio": 330, "max": 370 },
     "categoria": "fonte",
     "potenciaW": 650,
     "certificacao": "Bronze"
   },
   {
-    "id": "fonte-msi-mag-a750gl",
-    "nome": "MAG A750GL",
+    "id": "fonte-msi-mag-black-a750gl-pcie5-ii-750w-fully-modular-80-gold",
+    "nome": "MAG Black A750GL PCIE5 II 750W Fully Modular 80+ Gold",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 585,
-      "medio": 650,
-      "max": 728
-    },
+    "faixaPreco": { "min": 585, "medio": 650, "max": 728 },
     "categoria": "fonte",
     "potenciaW": 750,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-xpg-core-reactor-ii-750",
-    "nome": "Core Reactor II 750",
-    "marca": "XPG",
-    "faixaPreco": {
-      "min": 747,
-      "medio": 830,
-      "max": 930
-    },
+    "id": "fonte-adata-xpg-core-reactor-ii-black-750w-fully-modular-80-gold",
+    "nome": "XPG Core Reactor II Black 750W Fully Modular 80+ Gold",
+    "marca": "ADATA",
+    "faixaPreco": { "min": 747, "medio": 830, "max": 930 },
     "categoria": "fonte",
     "potenciaW": 750,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-seasonic-focus-gx-850",
-    "nome": "Focus GX-850",
-    "marca": "Seasonic",
-    "faixaPreco": {
-      "min": 1215,
-      "medio": 1350,
-      "max": 1512
-    },
+    "id": "fonte-seasonic-focus-gx-850-atx-3-0-850w-fully-modular-80-gold-certified",
+    "nome": "FOCUS GX-850 ATX 3.0 850W Fully Modular 80+ Gold Certified",
+    "marca": "SeaSonic",
+    "faixaPreco": { "min": 1215, "medio": 1350, "max": 1512 },
     "categoria": "fonte",
     "potenciaW": 850,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-msi-mag-a850gl",
-    "nome": "MAG A850GL",
+    "id": "fonte-msi-mag-a850gl-pcie5-white-850w-fully-modular-80-gold-atx",
+    "nome": "MAG A850GL PCIE5 White 850W Fully Modular 80+ Gold ATX",
     "marca": "MSI",
-    "faixaPreco": {
-      "min": 765,
-      "medio": 850,
-      "max": 952
-    },
+    "faixaPreco": { "min": 765, "medio": 850, "max": 952 },
     "categoria": "fonte",
     "potenciaW": 850,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-corsair-rm1000e",
-    "nome": "RM1000e",
+    "id": "fonte-corsair-rm1000e-2025-white-1000w-fully-modular",
+    "nome": "RM1000e (2025) White 1000W Fully Modular",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 1260,
-      "medio": 1400,
-      "max": 1568
-    },
+    "faixaPreco": { "min": 1260, "medio": 1400, "max": 1568 },
     "categoria": "fonte",
     "potenciaW": 1000,
     "certificacao": "Gold"
   },
   {
-    "id": "fonte-corsair-hx1200i",
-    "nome": "HX1200i",
+    "id": "fonte-corsair-hx1200i-1200w-80-platinum-certified-fully-modular",
+    "nome": "HX1200i 1200W 80+ Platinum Certified Fully Modular",
     "marca": "Corsair",
-    "faixaPreco": {
-      "min": 1755,
-      "medio": 1950,
-      "max": 2184
-    },
+    "faixaPreco": { "min": 1755, "medio": 1950, "max": 2184 },
     "categoria": "fonte",
     "potenciaW": 1200,
     "certificacao": "Platinum"
   },
   {
-    "id": "fonte-seasonic-prime-tx-1000",
-    "nome": "Prime TX-1000",
-    "marca": "Seasonic",
-    "faixaPreco": {
-      "min": 2430,
-      "medio": 2700,
-      "max": 3024
-    },
+    "id": "fonte-seasonic-prime-tx-1000-black-atx-1000w-fully-modular-80-titanium-certified",
+    "nome": "PRIME TX-1000 Black ATX 1000W Fully Modular 80+ Titanium Certified",
+    "marca": "SeaSonic",
+    "faixaPreco": { "min": 2430, "medio": 2700, "max": 3024 },
     "categoria": "fonte",
     "potenciaW": 1000,
     "certificacao": "Titanium"
