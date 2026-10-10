@@ -42,6 +42,19 @@ async function adicionar(texto: string) {
 }
 
 describe('Aplicacao', () => {
+  it('mostra a atribuição ao BuildCores OpenDB com link e licença no rodapé', () => {
+    render(<Aplicacao catalogo={catalogoFixture} />)
+    const rodape = screen.getByRole('contentinfo')
+    expect(within(rodape).getByRole('link', { name: 'BuildCores OpenDB' })).toHaveAttribute(
+      'href',
+      'https://github.com/buildcores/buildcores-open-db',
+    )
+    expect(within(rodape).getByRole('link', { name: 'CC BY-NC-SA 4.0' })).toHaveAttribute(
+      'href',
+      'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+    )
+  })
+
   it('adicionar CPU sem placa-mãe a coloca na Bandeja com aviso e Orçamento zerado', async () => {
     render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('ryzen 7600')

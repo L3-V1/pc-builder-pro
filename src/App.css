@@ -100,9 +100,26 @@
   align-items: start;
 }
 
+/* Atribuição exigida pela licença do OpenDB, de onde vêm as specs. */
+.app__rodape {
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 0 1rem 1.5rem;
+  color: var(--texto-suave);
+  font-size: 0.8125rem;
+}
+
+.app__rodape a {
+  color: inherit;
+}
+
 /* Abaixo do breakpoint a busca vive no painel inferior fixo; sobra espaço para a barra. */
 @media (max-width: 59.99rem) {
   .app {
+    padding-bottom: 1rem;
+  }
+
+  .app__rodape {
     padding-bottom: calc(var(--altura-barra-inferior) + 1rem);
   }
 }

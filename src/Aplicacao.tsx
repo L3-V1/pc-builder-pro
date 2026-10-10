@@ -105,6 +105,11 @@ export function Aplicacao({ catalogo }: { catalogo: Catalogo }) {
           )}
         </Abas>
       </main>
+      <footer className="app__rodape">
+        Specs das Peças:{' '}
+        <a href="https://github.com/buildcores/buildcores-open-db">BuildCores OpenDB</a>, sob a
+        licença <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+      </footer>
       {concluindo && desafio && (
         <TelaConclusao
           desafio={desafio}
