@@ -9,7 +9,7 @@ export default defineConfig({
   test: {
     environment: 'node',
     setupFiles: ['src/teste/setup.ts'],
-    exclude: [...configDefaults.exclude, 'e2e/**'],
+    exclude: [...configDefaults.exclude, 'e2e/**', 'pipeline/.cache/**'],
     coverage: {
       provider: 'v8',
       include: ['src/motor/**'],

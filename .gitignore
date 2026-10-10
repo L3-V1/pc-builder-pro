@@ -28,3 +28,6 @@ coverage
 playwright-report
 test-results
 .lighthouseci
+
+# Pipeline de specs: download do OpenDB e relatório de descartes
+pipeline/.cache
