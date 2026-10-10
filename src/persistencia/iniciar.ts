@@ -16,8 +16,8 @@ function textoSumidas(n: number): string {
 }
 
 export function restaurarEstado(salvo: EstadoSalvo, catalogo: Catalogo): EstadoBuild {
-  const daBuild = resolverIds(salvo.build, catalogo.pecas)
-  const daBandeja = resolverIds(salvo.bandeja, catalogo.pecas)
+  const daBuild = resolverIds(salvo.build, catalogo.pecas, catalogo.aliases)
+  const daBandeja = resolverIds(salvo.bandeja, catalogo.pecas, catalogo.aliases)
   const { build, recusadas } = remontarBuild(daBuild.pecas)
   const restaurado = [...daBandeja.pecas, ...recusadas].reduce<EstadoBuild>(
     (estado, peca) => reduzirBuild(estado, { tipo: 'guardar', peca }),
@@ -32,7 +32,7 @@ export function restaurarEstado(salvo: EstadoSalvo, catalogo: Catalogo): EstadoB
 export function acaoDoLink(hash: string, catalogo: Catalogo): AcaoBuild | undefined {
   const link = decodificarLink(hash)
   if (!link) return undefined
-  const { pecas, desconhecidos } = resolverIds(link.ids, catalogo.pecas)
+  const { pecas, desconhecidos } = resolverIds(link.ids, catalogo.pecas, catalogo.aliases)
   return {
     tipo: 'substituir',
     pecas,

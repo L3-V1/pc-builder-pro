@@ -221,6 +221,10 @@ describe('Peca: demais categorias', () => {
     )
   })
 
+  it('aceita fonte 80 Plus Silver', () => {
+    expect(Peca.safeParse({ ...fonte, certificacao: 'Silver' }).success).toBe(true)
+  })
+
   it('rejeita categoria desconhecida', () => {
     expect(Peca.safeParse({ ...fonte, categoria: 'monitor' }).success).toBe(false)
   })

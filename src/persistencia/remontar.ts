@@ -16,15 +16,17 @@ const ORDEM: readonly Categoria[] = [
   'gabinete',
 ]
 
+// IDs antigos (anteriores ao pipeline do OpenDB) chegam pelos aliases do Catálogo.
 export function resolverIds(
   ids: readonly string[],
   pecas: readonly Peca[],
+  aliases: Readonly<Record<string, string>> = {},
 ): { pecas: Peca[]; desconhecidos: string[] } {
   const porId = new Map(pecas.map((p) => [p.id, p]))
   const encontradas: Peca[] = []
   const desconhecidos: string[] = []
   for (const id of ids) {
-    const p = porId.get(id)
+    const p = porId.get(id) ?? porId.get(aliases[id] ?? '')
     if (p) encontradas.push(p)
     else desconhecidos.push(id)
   }

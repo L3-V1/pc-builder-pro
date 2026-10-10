@@ -1,5 +1,9 @@
 {
   "dataReferencia": "2026-10",
+  "aliases": {
+    "cpu-r5-5600": "cpu-ryzen-5-5600",
+    "gpu-geforce-rtx-4060": "gpu-rtx-4060"
+  },
   "pecas": [
     {
       "id": "cpu-ryzen-5-5600",

@@ -37,6 +37,25 @@ describe('iniciarEstado', () => {
     expect(r.aviso).toBeUndefined()
   })
 
+  it('link e localStorage com IDs antigos remontam a mesma Build pelos aliases', () => {
+    const comAliases = {
+      ...catalogo,
+      aliases: { 'placa-velha': placaAm5.id, 'cpu-velha': cpuAm5.id, 'ram-velha': ramDdr5.id },
+    }
+    const doSalvo = iniciarEstado({
+      salvo: { versao: 1, build: ['cpu-velha', 'placa-velha'], bandeja: ['ram-velha'] },
+      hash: '',
+      catalogo: comAliases,
+    })
+    expect(ids(pecasDaBuild(doSalvo.build))).toEqual([cpuAm5.id, placaAm5.id])
+    expect(doSalvo.bandeja.map((i) => i.peca)).toEqual([ramDdr5])
+    expect(doSalvo.aviso).toBeUndefined()
+
+    const doLink = iniciarEstado({ hash: '#b=placa-velha,cpu-velha', catalogo: comAliases })
+    expect(ids(pecasDaBuild(doLink.build))).toEqual([cpuAm5.id, placaAm5.id])
+    expect(doLink.aviso?.texto).toBe('Build do link carregada.')
+  })
+
   it('com IDs salvos que sumiram do Catálogo restaura o resto e avisa', () => {
     const r = iniciarEstado({
       salvo: { versao: 1, build: [placaAm5.id, 'cpu-sumiu'], bandeja: ['ram-sumiu'] },

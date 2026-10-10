@@ -13,19 +13,35 @@ function buscarCom(falha: (arquivo: string) => Response | Promise<Response> | un
 }
 
 describe('carregarCatalogo', () => {
-  it('Cenário: busca os 9 arquivos em <base>dados/ e devolve as Peças na ordem das Categorias', async () => {
-    // Dado um servidor que responde os 9 arquivos com a fixture
+  it('Cenário: busca os 10 arquivos em <base>dados/ e devolve as Peças na ordem das Categorias', async () => {
+    // Dado um servidor que responde os 10 arquivos com a fixture
     const buscar = vi.fn(buscarFixture)
     // Quando o Catálogo é carregado com uma base
     const r = await carregarCatalogo({ buscar, base: '/sub/' })
     // Então busca cada arquivo uma vez em <base>dados/<arquivo>.json
     const urls = buscar.mock.calls.map(([url]) => String(url))
     expect(urls.toSorted()).toEqual(
-      ['meta', ...ARQUIVOS_DADOS].map((a) => `/sub/dados/${a}.json`).toSorted(),
+      ['meta', 'aliases', ...ARQUIVOS_DADOS].map((a) => `/sub/dados/${a}.json`).toSorted(),
     )
     // E devolve as Peças na ordem das Categorias com a data do meta.json
     expect(r).toEqual({ ok: true, catalogo: catalogoFixture })
     expect(r.ok && r.catalogo.dataReferencia).toBe('2026-10')
+  })
+
+  it('Cenário: devolve os aliases de IDs antigos do aliases.json', async () => {
+    const r = await carregarCatalogo({ buscar: vi.fn(buscarFixture) })
+    expect(r.ok && r.catalogo.aliases).toEqual(respostaDados('aliases'))
+    expect(r.ok && Object.keys(r.catalogo.aliases).length).toBeGreaterThan(0)
+  })
+
+  it('Cenário: aliases.json ausente vira erro http com o arquivo', async () => {
+    const buscar = buscarCom((a) =>
+      a === 'aliases' ? new Response('x', { status: 404 }) : undefined,
+    )
+    await expect(carregarCatalogo({ buscar })).resolves.toEqual({
+      ok: false,
+      erro: { tipo: 'http', arquivo: 'aliases', status: 404 },
+    })
   })
 
   it('Cenário: sem base explícita usa a BASE_URL do Vite', async () => {
@@ -40,7 +56,7 @@ describe('carregarCatalogo', () => {
     const buscar = vi.fn(buscarFixture)
     const { signal } = new AbortController()
     await carregarCatalogo({ buscar, signal })
-    expect(buscar).toHaveBeenCalledTimes(9)
+    expect(buscar).toHaveBeenCalledTimes(10)
     for (const [, init] of buscar.mock.calls) expect(init?.signal).toBe(signal)
   })
 
@@ -98,7 +114,7 @@ describe('carregarCatalogo', () => {
     const buscar = vi.fn(buscarFixture)
     await carregarCatalogo({ buscar })
     await carregarCatalogo({ buscar })
-    expect(buscar).toHaveBeenCalledTimes(18)
+    expect(buscar).toHaveBeenCalledTimes(20)
   })
 })
 

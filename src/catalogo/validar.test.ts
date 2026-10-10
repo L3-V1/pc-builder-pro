@@ -40,6 +40,20 @@ describe('validarCatalogo', () => {
     if (resultado.ok) expect(resultado.catalogo.pecas).toHaveLength(2)
   })
 
+  it('aceita aliases para Peças existentes e aponta alias para ID inexistente', () => {
+    const aliases = { 'cpu-antiga': cpu.id, 'gpu-antiga': 'gpu-nao-existe' }
+    const resultado = validarCatalogo({ ...catalogo(cpu, gpu), aliases })
+    expect(resultado).toEqual({
+      ok: false,
+      erros: [
+        {
+          caminho: 'aliases.gpu-antiga',
+          mensagem: 'Alias "gpu-antiga" aponta para ID inexistente: "gpu-nao-existe"',
+        },
+      ],
+    })
+  })
+
   it('aponta o ID quando dois IDs se repetem, mesmo em categorias diferentes', () => {
     const resultado = validarCatalogo(catalogo(cpu, { ...gpu, id: cpu.id }))
     expect(resultado.ok).toBe(false)

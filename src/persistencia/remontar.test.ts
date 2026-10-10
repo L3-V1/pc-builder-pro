@@ -16,6 +16,13 @@ describe('resolverIds', () => {
     expect(r.pecas).toEqual([placaAm5, ramDdr5, ramDdr5])
     expect(r.desconhecidos).toEqual(['cpu-sumiu'])
   })
+
+  it('resolve um ID antigo pelo alias e mantém inexistentes como desconhecidos', () => {
+    const aliases = { 'placa-antiga': placaAm5.id, 'cpu-alias-quebrado': 'cpu-nao-existe' }
+    const r = resolverIds(['placa-antiga', 'cpu-alias-quebrado', 'cpu-sumiu'], catalogo, aliases)
+    expect(r.pecas).toEqual([placaAm5])
+    expect(r.desconhecidos).toEqual(['cpu-alias-quebrado', 'cpu-sumiu'])
+  })
 })
 
 describe('remontarBuild', () => {

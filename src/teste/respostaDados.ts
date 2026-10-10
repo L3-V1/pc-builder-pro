@@ -4,6 +4,7 @@ import fixture from './catalogo.json' with { type: 'json' }
 // Fatia a fixture no mesmo formato de `dados/<arquivo>.json` servido em produção.
 export function respostaDados(arquivo: string): unknown {
   if (arquivo === 'meta') return { dataReferencia: fixture.dataReferencia }
+  if (arquivo === 'aliases') return fixture.aliases
   return fixture.pecas.filter((p) => p.categoria === arquivo)
 }
 

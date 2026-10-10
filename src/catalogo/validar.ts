@@ -27,6 +27,14 @@ function validarEntrePecas(catalogo: Catalogo): ErroCatalogo[] {
       })
     }
   })
+  for (const [antigo, atual] of Object.entries(catalogo.aliases)) {
+    if (!vistos.has(atual)) {
+      erros.push({
+        caminho: `aliases.${antigo}`,
+        mensagem: `Alias "${antigo}" aponta para ID inexistente: "${atual}"`,
+      })
+    }
+  }
   return erros
 }
 

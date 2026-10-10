@@ -60,15 +60,15 @@ export async function carregarCatalogo(
     signal: opcoes.signal,
   }
   try {
-    const [meta, ...porCategoria] = await Promise.all(
-      ['meta', ...ARQUIVOS_DADOS].map((arquivo) => lerArquivo(arquivo, contexto)),
+    const [meta, aliases, ...porCategoria] = await Promise.all(
+      ['meta', 'aliases', ...ARQUIVOS_DADOS].map((arquivo) => lerArquivo(arquivo, contexto)),
     )
     const dataReferencia =
       typeof meta === 'object' && meta !== null && 'dataReferencia' in meta
         ? meta.dataReferencia
         : undefined
     const pecas = porCategoria.flatMap((lista) => (Array.isArray(lista) ? lista : [lista]))
-    const resultado = validarCatalogo({ dataReferencia, pecas })
+    const resultado = validarCatalogo({ dataReferencia, aliases, pecas })
     if (!resultado.ok) return { ok: false, erro: { tipo: 'validacao', erros: resultado.erros } }
     return { ok: true, catalogo: resultado.catalogo }
   } catch (e) {

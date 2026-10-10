@@ -13,6 +13,14 @@ export const CATEGORIAS = [
 export const SOCKETS = ['AM4', 'AM5', 'LGA1700', 'LGA1851'] as const
 export const TIPOS_RAM = ['DDR4', 'DDR5'] as const
 export const FORM_FACTORS = ['ATX', 'Micro-ATX', 'Mini-ITX'] as const
+export const CERTIFICACOES = [
+  '80 Plus',
+  'Bronze',
+  'Silver',
+  'Gold',
+  'Platinum',
+  'Titanium',
+] as const
 export const PERFIS = ['jogos', 'produtividade'] as const
 export type Perfil = (typeof PERFIS)[number]
 
@@ -114,7 +122,7 @@ const Fonte = z.strictObject({
   ...base,
   categoria: z.literal('fonte'),
   potenciaW: contagem,
-  certificacao: z.enum(['80 Plus', 'Bronze', 'Gold', 'Platinum', 'Titanium']),
+  certificacao: z.enum(CERTIFICACOES),
 })
 
 const Gabinete = z.strictObject({
@@ -146,6 +154,8 @@ export const Catalogo = z.strictObject({
   dataReferencia: z
     .string()
     .regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Data de referência deve ser AAAA-MM'),
+  // ID antigo → ID atual: links e Builds salvas antes da troca de IDs continuam resolvendo.
+  aliases: z.record(z.string(), z.string()).default({}),
   pecas: z.array(Peca),
 })
 export type Catalogo = z.infer<typeof Catalogo>
