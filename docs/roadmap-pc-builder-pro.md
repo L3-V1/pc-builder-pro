@@ -48,8 +48,8 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 6    | Pontuação de desempenho por Perfil                      | Concluída    |
 | 7    | Desafios                                                | Concluída    |
 | 8    | Mobile, acessibilidade, Catálogo completo e publicação  | Em andamento |
-| 9    | Catálogo fora do bundle, carregado por fetch            | Não iniciada |
-| 10   | Busca assíncrona com debounce e cancelamento            | Não iniciada |
+| 9    | Catálogo fora do bundle, carregado por fetch            | Concluída    |
+| 10   | Busca assíncrona com debounce e cancelamento            | Concluída    |
 | 11   | Pipeline de specs a partir do OpenDB                    | Não iniciada |
 | 12   | Coleta de preços no Mercado Livre                       | Não iniciada |
 | 13   | Publicação diária automática com validação              | Não iniciada |
@@ -224,11 +224,11 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Entregáveis:**
 
-- [ ] Os JSON atuais do Catálogo saem de `src/catalogo/dados/` e passam a ser servidos em `/dados/` (provisoriamente versionados em `public/dados/` até a Fase 13).
-- [ ] `carregarCatalogo` assíncrono: faz fetch, valida pelo schema Zod e devolve o Catálogo ou um erro tipado.
-- [ ] Tela de carregamento enquanto o Catálogo não chega, e tela de erro com "Tentar de novo" se o fetch ou a validação falhar.
-- [ ] O bundle de produção não contém mais nenhuma Peça (verificável por busca no `dist/`).
-- [ ] Testes de unidade e de componente usam fixtures próprias (`src/teste/`) em vez do Catálogo real. Os e2e interceptam `/dados/` com uma fixture fixa.
+- [x] Os JSON atuais do Catálogo saem de `src/catalogo/dados/` e passam a ser servidos em `/dados/` (provisoriamente versionados em `public/dados/` até a Fase 13).
+- [x] `carregarCatalogo` assíncrono: faz fetch, valida pelo schema Zod e devolve o Catálogo ou um erro tipado.
+- [x] Tela de carregamento enquanto o Catálogo não chega, e tela de erro com "Tentar de novo" se o fetch ou a validação falhar.
+- [x] O bundle de produção não contém mais nenhuma Peça (verificável por busca no `dist/`).
+- [x] Testes de unidade e de componente usam fixtures próprias (`src/teste/`) em vez do Catálogo real. Os e2e interceptam `/dados/` com uma fixture fixa.
 
 **Critério de conclusão:** o app abre, mostra a tela de carregamento e funciona como antes. Com `/dados/` fora do ar, aparece a tela de erro. Testes, e2e e Lighthouse passam.
 
@@ -244,10 +244,10 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 
 **Entregáveis:**
 
-- [ ] Porta `buscarPecas(filtros, signal): Promise<Peca[]>` com implementação sobre o Catálogo em memória (reaproveitando `filtrarPecas`).
-- [ ] Hook de busca com debounce de ~250 ms no texto, `AbortController` que cancela a busca anterior e descarte de respostas fora de ordem.
-- [ ] Indicador de "buscando" e estado vazio que distingue "nenhum resultado" de "ainda buscando".
-- [ ] Testes com timers falsos: digitação rápida dispara uma busca só, e uma busca cancelada não sobrescreve a mais recente.
+- [x] Porta `buscarPecas(filtros, signal): Promise<Peca[]>` com implementação sobre o Catálogo em memória (reaproveitando `filtrarPecas`).
+- [x] Hook de busca com debounce de ~250 ms no texto, `AbortController` que cancela a busca anterior e descarte de respostas fora de ordem.
+- [x] Indicador de "buscando" e estado vazio que distingue "nenhum resultado" de "ainda buscando".
+- [x] Testes com timers falsos: digitação rápida dispara uma busca só, e uma busca cancelada não sobrescreve a mais recente.
 
 **Critério de conclusão:** digitar "rtx 4060" dispara uma única busca após a pausa, os testes de corrida passam e o e2e de montar uma Build continua verde.
 

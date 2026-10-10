@@ -1,9 +1,11 @@
 import { AxeBuilder } from '@axe-core/playwright'
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import { adicionar, pesquisar } from './ajudantes.ts'
+import { adicionar, esperarBusca, pesquisar, test } from './ajudantes.ts'
 
 async function semViolacoes(page: Page) {
+  // Durante a busca a lista fica esmaecida de propósito; o contraste vale para a lista assentada.
+  await esperarBusca(page)
   const { violations } = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()
   const resumo = violations.map((v) => ({
     regra: v.id,

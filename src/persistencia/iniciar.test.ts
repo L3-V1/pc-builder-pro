@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { carregarCatalogo } from '../catalogo'
+import { catalogoFixture } from '../teste/catalogo'
 import type { Desafio } from '../desafios'
 import { ESTADO_APP_INICIAL } from '../estado/app'
 import { ESTADO_INICIAL } from '../estado/build'
@@ -7,7 +7,7 @@ import { pecasDaBuild } from '../motor'
 import { peca } from '../motor/teste-pecas'
 import { iniciarApp, iniciarEstado } from './iniciar'
 
-const catalogo = carregarCatalogo()
+const catalogo = catalogoFixture
 const placaAm5 = peca('placa-mae-b650m-aorus-elite', 'placa-mae')
 const cpuAm5 = peca('cpu-ryzen-5-7600', 'cpu')
 const ramDdr5 = peca('ram-corsair-32gb-ddr5-6000', 'ram')

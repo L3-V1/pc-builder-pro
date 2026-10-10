@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import { adicionar, aviso, fecharBusca, normalizar, pesquisar } from './ajudantes.ts'
+import { adicionar, aviso, fecharBusca, normalizar, pesquisar, test } from './ajudantes.ts'
 
 async function texto(page: Page, testId: string) {
   return normalizar((await page.getByTestId(testId).textContent()) ?? '')

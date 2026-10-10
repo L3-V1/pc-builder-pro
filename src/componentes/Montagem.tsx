@@ -10,13 +10,19 @@ import {
   useSensors,
 } from '@dnd-kit/core'
 import type { CollisionDetection, DragEndEvent, DragStartEvent, Over } from '@dnd-kit/core'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { Dispatch } from 'react'
 import { acaoDoArraste } from '../bancada'
 import type { DestinoArraste, Slot, SlotId } from '../bancada'
 import { anuncios, instrucoes } from '../bancada/anuncios'
 import { coordenadasPorDestino } from '../bancada/teclado'
-import { avaliarPeca, FILTROS_INICIAIS, filtrarPecas, filtrosDoSlot } from '../busca'
+import {
+  avaliarPeca,
+  criarBuscaLocal,
+  FILTROS_INICIAIS,
+  filtrosDoSlot,
+  soCompativeis,
+} from '../busca'
 import type { FiltrosBusca } from '../busca'
 import type { Catalogo } from '../catalogo'
 import type { Desafio } from '../desafios'
@@ -37,6 +43,7 @@ import { PainelInferior } from './PainelInferior'
 import { PainelMeta } from './PainelMeta'
 import { PainelOrcamento } from './PainelOrcamento'
 import { PainelPontuacao } from './PainelPontuacao'
+import { useBuscaPecas } from './useBuscaPecas'
 import { useTelaPequena } from './useTelaPequena'
 
 // Ponteiro: o destino sob o cursor. Teclado (sem ponteiro): o destino mais perto do centro.
@@ -80,7 +87,13 @@ export function Montagem({
   const telaPequena = useTelaPequena()
   // Aberto por um Slot, o painel se recolhe sozinho depois de "Adicionar à Build".
   const [painel, setPainel] = useState<'recolhido' | 'aberto' | 'aberto-pelo-slot'>('recolhido')
-  const resultados = filtrarPecas(catalogo.pecas, build, filtros)
+  const buscar = useMemo(() => criarBuscaLocal(catalogo.pecas), [catalogo.pecas])
+  // "Só compatíveis" depende da Build, que a porta não conhece: filtra aqui, sem nova busca.
+  const { soCompativeis: compativeis, ...pesquisa } = filtros
+  const busca = useBuscaPecas(buscar, pesquisa)
+  // Com erro, a lista anterior não vale mais: some junto com a contagem.
+  const encontradas = busca.erro ? [] : busca.pecas
+  const resultados = compativeis ? soCompativeis(build, encontradas) : encontradas
   const sensores = useSensors(
     useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
     // Toque longo: deslizar rápido continua rolando a página.
@@ -143,39 +156,53 @@ export function Montagem({
             onMudarAberto={(aberto) => setPainel(aberto ? 'aberto' : 'recolhido')}
           >
             <PainelBusca filtros={filtros} pecas={catalogo.pecas} onMudarFiltros={setFiltros} />
-            <p aria-live="polite" className="app__contagem">
-              {resultados.length}{' '}
-              {resultados.length === 1 ? 'Peça encontrada' : 'Peças encontradas'}
+            <p aria-live="polite" className="app__contagem" data-testid="contagem-busca">
+              {busca.buscando
+                ? 'Buscando…'
+                : `${resultados.length} ${resultados.length === 1 ? 'Peça encontrada' : 'Peças encontradas'}`}
             </p>
-            {resultados.length === 0 ? (
-              <EstadoVazio icone="busca" titulo="Nenhuma Peça encontrada">
-                Tente outro termo ou afrouxe os filtros.
-              </EstadoVazio>
-            ) : (
-              <ul className="app__resultados">
-                {resultados.map((peca) => (
-                  <li key={peca.id}>
-                    <CardPeca
-                      peca={peca}
-                      avaliacao={avaliarPeca(build, peca)}
-                      onAdicionar={(p) => {
-                        despachar({ tipo: 'encaixar', peca: p })
-                        if (painel === 'aberto-pelo-slot') setPainel('recolhido')
-                      }}
-                      onGuardar={(p) => {
-                        // A restauração também guarda Peças; só o clique do usuário avisa.
-                        despachar({ tipo: 'guardar', peca: p })
-                        despachar({
-                          tipo: 'avisar',
-                          texto: `${p.nome} foi para a Bandeja`,
-                          tom: 'info',
-                        })
-                      }}
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div
+              aria-busy={busca.buscando}
+              inert={busca.buscando}
+              className={busca.buscando ? 'app__resultados--buscando' : undefined}
+            >
+              {resultados.length > 0 ? (
+                <ul className="app__resultados">
+                  {resultados.map((peca) => (
+                    <li key={peca.id}>
+                      <CardPeca
+                        peca={peca}
+                        avaliacao={avaliarPeca(build, peca)}
+                        onAdicionar={(p) => {
+                          despachar({ tipo: 'encaixar', peca: p })
+                          if (painel === 'aberto-pelo-slot') setPainel('recolhido')
+                        }}
+                        onGuardar={(p) => {
+                          // A restauração também guarda Peças; só o clique do usuário avisa.
+                          despachar({ tipo: 'guardar', peca: p })
+                          despachar({
+                            tipo: 'avisar',
+                            texto: `${p.nome} foi para a Bandeja`,
+                            tom: 'info',
+                          })
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              ) : busca.buscando ? (
+                <EstadoVazio icone="busca" titulo="Buscando Peças…" />
+              ) : busca.erro ? (
+                // Sem botão de nova tentativa: a próxima mudança de filtro já busca de novo.
+                <EstadoVazio icone="alerta" titulo="Não foi possível buscar">
+                  Mude a busca ou os filtros para tentar de novo.
+                </EstadoVazio>
+              ) : (
+                <EstadoVazio icone="busca" titulo="Nenhuma Peça encontrada">
+                  Tente outro termo ou afrouxe os filtros.
+                </EstadoVazio>
+              )}
+            </div>
           </PainelInferior>
         </div>
         <div className="app__bancada">

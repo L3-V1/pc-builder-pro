@@ -2,19 +2,48 @@
 import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
-import App from './App'
+import { Aplicacao } from './Aplicacao'
 import { CHAVE_ESTADO } from './persistencia'
+import { catalogoFixture } from './teste/catalogo'
 
-async function adicionar(texto: string) {
+// Conta as chamadas à porta de busca e, quando pedido, a faz falhar; senão usa a implementação local.
+const chamadasBusca = vi.hoisted(() => ({ total: 0, falhar: false }))
+vi.mock('./busca/buscar', async (original) => {
+  const modulo = await original<typeof import('./busca/buscar')>()
+  return {
+    ...modulo,
+    criarBuscaLocal: (...args: Parameters<typeof modulo.criarBuscaLocal>) => {
+      const buscar = modulo.criarBuscaLocal(...args)
+      return (...chamada: Parameters<typeof buscar>) => {
+        chamadasBusca.total++
+        return chamadasBusca.falhar ? Promise.reject(new Error('falhou')) : buscar(...chamada)
+      }
+    },
+  }
+})
+
+// A busca é assíncrona e com debounce: espera a lista assentar antes de clicar nela.
+async function esperarBusca() {
+  await waitFor(() =>
+    expect(screen.getByTestId('contagem-busca')).not.toHaveTextContent('Buscando'),
+  )
+}
+
+async function pesquisar(texto: string) {
   const buscar = screen.getByLabelText('Buscar')
   await userEvent.clear(buscar)
   await userEvent.type(buscar, texto)
+  await esperarBusca()
+}
+
+async function adicionar(texto: string) {
+  await pesquisar(texto)
   await userEvent.click(screen.getByRole('button', { name: /Adicionar à Build|Trocar/ }))
 }
 
-describe('App', () => {
+describe('Aplicacao', () => {
   it('adicionar CPU sem placa-mãe a coloca na Bandeja com aviso e Orçamento zerado', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('ryzen 7600')
 
     const bandeja = screen.getByRole('region', { name: 'Bandeja' })
@@ -26,13 +55,13 @@ describe('App', () => {
   })
 
   it('mostra estado vazio quando nada casa com a busca', async () => {
-    render(<App />)
-    await userEvent.type(screen.getByLabelText('Buscar'), 'xyzinexistente')
+    render(<Aplicacao catalogo={catalogoFixture} />)
+    await pesquisar('xyzinexistente')
     expect(screen.getByText('Nenhuma Peça encontrada')).toBeInTheDocument()
   })
 
   it('placa e depois CPU por clique mostram a CPU no socket e o Orçamento atualizado', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
     await adicionar('ryzen 7600')
 
@@ -42,7 +71,7 @@ describe('App', () => {
   })
 
   it('trocar para placa DDR4 manda CPU e RAM para a Bandeja, sem diálogo', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
     await adicionar('ryzen 7600')
     await adicionarPorNome('vengeance 2x16', 'Vengeance 2x16 GB')
@@ -63,7 +92,7 @@ describe('App', () => {
 
 describe('App: Pontuação', () => {
   it('depois de encaixar placa, CPU, RAM e GPU mostra a Pontuação dos dois Perfis', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
     await adicionar('ryzen 7600')
     await adicionarPorNome('vengeance 2x16', 'Vengeance 2x16 GB')
@@ -82,7 +111,7 @@ describe('App: Pontuação', () => {
 
 describe('App: persistência', () => {
   it('depois de adicionar placa e CPU o localStorage tem os IDs', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
     await adicionar('ryzen 7600')
     expect(JSON.parse(localStorage.getItem(CHAVE_ESTADO) ?? 'null')).toEqual({
@@ -102,7 +131,7 @@ describe('App: persistência', () => {
         meta: 5000,
       }),
     )
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     const socket = screen.getByRole('group', { name: 'Socket da CPU' })
     expect(within(socket).getByText('Ryzen 5 7600')).toBeInTheDocument()
     expect(screen.getByTestId('orcamento-medio')).toHaveTextContent(/R\$\s2\.150,00/)
@@ -113,7 +142,7 @@ describe('App: persistência', () => {
 
   it('com #b=...&m=... aplica o link, avisa e limpa o hash', async () => {
     history.replaceState(null, '', '#b=placa-mae-b650m-aorus-elite,cpu-ryzen-5-7600&m=4000')
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     const socket = screen.getByRole('group', { name: 'Socket da CPU' })
     expect(within(socket).getByText('Ryzen 5 7600')).toBeInTheDocument()
     expect(screen.getByLabelText('Meta de orçamento (R$)')).toHaveValue('4.000')
@@ -124,7 +153,7 @@ describe('App: persistência', () => {
   })
 
   it('um link colado na mesma aba (hashchange) substitui a Build', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await act(async () => {
       history.replaceState(null, '', '#b=gabinete-nzxt-h5-flow&m=7000')
       window.dispatchEvent(new HashChangeEvent('hashchange'))
@@ -140,7 +169,7 @@ describe('App: persistência', () => {
     const usuario = userEvent.setup()
     const writeText = vi.fn().mockResolvedValue(undefined)
     Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('h5 flow')
     await usuario.click(screen.getByRole('button', { name: 'Copiar link' }))
     expect(writeText).toHaveBeenCalledWith(expect.stringMatching(/#b=gabinete-nzxt-h5-flow$/))
@@ -149,9 +178,7 @@ describe('App: persistência', () => {
 })
 
 async function adicionarPorNome(busca: string, nome: string) {
-  const buscar = screen.getByLabelText('Buscar')
-  await userEvent.clear(buscar)
-  await userEvent.type(buscar, busca)
+  await pesquisar(busca)
   const card = screen.getByRole('heading', { name: nome, level: 3 }).closest('article')
   if (!card) throw new Error(`Card de "${nome}" não encontrado`)
   await userEvent.click(within(card).getByRole('button', { name: /Adicionar à Build|Trocar/ }))
@@ -165,7 +192,7 @@ async function abrirDesafio(titulo: string) {
 
 describe('App: Desafios', () => {
   it('a aba Desafios lista os Desafios e iniciar um mostra o painel, a Meta travada e nenhum Copiar link', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     expect(screen.getByRole('tab', { name: 'Montagem livre' })).toHaveAttribute(
       'aria-selected',
       'true',
@@ -184,7 +211,7 @@ describe('App: Desafios', () => {
   })
 
   it('montar a solução de Primeiro PC, ligar o PC e, ao reabrir o app, ver o Desafio concluído e a Build livre intacta', async () => {
-    const { unmount } = render(<App />)
+    const { unmount } = render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
 
     await abrirDesafio('Primeiro PC')
@@ -201,7 +228,7 @@ describe('App: Desafios', () => {
     expect(within(dialogo).getByText('Primeiro PC')).toBeInTheDocument()
     unmount()
 
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await userEvent.click(screen.getByRole('tab', { name: 'Desafios' }))
     const card = within(screen.getByRole('article', { name: 'Primeiro PC' }))
     expect(card.getByText('Concluído')).toBeInTheDocument()
@@ -222,7 +249,7 @@ function simularTelaPequena(pequena: boolean) {
 
 describe('App: Escolher pelo Slot', () => {
   it('no desktop, "Escolher" num Slot filtra a busca pela Categoria e Só compatíveis', async () => {
-    render(<App />)
+    render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
     await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Slot DIMM 1' }))
     expect(screen.getByLabelText('Categoria')).toHaveDisplayValue('Memória RAM')
@@ -233,7 +260,7 @@ describe('App: Escolher pelo Slot', () => {
   it('no celular, "Escolher" abre o painel inferior da busca já filtrado', async () => {
     simularTelaPequena(true)
     try {
-      render(<App />)
+      render(<Aplicacao catalogo={catalogoFixture} />)
       const barra = screen.getByRole('button', { name: 'Buscar Peças' })
       expect(barra).toHaveAttribute('aria-expanded', 'false')
       await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Placa-mãe' }))
@@ -247,10 +274,10 @@ describe('App: Escolher pelo Slot', () => {
   it('no celular, "Adicionar à Build" com o painel aberto por um Slot recolhe o painel', async () => {
     simularTelaPequena(true)
     try {
-      render(<App />)
+      render(<Aplicacao catalogo={catalogoFixture} />)
       const barra = screen.getByRole('button', { name: 'Buscar Peças' })
       await userEvent.click(screen.getByRole('button', { name: 'Escolher Peça para Placa-mãe' }))
-      await userEvent.type(screen.getByLabelText('Buscar'), 'b650m aorus')
+      await pesquisar('b650m aorus')
       await userEvent.click(screen.getByRole('button', { name: 'Adicionar à Build' }))
       expect(barra).toHaveAttribute('aria-expanded', 'false')
       expect(screen.getByRole('group', { name: 'Placa-mãe' })).toHaveTextContent(
@@ -264,10 +291,10 @@ describe('App: Escolher pelo Slot', () => {
   it('no celular, "Adicionar à Build" com o painel aberto pela barra mantém o painel aberto', async () => {
     simularTelaPequena(true)
     try {
-      render(<App />)
+      render(<Aplicacao catalogo={catalogoFixture} />)
       const barra = screen.getByRole('button', { name: 'Buscar Peças' })
       await userEvent.click(barra)
-      await userEvent.type(screen.getByLabelText('Buscar'), 'b650m aorus')
+      await pesquisar('b650m aorus')
       await userEvent.click(screen.getByRole('button', { name: 'Adicionar à Build' }))
       expect(barra).toHaveAttribute('aria-expanded', 'true')
     } finally {
@@ -278,15 +305,99 @@ describe('App: Escolher pelo Slot', () => {
   it('no celular, começar a arrastar uma Peça da busca recolhe o painel', async () => {
     simularTelaPequena(true)
     try {
-      render(<App />)
+      render(<Aplicacao catalogo={catalogoFixture} />)
       const barra = screen.getByRole('button', { name: 'Buscar Peças' })
       await userEvent.click(barra)
-      await userEvent.type(screen.getByLabelText('Buscar'), 'b650m aorus')
+      await pesquisar('b650m aorus')
       screen.getByRole('button', { name: 'Arrastar B650M Aorus Elite' }).focus()
       await userEvent.keyboard(' ')
       expect(barra).toHaveAttribute('aria-expanded', 'false')
+      // Encerra o arraste: o sensor de teclado escuta o documento e engoliria o espaço do próximo teste.
+      await userEvent.keyboard('{Escape}')
     } finally {
       vi.unstubAllGlobals()
+    }
+  })
+})
+
+describe('Montagem: busca assíncrona', () => {
+  const contagem = () => screen.getByTestId('contagem-busca')
+
+  it('logo após digitar mostra "Buscando…" com a lista anterior ocupada; depois, a contagem', async () => {
+    render(<Aplicacao catalogo={catalogoFixture} />)
+    await waitFor(() => expect(contagem()).toHaveTextContent(/\d+ Peças encontradas/))
+    const cardAnterior = screen.getAllByRole('heading', { level: 3 })[0]
+
+    await userEvent.type(screen.getByLabelText('Buscar'), 'ryzen 7600')
+    expect(contagem()).toHaveTextContent('Buscando…')
+    expect(cardAnterior.closest('[aria-busy]')).toHaveAttribute('aria-busy', 'true')
+
+    await waitFor(() => expect(contagem()).toHaveTextContent('1 Peça encontrada'))
+    expect(
+      screen.getByRole('heading', { name: 'Ryzen 5 7600', level: 3 }).closest('[aria-busy]'),
+    ).toHaveAttribute('aria-busy', 'false')
+  })
+
+  it('"Nenhuma Peça encontrada" só aparece depois que a busca assenta, nunca durante "Buscando…"', async () => {
+    render(<Aplicacao catalogo={catalogoFixture} />)
+    // A primeira busca ainda não respondeu: não há lista, mas também não há "nenhuma".
+    expect(contagem()).toHaveTextContent('Buscando…')
+    expect(screen.queryByText('Nenhuma Peça encontrada')).not.toBeInTheDocument()
+    expect(screen.getByText('Buscando Peças…')).toBeInTheDocument()
+
+    await pesquisar('xyzinexistente')
+    expect(screen.getByText('Nenhuma Peça encontrada')).toBeInTheDocument()
+
+    await userEvent.type(screen.getByLabelText('Buscar'), 'z')
+    expect(contagem()).toHaveTextContent('Buscando…')
+    expect(screen.queryByText('Nenhuma Peça encontrada')).not.toBeInTheDocument()
+    await esperarBusca()
+    expect(screen.getByText('Nenhuma Peça encontrada')).toBeInTheDocument()
+  })
+
+  it('com "Só compatíveis" ligado, encaixar uma placa-mãe atualiza a lista sem nova busca', async () => {
+    render(<Aplicacao catalogo={catalogoFixture} />)
+    await userEvent.click(screen.getByLabelText('Só compatíveis'))
+    await esperarBusca()
+    expect(screen.getByRole('heading', { name: 'Core i5-12400', level: 3 })).toBeInTheDocument()
+    const antes = chamadasBusca.total
+
+    const placa = screen
+      .getByRole('heading', { name: 'B650M Aorus Elite', level: 3 })
+      .closest('article')
+    if (!placa) throw new Error('Card da placa não encontrado')
+    await userEvent.click(within(placa).getByRole('button', { name: 'Adicionar à Build' }))
+
+    expect(contagem()).not.toHaveTextContent('Buscando')
+    expect(
+      screen.queryByRole('heading', { name: 'Core i5-12400', level: 3 }),
+    ).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Ryzen 5 7600', level: 3 })).toBeInTheDocument()
+    expect(chamadasBusca.total).toBe(antes)
+  })
+
+  it('quando a busca falha, mostra "Não foi possível buscar" em vez de "nenhuma"', async () => {
+    chamadasBusca.falhar = true
+    try {
+      render(<Aplicacao catalogo={catalogoFixture} />)
+      await esperarBusca()
+      expect(screen.getByText('Não foi possível buscar')).toBeInTheDocument()
+      expect(screen.queryByText('Nenhuma Peça encontrada')).not.toBeInTheDocument()
+    } finally {
+      chamadasBusca.falhar = false
+    }
+  })
+
+  it('falha depois de uma busca que deu certo mostra o erro, não a lista antiga', async () => {
+    render(<Aplicacao catalogo={catalogoFixture} />)
+    await esperarBusca()
+    chamadasBusca.falhar = true
+    try {
+      await pesquisar('ryzen')
+      expect(screen.getByText('Não foi possível buscar')).toBeInTheDocument()
+      expect(screen.queryAllByRole('heading', { name: /Ryzen/, level: 3 })).toHaveLength(0)
+    } finally {
+      chamadasBusca.falhar = false
     }
   })
 })

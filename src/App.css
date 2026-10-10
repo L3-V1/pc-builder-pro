@@ -4,64 +4,6 @@
   padding: 1rem;
 }
 
-.marca {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  min-width: 0;
-}
-
-.marca h1 {
-  margin: 0;
-  font-size: var(--texto-lg);
-  letter-spacing: -0.02em;
-}
-
-.marca__lema {
-  margin: 0;
-  color: var(--texto-suave);
-  font-size: var(--texto-sm);
-}
-
-.marca__simbolo {
-  flex: none;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.marca__sombra {
-  fill: var(--tinta);
-}
-
-.marca__fundo {
-  fill: var(--primario);
-  stroke: var(--tinta);
-  stroke-width: 2;
-}
-
-.marca__chip {
-  fill: none;
-  stroke: var(--primario-texto);
-  stroke-width: 2;
-}
-
-.marca__pinos {
-  fill: none;
-  stroke: var(--primario-texto);
-  stroke-linecap: square;
-  stroke-width: 1.5;
-}
-
-.marca__led {
-  fill: var(--led);
-}
-
-@media (max-width: 39.99rem) {
-  .marca__lema {
-    display: none;
-  }
-}
-
 /* Aviso das ações do usuário: uma etiqueta presa no topo, acima de todo o conteúdo. */
 .app__aviso {
   position: fixed;
@@ -229,4 +171,17 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* Busca em andamento: a lista anterior fica visível, esmaecida e inerte, sem piscar.
+   Só a entrada é animada; o resultado novo aparece já em opacidade total. */
+.app__resultados--buscando {
+  opacity: 0.55;
+  transition: opacity 150ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app__resultados--buscando {
+    transition: none;
+  }
 }

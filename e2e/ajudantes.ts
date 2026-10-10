@@ -1,30 +1,22 @@
-import { expect } from '@playwright/test'
+import { expect, test as base } from '@playwright/test'
 import type { Locator, Page } from '@playwright/test'
-import armazenamento from '../src/catalogo/dados/armazenamento.json' with { type: 'json' }
-import cooler from '../src/catalogo/dados/cooler.json' with { type: 'json' }
-import cpu from '../src/catalogo/dados/cpu.json' with { type: 'json' }
-import fonte from '../src/catalogo/dados/fonte.json' with { type: 'json' }
-import gabinete from '../src/catalogo/dados/gabinete.json' with { type: 'json' }
-import gpu from '../src/catalogo/dados/gpu.json' with { type: 'json' }
-import placaMae from '../src/catalogo/dados/placa-mae.json' with { type: 'json' }
-import ram from '../src/catalogo/dados/ram.json' with { type: 'json' }
+import { faixaPrecoFixture, respostaDados } from '../src/teste/respostaDados.ts'
 
-const todas = [
-  ...cpu,
-  ...placaMae,
-  ...ram,
-  ...gpu,
-  ...armazenamento,
-  ...fonte,
-  ...gabinete,
-  ...cooler,
-]
+// Todos os specs usam este test: o Catálogo vem sempre da fixture, nunca dos dados reais.
+export const test = base.extend<{ catalogoFixture: void }>({
+  catalogoFixture: [
+    async ({ page }, use) => {
+      await page.route('**/dados/*.json', (rota) => {
+        const arquivo = /dados\/([^/]+)\.json$/.exec(new URL(rota.request().url()).pathname)?.[1]
+        return arquivo ? rota.fulfill({ json: respostaDados(arquivo) }) : rota.fallback()
+      })
+      await use()
+    },
+    { auto: true },
+  ],
+})
 
-export function faixaPreco(id: string) {
-  const p = todas.find((x) => x.id === id)
-  if (!p) throw new Error(`Peça ${id} não existe`)
-  return p.faixaPreco
-}
+export const faixaPreco = faixaPrecoFixture
 
 export const medio = (id: string) => faixaPreco(id).medio
 export const soma = (...ids: string[]) => ids.reduce((t, id) => t + medio(id), 0)
@@ -44,6 +36,8 @@ export const aviso = (page: Page) => page.getByRole('main').getByRole('status')
 const barraBusca = (page: Page) => page.getByRole('button', { name: 'Buscar Peças', exact: true })
 
 async function mudarBusca(page: Page, aberta: boolean) {
+  // Na tela de carregamento a barra ainda não existe; sem esperar, o celular pareceria desktop.
+  await page.getByLabel('Buscar', { exact: true }).waitFor({ state: 'attached' })
   const barra = barraBusca(page)
   if ((await barra.count()) === 0) return
   if ((await barra.getAttribute('aria-expanded')) === String(aberta)) return
@@ -54,9 +48,15 @@ async function mudarBusca(page: Page, aberta: boolean) {
 export const abrirBusca = (page: Page) => mudarBusca(page, true)
 export const fecharBusca = (page: Page) => mudarBusca(page, false)
 
+// A busca é assíncrona e com debounce: enquanto ela não assenta, a lista anterior fica aria-busy.
+export async function esperarBusca(page: Page) {
+  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0)
+}
+
 export async function pesquisar(page: Page, termo: string) {
   await abrirBusca(page)
   await page.getByLabel('Buscar', { exact: true }).fill(termo)
+  await esperarBusca(page)
 }
 
 export async function adicionar(page: Page, termo: string, nome?: string) {

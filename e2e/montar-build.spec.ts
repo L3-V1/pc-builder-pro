@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import { adicionar, brl, faixaPreco, normalizar, pesquisar, texto } from './ajudantes.ts'
+import { adicionar, brl, faixaPreco, normalizar, pesquisar, texto, test } from './ajudantes.ts'
 
 const porId = faixaPreco
 const orcamentoMedio = (page: Page) => texto(page.getByTestId('orcamento-medio'))

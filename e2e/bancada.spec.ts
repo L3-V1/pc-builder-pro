@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import type { Locator, Page } from '@playwright/test'
-import { brl, medio, pesquisar, slot, soma, texto } from './ajudantes.ts'
+import { brl, medio, pesquisar, slot, soma, texto, test } from './ajudantes.ts'
 
 // Arraste com mouse e teclado na Bancada; o arraste por toque fica em celular.spec.ts.
 test.skip(({ isMobile }) => isMobile, 'só no desktop')
@@ -130,11 +130,14 @@ test('teclado: Espaço pega, setas levam ao socket e Espaço encaixa', async ({ 
   await alcaNaBusca(page).focus()
   await page.keyboard.press('Space')
 
-  for (let i = 0; i < 4; i++) {
-    await page.keyboard.press('ArrowRight')
-    if ((await slot(page, 'cpu').getAttribute('class'))?.includes('slot--sobre')) break
-  }
-  await expect(slot(page, 'cpu')).toHaveClass(/slot--sobre/)
+  // O dnd-kit mede os destinos e atualiza o "sobre" de forma assíncrona: uma seta por vez,
+  // esperando o estado assentar antes da próxima, até chegar ao socket.
+  await expect(async () => {
+    if (!(await slot(page, 'cpu').getAttribute('class'))?.includes('slot--sobre')) {
+      await page.keyboard.press('ArrowRight')
+    }
+    await expect(slot(page, 'cpu')).toHaveClass(/slot--sobre/, { timeout: 300 })
+  }).toPass()
   await page.keyboard.press('Space')
 
   await expect(slot(page, 'cpu')).toContainText('Ryzen 5 7600')

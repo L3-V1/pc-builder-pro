@@ -42,16 +42,17 @@ function casaTexto(peca: Peca, texto: string): boolean {
   return termos.every((t) => alvo.includes(t))
 }
 
-export function filtrarPecas(pecas: Peca[], build: Build, filtros: FiltrosBusca): Peca[] {
-  const { texto, categoria, marcas, precoMin, precoMax, ordenacao, soCompativeis } = filtros
+export type FiltrosPesquisa = Omit<FiltrosBusca, 'soCompativeis'>
+
+export function pesquisarPecas(pecas: Peca[], filtros: FiltrosPesquisa): Peca[] {
+  const { texto, categoria, marcas, precoMin, precoMax, ordenacao } = filtros
   const filtradas = pecas.filter(
     (p) =>
       casaTexto(p, texto) &&
       (categoria === undefined || p.categoria === categoria) &&
       (marcas.length === 0 || marcas.includes(p.marca)) &&
       (precoMin === undefined || p.faixaPreco.medio >= precoMin) &&
-      (precoMax === undefined || p.faixaPreco.medio <= precoMax) &&
-      (!soCompativeis || avaliarPeca(build, p).tipo !== 'bloqueada'),
+      (precoMax === undefined || p.faixaPreco.medio <= precoMax),
   )
   if (ordenacao === 'relevancia') return filtradas
   const perfil = PERFIL_DA_ORDENACAO[ordenacao]
@@ -62,6 +63,17 @@ export function filtrarPecas(pecas: Peca[], build: Build, filtros: FiltrosBusca)
   }
   const sinal = ordenacao === 'preco-asc' ? 1 : -1
   return filtradas.toSorted((a, b) => sinal * (a.faixaPreco.medio - b.faixaPreco.medio))
+}
+
+export function soCompativeis(build: Build, pecas: Peca[]): Peca[] {
+  return pecas.filter((p) => avaliarPeca(build, p).tipo !== 'bloqueada')
+}
+
+// Filtrar depois de ordenar preserva a ordem da pesquisa.
+export function filtrarPecas(pecas: Peca[], build: Build, filtros: FiltrosBusca): Peca[] {
+  const { soCompativeis: compativeis, ...pesquisa } = filtros
+  const resultado = pesquisarPecas(pecas, pesquisa)
+  return compativeis ? soCompativeis(build, resultado) : resultado
 }
 
 export function marcasDisponiveis(pecas: Peca[], categoria?: Categoria): string[] {

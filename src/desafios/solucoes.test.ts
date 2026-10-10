@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { carregarDesafios } from '.'
-import { carregarCatalogo } from '../catalogo'
+import { lerCatalogoPublicado } from '../teste/dadosPublicados'
 import { avaliarDesafio } from '../motor'
 import { remontarBuild, resolverIds } from '../persistencia/remontar'
 
@@ -100,7 +100,7 @@ const SOLUCOES: Record<string, string[]> = {
 }
 
 const desafios = carregarDesafios()
-const { pecas } = carregarCatalogo()
+const { pecas } = lerCatalogoPublicado()
 
 describe('soluções de referência', () => {
   it('todo Desafio tem uma solução de referência', () => {

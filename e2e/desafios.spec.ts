@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import { adicionar } from './ajudantes.ts'
+import { adicionar, test } from './ajudantes.ts'
 
 async function abrirDesafio(page: Page, titulo: string) {
   await page.getByRole('tab', { name: 'Desafios' }).click()

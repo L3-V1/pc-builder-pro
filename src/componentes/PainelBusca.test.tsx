@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
-import { carregarCatalogo } from '../catalogo'
+import { catalogoFixture } from '../teste/catalogo'
 import { FILTROS_INICIAIS } from '../busca'
 import { PainelBusca } from './PainelBusca'
 
-const { pecas } = carregarCatalogo()
+const { pecas } = catalogoFixture
 
 function montar() {
   const onMudarFiltros = vi.fn()

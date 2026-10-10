@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { carregarCatalogo } from '../catalogo'
+import { catalogoFixture } from '../teste/catalogo'
 import { CATEGORIAS } from '../catalogo/schema'
 import { peca } from '../motor/teste-pecas'
 import { IlustracaoPeca } from './IlustracaoPeca'
 
-const { pecas } = carregarCatalogo()
+const { pecas } = catalogoFixture
 const desenhar = (p: Parameters<typeof IlustracaoPeca>[0]['peca']) =>
   render(<IlustracaoPeca peca={p} />).container.querySelector('svg')
 

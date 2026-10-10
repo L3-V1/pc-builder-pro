@@ -16,9 +16,10 @@ npm run build      # build de produção
 
 ## Catálogo
 
-As peças ficam em `src/catalogo/dados/<categoria>.json`, e a data de referência em
-`meta.json`. O schema (Zod) está em `src/catalogo/schema.ts` e `carregarCatalogo()` valida tudo
-ao carregar.
+As peças ficam em `public/dados/<categoria>.json`, e a data de referência em `meta.json`. Elas
+não entram no bundle: o app busca esses arquivos por `fetch` em `dados/*.json`, atrás de uma tela
+de carregamento. O schema (Zod) está em `src/catalogo/schema.ts` e `carregarCatalogo()` valida
+tudo ao carregar.
 
 Os preços são **estimativas** em R$ (faixa mín, médio e máx) e serão revisados na curadoria
 da Fase 8.

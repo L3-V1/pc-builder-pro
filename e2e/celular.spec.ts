@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import type { Locator, Page } from '@playwright/test'
-import { brl, slot, soma, texto } from './ajudantes.ts'
+import { brl, esperarBusca, slot, soma, texto, test } from './ajudantes.ts'
 
 test.skip(({ isMobile }) => !isMobile, 'só no celular')
 
@@ -10,6 +10,7 @@ async function escolherPeloSlot(page: Page, rotulo: string, termo: string) {
   await page.getByRole('button', { name: `Escolher Peça para ${rotulo}` }).tap()
   await expect(barra(page)).toHaveAttribute('aria-expanded', 'true')
   await page.getByLabel('Buscar', { exact: true }).fill(termo)
+  await esperarBusca(page)
   await page.getByRole('button', { name: 'Adicionar à Build' }).first().tap()
   await expect(barra(page)).toHaveAttribute('aria-expanded', 'false')
 }
@@ -76,6 +77,7 @@ test('monta uma Build completa só tocando nos Slots e em "Adicionar à Build"',
 test('toque longo na alça e arraste até o Slot encaixa a Peça', async ({ page }) => {
   await abrirPainel(page)
   await page.getByLabel('Buscar', { exact: true }).fill('b650m aorus')
+  await esperarBusca(page)
   const alca = page.getByRole('button', { name: 'Arrastar B650M Aorus Elite' })
   // Os filtros ocupam a primeira dobra do painel; a alça precisa estar à vista para o toque.
   await alca.scrollIntoViewIfNeeded()

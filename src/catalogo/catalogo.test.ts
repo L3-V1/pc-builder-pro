@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { carregarCatalogo } from '.'
+import { lerCatalogoPublicado } from '../teste/dadosPublicados'
 import { CATEGORIAS, FORM_FACTORS, SOCKETS, TIPOS_RAM } from './schema'
 import { validarCatalogo } from './validar'
 
-const { dataReferencia, pecas } = carregarCatalogo()
+const { dataReferencia, pecas } = lerCatalogoPublicado()
 
 // Links compartilhados e soluções dos Desafios dependem destes IDs.
 const IDS_ANTERIORES_A_FASE_8 = [
@@ -152,7 +152,7 @@ describe('Catálogo real', () => {
     })
   })
 
-  it('carregarCatalogo devolve a data de referência 2026-10 e as peças dos JSONs', () => {
+  it('os dados publicados têm a data de referência 2026-10 e Peças', () => {
     expect(dataReferencia).toBe('2026-10')
     expect(pecas.length).toBeGreaterThan(0)
   })

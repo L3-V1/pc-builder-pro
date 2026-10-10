@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { carregarCatalogo } from '../catalogo'
+import { catalogoFixture } from '../teste/catalogo'
 import { criarBuild, indiceDaPeca } from '../motor'
 import { montar, peca } from '../motor/teste-pecas'
 import { slotsDaBancada } from '../bancada/slots'
@@ -9,10 +9,12 @@ import {
   filtrosDoSlot,
   marcasDisponiveis,
   normalizarTexto,
+  pesquisarPecas,
+  soCompativeis,
 } from './filtrar'
 import type { FiltrosBusca } from './filtrar'
 
-const { pecas } = carregarCatalogo()
+const { pecas } = catalogoFixture
 const vazia = criarBuild()
 const buscar = (filtros: Partial<FiltrosBusca>, build = vazia) =>
   filtrarPecas(pecas, build, { ...FILTROS_INICIAIS, ...filtros })
@@ -138,6 +140,35 @@ describe('filtrarPecas', () => {
       'fonte-rm750e',
       'fonte-cx650',
     ])
+  })
+})
+
+describe('pesquisarPecas', () => {
+  it('aplica texto, Categoria, marca, preço e ordenação sem depender de Build', () => {
+    const r = pesquisarPecas(pecas, {
+      texto: 'corsair',
+      categoria: 'fonte',
+      marcas: ['Corsair'],
+      precoMin: 400,
+      ordenacao: 'preco-desc',
+    })
+    expect(ids(r)).toEqual([
+      'fonte-corsair-hx1200i',
+      'fonte-corsair-rm1000e',
+      'fonte-rm850x',
+      'fonte-rm750e',
+      'fonte-cx650',
+    ])
+  })
+})
+
+describe('soCompativeis', () => {
+  it('remove só as Peças bloqueadas pela Build e preserva a ordem', () => {
+    const build = montar(peca('placa-mae-b650m-aorus-elite', 'placa-mae'))
+    const entrada = pecas.filter((p) => p.categoria === 'cpu').toReversed()
+    const esperado = entrada.filter((p) => p.socket === 'AM5')
+    expect(esperado.length).toBeLessThan(entrada.length)
+    expect(ids(soCompativeis(build, entrada))).toEqual(ids(esperado))
   })
 })
 

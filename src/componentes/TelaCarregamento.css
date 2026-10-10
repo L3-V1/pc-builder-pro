@@ -1,0 +1,77 @@
+/* Telas de carregamento e de erro do Catálogo: um cartão no centro, antes da montagem. */
+.tela-catalogo {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: 1rem;
+}
+
+.tela-catalogo__cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: min(100%, 28rem);
+  padding: var(--respiro-modal);
+  border: var(--traco);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  box-shadow: var(--relevo-medio);
+}
+
+.tela-catalogo__mensagem {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 0;
+  color: var(--texto);
+  font-size: var(--texto-base);
+  font-weight: 600;
+}
+
+.tela-catalogo__led {
+  flex: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: var(--traco);
+  background: var(--led);
+  animation: tela-catalogo-piscar 0.9s steps(2, jump-none) infinite;
+}
+
+@keyframes tela-catalogo-piscar {
+  to {
+    background: var(--superficie);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tela-catalogo__led {
+    animation: none;
+  }
+}
+
+.tela-catalogo__erro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--respiro-card);
+  border: var(--traco);
+  border-left-width: 6px;
+  border-left-color: var(--perigo);
+  background: var(--perigo-suave);
+  color: var(--texto);
+}
+
+.tela-catalogo__erro p {
+  margin: 0;
+  font-size: var(--texto-sm);
+}
+
+.tela-catalogo__erro .tela-catalogo__titulo {
+  font-size: var(--texto-base);
+  font-weight: 700;
+}
+
+.tela-catalogo__acoes {
+  display: flex;
+  justify-content: flex-end;
+}

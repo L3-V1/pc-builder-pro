@@ -1,10 +1,10 @@
-import { carregarCatalogo } from '../catalogo'
+import { catalogoFixture } from '../teste/catalogo'
 import type { Categoria, Peca, PecaDe } from '../catalogo'
 import { criarBuild, encaixar } from './build'
 import type { Build } from './build'
 
 export function peca<C extends Categoria>(id: string, categoria: C): PecaDe<C> {
-  const encontrada = carregarCatalogo().pecas.find((p) => p.id === id)
+  const encontrada = catalogoFixture.pecas.find((p) => p.id === id)
   if (!encontrada) throw new Error(`Peça "${id}" não existe no Catálogo`)
   if (encontrada.categoria !== categoria) {
     throw new Error(`Peça "${id}" é ${encontrada.categoria}, não ${categoria}`)

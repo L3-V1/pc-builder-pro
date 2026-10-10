@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { carregarCatalogo } from '../catalogo'
+import { catalogoFixture } from '../teste/catalogo'
 import { pecasDaBuild } from '../motor'
 import { peca } from '../motor/teste-pecas'
 import { remontarBuild, resolverIds } from './remontar'
 
-const { pecas: catalogo } = carregarCatalogo()
+const { pecas: catalogo } = catalogoFixture
 const placaAm5 = peca('placa-mae-b650m-aorus-elite', 'placa-mae')
 const ramDdr5 = peca('ram-corsair-32gb-ddr5-6000', 'ram')
 const cpuAm5 = peca('cpu-ryzen-5-7600', 'cpu')

@@ -2,7 +2,7 @@
 
 > Última atualização: Data de referência 2026-10, 152 Peças.
 
-O Catálogo fica em `src/catalogo/dados/`, um JSON por Categoria, mais `meta.json` com a Data de referência. Ele é validado pelo schema (`src/catalogo/schema.ts`) ao carregar o app e pelos testes. Uma Peça inválida derruba o carregamento e o `npm test`.
+O Catálogo fica em `public/dados/`, um JSON por Categoria, mais `meta.json` com a Data de referência. O app busca esses arquivos por `fetch` (eles não entram no bundle) e os valida pelo schema (`src/catalogo/schema.ts`) ao carregar; os testes dos dados também os validam. Uma Peça inválida derruba o carregamento e o `npm test`.
 
 ## Regras que não podem ser quebradas
 
@@ -26,7 +26,7 @@ O Catálogo fica em `src/catalogo/dados/`, um JSON por Categoria, mais `meta.jso
    - as Peças de referência com Índice 100 e a ordem de pares de referência;
    - os IDs anteriores à Fase 8.
 6. **Desafios.** `src/desafios/solucoes.test.ts` confirma que cada Desafio tem solução dentro do Orçamento. Se os preços subirem, ajuste `orcamentoMaximo` em `src/desafios/dados/desafios.json` mantendo a folga original: Desafios "apertados" (Orçamento apertado, Escritório) ficam no custo da Build mais barata que os cumpre, arredondado para a centena acima; os outros ficam de 5% a 15% acima. As soluções de referência devem respeitar a fonte recomendada (sem alerta de fonte), mesmo que o Desafio não exija.
-7. **Testes que leem o Catálogo real.** `src/busca/filtrar.test.ts`, `src/App.test.tsx`, `src/componentes/Bandeja.test.tsx` e os e2e usam Peças reais. Os de busca verificam propriedades (ordem, limites), mas os de tela conferem valores em reais e termos de busca. Rode `npm run test:e2e` e ajuste termos que deixaram de ser únicos.
+7. **Testes que leem o Catálogo real.** Só `src/catalogo/catalogo.test.ts` e `src/desafios/solucoes.test.ts` leem `public/dados/` (via `src/teste/dadosPublicados.ts`). Os testes de unidade, de componente e os e2e usam a fixture congelada `src/teste/catalogo.json` (os e2e interceptam `dados/*.json` com ela), então mudar preços ou incluir Peças não os quebra. Se um teste novo precisar de uma Peça que não está na fixture, copie-a do Catálogo real para a fixture, na mesma ordem relativa.
 8. Rode `npm run lint` e `npm run typecheck`.
 
 ## Atualização de 2026-10 (Fase 8)
