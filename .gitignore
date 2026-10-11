@@ -31,3 +31,6 @@ test-results
 
 # Pipeline de specs: download do OpenDB e relatório de descartes
 pipeline/.cache
+
+# Snapshots e prints do MCP do Playwright
+.playwright-mcp/

@@ -45,6 +45,16 @@ diferente de zero, sem gravar nada, se algum ID antigo não resolve ou se a saí
 schema. O resumo de descartes sai no console e o relatório completo em
 `pipeline/.cache/relatorio.json`.
 
+### Coleta de preços (em andamento)
+
+Com `ML_CLIENT_ID` e `ML_CLIENT_SECRET` no `.env.local` (veja `.env.example`), o pipeline consulta
+Anúncios do Mercado Livre e calcula a Faixa de preço do dia. Enquanto o app no Mercado Livre não
+existe, deixe as duas vazias: o pipeline avisa e gera só as legadas com a Faixa de preço legada,
+como descrito acima. O navegador nunca fala com o Mercado Livre; ele só lê `public/dados/`.
+
+- `npm run pipeline -- --sem-coleta`: força o modo sem coleta mesmo com credenciais.
+- `npm run pipeline -- --exigir-coleta`: falha em vez de cair no modo sem coleta (workflow agendado).
+
 Para ligar uma Peça antiga a um registro do OpenDB, `npx tsx pipeline/ferramentas/sugerir-pares.ts [idAntigo…]`
 lista os candidatos mais parecidos.
 

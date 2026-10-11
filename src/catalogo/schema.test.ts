@@ -235,9 +235,16 @@ describe('Catalogo', () => {
     expect(Catalogo.safeParse({ dataReferencia: '2026-10', pecas: [cpu, gpu] }).success).toBe(true)
   })
 
-  it.each(['10/2026', '2026-13', '2026-00', '2026-1'])('rejeita dataReferencia %s', (data) => {
-    expect(Catalogo.safeParse({ dataReferencia: data, pecas: [cpu] }).success).toBe(false)
+  it('aceita dataReferencia com o dia da coleta (AAAA-MM-DD)', () => {
+    expect(Catalogo.safeParse({ dataReferencia: '2026-10-11', pecas: [cpu] }).success).toBe(true)
   })
+
+  it.each(['10/2026', '2026-13', '2026-00', '2026-1', '2026-10-32', '2026-10-1'])(
+    'rejeita dataReferencia %s',
+    (data) => {
+      expect(Catalogo.safeParse({ dataReferencia: data, pecas: [cpu] }).success).toBe(false)
+    },
+  )
 
   it('rejeita ID que não é slug kebab-case', () => {
     const resultado = Catalogo.safeParse({

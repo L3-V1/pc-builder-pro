@@ -151,9 +151,13 @@ export const Peca = z.discriminatedUnion('categoria', [
 export type Peca = z.infer<typeof Peca>
 
 export const Catalogo = z.strictObject({
+  // AAAA-MM no Catálogo legado; AAAA-MM-DD (o dia da coleta) desde a coleta de preços.
   dataReferencia: z
     .string()
-    .regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Data de referência deve ser AAAA-MM'),
+    .regex(
+      /^\d{4}-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?$/,
+      'Data de referência deve ser AAAA-MM ou AAAA-MM-DD',
+    ),
   // ID antigo → ID atual: links e Builds salvas antes da troca de IDs continuam resolvendo.
   aliases: z.record(z.string(), z.string()).default({}),
   pecas: z.array(Peca),

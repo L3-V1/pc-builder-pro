@@ -7,7 +7,7 @@ import fx from './teste/amostras/cpu-fx-8350-am3.json'
 import ak400 from './teste/amostras/cooler-deepcool-ak400.json'
 import strix from './teste/amostras/gpu-asus-rog-strix-rtx-4060.json'
 import { ErroMontagem, montarCatalogo } from './montar'
-import type { EntradaMontagem } from './montar'
+import type { EntradaMontagem, PrecoColetado } from './montar'
 
 const faixa = (medio: number) => ({ min: medio - 10, medio, max: medio + 10 })
 
@@ -185,20 +185,114 @@ describe('montarCatalogo', () => {
     const { relatorio } = montarCatalogo(
       entrada({ registros: { ...entrada().registros, cpu: [ryzen, i5, fx] } }),
     )
+    // Sem coleta, os campos de preço coletado ficam zerados.
+    const semColeta = {
+      semIndice: [],
+      comPreco: 0,
+      descartesAnuncio: {},
+      semAnuncio: 0,
+      precoLegado: [],
+    }
     expect(relatorio.cpu).toEqual({
+      ...semColeta,
       normalizadas: 2,
       descartadas: { 'socket não suportado: AM3+': 1 },
       semPreco: 1,
-      semIndice: [],
     })
-    expect(relatorio.gpu).toEqual({ normalizadas: 1, descartadas: {}, semPreco: 1, semIndice: [] })
+    expect(relatorio.gpu).toEqual({ ...semColeta, normalizadas: 1, descartadas: {}, semPreco: 1 })
     expect(relatorio.cooler).toEqual({
+      ...semColeta,
       normalizadas: 1,
       descartadas: {},
       semPreco: 0,
-      semIndice: [],
     })
-    expect(relatorio.ram).toEqual({ normalizadas: 0, descartadas: {}, semPreco: 0, semIndice: [] })
+    expect(relatorio.ram).toEqual({ ...semColeta, normalizadas: 0, descartadas: {}, semPreco: 0 })
+  })
+})
+
+describe('montarCatalogo com coleta de preços', () => {
+  const preco = (medio: number, nAnuncios = 5) => ({
+    faixa: faixa(medio),
+    nAnuncios,
+    descartes: {},
+  })
+  const comIndiceI5 = {
+    cpu: { ...entrada().indices.cpu, 'core-i5-12400': { jogos: 60, produtividade: 30 } },
+    gpu: {},
+  }
+
+  it('publica uma Peça nova com a Faixa coletada e o ID categoria-marca-modelo', () => {
+    const { catalogo } = montarCatalogo(
+      entrada({
+        indices: comIndiceI5,
+        coleta: { data: '2026-10-11', precos: new Map([[i5.opendb_id, preco(720)]]) },
+      }),
+    )
+    expect(catalogo.pecas.find((p) => p.nome === 'Core i5 12400')).toMatchObject({
+      id: 'cpu-intel-core-i5-12400',
+      faixaPreco: faixa(720),
+      indices: { jogos: 60, produtividade: 30 },
+    })
+  })
+
+  it('deixa de fora uma Peça nova sem Anúncio válido e conta em semAnuncio', () => {
+    const semAnuncio = { faixa: null, nAnuncios: 1, descartes: { usado: 4 } }
+    const { catalogo, relatorio } = montarCatalogo(
+      entrada({
+        indices: comIndiceI5,
+        coleta: { data: '2026-10-11', precos: new Map([[i5.opendb_id, semAnuncio]]) },
+      }),
+    )
+    expect(catalogo.pecas.map((p) => p.nome)).not.toContain('Core i5 12400')
+    expect(relatorio.cpu.semAnuncio).toBe(1)
+  })
+
+  it('a Data de referência é o dia da coleta; sem coleta, continua a legada', () => {
+    const coleta = { data: '2026-10-11', precos: new Map<string, PrecoColetado>() }
+    expect(montarCatalogo(entrada({ coleta })).catalogo.dataReferencia).toBe('2026-10-11')
+    expect(montarCatalogo(entrada()).catalogo.dataReferencia).toBe('2026-10')
+  })
+
+  it('a Peça legada com Anúncios usa a Faixa coletada', () => {
+    const { catalogo } = montarCatalogo(
+      entrada({ coleta: { data: '2026-10-11', precos: new Map([[ryzen.opendb_id, preco(599)]]) } }),
+    )
+    expect(catalogo.pecas[0]).toMatchObject({ nome: 'Ryzen 5 5600', faixaPreco: faixa(599) })
+  })
+
+  it('mantém a Peça legada sem Anúncio com a Faixa legada, lista em precoLegado e o alias resolve', () => {
+    const semAnuncio = { faixa: null, nAnuncios: 0, descartes: {} }
+    const { catalogo, relatorio } = montarCatalogo(
+      entrada({ coleta: { data: '2026-10-11', precos: new Map([[ryzen.opendb_id, semAnuncio]]) } }),
+    )
+    expect(catalogo.pecas[0]).toMatchObject({ id: 'cpu-amd-ryzen-5-5600', faixaPreco: faixa(650) })
+    expect(catalogo.aliases['cpu-ryzen-5-5600']).toBe('cpu-amd-ryzen-5-5600')
+    // O cooler legado nem foi consultado: também fica com a Faixa legada.
+    expect(relatorio.cpu.precoLegado).toEqual(['cpu-ryzen-5-5600'])
+    expect(relatorio.cooler.precoLegado).toEqual(['cooler-deepcool-ak400'])
+    expect(relatorio.cpu.semAnuncio).toBe(0)
+  })
+
+  it('relatório conta as Peças com preço coletado e soma os descartes de Anúncio por motivo', () => {
+    const { relatorio } = montarCatalogo(
+      entrada({
+        indices: comIndiceI5,
+        coleta: {
+          data: '2026-10-11',
+          precos: new Map<string, PrecoColetado>([
+            [ryzen.opendb_id, { ...preco(599), descartes: { usado: 2, kit: 1 } }],
+            [i5.opendb_id, { faixa: null, nAnuncios: 0, descartes: { usado: 3 } }],
+          ]),
+        },
+      }),
+    )
+    expect(relatorio.cpu).toMatchObject({
+      comPreco: 1,
+      semAnuncio: 1,
+      semPreco: 0,
+      descartesAnuncio: { usado: 5, kit: 1 },
+    })
+    expect(relatorio.cooler).toMatchObject({ comPreco: 0, descartesAnuncio: {} })
   })
 })
 

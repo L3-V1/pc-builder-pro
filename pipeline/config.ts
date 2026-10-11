@@ -25,4 +25,13 @@ export const CAMINHOS = {
   legado: new URL('pipeline/legado/', raiz),
   curadoria: new URL('pipeline/curadoria/', raiz),
   saida: new URL('public/dados/', raiz),
+  // Segredos do Mercado Livre (coberto pelo *.local do .gitignore).
+  envLocal: new URL('.env.local', raiz),
+  // Respostas da API, uma pasta por dia de coleta.
+  cacheMl: (dia: string) => new URL(`pipeline/.cache/ml/${dia}/`, raiz),
 }
+
+// Coleta de preços no Mercado Livre.
+export const ML_API = 'https://api.mercadolibre.com'
+// Requisições simultâneas à API; 429 e 5xx são repetidos com backoff pelo cliente.
+export const CONCORRENCIA_ML = 4

@@ -1,6 +1,6 @@
 # Roadmap: PC Builder Pro
 
-> Criado em 2026-10-06 · Última atualização 2026-10-10
+> Criado em 2026-10-06 · Última atualização 2026-10-11
 
 ## Visão geral
 
@@ -51,7 +51,7 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 | 9    | Catálogo fora do bundle, carregado por fetch            | Concluída    |
 | 10   | Busca assíncrona com debounce e cancelamento            | Concluída    |
 | 11   | Pipeline de specs a partir do OpenDB                    | Concluída    |
-| 12   | Coleta de preços no Mercado Livre                       | Não iniciada |
+| 12   | Coleta de preços no Mercado Livre                       | Em andamento |
 | 13   | Publicação diária automática com validação              | Não iniciada |
 | 14   | Peças fora de venda no app                              | Não iniciada |
 | 15   | Offline e documentação do novo Catálogo                 | Não iniciada |
@@ -288,6 +288,8 @@ Uma aplicação estática publicada, em pt-BR, que funciona no desktop e no celu
 - [ ] Peças sem Anúncios válidos ficam fora do Catálogo.
 - [ ] Relatório da coleta (Peças com preço, sem Anúncio e descartadas por filtro).
 - [ ] Testes do filtro e da estatística com respostas gravadas da API.
+
+**Status:** em andamento. Filtro, Faixa, seleção, cliente e montagem estão prontos, mas a porta de Anúncios aguarda o app no Mercado Livre e o spike da API. Até lá, sem `ML_CLIENT_ID` e `ML_CLIENT_SECRET` o pipeline cai sozinho no modo sem coleta (só legadas, Faixa legada). `--exigir-coleta` desliga esse fallback para o workflow da Fase 13.
 
 **Critério de conclusão:** uma execução local gera um Catálogo de 500 a 3.000 Peças com Faixas de preço do dia, e uma amostragem manual de 20 Peças confere com o Mercado Livre.
 

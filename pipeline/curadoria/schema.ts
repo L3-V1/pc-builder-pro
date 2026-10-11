@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { indice } from '../../src/catalogo/schema'
+import { CATEGORIAS, indice } from '../../src/catalogo/schema'
 
 const Indices = z.strictObject({ jogos: indice, produtividade: indice })
 
@@ -40,3 +40,15 @@ export const ParesLegado = z
   .superRefine(semRepetidos('opendbId', 'opendb_id'))
   .superRefine(semRepetidos('idAntigo', 'ID antigo'))
 export type ParesLegado = z.infer<typeof ParesLegado>
+
+const contagem = z.number().int().nonnegative()
+
+// Quais Peças do OpenDB consultar no Mercado Livre e quantas publicar, por Categoria.
+export const Selecao = z.strictObject({
+  minimoAnuncios: z.number().int().positive(),
+  categorias: z.record(
+    z.enum(CATEGORIAS),
+    z.strictObject({ marcas: z.array(z.string()), tetoConsultas: contagem, tetoFinal: contagem }),
+  ),
+})
+export type Selecao = z.infer<typeof Selecao>

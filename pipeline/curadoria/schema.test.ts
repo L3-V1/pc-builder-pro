@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { IndicesCpu, IndicesGpu, ParesLegado } from './schema'
+import { IndicesCpu, IndicesGpu, ParesLegado, Selecao } from './schema'
+import selecao from './selecao.json'
 
 describe('curadoria', () => {
   it('aceita Índices de CPU, com ou sem vídeo integrado, e de GPU com fonte recomendada', () => {
@@ -34,5 +35,18 @@ describe('curadoria', () => {
     expect(repetido.success).toBe(false)
     expect(repetido.error?.issues[0].message).toBe('opendb_id repetido: "x1"')
     expect(ParesLegado.safeParse([par('cpu-a', 'x1'), par('cpu-a', 'x2')]).success).toBe(false)
+  })
+})
+
+describe('seleção', () => {
+  it('aceita o selecao.json versionado, com todas as Categorias', () => {
+    expect(Selecao.parse(selecao).categorias.cpu.marcas).toContain('AMD')
+  })
+
+  it('rejeita teto negativo e Categoria faltando', () => {
+    const criterio = { marcas: ['AMD'], tetoConsultas: -1, tetoFinal: 10 }
+    expect(Selecao.safeParse({ minimoAnuncios: 3, categorias: { cpu: criterio } }).success).toBe(
+      false,
+    )
   })
 })

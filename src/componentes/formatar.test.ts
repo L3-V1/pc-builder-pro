@@ -11,4 +11,8 @@ describe('formatarDataReferencia', () => {
   it('escreve mês por extenso e ano', () => {
     expect(formatarDataReferencia('2026-10')).toBe('outubro de 2026')
   })
+
+  it('com o dia da coleta, escreve dia, mês por extenso e ano', () => {
+    expect(formatarDataReferencia('2026-10-11')).toBe('11 de outubro de 2026')
+  })
 })

@@ -1,0 +1,129 @@
+{
+  "minimoAnuncios": 3,
+  "categorias": {
+    "cpu": { "marcas": ["AMD", "Intel"], "tetoConsultas": 300, "tetoFinal": 150 },
+    "placa-mae": {
+      "marcas": ["ASUS", "Gigabyte", "MSI", "ASRock", "Biostar"],
+      "tetoConsultas": 400,
+      "tetoFinal": 250
+    },
+    "ram": {
+      "marcas": [
+        "Kingston",
+        "Corsair",
+        "TEAMGROUP",
+        "ADATA",
+        "Crucial",
+        "G.SKILL",
+        "Patriot",
+        "PNY",
+        "Lexar",
+        "Rise Mode"
+      ],
+      "tetoConsultas": 400,
+      "tetoFinal": 250
+    },
+    "gpu": {
+      "marcas": [
+        "ASUS",
+        "Gigabyte",
+        "MSI",
+        "ASRock",
+        "Zotac",
+        "PNY",
+        "Sapphire",
+        "PowerColor",
+        "XFX",
+        "Palit",
+        "GALAX",
+        "Gainward",
+        "Inno3D"
+      ],
+      "tetoConsultas": 400,
+      "tetoFinal": 250
+    },
+    "armazenamento": {
+      "marcas": [
+        "Kingston",
+        "Western Digital",
+        "Samsung",
+        "Crucial",
+        "Seagate",
+        "ADATA",
+        "TEAMGROUP",
+        "Lexar",
+        "Corsair",
+        "SanDisk",
+        "PNY",
+        "Patriot",
+        "Toshiba"
+      ],
+      "tetoConsultas": 400,
+      "tetoFinal": 250
+    },
+    "fonte": {
+      "marcas": [
+        "Corsair",
+        "Cooler Master",
+        "MSI",
+        "Thermaltake",
+        "SeaSonic",
+        "DeepCool",
+        "Gigabyte",
+        "Asus",
+        "be quiet!",
+        "XPG",
+        "Redragon",
+        "PCYES",
+        "Super Flower",
+        "FSP Group"
+      ],
+      "tetoConsultas": 300,
+      "tetoFinal": 150
+    },
+    "gabinete": {
+      "marcas": [
+        "Corsair",
+        "Cooler Master",
+        "NZXT",
+        "Lian Li",
+        "DeepCool",
+        "MONTECH",
+        "Thermaltake",
+        "Fractal Design",
+        "GAMEMAX",
+        "Redragon",
+        "PCYES",
+        "Rise Mode",
+        "AeroCool",
+        "Sharkoon",
+        "MSI",
+        "Asus",
+        "Phanteks"
+      ],
+      "tetoConsultas": 300,
+      "tetoFinal": 150
+    },
+    "cooler": {
+      "marcas": [
+        "DeepCool",
+        "Cooler Master",
+        "Thermalright",
+        "ARCTIC",
+        "Corsair",
+        "NZXT",
+        "Noctua",
+        "ID-COOLING",
+        "Rise Mode",
+        "be quiet!",
+        "Thermaltake",
+        "Lian Li",
+        "PCYES",
+        "Asus",
+        "MSI"
+      ],
+      "tetoConsultas": 300,
+      "tetoFinal": 150
+    }
+  }
+}
