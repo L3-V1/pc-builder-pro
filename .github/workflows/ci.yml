@@ -3,6 +3,8 @@ name: CI
 on:
   push:
   pull_request:
+  # Disparo manual (gh workflow run CI --ref main), que também publica a partir da main.
+  workflow_dispatch:
 
 jobs:
   verificar:
@@ -58,7 +60,7 @@ jobs:
       - run: npm run lighthouse
 
   publicar:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: [e2e, lighthouse]
     runs-on: ubuntu-latest
     permissions:
