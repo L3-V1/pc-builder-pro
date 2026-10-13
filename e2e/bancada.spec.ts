@@ -127,7 +127,11 @@ test('trocar a placa-mãe por arraste manda as incompatíveis para a Bandeja', a
 test('teclado: Espaço pega, setas levam ao socket e Espaço encaixa', async ({ page }) => {
   await arrastarDaBusca(page, 'b650m aorus', slot(page, 'placa-mae'))
   await pesquisar(page, 'ryzen 7600')
-  await alcaNaBusca(page).focus()
+  // Pela Peça, não pela primeira alça: sob carga a lista anterior (com a placa) ainda pode estar lá.
+  await page
+    .locator('.app__resultados')
+    .getByRole('button', { name: 'Arrastar Ryzen 5 7600' })
+    .focus()
   await page.keyboard.press('Space')
 
   // O dnd-kit mede os destinos e atualiza o "sobre" de forma assíncrona: uma seta por vez,

@@ -223,6 +223,7 @@ describe('App: Desafios', () => {
     expect(screen.queryByRole('button', { name: 'Copiar link' })).not.toBeInTheDocument()
   })
 
+  // Sete buscas digitadas com debounce passam dos 5 s padrão, ainda mais no runner do CI.
   it('montar a solução de Primeiro PC, ligar o PC e, ao reabrir o app, ver o Desafio concluído e a Build livre intacta', async () => {
     const { unmount } = render(<Aplicacao catalogo={catalogoFixture} />)
     await adicionar('b650m aorus')
@@ -249,7 +250,7 @@ describe('App: Desafios', () => {
     const placa = within(screen.getByRole('group', { name: 'Placa-mãe' }))
     expect(placa.getByText(/B650M Aorus Elite/)).toBeInTheDocument()
     expect(screen.queryByRole('region', { name: /^Desafio:/ })).not.toBeInTheDocument()
-  })
+  }, 20_000)
 })
 
 function simularTelaPequena(pequena: boolean) {
