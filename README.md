@@ -1,5 +1,7 @@
 # PC Builder Pro
 
+**Acesse:** https://l3-v1.github.io/pc-builder-pro/
+
 Montador visual de PCs. Estado atual (Fase 3): busca de Peças, montagem por clique e painéis de Orçamento, Checklist e Alertas. Em memória: recarregar a página zera a Build.
 
 ## Como rodar
